@@ -1,26 +1,294 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Flowryse Design System
+  Brand Colors:
+  - Magenta: #ff00cc (320 100% 50%)
+  - Purple: #8c00ff (276 100% 50%)
+  - Cyan: #00ffff (180 100% 50%)
+*/
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Brand colors */
+  --color-brand-magenta: var(--brand-magenta);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-cyan: var(--brand-cyan);
+
+  /* Shadcn theme colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Dark theme as default - Flowryse brand */
+:root {
+  --radius: 0.25rem;
+
+  /* Brand colors (always available) */
+  --brand-magenta: hsl(320 100% 50%);
+  --brand-purple: hsl(276 100% 50%);
+  --brand-cyan: hsl(180 100% 50%);
+
+  /* Dark theme colors */
+  --background: hsl(0 0% 5%);
+  --foreground: hsl(0 0% 98%);
+
+  --card: hsl(0 0% 8%);
+  --card-foreground: hsl(0 0% 95%);
+
+  --popover: hsl(0 0% 8%);
+  --popover-foreground: hsl(0 0% 95%);
+
+  /* Primary uses brand magenta */
+  --primary: hsl(320 100% 60%);
+  --primary-foreground: hsl(0 0% 98%);
+
+  --secondary: hsl(0 0% 12%);
+  --secondary-foreground: hsl(0 0% 95%);
+
+  --muted: hsl(0 0% 12%);
+  --muted-foreground: hsl(0 0% 65%);
+
+  /* Accent uses brand cyan */
+  --accent: hsl(0 0% 15%);
+  --accent-foreground: hsl(180 100% 80%);
+
+  --destructive: hsl(0 84% 60%);
+
+  --border: hsl(0 0% 20%);
+  --input: hsl(0 0% 15%);
+  --ring: hsl(320 100% 60%);
+
+  /* Charts use brand colors */
+  --chart-1: hsl(320 100% 60%);
+  --chart-2: hsl(276 100% 60%);
+  --chart-3: hsl(180 100% 50%);
+  --chart-4: hsl(320 80% 70%);
+  --chart-5: hsl(276 80% 70%);
+
+  /* Sidebar */
+  --sidebar: hsl(0 0% 5%);
+  --sidebar-foreground: hsl(0 0% 95%);
+  --sidebar-primary: hsl(320 100% 60%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(0 0% 12%);
+  --sidebar-accent-foreground: hsl(0 0% 95%);
+  --sidebar-border: hsl(0 0% 15%);
+  --sidebar-ring: hsl(320 100% 60%);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, hsl(320 100% 50%) 0%, hsl(276 100% 50%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(276 100% 50%) 0%, hsl(180 100% 50%) 100%);
+  --gradient-cta: linear-gradient(135deg, hsl(320 100% 55%) 0%, hsl(276 100% 55%) 100%);
+
+  /* Shadows & Effects */
+  --shadow-glow: 0 10px 30px -10px hsl(320 100% 50% / 0.4);
+  --shadow-brand: 0 10px 30px -10px hsl(276 100% 50% / 0.3);
+  --shadow-cyan: 0 10px 30px -10px hsl(180 100% 50% / 0.3);
+}
+
+/* Light theme (optional override) */
+.light {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 5%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 5%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 5%);
+  --primary: hsl(320 100% 45%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 96%);
+  --secondary-foreground: hsl(0 0% 10%);
+  --muted: hsl(0 0% 96%);
+  --muted-foreground: hsl(0 0% 45%);
+  --accent: hsl(0 0% 96%);
+  --accent-foreground: hsl(0 0% 10%);
+  --destructive: hsl(0 84% 60%);
+  --border: hsl(0 0% 90%);
+  --input: hsl(0 0% 90%);
+  --ring: hsl(320 100% 45%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Utility classes for brand styling */
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    background-image: var(--gradient-hero);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-accent-text {
+    background-image: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hero button style */
+  .btn-hero {
+    background: var(--gradient-cta);
+    color: hsl(0 0% 98%);
+    border: 1px solid hsl(320 100% 50% / 0.5);
+    box-shadow: var(--shadow-glow);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-hero:hover::before {
+    left: 100%;
+  }
+
+  .btn-hero:hover {
+    box-shadow: 0 0 40px hsl(320 100% 50% / 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Glow effects */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+
+  .shadow-cyan {
+    box-shadow: var(--shadow-cyan);
+  }
+
+  /* Background patterns */
+  .bg-hero-surface {
+    background:
+      radial-gradient(ellipse 1400px 700px at 100% -10%, hsl(276 100% 50% / 0.15), transparent 65%),
+      radial-gradient(ellipse 1000px 500px at -10% 0%, hsl(180 100% 50% / 0.1), transparent 60%),
+      radial-gradient(ellipse 800px 400px at 50% 100%, hsl(320 100% 50% / 0.08), transparent 50%);
+  }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Tech card style */
+  .tech-card {
+    @apply bg-card border border-border rounded-lg relative overflow-hidden;
+    transition: all 0.3s ease;
+  }
+
+  .tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(180 100% 50% / 0.5), transparent);
+  }
+
+  .tech-card:hover {
+    border-color: hsl(180 100% 50% / 0.5);
+    box-shadow: 0 8px 25px hsl(180 100% 50% / 0.15);
+  }
+
+  /* Animated underline for links */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: hsl(180 100% 50%);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Container utility */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
 }
