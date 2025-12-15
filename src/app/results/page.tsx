@@ -5,17 +5,46 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   TrendingUp,
-  Users,
-  DollarSign,
   Star,
   Quote,
-  Building2,
   ShoppingCart,
   Briefcase,
   Home,
+  Building2,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+
+// Animation variants (matching homepage)
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// Overall Stats
+const overallStats = [
+  { value: 10, suffix: "M+", label: "Revenue Generated", prefix: "$" },
+  { value: 21, suffix: "x", label: "Average ROAS" },
+  { value: 50, suffix: "+", label: "Happy Clients" },
+  { value: 300, suffix: "%", label: "Avg. Growth" },
+];
 
 // Case Studies Data
 const caseStudies = [
@@ -32,7 +61,9 @@ const caseStudies = [
       { metric: "Revenue", before: "$45K/mo", after: "$180K/mo" },
       { metric: "CPA", before: "$85", after: "$32" },
     ],
-    color: "brand-magenta",
+    cardClass: "service-card service-card-magenta",
+    iconColor: "hsl(320 80% 55%)",
+    iconBg: "hsl(320 80% 55% / 0.15)",
   },
   {
     client: "B2B SaaS Company",
@@ -47,7 +78,9 @@ const caseStudies = [
       { metric: "Leads", before: "15/mo", after: "120/mo" },
       { metric: "Domain Authority", before: "24", after: "48" },
     ],
-    color: "brand-cyan",
+    cardClass: "service-card service-card-cyan",
+    iconColor: "hsl(180 70% 50%)",
+    iconBg: "hsl(180 70% 50% / 0.15)",
   },
   {
     client: "Real Estate Agency",
@@ -62,7 +95,9 @@ const caseStudies = [
       { metric: "Engagement", before: "1.2%", after: "6.8%" },
       { metric: "Leads/Month", before: "8", after: "65" },
     ],
-    color: "brand-purple",
+    cardClass: "service-card service-card-purple",
+    iconColor: "hsl(276 60% 55%)",
+    iconBg: "hsl(276 60% 55% / 0.15)",
   },
   {
     client: "Professional Services",
@@ -77,7 +112,9 @@ const caseStudies = [
       { metric: "Page Speed", before: "6.2s", after: "1.4s" },
       { metric: "Leads/Month", before: "12", after: "58" },
     ],
-    color: "brand-cyan",
+    cardClass: "service-card service-card-blue",
+    iconColor: "hsl(220 70% 60%)",
+    iconBg: "hsl(220 70% 60% / 0.15)",
   },
 ];
 
@@ -127,112 +164,153 @@ const testimonials = [
   },
 ];
 
-// Overall Stats
-const overallStats = [
-  { value: "$10M+", label: "Revenue Generated" },
-  { value: "21x", label: "Average ROAS" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "300%", label: "Avg. Growth" },
-];
-
 export default function ResultsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-24 md:py-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeIn delay={0.1}>
-              <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
-                Our Results
-              </span>
-            </FadeIn>
+      <section className="relative overflow-hidden">
+        <div className="container py-16 md:py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Results
+            </motion.span>
 
-            <FadeIn delay={0.2}>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                Real Results for{" "}
-                <span className="gradient-accent-text">Real Businesses</span>
-              </h1>
-            </FadeIn>
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Real Results for{" "}
+              <span className="gradient-accent-text">Real Businesses</span>
+            </motion.h1>
 
-            <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-                We don&apos;t just talk about results — we prove them. Here&apos;s
-                what we&apos;ve achieved for businesses just like yours.
-              </p>
-            </FadeIn>
+            <motion.p
+              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              We don&apos;t just talk about results — we prove them. Here&apos;s
+              what we&apos;ve achieved for businesses just like yours.
+            </motion.p>
           </div>
         </div>
 
-        {/* Gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ChevronDown className="w-7 h-7 text-muted-foreground/50" />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Overall Stats Section */}
-      <section className="py-16 border-b border-border/50">
+      <section className="py-20 md:py-28">
         <div className="container">
-          <StaggerChildren className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {overallStats.map((stat, index) => (
-              <StaggerItem key={index} className="text-center">
-                <motion.div
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={staggerItem}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.p
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-3"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <p className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
-              </StaggerItem>
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    prefix={stat.prefix}
+                    duration={2 + index * 0.3}
+                  />
+                </motion.p>
+                <p className="text-base md:text-lg text-muted-foreground">{stat.label}</p>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* Case Studies Section */}
       <section className="py-24 md:py-32">
         <div className="container">
-          <FadeIn className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               Client <span className="gradient-accent-text">Case Studies</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               Deep dives into how we&apos;ve helped businesses achieve
               transformational growth.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <StaggerChildren className="space-y-8" staggerDelay={0.15}>
-            {caseStudies.map((study, index) => {
+          <motion.div
+            className="space-y-8 md:space-y-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {caseStudies.map((study) => {
               const Icon = study.icon;
 
               return (
-                <StaggerItem key={study.client}>
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="tech-card overflow-hidden"
-                  >
-                    <div className="p-8 md:p-10">
+                <motion.div
+                  key={study.client}
+                  variants={staggerItem}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className={`${study.cardClass} overflow-hidden`}>
+                    <div className="p-8 md:p-10 lg:p-12">
                       {/* Header */}
                       <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
                         <div
-                          className="w-14 h-14 rounded-xl flex items-center justify-center"
+                          className="w-16 h-16 rounded-2xl flex items-center justify-center"
                           style={{
-                            backgroundColor: `hsl(var(--${study.color}) / 0.1)`,
-                            border: `1px solid hsl(var(--${study.color}) / 0.3)`,
+                            backgroundColor: study.iconBg,
+                            border: `1px solid ${study.iconColor}30`,
                           }}
                         >
                           <Icon
-                            className="w-7 h-7"
-                            style={{ color: `hsl(var(--${study.color}))` }}
+                            className="w-8 h-8"
+                            style={{ color: study.iconColor }}
                           />
                         </div>
                         <div>
-                          <h3 className="text-xl md:text-2xl font-bold">
+                          <h3 className="text-2xl md:text-3xl font-bold">
                             {study.client}
                           </h3>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-base text-muted-foreground">
                             {study.industry}
                           </p>
                         </div>
@@ -243,18 +321,18 @@ export default function ResultsPage() {
                         {/* Challenge */}
                         <div>
                           <h4
-                            className="text-sm font-semibold mb-3 flex items-center gap-2"
-                            style={{ color: `hsl(var(--${study.color}))` }}
+                            className="text-base font-semibold mb-3 flex items-center gap-2"
+                            style={{ color: study.iconColor }}
                           >
                             <span
                               className="w-2 h-2 rounded-full"
                               style={{
-                                backgroundColor: `hsl(var(--${study.color}))`,
+                                backgroundColor: study.iconColor,
                               }}
                             />
                             The Challenge
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-base text-muted-foreground leading-relaxed">
                             {study.challenge}
                           </p>
                         </div>
@@ -262,18 +340,18 @@ export default function ResultsPage() {
                         {/* Solution */}
                         <div>
                           <h4
-                            className="text-sm font-semibold mb-3 flex items-center gap-2"
-                            style={{ color: `hsl(var(--${study.color}))` }}
+                            className="text-base font-semibold mb-3 flex items-center gap-2"
+                            style={{ color: study.iconColor }}
                           >
                             <span
                               className="w-2 h-2 rounded-full"
                               style={{
-                                backgroundColor: `hsl(var(--${study.color}))`,
+                                backgroundColor: study.iconColor,
                               }}
                             />
                             Our Solution
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-base text-muted-foreground leading-relaxed">
                             {study.solution}
                           </p>
                         </div>
@@ -281,13 +359,13 @@ export default function ResultsPage() {
                         {/* Results */}
                         <div>
                           <h4
-                            className="text-sm font-semibold mb-3 flex items-center gap-2"
-                            style={{ color: `hsl(var(--${study.color}))` }}
+                            className="text-base font-semibold mb-3 flex items-center gap-2"
+                            style={{ color: study.iconColor }}
                           >
                             <span
                               className="w-2 h-2 rounded-full"
                               style={{
-                                backgroundColor: `hsl(var(--${study.color}))`,
+                                backgroundColor: study.iconColor,
                               }}
                             />
                             The Results
@@ -296,7 +374,7 @@ export default function ResultsPage() {
                             {study.results.map((result) => (
                               <div
                                 key={result.metric}
-                                className="flex items-center justify-between text-sm"
+                                className="flex items-center justify-between text-base"
                               >
                                 <span className="text-muted-foreground">
                                   {result.metric}
@@ -305,11 +383,11 @@ export default function ResultsPage() {
                                   <span className="text-muted-foreground/60 line-through">
                                     {result.before}
                                   </span>
-                                  <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                                  <ArrowRight className="w-4 h-4 text-muted-foreground" />
                                   <span
-                                    className="font-semibold"
+                                    className="font-bold"
                                     style={{
-                                      color: `hsl(var(--${study.color}))`,
+                                      color: study.iconColor,
                                     }}
                                   >
                                     {result.after}
@@ -321,173 +399,166 @@ export default function ResultsPage() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
-                </StaggerItem>
+                  </div>
+                </motion.div>
               );
             })}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      <section className="py-24 md:py-32">
         <div className="container">
-          <FadeIn className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               What Our Clients{" "}
               <span className="gradient-text">Say About Us</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               Don&apos;t take our word for it — hear from the businesses we&apos;ve
               helped grow.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <StaggerChildren
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            staggerDelay={0.1}
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
           >
             {testimonials.map((testimonial, index) => (
-              <StaggerItem key={index}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="tech-card p-6 h-full flex flex-col"
-                >
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                      />
-                    ))}
-                  </div>
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Glassmorphism card wrapper */}
+                <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500 h-full">
+                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl p-6 md:p-8 h-full flex flex-col relative overflow-hidden">
+                    {/* Subtle top highlight for glass effect */}
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-                  {/* Quote */}
-                  <div className="relative flex-1 mb-6">
-                    <Quote className="absolute -top-2 -left-2 w-8 h-8 text-brand-purple/20" />
-                    <p className="text-sm text-muted-foreground leading-relaxed pl-4">
-                      {testimonial.quote}
-                    </p>
-                  </div>
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 fill-yellow-500 text-yellow-500"
+                        />
+                      ))}
+                    </div>
 
-                  {/* Author */}
-                  <div className="border-t border-border/50 pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* Why These Results Section */}
-      <section className="py-24 md:py-32">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="right">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                Why We Get{" "}
-                <span className="gradient-accent-text">These Results</span>
-              </h2>
-              <div className="space-y-6">
-                <div className="tech-card p-6">
-                  <h3 className="font-semibold mb-2 text-brand-cyan">
-                    Data-Driven Decisions
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Every strategy is backed by data. We track, measure, and
-                    optimize based on what actually works — not assumptions.
-                  </p>
-                </div>
-
-                <div className="tech-card p-6">
-                  <h3 className="font-semibold mb-2 text-brand-purple">
-                    Full-Funnel Approach
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    We don&apos;t just drive traffic — we build complete systems that
-                    convert visitors into leads and leads into customers.
-                  </p>
-                </div>
-
-                <div className="tech-card p-6 shadow-brand">
-                  <h3 className="font-semibold mb-2 text-brand-magenta">
-                    Results Guarantee
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    We&apos;re so confident in our ability to deliver that if we
-                    don&apos;t hit agreed targets, we pause fees until we do.
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="left" delay={0.2}>
-              <div className="relative">
-                <div
-                  className="aspect-square rounded-2xl p-1"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, hsl(var(--brand-purple) / 0.2), hsl(var(--brand-magenta) / 0.1), hsl(var(--brand-cyan) / 0.2))",
-                  }}
-                >
-                  <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <motion.div
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                        className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center"
-                      >
-                        <TrendingUp className="w-12 h-12 text-primary" />
-                      </motion.div>
-                      <p className="text-5xl font-bold gradient-text mb-2">
-                        98%
+                    {/* Quote */}
+                    <div className="relative flex-1 mb-6">
+                      <Quote className="absolute -top-2 -left-2 w-10 h-10 text-brand-purple/20" />
+                      <p className="text-base text-muted-foreground leading-relaxed pl-6">
+                        {testimonial.quote}
                       </p>
-                      <p className="text-muted-foreground">
-                        Client Satisfaction
+                    </div>
+
+                    {/* Author */}
+                    <div className="border-t border-border/50 pt-4">
+                      <p className="font-semibold text-lg">{testimonial.author}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.role}
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">
-        {/* Background glow */}
+        {/* Background glow effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(276 60% 50% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
             }}
           />
         </div>
+
         <div className="container relative z-10">
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-              Ready to Be Our Next Success Story?
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              className="inline-block mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
+                Your Turn
+              </span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8">
+              Ready to Be Our{" "}
+              <span className="gradient-text">Next Success Story?</span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
               Book a free strategy call and let&apos;s discuss how we can achieve
               similar results for your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
-              <Link href="/contact" className="flex items-center gap-2">
-                Get Your Free Strategy Call
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </FadeIn>
+
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
+                <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                  Get Your Free Strategy Call
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+                <Link href="/services" className="flex items-center gap-2">
+                  Explore Services
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                </Link>
+              </Button>
+            </motion.div>
+
+            <motion.p
+              className="mt-8 text-sm text-muted-foreground"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              No commitment required. 100% free consultation.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
     </>

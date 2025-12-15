@@ -2,10 +2,33 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Target, Zap, Users, CheckCircle } from "lucide-react";
+import { ArrowRight, TrendingUp, Target, Zap, Users, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 
+// Animation variants (matching homepage)
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// Services data with accent colors (matching homepage)
 const services = [
   {
     icon: TrendingUp,
@@ -20,8 +43,10 @@ const services = [
       "Content Strategy",
     ],
     href: "/services/seo",
-    color: "brand-cyan",
-    stats: { value: "300%", label: "Avg. Traffic Increase" },
+    cardClass: "service-card service-card-cyan",
+    iconColor: "hsl(180 70% 50%)",
+    iconBg: "hsl(180 70% 50% / 0.15)",
+    stats: { value: 300, suffix: "%", label: "Avg. Traffic Increase" },
   },
   {
     icon: Users,
@@ -36,8 +61,10 @@ const services = [
       "Brand Strategy",
     ],
     href: "/services/social-media",
-    color: "brand-purple",
-    stats: { value: "5x", label: "Engagement Growth" },
+    cardClass: "service-card service-card-purple",
+    iconColor: "hsl(276 60% 55%)",
+    iconBg: "hsl(276 60% 55% / 0.15)",
+    stats: { value: 5, suffix: "x", label: "Engagement Growth" },
   },
   {
     icon: Target,
@@ -52,8 +79,10 @@ const services = [
       "Conversion Tracking",
     ],
     href: "/services/paid-ads",
-    color: "brand-magenta",
-    stats: { value: "21x", label: "Average ROAS" },
+    cardClass: "service-card service-card-magenta",
+    iconColor: "hsl(320 80% 55%)",
+    iconBg: "hsl(320 80% 55% / 0.15)",
+    stats: { value: 21, suffix: "x", label: "Average ROAS" },
   },
   {
     icon: Zap,
@@ -68,8 +97,10 @@ const services = [
       "Analytics Integration",
     ],
     href: "/services/website-design",
-    color: "brand-cyan",
-    stats: { value: "2.5x", label: "Conversion Rate Boost" },
+    cardClass: "service-card service-card-blue",
+    iconColor: "hsl(220 70% 60%)",
+    iconBg: "hsl(220 70% 60% / 0.15)",
+    stats: { value: 2.5, suffix: "x", label: "Conversion Rate Boost" },
   },
 ];
 
@@ -77,52 +108,79 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-24 md:py-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeIn delay={0.1}>
-              <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
-                Our Services
-              </span>
-            </FadeIn>
+      <section className="relative overflow-hidden">
+        <div className="container py-16 md:py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Services
+            </motion.span>
 
-            <FadeIn delay={0.2}>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                Marketing That{" "}
-                <span className="gradient-accent-text">Delivers Results</span>
-              </h1>
-            </FadeIn>
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Marketing That{" "}
+              <span className="gradient-accent-text">Delivers Results</span>
+            </motion.h1>
 
-            <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
-                From SEO to paid ads, we deliver data-driven strategies that turn
-                marketing spend into measurable revenue. Choose your path to growth.
-              </p>
-            </FadeIn>
+            <motion.p
+              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              From SEO to paid ads, we deliver data-driven strategies that turn
+              marketing spend into measurable revenue. Choose your path to growth.
+            </motion.p>
           </div>
         </div>
 
-        {/* Gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ChevronDown className="w-7 h-7 text-muted-foreground/50" />
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Grid */}
       <section className="py-24 md:py-32">
         <div className="container">
-          <StaggerChildren className="space-y-12" staggerDelay={0.15}>
+          <motion.div
+            className="space-y-12 md:space-y-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {services.map((service, index) => {
               const Icon = service.icon;
               const isReversed = index % 2 === 1;
 
               return (
-                <StaggerItem key={service.title}>
-                  <motion.div
-                    whileHover={{ scale: 1.01 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="tech-card overflow-hidden"
-                  >
+                <motion.div
+                  key={service.title}
+                  variants={staggerItem}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className={`${service.cardClass} overflow-hidden`}>
                     <div
-                      className={`grid lg:grid-cols-2 gap-8 p-8 md:p-10 ${
+                      className={`grid lg:grid-cols-2 gap-8 p-8 md:p-10 lg:p-12 ${
                         isReversed ? "lg:flex-row-reverse" : ""
                       }`}
                     >
@@ -133,23 +191,23 @@ export default function ServicesPage() {
                         }`}
                       >
                         <div
-                          className="w-14 h-14 mb-6 rounded-xl flex items-center justify-center"
+                          className="w-16 h-16 mb-6 rounded-2xl flex items-center justify-center"
                           style={{
-                            backgroundColor: `hsl(var(--${service.color}) / 0.1)`,
-                            border: `1px solid hsl(var(--${service.color}) / 0.3)`,
+                            backgroundColor: service.iconBg,
+                            border: `1px solid ${service.iconColor}30`,
                           }}
                         >
                           <Icon
-                            className="w-7 h-7"
-                            style={{ color: `hsl(var(--${service.color}))` }}
+                            className="w-8 h-8"
+                            style={{ color: service.iconColor }}
                           />
                         </div>
 
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4">
                           {service.title}
                         </h2>
 
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                        <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                           {service.description}
                         </p>
 
@@ -157,18 +215,35 @@ export default function ServicesPage() {
                           {service.features.map((feature) => (
                             <li
                               key={feature}
-                              className="flex items-center gap-3 text-sm"
+                              className="flex items-center gap-3 text-base"
                             >
-                              <CheckCircle
-                                className="w-5 h-5 flex-shrink-0"
-                                style={{ color: `hsl(var(--${service.color}))` }}
-                              />
-                              <span>{feature}</span>
+                              <span
+                                className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                                style={{
+                                  backgroundColor: service.iconBg,
+                                }}
+                              >
+                                <svg
+                                  className="w-3.5 h-3.5"
+                                  style={{ color: service.iconColor }}
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={3}
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                  />
+                                </svg>
+                              </span>
+                              <span className="text-foreground/90">{feature}</span>
                             </li>
                           ))}
                         </ul>
 
-                        <Button asChild className="btn-hero w-fit group">
+                        <Button asChild className="btn-hero w-fit group text-base px-6 py-4 h-auto">
                           <Link
                             href={service.href}
                             className="flex items-center gap-2"
@@ -186,23 +261,25 @@ export default function ServicesPage() {
                         }`}
                       >
                         <div
-                          className="relative w-full max-w-sm aspect-square rounded-2xl p-1"
+                          className="relative w-full max-w-sm aspect-square rounded-3xl p-1"
                           style={{
-                            background: `linear-gradient(135deg, hsl(var(--${service.color}) / 0.2), hsl(var(--${service.color}) / 0.05))`,
+                            background: `linear-gradient(135deg, ${service.iconColor}33, ${service.iconColor}0d)`,
                           }}
                         >
-                          <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
+                          <div className="w-full h-full rounded-3xl bg-background/80 backdrop-blur-sm flex items-center justify-center border border-border/30">
                             <div className="text-center">
                               <motion.p
-                                initial={{ scale: 0.5, opacity: 0 }}
-                                whileInView={{ scale: 1, opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                                viewport={{ once: true }}
-                                className="text-6xl md:text-7xl font-bold gradient-text mb-4"
+                                className="text-6xl md:text-7xl lg:text-8xl font-bold gradient-text mb-4"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 300 }}
                               >
-                                {service.stats.value}
+                                <AnimatedCounter
+                                  value={service.stats.value}
+                                  suffix={service.stats.suffix}
+                                  duration={2}
+                                />
                               </motion.p>
-                              <p className="text-muted-foreground">
+                              <p className="text-lg text-muted-foreground">
                                 {service.stats.label}
                               </p>
                             </div>
@@ -210,17 +287,17 @@ export default function ServicesPage() {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
-                </StaggerItem>
+                  </div>
+                </motion.div>
               );
             })}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">
-        {/* Background glow */}
+        {/* Background glow effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
@@ -228,23 +305,65 @@ export default function ServicesPage() {
               background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
             }}
           />
+          <div
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+            }}
+          />
         </div>
+
         <div className="container relative z-10">
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-              Not Sure Which Service Is Right for You?
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              className="inline-block mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
+                Let&apos;s Talk
+              </span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8">
+              Not Sure Which Service Is{" "}
+              <span className="gradient-text">Right for You?</span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
               Book a free strategy call and we&apos;ll help you identify the best
               approach to grow your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
-              <Link href="/contact" className="flex items-center gap-2">
-                Get Your Free Strategy Call
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </FadeIn>
+
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
+                <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                  Get Your Free Strategy Call
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+                <Link href="/results" className="flex items-center gap-2">
+                  View Case Studies
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>

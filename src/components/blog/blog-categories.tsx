@@ -1,24 +1,47 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 interface BlogCategoriesProps {
   categories: { name: string; count: number }[];
 }
 
 export function BlogCategories({ categories }: BlogCategoriesProps) {
   return (
-    <section className="py-8 border-b border-border/50">
+    <section className="py-8 border-b border-border/30">
       <div className="container">
-        <div className="flex flex-wrap justify-center gap-2">
-          {categories.map((category) => (
-            <button
+        <motion.div
+          className="flex flex-wrap justify-center gap-3"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          {/* All category button */}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="px-5 py-2.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 transition-all duration-300"
+          >
+            All Posts
+          </motion.button>
+
+          {categories.map((category, index) => (
+            <motion.button
               key={category.name}
-              className="px-4 py-2 rounded-full text-sm border border-border hover:border-primary hover:text-primary transition-colors"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-5 py-2.5 rounded-full text-sm font-medium bg-card/60 backdrop-blur-sm border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
             >
               {category.name}{" "}
-              <span className="text-muted-foreground">({category.count})</span>
-            </button>
+              <span className="text-muted-foreground/60 ml-1">
+                ({category.count})
+              </span>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

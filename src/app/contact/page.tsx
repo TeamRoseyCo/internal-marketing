@@ -18,6 +18,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const services = [
   { value: "seo", label: "SEO Services" },
@@ -84,7 +90,7 @@ export default function ContactPage() {
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]">
                 Let&apos;s Grow Your{" "}
                 <span className="gradient-accent-text">Business Together</span>
               </h1>
@@ -387,43 +393,80 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
-        <div className="container">
-          <FadeIn className="text-center mb-12">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Background glow effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(180 70% 50% / 0.15), transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="container relative z-10">
+          <FadeIn className="text-center mb-16">
+            <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
+              FAQ
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               Frequently Asked{" "}
-              <span className="gradient-accent-text">Questions</span>
+              <span className="gradient-text">Questions</span>
             </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Everything you need to know about working with us.
+            </p>
           </FadeIn>
 
           <div className="max-w-3xl mx-auto">
-            <StaggerChildren className="space-y-4" staggerDelay={0.1}>
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {[
                 {
-                  q: "How much does it cost?",
-                  a: "Pricing depends on your specific needs and goals. Our packages typically start from $1,500/month for ongoing services. We'll provide a custom quote after understanding your business.",
+                  question: "How much does it cost?",
+                  answer: "Pricing depends on your specific needs and goals. Our packages typically start from $1,500/month for ongoing services. We'll provide a custom quote after understanding your business during our free strategy call.",
                 },
                 {
-                  q: "How long until I see results?",
-                  a: "Most clients start seeing results within 2-4 weeks for paid advertising, 2-3 months for SEO, and immediately for social media engagement. We focus on quick wins while building long-term growth.",
+                  question: "How long until I see results?",
+                  answer: "Most clients start seeing results within 2-4 weeks for paid advertising, 2-3 months for SEO, and immediately for social media engagement. We focus on quick wins while building long-term growth.",
                 },
                 {
-                  q: "Do you require long-term contracts?",
-                  a: "No long-term contracts required. We work on a month-to-month basis because we believe in earning your business every month through results.",
+                  question: "Do you require long-term contracts?",
+                  answer: "No long-term contracts required. We work on a month-to-month basis because we believe in earning your business every month through results. Our clients stay because they see ROI, not because they're locked in.",
                 },
                 {
-                  q: "What industries do you work with?",
-                  a: "We work with businesses across all industries — from e-commerce and SaaS to local services and professional firms. If you have customers to reach, we can help.",
+                  question: "What industries do you work with?",
+                  answer: "We work with businesses across all industries — from e-commerce and SaaS to local services and professional firms. If you have customers to reach online, we can help you grow.",
+                },
+                {
+                  question: "What's included in the free strategy call?",
+                  answer: "During our 30-minute call, we'll analyze your current marketing efforts, identify opportunities for growth, and provide actionable recommendations — whether you work with us or not. No sales pressure, just value.",
                 },
               ].map((faq, index) => (
-                <StaggerItem key={index}>
-                  <div className="tech-card p-6">
-                    <h3 className="font-semibold mb-2">{faq.q}</h3>
-                    <p className="text-sm text-muted-foreground">{faq.a}</p>
-                  </div>
-                </StaggerItem>
+                <div
+                  key={index}
+                  className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500"
+                >
+                  <AccordionItem
+                    value={`item-${index}`}
+                    className="bg-card/60 backdrop-blur-xl rounded-2xl border-0 overflow-hidden relative"
+                  >
+                    {/* Subtle top highlight for glass effect */}
+                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:no-underline py-6 px-6 md:px-8">
+                      <span className="flex items-center gap-4">
+                        <span className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 bg-primary/10 text-primary border border-primary/20">
+                          {index + 1}
+                        </span>
+                        {faq.question}
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-base md:text-lg text-muted-foreground pb-6 px-6 md:px-8 pl-[4.25rem] md:pl-[4.75rem] leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </div>
               ))}
-            </StaggerChildren>
+            </Accordion>
           </div>
         </div>
       </section>

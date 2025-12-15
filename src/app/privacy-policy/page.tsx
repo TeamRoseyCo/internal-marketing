@@ -10,8 +10,8 @@ export default function PrivacyPolicyPage() {
         <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-                Privacy Policy
+              <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]">
+                Privacy <span className="gradient-text">Policy</span>
               </h1>
             </FadeIn>
 

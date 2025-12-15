@@ -14,7 +14,7 @@ export function BlogHero() {
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]">
               Marketing Insights &{" "}
               <span className="gradient-accent-text">Strategies</span>
             </h1>

@@ -7,16 +7,35 @@ import {
   Zap,
   Smartphone,
   Search,
-  BarChart3,
   Palette,
   Code2,
   Gauge,
-  Shield,
   CheckCircle,
-  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const processSteps = [
   {
@@ -84,188 +103,252 @@ const features = [
 ];
 
 const techStack = [
-  { name: "Next.js", description: "React Framework", color: "brand-cyan" },
-  { name: "Tailwind CSS", description: "Modern Styling", color: "brand-purple" },
-  { name: "Vercel", description: "Fast Hosting", color: "brand-magenta" },
+  { name: "Next.js", description: "React Framework", color: "hsl(180 70% 50%)" },
+  { name: "Tailwind CSS", description: "Modern Styling", color: "hsl(276 60% 55%)" },
+  { name: "Vercel", description: "Fast Hosting", color: "hsl(320 80% 55%)" },
 ];
 
 const stats = [
-  { value: "2.5x", label: "Conversion Boost" },
-  { value: "<2s", label: "Load Time" },
-  { value: "100%", label: "Mobile Optimized" },
-  { value: "A+", label: "SEO Score" },
+  { value: 2.5, suffix: "x", label: "Conversion Boost", isDecimal: true },
+  { value: 2, suffix: "s", label: "Load Time", prefix: "<" },
+  { value: 100, suffix: "%", label: "Mobile Optimized" },
 ];
 
 export default function WebsiteDesignPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-24 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Text Content */}
-            <div>
-              <FadeIn delay={0.1}>
-                <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
-                  Website Design
-                </span>
-              </FadeIn>
+      <section className="relative overflow-hidden">
+        <div className="container py-16 md:py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.span
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(220_70%_60%/0.1)] text-[hsl(220_70%_60%)] border border-[hsl(220_70%_60%/0.2)]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Website Design
+            </motion.span>
 
-              <FadeIn delay={0.2}>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
-                  Websites That{" "}
-                  <span className="gradient-accent-text">Convert</span>
-                </h1>
-              </FadeIn>
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Websites That{" "}
+              <span className="gradient-accent-text">Convert</span>
+            </motion.h1>
 
-              <FadeIn delay={0.3}>
-                <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                  Beautiful, fast, conversion-focused websites that turn visitors
-                  into customers. Built with modern technology for peak
-                  performance.
-                </p>
-              </FadeIn>
+            <motion.p
+              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              Beautiful, fast, conversion-focused websites that turn visitors
+              into customers. Built with modern technology for peak
+              performance.
+            </motion.p>
 
-              <FadeIn delay={0.4}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
-                    <Link href="/contact" className="flex items-center gap-2">
-                      Get Your Free Website Audit
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
-                    <Link href="/results">See Our Work</Link>
-                  </Button>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Right: Stats Grid */}
-            <div>
-              <FadeIn direction="left" delay={0.3}>
-                <div className="grid grid-cols-2 gap-4">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
-                      className="tech-card p-6 text-center"
-                    >
-                      <p className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                        {stat.value}
-                      </p>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </FadeIn>
-            </div>
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
+                <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                  Get Your Free Website Audit
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+                <Link href="/results" className="flex items-center gap-2">
+                  See Our Work
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                </Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+      {/* Stats Section */}
+      <section className="py-20 md:py-28">
+        <div className="container">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={staggerItem}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.p
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-3"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {stat.prefix || ""}
+                  {stat.isDecimal ? (
+                    <>{stat.value}{stat.suffix}</>
+                  ) : (
+                    <AnimatedCounter
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      duration={2 + index * 0.3}
+                    />
+                  )}
+                </motion.p>
+                <p className="text-base md:text-lg text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-16 border-b border-border/50">
+      <section className="py-12 md:py-16 border-y border-border/50">
         <div className="container">
-          <FadeIn className="text-center mb-10">
-            <p className="text-muted-foreground">
-              Built with modern technology for peak performance
-            </p>
-          </FadeIn>
-          <StaggerChildren
+          <motion.p
+            className="text-center text-muted-foreground mb-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Built with modern technology for peak performance
+          </motion.p>
+          <motion.div
             className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
-            staggerDelay={0.1}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
             {techStack.map((tech) => (
-              <StaggerItem key={tech.name}>
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  className="tech-card p-6 text-center"
+              <motion.div
+                key={tech.name}
+                variants={staggerItem}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="service-card service-card-blue p-6 text-center"
+              >
+                <h3
+                  className="font-semibold text-lg mb-1"
+                  style={{ color: tech.color }}
                 >
-                  <h3
-                    className="font-semibold mb-1"
-                    style={{ color: `hsl(var(--${tech.color}))` }}
-                  >
-                    {tech.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {tech.description}
-                  </p>
-                </motion.div>
-              </StaggerItem>
+                  {tech.name}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {tech.description}
+                </p>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* What We Do Section */}
       <section className="py-24 md:py-32">
         <div className="container">
-          <FadeIn className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               Websites Built for{" "}
               <span className="gradient-accent-text">Results</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               More than just pretty designs — we build websites that drive
               measurable business growth.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <StaggerChildren
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            staggerDelay={0.1}
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
           >
             {features.map((feature) => (
-              <StaggerItem key={feature.title}>
+              <motion.div
+                key={feature.title}
+                variants={staggerItem}
+                transition={{ duration: 0.5 }}
+              >
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="tech-card p-6 h-full"
+                  className="service-card service-card-blue p-7 md:p-8 h-full"
                 >
-                  <div className="w-10 h-10 mb-4 rounded-lg bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center">
-                    <CheckCircle className="w-5 h-5 text-brand-cyan" />
+                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(220_70%_60%/0.15)] border border-[hsl(220_70%_60%/0.3)] flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-[hsl(220_70%_60%)]" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-base text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </motion.div>
-              </StaggerItem>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      <section className="py-24 md:py-32">
         <div className="container">
-          <FadeIn className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               Our Design <span className="gradient-text">Process</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               A proven process that delivers websites on time and on budget.
             </p>
-          </FadeIn>
+          </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-brand-cyan via-brand-purple to-brand-magenta hidden md:block" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(220_70%_60%)] via-[hsl(276_60%_55%)] to-[hsl(320_80%_55%)] hidden md:block" />
 
-              <StaggerChildren className="space-y-8" staggerDelay={0.15}>
+              <motion.div
+                className="space-y-8"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
                 {processSteps.map((step, index) => {
                   const Icon = step.icon;
                   const isLeft = index % 2 === 0;
 
                   return (
-                    <StaggerItem key={step.number}>
+                    <motion.div
+                      key={step.number}
+                      variants={staggerItem}
+                      transition={{ duration: 0.5 }}
+                    >
                       <div
                         className={`flex items-start gap-6 md:gap-12 ${
                           isLeft ? "md:flex-row" : "md:flex-row-reverse"
@@ -274,7 +357,7 @@ export default function WebsiteDesignPage() {
                         {/* Content */}
                         <motion.div
                           whileHover={{ scale: 1.02 }}
-                          className={`flex-1 tech-card p-6 ${
+                          className={`flex-1 service-card service-card-blue p-6 md:p-8 ${
                             isLeft ? "md:text-right" : ""
                           }`}
                         >
@@ -283,28 +366,28 @@ export default function WebsiteDesignPage() {
                               isLeft ? "md:flex-row-reverse" : ""
                             }`}
                           >
-                            <span className="text-sm font-mono text-brand-cyan">
+                            <span className="text-sm font-mono text-[hsl(220_70%_60%)]">
                               {step.number}
                             </span>
-                            <h3 className="text-lg font-semibold">{step.title}</h3>
+                            <h3 className="text-xl font-semibold">{step.title}</h3>
                           </div>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-base text-muted-foreground leading-relaxed">
                             {step.description}
                           </p>
                         </motion.div>
 
                         {/* Icon */}
-                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-brand-cyan/30 items-center justify-center flex-shrink-0 z-10">
-                          <Icon className="w-6 h-6 text-brand-cyan" />
+                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(220_70%_60%/0.3)] items-center justify-center flex-shrink-0 z-10">
+                          <Icon className="w-6 h-6 text-[hsl(220_70%_60%)]" />
                         </div>
 
                         {/* Spacer for alignment */}
                         <div className="hidden md:block flex-1" />
                       </div>
-                    </StaggerItem>
+                    </motion.div>
                   );
                 })}
-              </StaggerChildren>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -313,79 +396,99 @@ export default function WebsiteDesignPage() {
       {/* Mobile First Section */}
       <section className="py-24 md:py-32">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="right">
-              <div className="tech-card p-8 md:p-10">
-                <div className="w-14 h-14 mb-6 rounded-xl bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center">
-                  <Smartphone className="w-7 h-7 text-brand-purple" />
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="service-card service-card-purple p-8 md:p-10">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.15)] border border-[hsl(276_60%_55%/0.3)] flex items-center justify-center">
+                  <Smartphone className="w-8 h-8 text-[hsl(276_60%_55%)]" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">
                   Mobile-First Design
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                   Over 60% of web traffic comes from mobile devices. We design for
                   mobile first, ensuring your site looks and performs beautifully
                   on every screen size.
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {[
                     "Responsive on All Devices",
                     "Touch-Optimized Interactions",
                     "Fast Mobile Load Times",
                     "Mobile-First SEO",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-purple flex-shrink-0" />
-                      <span>{item}</span>
+                    <li key={item} className="flex items-center gap-3 text-base">
+                      <span className="w-6 h-6 rounded-full bg-[hsl(276_60%_55%/0.15)] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-[hsl(276_60%_55%)]" />
+                      </span>
+                      <span className="text-foreground/90">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </FadeIn>
+            </motion.div>
 
-            <FadeIn direction="left" delay={0.2}>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
               <div className="relative">
                 <div
-                  className="aspect-square rounded-2xl p-1"
+                  className="aspect-square rounded-3xl p-1"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(var(--brand-purple) / 0.2), hsl(var(--brand-cyan) / 0.1))",
+                      "linear-gradient(135deg, hsl(276 60% 55% / 0.2), hsl(220 70% 60% / 0.1))",
                   }}
                 >
-                  <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
+                  <div className="w-full h-full rounded-3xl bg-background/80 backdrop-blur-sm flex items-center justify-center border border-border/30">
                     <div className="text-center p-8">
                       <motion.div
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        className="w-24 h-40 mx-auto mb-6 rounded-xl bg-brand-purple/10 border-2 border-brand-purple/30 flex items-center justify-center"
+                        className="w-24 h-44 mx-auto mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.1)] border-2 border-[hsl(276_60%_55%/0.3)] flex items-center justify-center"
                       >
-                        <Smartphone className="w-12 h-12 text-brand-purple" />
+                        <Smartphone className="w-12 h-12 text-[hsl(276_60%_55%)]" />
                       </motion.div>
-                      <p className="text-4xl font-bold gradient-text mb-2">60%+</p>
-                      <p className="text-muted-foreground">Mobile Traffic</p>
+                      <p className="text-6xl md:text-7xl font-bold gradient-text mb-4">
+                        <AnimatedCounter value={60} suffix="%+" duration={2} />
+                      </p>
+                      <p className="text-lg text-muted-foreground">Mobile Traffic</p>
                     </div>
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Performance Section */}
-      <section className="py-24 md:py-32 bg-muted/30">
+      <section className="py-24 md:py-32">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="right" className="order-2 lg:order-1">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="order-2 lg:order-1"
+            >
               <div className="relative">
                 <div
-                  className="aspect-square rounded-2xl p-1"
+                  className="aspect-square rounded-3xl p-1"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(var(--brand-magenta) / 0.2), hsl(var(--brand-cyan) / 0.1))",
+                      "linear-gradient(135deg, hsl(320 80% 55% / 0.2), hsl(220 70% 60% / 0.1))",
                   }}
                 >
-                  <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
+                  <div className="w-full h-full rounded-3xl bg-background/80 backdrop-blur-sm flex items-center justify-center border border-border/30">
                     <div className="text-center p-8">
                       <motion.div
                         animate={{ rotate: [0, 360] }}
@@ -394,78 +497,128 @@ export default function WebsiteDesignPage() {
                           repeat: Infinity,
                           ease: "linear",
                         }}
-                        className="w-24 h-24 mx-auto mb-6 rounded-full border-4 border-brand-magenta/30 border-t-brand-magenta flex items-center justify-center"
+                        className="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-[hsl(320_80%_55%/0.3)] border-t-[hsl(320_80%_55%)] flex items-center justify-center"
                       >
-                        <Gauge className="w-10 h-10 text-brand-magenta" />
+                        <Gauge className="w-12 h-12 text-[hsl(320_80%_55%)]" />
                       </motion.div>
-                      <p className="text-4xl font-bold gradient-text mb-2">
+                      <p className="text-6xl md:text-7xl font-bold gradient-text mb-4">
                         {"<"}2s
                       </p>
-                      <p className="text-muted-foreground">Load Time</p>
+                      <p className="text-lg text-muted-foreground">Load Time</p>
                     </div>
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
 
-            <FadeIn direction="left" delay={0.2} className="order-1 lg:order-2">
-              <div className="tech-card p-8 md:p-10">
-                <div className="w-14 h-14 mb-6 rounded-xl bg-brand-magenta/10 border border-brand-magenta/30 flex items-center justify-center">
-                  <Gauge className="w-7 h-7 text-brand-magenta" />
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="service-card service-card-magenta p-8 md:p-10">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(320_80%_55%/0.15)] border border-[hsl(320_80%_55%/0.3)] flex items-center justify-center">
+                  <Gauge className="w-8 h-8 text-[hsl(320_80%_55%)]" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">
                   Lightning Fast Performance
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                   Every second counts. Slow sites lose visitors and rankings. We
                   optimize every aspect of your site for blazing-fast load times.
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {[
                     "Image Optimization",
                     "Code Minification",
                     "CDN Delivery",
                     "Core Web Vitals",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm">
-                      <CheckCircle className="w-5 h-5 text-brand-magenta flex-shrink-0" />
-                      <span>{item}</span>
+                    <li key={item} className="flex items-center gap-3 text-base">
+                      <span className="w-6 h-6 rounded-full bg-[hsl(320_80%_55%/0.15)] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-[hsl(320_80%_55%)]" />
+                      </span>
+                      <span className="text-foreground/90">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </FadeIn>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">
-        {/* Background glow */}
+        {/* Background glow effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(180 70% 45% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(220 70% 60% / 0.15), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
             }}
           />
         </div>
+
         <div className="container relative z-10">
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-              Ready for a Website That Works?
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              className="inline-block mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
+                Get Started
+              </span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8">
+              Ready for a Website{" "}
+              <span className="gradient-text">That Works?</span>
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
               Get a free website audit and discover how a high-converting site can
               transform your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
-              <Link href="/contact" className="flex items-center gap-2">
-                Get Your Free Website Audit
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </FadeIn>
+
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
+                <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                  Get Your Free Website Audit
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+                <Link href="/results" className="flex items-center gap-2">
+                  View Case Studies
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>
