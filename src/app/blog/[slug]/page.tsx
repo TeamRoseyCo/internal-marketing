@@ -65,7 +65,7 @@ export default async function BlogPostPage({
     <>
       {/* Hero Section */}
       <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-16 md:py-24">
+        <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto">
             {/* Back Link */}
             <Link
@@ -80,7 +80,7 @@ export default async function BlogPostPage({
             <div className="flex items-center gap-2 mb-4">
               <Tag className="w-4 h-4 text-muted-foreground" />
               <span
-                className="text-sm font-medium"
+                className="text-sm font-medium tracking-wider uppercase"
                 style={{ color: `hsl(var(--${color}))` }}
               >
                 {post.category}
@@ -88,7 +88,7 @@ export default async function BlogPostPage({
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-tight">
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-tight">
               {post.title}
             </h1>
 
@@ -119,7 +119,7 @@ export default async function BlogPostPage({
       </section>
 
       {/* Content */}
-      <section className="py-12 md:py-20">
+      <section className="py-24 md:py-32">
         <div className="container">
           <article className="max-w-3xl mx-auto">
             <div className="tech-card p-8 md:p-12">

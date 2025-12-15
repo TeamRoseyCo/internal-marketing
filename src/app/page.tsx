@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Target, Zap, Users, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, TrendingUp, Target, Zap, Users, ChevronDown, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -10,11 +11,69 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FadeIn } from "@/components/animations";
-import { StaggerChildren, StaggerItem } from "@/components/animations";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 
-// Services data
+// Animated counter component
+function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+
+      // Ease out cubic for smooth deceleration
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeOut * value));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setCount(value);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, value, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+}
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// Services data with accent colors
 const services = [
   {
     icon: TrendingUp,
@@ -22,7 +81,9 @@ const services = [
     description:
       "Dominate search results and get found by customers actively looking for your services.",
     href: "/services/seo",
-    color: "brand-cyan",
+    cardClass: "service-card service-card-cyan",
+    iconColor: "hsl(180 70% 50%)",
+    iconBg: "hsl(180 70% 50% / 0.15)",
   },
   {
     icon: Users,
@@ -30,7 +91,9 @@ const services = [
     description:
       "Build your brand presence and engage your audience across all major platforms.",
     href: "/services/social-media",
-    color: "brand-purple",
+    cardClass: "service-card service-card-purple",
+    iconColor: "hsl(276 60% 55%)",
+    iconBg: "hsl(276 60% 55% / 0.15)",
   },
   {
     icon: Target,
@@ -38,7 +101,9 @@ const services = [
     description:
       "ROI-focused Google Ads and Meta Ads campaigns that convert clicks into customers.",
     href: "/services/paid-ads",
-    color: "brand-magenta",
+    cardClass: "service-card service-card-magenta",
+    iconColor: "hsl(320 80% 55%)",
+    iconBg: "hsl(320 80% 55% / 0.15)",
   },
   {
     icon: Zap,
@@ -46,16 +111,18 @@ const services = [
     description:
       "High-converting websites designed to turn visitors into leads and customers.",
     href: "/services/website-design",
-    color: "brand-cyan",
+    cardClass: "service-card service-card-blue",
+    iconColor: "hsl(220 70% 60%)",
+    iconBg: "hsl(220 70% 60% / 0.15)",
   },
 ];
 
-// Stats data
+// Stats data with numeric values for animation
 const stats = [
-  { value: "21x", label: "Average ROAS" },
-  { value: "100+", label: "Leads in 48hrs" },
-  { value: "300%", label: "Revenue Growth" },
-  { value: "50+", label: "Happy Clients" },
+  { value: 21, suffix: "x", label: "Average ROAS" },
+  { value: 100, suffix: "+", label: "Leads in 48hrs" },
+  { value: 300, suffix: "%", label: "Revenue Growth" },
+  { value: 50, suffix: "+", label: "Happy Clients" },
 ];
 
 // FAQ data
@@ -87,329 +154,486 @@ const faqs = [
   },
 ];
 
+// Why us points
+const whyUsPoints = [
+  "ROI-focused campaigns tracked dollar-for-dollar",
+  "Transparent reporting with real-time dashboards",
+  "No long-term contracts - month-to-month flexibility",
+  "Dedicated account manager for your business",
+  "Results guarantee - we pause fees if we don't deliver",
+];
+
 export default function HomePage() {
   return (
     <>
       {/* Hero Section - VSL Focused */}
-      <section className="relative bg-hero-surface overflow-hidden">
-        {/* Floating particles background */}
-        <FloatingParticles variant="luxury" count={30} />
+      <section className="relative overflow-hidden">
+        {/* Floating particles */}
+        <FloatingParticles variant="luxury" count={40} />
 
-        <div className="container py-24 md:py-32 lg:py-40 relative z-10">
-          {/* Centered headline */}
-          <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <FadeIn delay={0.1}>
-              <span className="inline-block px-4 py-1.5 mb-8 text-xs font-medium tracking-wide uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
-                Global Marketing Agency
-              </span>
-            </FadeIn>
+        <div className="container py-16 md:py-24 lg:py-32 relative z-10">
+          {/* Centered headline - BOLD */}
+          <div className="text-center max-w-5xl mx-auto mb-16 md:mb-20">
+            <motion.span
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Global Marketing Agency
+            </motion.span>
 
-            <FadeIn delay={0.2}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-6 leading-[1.05]">
-                More Growth. More Clients.{" "}
-                <span className="gradient-accent-text">Guaranteed.</span>
-              </h1>
-            </FadeIn>
+            <motion.h1
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight mb-8 leading-[1.05]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              More Growth. More Clients.{" "}
+              <span className="gradient-accent-text">Guaranteed.</span>
+            </motion.h1>
 
-            <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Stop waiting for customers to find you. We put your business in front
-                of people actively searching for your services.
-              </p>
-            </FadeIn>
+            <motion.p
+              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              Stop waiting for customers to find you. We put your business in front
+              of people actively searching for your services.
+            </motion.p>
           </div>
 
           {/* VSL Video - Full Width Focus */}
-          <FadeIn delay={0.4}>
-            <div className="relative max-w-4xl mx-auto mb-12">
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-glow bg-card border border-border/50">
-                {/* Video placeholder - will be replaced with Bunny Stream */}
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 via-transparent to-brand-purple/5">
-                  <div className="text-center p-8">
+          <motion.div
+            className="relative max-w-5xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="aspect-video rounded-3xl overflow-hidden shadow-glow bg-card/50 backdrop-blur-sm border border-border/30">
+              {/* Video placeholder - will be replaced with Bunny Stream */}
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 via-transparent to-brand-purple/5">
+                <div className="text-center p-8">
+                  <motion.div
+                    className="w-28 h-28 mx-auto mb-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center cursor-pointer"
+                    whileHover={{ scale: 1.08, boxShadow: "0 0 60px hsl(320 80% 55% / 0.4)" }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
                     <motion.div
-                      className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      animate={{ scale: [1, 1.15, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
                     >
-                      <motion.div
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <div className="w-0 h-0 border-l-[24px] border-l-primary border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-2" />
-                      </motion.div>
+                      <div className="w-0 h-0 border-l-[28px] border-l-primary border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent ml-2" />
                     </motion.div>
-                    <p className="text-muted-foreground text-sm">
-                      Watch how we help businesses grow
-                    </p>
-                  </div>
+                  </motion.div>
+                  <p className="text-lg text-muted-foreground">
+                    Watch how we help businesses grow
+                  </p>
                 </div>
               </div>
-
-              {/* Floating stats badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -bottom-4 -right-4 md:-right-8 bg-card border border-border/50 rounded-xl p-4 shadow-lg backdrop-blur-sm"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5 text-green-500" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold">21x</p>
-                    <p className="text-xs text-muted-foreground">Avg. ROAS</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
-          </FadeIn>
+
+            {/* Floating stats badge - hidden on mobile to not overlap video */}
+            <motion.div
+              className="hidden md:block absolute -bottom-6 -right-8 lg:-right-12 bg-card/80 backdrop-blur-xl border border-border/30 rounded-2xl p-5 shadow-lg"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-green-500/15 flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-green-500" />
+                </div>
+                <div>
+                  <p className="text-3xl font-bold">21x</p>
+                  <p className="text-sm text-muted-foreground">Avg. ROAS</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
 
           {/* CTA Buttons - Centered */}
-          <FadeIn delay={0.5}>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-              <Button asChild size="lg" className="btn-hero group">
-                <Link href="/contact" className="flex items-center gap-2">
-                  Get Your Free Strategy Call
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/results">See Our Results</Link>
-              </Button>
-            </div>
-          </FadeIn>
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
+              <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                Get Your Free Strategy Call
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Link href="/results" className="flex items-center gap-2">
+                See Our Results
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+              </Link>
+            </Button>
+          </motion.div>
 
-          <FadeIn delay={0.6}>
-            <p className="text-center text-sm text-muted-foreground">
-              Join 50+ businesses scaling profitably with targeted marketing.
-            </p>
-          </FadeIn>
+          <motion.p
+            className="text-center text-base text-muted-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            Join 50+ businesses scaling profitably with targeted marketing.
+          </motion.p>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block z-10"
+          transition={{ delay: 1.5, duration: 0.5 }}
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <ChevronDown className="w-6 h-6 text-muted-foreground" />
+            <ChevronDown className="w-7 h-7 text-muted-foreground/50" />
           </motion.div>
         </motion.div>
-
-        {/* Gradient fade to next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 border-b border-border/50">
+      <section className="py-20 md:py-28">
         <div className="container">
-          <StaggerChildren className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {stats.map((stat, index) => (
-              <StaggerItem key={index} className="text-center">
-                <motion.div
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={staggerItem}
+                transition={{ duration: 0.6 }}
+              >
+                <motion.p
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-3"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <p className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
-              </StaggerItem>
+                  <AnimatedCounter
+                    value={stat.value}
+                    suffix={stat.suffix}
+                    duration={2 + index * 0.3}
+                  />
+                </motion.p>
+                <p className="text-base md:text-lg text-muted-foreground">{stat.label}</p>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
-          <FadeIn className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               How We Help Your Business{" "}
               <span className="gradient-accent-text">Grow</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               From SEO to paid ads, we deliver data-driven strategies that turn
               marketing spend into measurable revenue.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <StaggerChildren
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            staggerDelay={0.1}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center sm:justify-items-stretch"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
           >
             {services.map((service) => {
               const Icon = service.icon;
               return (
-                <StaggerItem key={service.title}>
-                  <Link href={service.href} className="block group">
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="tech-card p-6 h-full"
-                    >
+                <motion.div
+                  key={service.title}
+                  variants={staggerItem}
+                  transition={{ duration: 0.5 }}
+                  className="w-full max-w-xs sm:max-w-none"
+                >
+                  <Link href={service.href} className="block group h-full">
+                    <div className={`${service.cardClass} p-7 md:p-8 h-full`}>
                       <div
-                        className="w-12 h-12 mb-4 rounded-lg flex items-center justify-center"
+                        className="w-14 h-14 mb-6 rounded-xl flex items-center justify-center"
                         style={{
-                          backgroundColor: `hsl(var(--${service.color}) / 0.1)`,
-                          border: `1px solid hsl(var(--${service.color}) / 0.3)`,
+                          backgroundColor: service.iconBg,
+                          border: `1px solid ${service.iconColor}30`,
                         }}
                       >
                         <Icon
-                          className="w-6 h-6"
-                          style={{ color: `hsl(var(--${service.color}))` }}
+                          className="w-7 h-7"
+                          style={{ color: service.iconColor }}
                         />
                       </div>
-                      <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl md:text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-base text-muted-foreground leading-relaxed">
                         {service.description}
                       </p>
-                    </motion.div>
+                    </div>
                   </Link>
-                </StaggerItem>
+                </motion.div>
               );
             })}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* Why Us Section */}
-      <section className="py-20 md:py-28 bg-muted/30">
+      <section className="py-24 md:py-32">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeInUp}
+              transition={{ duration: 0.7 }}
+              className="text-center lg:text-left"
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8">
                 Your Most Trusted{" "}
                 <span className="gradient-text">Marketing Partner</span>
               </h2>
-              <div className="space-y-6">
-                <div className="tech-card p-6">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2" style={{ color: "hsl(var(--brand-cyan))" }}>
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(var(--brand-cyan))" }} />
-                    You&apos;re Getting Results
-                  </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Some success with current marketing
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Customers are responding
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Ready to scale up
-                    </li>
-                  </ul>
-                </div>
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+                We don&apos;t just run campaigns. We become an extension of your team,
+                obsessed with your growth and committed to your success.
+              </p>
 
-                <div className="tech-card p-6 shadow-brand">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2" style={{ color: "hsl(var(--brand-purple))" }}>
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(var(--brand-purple))" }} />
-                    We&apos;ll Add Precision
-                  </h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Target your exact customers
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Track every dollar of ROI
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                      Scale winners, cut losers
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </FadeIn>
+              <motion.ul
+                className="space-y-5 inline-block text-left"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                {whyUsPoints.map((point, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-start gap-4"
+                    variants={staggerItem}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <span className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 text-primary" />
+                    </span>
+                    <span className="text-lg text-foreground/90">{point}</span>
+                  </motion.li>
+                ))}
+              </motion.ul>
 
-            <FadeIn direction="left" delay={0.2}>
-              <div className="relative">
-                <div className="aspect-square rounded-2xl p-1" style={{ background: "linear-gradient(135deg, hsl(var(--brand-purple) / 0.2), hsl(var(--brand-magenta) / 0.1), hsl(var(--brand-cyan) / 0.2))" }}>
-                  <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="w-32 h-32 mx-auto mb-6 rounded-full border-2 border-dashed"
-                        style={{ borderColor: "hsl(var(--brand-cyan) / 0.3)" }}
-                      />
-                      <p className="text-muted-foreground">
-                        Data-driven results visualization coming soon
-                      </p>
-                    </div>
+              <motion.div
+                className="mt-10 flex justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+              >
+                <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-8">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    Start Growing Today
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="aspect-square rounded-3xl p-1 bg-gradient-to-br from-primary/20 via-brand-purple/10 to-brand-cyan/20">
+                <div className="w-full h-full rounded-3xl bg-card/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
+                  <div className="text-center p-12">
+                    <motion.div
+                      className="w-40 h-40 mx-auto mb-8 rounded-full border-2 border-dashed border-primary/30 flex items-center justify-center"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    >
+                      <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary/20 to-brand-purple/20 flex items-center justify-center">
+                        <TrendingUp className="w-12 h-12 text-primary" />
+                      </div>
+                    </motion.div>
+                    <p className="text-2xl font-semibold mb-2">Results That Matter</p>
+                    <p className="text-muted-foreground">
+                      Data-driven growth for your business
+                    </p>
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-28">
-        <div className="container max-w-3xl">
-          <FadeIn className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+      <section className="py-24 md:py-32">
+        <div className="container max-w-md mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
               Common <span className="gradient-accent-text">Questions</span>
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-xl text-muted-foreground">
               Everything you need to know about working with Flowryse.
             </p>
-          </FadeIn>
+          </motion.div>
 
-          <FadeIn delay={0.2}>
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="tech-card px-6"
-                >
-                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-4">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </FadeIn>
+          <motion.div
+            className="space-y-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+          >
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <Accordion type="single" collapsible className="w-full">
+                  {/* Glassmorphism card wrapper */}
+                  <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
+                    <AccordionItem
+                      value={`item-${index}`}
+                      className="bg-card/60 backdrop-blur-xl rounded-2xl border-0 overflow-hidden relative"
+                    >
+                      {/* Subtle top highlight for glass effect */}
+                      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                      <AccordionTrigger className="text-left text-lg md:text-xl font-semibold hover:no-underline py-6 px-6 md:px-8">
+                        <span className="flex items-center gap-4">
+                          <span className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold flex-shrink-0 bg-primary/10 text-primary border border-primary/20">
+                            {index + 1}
+                          </span>
+                          {faq.question}
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-base md:text-lg text-muted-foreground pb-6 px-6 md:px-8 pl-[4.25rem] md:pl-[4.75rem] leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </div>
+                </Accordion>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-hero-surface">
-        <div className="container">
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-              Ready to Grow Your Business?
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Background glow effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
+            style={{
+              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div
+            className="text-center max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              className="inline-block mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
+                Let&apos;s Talk
+              </span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8">
+              Ready to{" "}
+              <span className="gradient-text">Grow</span>{" "}
+              Your Business?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
               Book a free strategy call and discover how we can help you get more
               leads and scale your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group">
-              <Link href="/contact" className="flex items-center gap-2">
-                Get Your Free Strategy Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </FadeIn>
+
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
+                <Link href="/contact" className="flex items-center gap-2 sm:gap-3">
+                  Get Your Free Strategy Call
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="group relative text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+                <Link href="/results" className="flex items-center gap-2">
+                  View Case Studies
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                </Link>
+              </Button>
+            </motion.div>
+
+            <motion.p
+              className="mt-8 text-sm text-muted-foreground"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              No commitment required. 100% free consultation.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
     </>

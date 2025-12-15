@@ -20,11 +20,12 @@ export function LenisProvider({ children }: LenisProviderProps) {
   useEffect(() => {
     // Initialize Lenis with smooth scroll settings
     const lenisInstance = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.4, // Slightly longer for more noticeable smoothness
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Expo ease out
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
+      wheelMultiplier: 1.0, // Default wheel speed
       syncTouch: false, // Native touch feel on mobile
       touchMultiplier: 2,
       infinite: false,

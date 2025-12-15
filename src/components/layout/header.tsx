@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,104 +17,160 @@ const navItems = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  // Add subtle background on scroll for readability
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+    <>
+    <header
+      className={`fixed top-0 w-full transition-all duration-500 ${
+        hasScrolled
+          ? "bg-background/80 backdrop-blur-xl"
+          : "bg-transparent"
+      }`}
+      style={{ zIndex: isMenuOpen ? 10000 : 50 }}
+    >
+      {/* Fade gradient at bottom - soft transition instead of hard border */}
+      <div
+        className={`absolute inset-x-0 bottom-0 h-8 pointer-events-none transition-opacity duration-500 ${
+          hasScrolled ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          background: "linear-gradient(to bottom, hsl(0 0% 6% / 0.8), transparent)",
+          transform: "translateY(100%)",
+        }}
+      />
+      <div className="container flex h-20 md:h-24 items-center justify-between relative" style={{ zIndex: 9999 }}>
+        {/* Logo - Dominant Presence */}
+        <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/logo.png"
+            src="/FLOWRYSE LOGO FULL.png"
             alt="Flowryse - Global Marketing Agency"
-            width={140}
-            height={40}
-            className="h-10 w-auto"
+            width={400}
+            height={120}
+            className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-18 w-auto transition-transform duration-300 group-hover:scale-105"
             priority
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <Link
+        {/* Desktop Navigation - Larger, Bolder Text */}
+        <nav className="hidden md:flex items-center gap-2">
+          {navItems.map((item, index) => (
+            <motion.div
               key={item.href}
-              href={item.href}
-              className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-              {item.label}
-            </Link>
+              <Link
+                href={item.href}
+                className="px-5 py-2.5 text-base font-medium text-foreground/80 hover:text-foreground transition-all duration-300 relative group"
+              >
+                {item.label}
+                {/* Animated underline */}
+                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-brand-purple group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300" />
+              </Link>
+            </motion.div>
           ))}
         </nav>
 
         {/* CTA Button + Mobile Menu */}
-        <div className="flex items-center gap-2">
-          <Button asChild className="btn-hero hidden sm:inline-flex">
-            <Link href="/contact">Get More Leads</Link>
-          </Button>
+        <div className="flex items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            <Button asChild size="lg" className="btn-hero hidden sm:inline-flex text-base px-6">
+              <Link href="/contact">Get More Leads</Link>
+            </Button>
+          </motion.div>
 
           {/* Mobile Menu Toggle */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden w-12 h-12"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <motion.div
               initial={false}
               animate={{ rotate: isMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.3 }}
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </motion.div>
           </Button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md overflow-hidden"
-          >
-            <nav className="container py-6 flex flex-col gap-2">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center gap-3 py-3 px-4 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan/50" />
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-                className="mt-4"
-              >
-                <Button asChild className="btn-hero w-full">
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
-                    Get More Leads
-                  </Link>
-                </Button>
-              </motion.div>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
+    <MobileMenu
+      isOpen={isMenuOpen}
+      onClose={() => setIsMenuOpen(false)}
+      navItems={navItems}
+    />
+    </>
+  );
+}
+
+// Mobile menu as a separate portal-like component rendered outside header
+function MobileMenu({
+  isOpen,
+  onClose,
+  navItems
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  navItems: { href: string; label: string }[]
+}) {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="md:hidden fixed left-0 right-0 bottom-0 bg-[#0a0a0a]"
+      style={{ zIndex: 9998, top: "80px" }}
+    >
+      <nav className="flex flex-col items-center gap-2 pt-8 px-6 h-full overflow-y-auto">
+        {navItems.map((item, index) => (
+          <motion.div
+            key={item.href}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.05, duration: 0.3 }}
+            className="w-full max-w-xs"
+          >
+            <Link
+              href={item.href}
+              onClick={onClose}
+              className="block py-4 px-6 text-xl font-medium text-center text-foreground/80 hover:text-foreground rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:via-brand-purple/10 hover:to-primary/10 hover:shadow-[0_0_30px_-5px_hsl(320_80%_55%/0.3)]"
+            >
+              {item.label}
+            </Link>
+          </motion.div>
+        ))}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
+          className="mt-8"
+        >
+          <Button asChild size="lg" className="btn-hero text-base px-8 py-4">
+            <Link href="/contact" onClick={onClose}>
+              Get More Leads
+            </Link>
+          </Button>
+        </motion.div>
+      </nav>
+    </div>
   );
 }

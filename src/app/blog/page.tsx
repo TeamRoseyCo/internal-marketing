@@ -35,7 +35,7 @@ export default function BlogPage() {
       <BlogCategories categories={categories} />
 
       {/* Blog Posts Grid */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           {posts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

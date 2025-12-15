@@ -160,7 +160,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Lenis handles smooth scrolling via JS - don't use CSS scroll-behavior */
   }
 
   body {
@@ -240,25 +240,54 @@
     box-shadow: var(--shadow-cyan);
   }
 
-  /* Background patterns */
-  .bg-hero-surface {
+  /* ========================================
+     UNIFIED BACKGROUND SYSTEM
+     One continuous dark canvas across all sections
+     ======================================== */
+
+  /* Page-wide ambient gradient - applied to body or main wrapper */
+  .bg-page-gradient {
     background:
-      radial-gradient(ellipse 1400px 700px at 100% -10%, hsl(276 100% 50% / 0.15), transparent 65%),
-      radial-gradient(ellipse 1000px 500px at -10% 0%, hsl(180 100% 50% / 0.1), transparent 60%),
-      radial-gradient(ellipse 800px 400px at 50% 100%, hsl(320 100% 50% / 0.08), transparent 50%);
+      /* Top-right purple glow */
+      radial-gradient(ellipse 80% 50% at 100% 0%, hsl(276 60% 40% / 0.12), transparent 60%),
+      /* Left cyan hint */
+      radial-gradient(ellipse 60% 40% at 0% 30%, hsl(180 70% 40% / 0.08), transparent 50%),
+      /* Bottom magenta warmth */
+      radial-gradient(ellipse 70% 30% at 50% 100%, hsl(320 80% 45% / 0.06), transparent 40%),
+      /* Base dark charcoal */
+      hsl(0 0% 4%);
+  }
+
+  /* Subtle noise texture overlay */
+  .bg-noise {
+    position: relative;
+  }
+  .bg-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Legacy - kept for compatibility but now just transparent */
+  .bg-hero-surface {
+    background: transparent;
   }
 
   .bg-grid-pattern {
     background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
 
-  /* Tech card style */
+  /* Tech card style - base */
   .tech-card {
-    @apply bg-card border border-border rounded-lg relative overflow-hidden;
-    transition: all 0.3s ease;
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl relative overflow-hidden;
+    transition: all 0.4s ease;
   }
 
   .tech-card::before {
@@ -268,12 +297,159 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(180 100% 50% / 0.5), transparent);
+    background: linear-gradient(90deg, transparent, hsl(180 70% 50% / 0.3), transparent);
   }
 
   .tech-card:hover {
-    border-color: hsl(180 100% 50% / 0.5);
-    box-shadow: 0 8px 25px hsl(180 100% 50% / 0.15);
+    border-color: hsl(180 70% 50% / 0.4);
+    box-shadow: 0 20px 40px hsl(180 70% 50% / 0.1);
+    transform: translateY(-4px);
+  }
+
+  /* ========================================
+     COLORED SERVICE CARDS
+     Each service has its own accent color visible by default
+     ======================================== */
+
+  .service-card {
+    @apply bg-card/50 backdrop-blur-xl border rounded-2xl relative overflow-hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Inner glassmorphism glow */
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, hsl(0 0% 100% / 0.03), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, hsl(0 0% 100% / 0.02), transparent 40%);
+  }
+
+  /* Cyan accent - SEO */
+  .service-card-cyan {
+    border-color: hsl(180 70% 45% / 0.3);
+    box-shadow:
+      0 0 0 1px hsl(180 70% 45% / 0.1),
+      0 10px 30px -10px hsl(180 70% 45% / 0.15),
+      inset 0 1px 0 0 hsl(180 70% 60% / 0.1);
+  }
+  .service-card-cyan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 10%, hsl(180 70% 50% / 0.6), transparent 90%);
+  }
+  .service-card-cyan::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% -20%, hsl(180 70% 50% / 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .service-card-cyan:hover {
+    border-color: hsl(180 70% 50% / 0.5);
+    box-shadow:
+      0 0 0 1px hsl(180 70% 50% / 0.2),
+      0 25px 50px -15px hsl(180 70% 50% / 0.25),
+      inset 0 1px 0 0 hsl(180 70% 60% / 0.15);
+    transform: translateY(-8px);
+  }
+
+  /* Purple accent - Social Media */
+  .service-card-purple {
+    border-color: hsl(276 60% 50% / 0.3);
+    box-shadow:
+      0 0 0 1px hsl(276 60% 50% / 0.1),
+      0 10px 30px -10px hsl(276 60% 50% / 0.15),
+      inset 0 1px 0 0 hsl(276 60% 60% / 0.1);
+  }
+  .service-card-purple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 10%, hsl(276 60% 55% / 0.6), transparent 90%);
+  }
+  .service-card-purple::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% -20%, hsl(276 60% 55% / 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .service-card-purple:hover {
+    border-color: hsl(276 60% 55% / 0.5);
+    box-shadow:
+      0 0 0 1px hsl(276 60% 55% / 0.2),
+      0 25px 50px -15px hsl(276 60% 55% / 0.25),
+      inset 0 1px 0 0 hsl(276 60% 60% / 0.15);
+    transform: translateY(-8px);
+  }
+
+  /* Magenta accent - Paid Ads */
+  .service-card-magenta {
+    border-color: hsl(320 80% 55% / 0.3);
+    box-shadow:
+      0 0 0 1px hsl(320 80% 55% / 0.1),
+      0 10px 30px -10px hsl(320 80% 55% / 0.15),
+      inset 0 1px 0 0 hsl(320 80% 65% / 0.1);
+  }
+  .service-card-magenta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 10%, hsl(320 80% 60% / 0.6), transparent 90%);
+  }
+  .service-card-magenta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% -20%, hsl(320 80% 55% / 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .service-card-magenta:hover {
+    border-color: hsl(320 80% 60% / 0.5);
+    box-shadow:
+      0 0 0 1px hsl(320 80% 60% / 0.2),
+      0 25px 50px -15px hsl(320 80% 60% / 0.25),
+      inset 0 1px 0 0 hsl(320 80% 65% / 0.15);
+    transform: translateY(-8px);
+  }
+
+  /* Blue accent - Website Design */
+  .service-card-blue {
+    border-color: hsl(220 70% 55% / 0.3);
+    box-shadow:
+      0 0 0 1px hsl(220 70% 55% / 0.1),
+      0 10px 30px -10px hsl(220 70% 55% / 0.15),
+      inset 0 1px 0 0 hsl(220 70% 65% / 0.1);
+  }
+  .service-card-blue::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 10%, hsl(220 70% 60% / 0.6), transparent 90%);
+  }
+  .service-card-blue::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% -20%, hsl(220 70% 55% / 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .service-card-blue:hover {
+    border-color: hsl(220 70% 60% / 0.5);
+    box-shadow:
+      0 0 0 1px hsl(220 70% 60% / 0.2),
+      0 25px 50px -15px hsl(220 70% 60% / 0.25),
+      inset 0 1px 0 0 hsl(220 70% 65% / 0.15);
+    transform: translateY(-8px);
   }
 
   /* Animated underline for links */

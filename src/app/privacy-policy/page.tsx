@@ -7,10 +7,10 @@ export default function PrivacyPolicyPage() {
     <>
       {/* Hero Section */}
       <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-20 md:py-28">
+        <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
                 Privacy Policy
               </h1>
             </FadeIn>
@@ -28,13 +28,13 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Content */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           <FadeIn>
             <div className="prose prose-invert max-w-3xl mx-auto">
               <div className="tech-card p-8 md:p-12 space-y-8">
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Introduction</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     Flowryse (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;)
                     is committed to protecting your privacy. This Privacy Policy
@@ -45,7 +45,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">
+                  <h2 className="font-serif text-2xl font-bold mb-4">
                     Information We Collect
                   </h2>
                   <p className="text-muted-foreground leading-relaxed mb-4">
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">
+                  <h2 className="font-serif text-2xl font-bold mb-4">
                     How We Use Your Information
                   </h2>
                   <p className="text-muted-foreground leading-relaxed mb-4">
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Cookies and Tracking</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Cookies and Tracking</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     We use cookies and similar tracking technologies to track
                     activity on our website and hold certain information. Cookies
@@ -92,7 +92,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Third-Party Services</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Third-Party Services</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     We may employ third-party companies and individuals to
                     facilitate our services, provide services on our behalf,
@@ -105,7 +105,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Data Security</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Data Security</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     We implement appropriate security measures to protect against
                     unauthorized access, alteration, disclosure, or destruction of
@@ -115,7 +115,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Your Rights</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Your Rights</h2>
                   <p className="text-muted-foreground leading-relaxed mb-4">
                     Depending on your location, you may have certain rights
                     regarding your personal information:
@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">
+                  <h2 className="font-serif text-2xl font-bold mb-4">
                     Changes to This Policy
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+                  <h2 className="font-serif text-2xl font-bold mb-4">Contact Us</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     If you have any questions about this Privacy Policy, please
                     contact us at{" "}

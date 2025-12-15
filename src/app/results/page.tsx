@@ -140,16 +140,16 @@ export default function ResultsPage() {
     <>
       {/* Hero Section */}
       <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-20 md:py-28">
+        <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+              <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
                 Our Results
               </span>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
                 Real Results for{" "}
                 <span className="gradient-accent-text">Real Businesses</span>
               </h1>
@@ -190,10 +190,10 @@ export default function ResultsPage() {
       </section>
 
       {/* Case Studies Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Client <span className="gradient-accent-text">Case Studies</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -330,10 +330,10 @@ export default function ResultsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 md:py-28 bg-muted/30">
+      <section className="py-24 md:py-32 bg-muted/30">
         <div className="container">
           <FadeIn className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               What Our Clients{" "}
               <span className="gradient-text">Say About Us</span>
             </h2>
@@ -387,11 +387,11 @@ export default function ResultsPage() {
       </section>
 
       {/* Why These Results Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
                 Why We Get{" "}
                 <span className="gradient-accent-text">These Results</span>
               </h2>
@@ -462,20 +462,29 @@ export default function ResultsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-hero-surface">
-        <div className="container">
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
+            style={{
+              background: "radial-gradient(circle, hsl(276 60% 50% / 0.15), transparent 70%)",
+            }}
+          />
+        </div>
+        <div className="container relative z-10">
           <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
               Ready to Be Our Next Success Story?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
               Book a free strategy call and let&apos;s discuss how we can achieve
               similar results for your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group">
+            <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
               <Link href="/contact" className="flex items-center gap-2">
                 Get Your Free Strategy Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </FadeIn>

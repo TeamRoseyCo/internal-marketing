@@ -78,23 +78,23 @@ export default function ServicesPage() {
     <>
       {/* Hero Section */}
       <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-20 md:py-28">
+        <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+              <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
                 Our Services
               </span>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
                 Marketing That{" "}
                 <span className="gradient-accent-text">Delivers Results</span>
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
                 From SEO to paid ads, we deliver data-driven strategies that turn
                 marketing spend into measurable revenue. Choose your path to growth.
               </p>
@@ -107,7 +107,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           <StaggerChildren className="space-y-12" staggerDelay={0.15}>
             {services.map((service, index) => {
@@ -219,20 +219,29 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-hero-surface">
-        <div className="container">
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
+            style={{
+              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+            }}
+          />
+        </div>
+        <div className="container relative z-10">
           <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
               Not Sure Which Service Is Right for You?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
               Book a free strategy call and we&apos;ll help you identify the best
               approach to grow your business.
             </p>
-            <Button asChild size="lg" className="btn-hero group">
+            <Button asChild size="lg" className="btn-hero group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
               <Link href="/contact" className="flex items-center gap-2">
                 Get Your Free Strategy Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </FadeIn>

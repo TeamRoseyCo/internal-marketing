@@ -5,16 +5,16 @@ import { FadeIn } from "@/components/animations";
 export function BlogHero() {
   return (
     <section className="relative bg-hero-surface overflow-hidden">
-      <div className="container py-20 md:py-28">
+      <div className="container py-24 md:py-32">
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn delay={0.1}>
-            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+            <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
               Our Blog
             </span>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
               Marketing Insights &{" "}
               <span className="gradient-accent-text">Strategies</span>
             </h1>

@@ -75,16 +75,16 @@ export default function ContactPage() {
     <>
       {/* Hero Section */}
       <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-20 md:py-28">
+        <div className="container py-24 md:py-32">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn delay={0.1}>
-              <span className="inline-block px-4 py-1.5 mb-6 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
+              <span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
                 Get In Touch
               </span>
             </FadeIn>
 
             <FadeIn delay={0.2}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
                 Let&apos;s Grow Your{" "}
                 <span className="gradient-accent-text">Business Together</span>
               </h1>
@@ -104,7 +104,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Form */}
@@ -387,10 +387,10 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-28 bg-muted/30">
+      <section className="py-24 md:py-32 bg-muted/30">
         <div className="container">
           <FadeIn className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
               Frequently Asked{" "}
               <span className="gradient-accent-text">Questions</span>
             </h2>

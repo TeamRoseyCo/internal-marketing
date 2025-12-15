@@ -102,9 +102,11 @@ export default function RootLayout({
         className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <LenisProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <div className="bg-page-gradient min-h-screen">
+            <Header />
+            <main className="flex-1 pt-20 md:pt-24">{children}</main>
+            <Footer />
+          </div>
         </LenisProvider>
       </body>
     </html>
