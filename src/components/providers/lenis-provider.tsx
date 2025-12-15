@@ -2,13 +2,6 @@
 
 import { ReactNode, useEffect, useRef, createContext, useContext, useState } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register GSAP plugins once
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // Create context for Lenis instance
 const LenisContext = createContext<Lenis | null>(null);
@@ -23,14 +16,11 @@ interface LenisProviderProps {
 
 export function LenisProvider({ children }: LenisProviderProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
-  const rafCallbackRef = useRef<((time: number) => void) | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis with cinematic scroll settings
-    // CRITICAL: autoRaf: false because GSAP ticker handles the RAF loop
+    // Initialize Lenis with smooth scroll settings
     const lenisInstance = new Lenis({
-      autoRaf: false, // GSAP ticker will call lenis.raf()
-      duration: 1.2, // Smooth but responsive
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -42,37 +32,23 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
     setLenis(lenisInstance);
 
-    // CRITICAL: Sync Lenis scroll events with ScrollTrigger
-    lenisInstance.on("scroll", ScrollTrigger.update);
-
-    // CRITICAL: Use GSAP ticker to drive Lenis RAF
-    // This ensures Lenis and GSAP animations are perfectly in sync
-    const rafCallback = (time: number) => {
-      lenisInstance.raf(time * 1000); // GSAP time is in seconds, Lenis expects ms
-    };
-    rafCallbackRef.current = rafCallback;
-    gsap.ticker.add(rafCallback);
-
-    // CRITICAL: Disable GSAP lag smoothing for immediate scroll response
-    gsap.ticker.lagSmoothing(0);
+    // RAF loop for Lenis
+    function raf(time: number) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
     // Handle window resize
     const handleResize = () => {
       lenisInstance.resize();
-      // Delay ScrollTrigger refresh to let layout settle
-      setTimeout(() => ScrollTrigger.refresh(), 100);
     };
 
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (rafCallbackRef.current) {
-        gsap.ticker.remove(rafCallbackRef.current);
-      }
       lenisInstance.destroy();
-      // Clean up all ScrollTriggers
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 

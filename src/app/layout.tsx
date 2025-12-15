@@ -1,16 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// DM Sans for body text - clean, modern, readable
+const dmSans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
+// Fraunces for headlines - sophisticated serif display font
+const fraunces = Fraunces({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+// Keep Geist Mono for code blocks
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -89,7 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <LenisProvider>
           <Header />
