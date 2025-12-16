@@ -82,6 +82,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  appleWebApp: {
+    title: "Flowryse",
+    statusBarStyle: "black-translucent",
+  },
+  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
