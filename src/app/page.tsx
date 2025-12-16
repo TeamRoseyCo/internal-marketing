@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FloatingParticles } from "@/components/ui/floating-particles";
+import { HeroVideoPlayer } from "@/components/video/hero-video-player";
 
 // Animated counter component
 function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
@@ -211,47 +212,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="aspect-video rounded-3xl overflow-hidden shadow-glow bg-card/50 backdrop-blur-sm border border-border/30">
-              {/* Video placeholder - will be replaced with Bunny Stream */}
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 via-transparent to-brand-purple/5">
-                <div className="text-center p-8">
-                  <motion.div
-                    className="w-28 h-28 mx-auto mb-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center cursor-pointer"
-                    whileHover={{ scale: 1.08, boxShadow: "0 0 60px hsl(320 80% 55% / 0.4)" }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.15, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <div className="w-0 h-0 border-l-[28px] border-l-primary border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent ml-2" />
-                    </motion.div>
-                  </motion.div>
-                  <p className="text-lg text-muted-foreground">
-                    Watch how we help businesses grow
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating stats badge - hidden on mobile to not overlap video */}
-            <motion.div
-              className="hidden md:block absolute -bottom-6 -right-8 lg:-right-12 bg-card/80 backdrop-blur-xl border border-border/30 rounded-2xl p-5 shadow-lg"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.9, duration: 0.6 }}
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-green-500/15 flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-green-500" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold">21x</p>
-                  <p className="text-sm text-muted-foreground">Avg. ROAS</p>
-                </div>
-              </div>
-            </motion.div>
+            <HeroVideoPlayer autoplay={true} />
           </motion.div>
 
           {/* CTA Buttons - Centered */}
