@@ -212,7 +212,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <HeroVideoPlayer autoplay={true} />
+            <HeroVideoPlayer />
           </motion.div>
 
           {/* CTA Buttons - Centered */}
