@@ -3,6 +3,7 @@
 **For:** Jason
 **From:** Arnis
 **Date:** December 17, 2025
+**Last Updated:** December 18, 2025
 **Priority:** ASAP
 
 ---
@@ -11,7 +12,7 @@
 
 **What is this?** Flowryse is a global social media marketing agency website. We're rebuilding the website from an acquired Australian marketing agency into a modern Next.js platform.
 
-**Current State:** The design and layout are complete. Core functionality works. Now we need to finish content migration, integrations, and polish.
+**Current State:** The design and layout are complete. Blog system is fully functional with 19 posts migrated. Core functionality works. Now we need to finish remaining content migration, integrations, and polish.
 
 **Tech Stack:**
 - Next.js 16 (App Router)
@@ -30,7 +31,16 @@
 - [x] Homepage with hero section
 - [x] Hero VSL video player (BunnyStream integrated)
 - [x] 4 service pages (SEO, Social Media, Paid Ads, Website Design)
-- [x] Blog system structure
+- [x] **Blog system - FULLY FUNCTIONAL**
+  - [x] Blog listing page with category filtering
+  - [x] Individual blog post pages with featured images
+  - [x] 19 blog posts migrated from TSX to MDX format
+  - [x] 35+ blog images copied and optimized
+  - [x] All posts have unique, non-repeating images
+  - [x] Reading time calculation
+  - [x] Category badges
+  - [x] Next.js Image optimization
+  - [x] Responsive design for all blog pages
 - [x] Results page structure
 - [x] Contact page
 - [x] Header & Footer
@@ -43,18 +53,58 @@
 
 ## What Needs To Be Done
 
-### Priority 1: Content Migration (HIGH)
+### Priority 1: Content Migration (PARTIALLY COMPLETE)
 
 **Source:** `/migration-content/` folder (copied from old site)
 
-| Content | Location | Notes |
-|---------|----------|-------|
-| Blog posts (~40) | `/migration-content/blog/` | Convert to MDX format |
-| Free guides (3) | `/migration-content/guides/` | Set up download flow |
-| Case studies | `/migration-content/case-studies/` | Add to Results page |
-| Lead capture forms | Reference old site patterns | Connect to Supabase |
+| Content | Location | Status | Notes |
+|---------|----------|--------|-------|
+| Blog posts | `/migration-content/blog-posts/` | ✅ **COMPLETE** | 19 posts migrated to `/src/content/blog/` in MDX format |
+| Blog images | `/migration-content/blog-images/` | ✅ **COMPLETE** | 35+ images moved to `/public/images/blog/` |
+| Free guides (3) | `/migration-content/guides/` | ⏳ **PENDING** | Set up download flow |
+| Case studies | `/migration-content/case-studies/` | ⏳ **PENDING** | Add to Results page |
+| Lead capture forms | Reference old site patterns | ⏳ **PENDING** | Connect to Supabase |
 
-**Action:** Review the `/migration-content/` folder and integrate content into the appropriate pages.
+**Completed Work:**
+- ✅ Converted 19 blog posts from TSX to MDX format with proper frontmatter
+- ✅ All blog images optimized and placed in `/public/images/blog/`
+- ✅ Each blog post has unique featured image (no duplicates)
+- ✅ Blog listing page displays all posts with images and category filters
+- ✅ Individual blog post pages show featured images at the top
+- ✅ Next.js Image component used for optimization
+- ✅ Build verified and passing
+
+**Blog Posts Migrated:**
+1. 2026-marketing-playbook.mdx
+2. ads-funnel-leaky-bucket.mdx
+3. ai-driven-facebook-google-ads-2025.mdx
+4. boosting-posts-charity-zuckerberg.mdx
+5. christmas-ads-no-5000-video-shoot.mdx
+6. christmas-growth-stack.mdx
+7. christmas-surge-gbp-revenue.mdx
+8. competitors-steal-christmas.mdx
+9. cut-ad-costs-ai-video-ads.mdx
+10. facebook-ads-roi-2025.mdx
+11. google-algorithm-updates-2025.mdx
+12. holiday-conversion-triggers-gbp.mdx
+13. holiday-spike-january-automation.mdx
+14. how-to-increase-google-ads-roas.mdx
+15. leads-rot-automation.mdx
+16. seo-strategies-for-2025.mdx
+17. social-media-content-that-converts.mdx
+18. three-ad-tweaks-save-thousands.mdx
+19. tradie-filled-december-calendar.mdx
+
+**Plus 3 existing posts:**
+- facebook-ads-roi.mdx
+- instagram-marketing.mdx
+- small-business-marketing.mdx
+
+**Total: 22 blog posts live and functional**
+
+**Next Steps for Content Migration:**
+- Review `/migration-content/guides/` and set up download flow
+- Review `/migration-content/case-studies/` and add to Results page
 
 ---
 
@@ -284,10 +334,13 @@ flowryse.com/nl/          → Netherlands
 │   └── hero-video-player.tsx   → BunnyStream video component
 └── blog/                       → Blog components
 
-/migration-content/             → Content from old site (TO MIGRATE)
-├── blog/                       → Blog posts
-├── guides/                     → Free downloadable guides
-└── case-studies/               → Case study content
+/src/content/blog/              → Blog posts (22 posts in MDX format)
+
+/migration-content/             → Content from old site
+├── blog-posts/                 → ✅ MIGRATED to /src/content/blog/
+├── blog-images/                → ✅ MIGRATED to /public/images/blog/
+├── guides/                     → ⏳ TO MIGRATE - Free downloadable guides
+└── case-studies/               → ⏳ TO MIGRATE - Case study content
 
 /public/                        → Static assets
 ├── manifest.json               → PWA manifest
@@ -369,7 +422,12 @@ DM Arnis directly. For specific areas:
 ## Summary Checklist
 
 ### Must Do
-- [ ] Migrate blog posts from `/migration-content/`
+- [x] **Migrate blog posts from `/migration-content/`** ✅ COMPLETE
+  - [x] 19 posts converted from TSX to MDX
+  - [x] 35+ blog images migrated and optimized
+  - [x] All posts have unique featured images
+  - [x] Blog listing and individual post pages functional
+  - [x] Build verified and passing
 - [ ] Migrate free guides and set up download flow
 - [ ] Build out Results/Portfolio page with case studies
 - [ ] Add Instagram feed embed (@flowryseai)
@@ -391,6 +449,59 @@ DM Arnis directly. For specific areas:
 - [ ] Email/SMS Marketing page (probably add as section, not full page)
 - [ ] CRM page (probably no - keep for NEURA sub-company)
 - [ ] AI Chatbot (Voiceflow - later phase)
+
+---
+
+## Recent Work Completed (Dec 18, 2025)
+
+### Blog Migration - COMPLETE ✅
+
+**What was done:**
+1. **Converted 19 blog posts from TSX to MDX format**
+   - Original files were React/Vite TSX components from old site
+   - Converted to MDX (Markdown + JSX) with proper frontmatter metadata
+   - Preserved all content, CTAs, and formatting
+
+2. **Migrated 35+ blog images**
+   - Moved from `/migration-content/blog-images/` to `/public/images/blog/`
+   - All images optimized for Next.js Image component
+   - Proper naming convention maintained
+
+3. **Fixed image uniqueness issues**
+   - Ensured all 22 blog posts have unique featured images
+   - No duplicate images across posts
+   - Added missing images to 3 posts that had none
+   - Reassigned duplicates to unique images
+
+4. **Implemented blog image display**
+   - Updated `blog-post-card.tsx` to show featured images on listing page
+   - Updated `[slug]/page.tsx` to show featured images on individual posts
+   - Used Next.js Image component for optimization
+   - Added hover effects and responsive sizing
+
+5. **Verified functionality**
+   - Blog listing page: `/blog` - shows all 22 posts with images and categories
+   - Individual posts: `/blog/[slug]` - featured image at top, full content below
+   - Category filtering works
+   - Reading time calculation works
+   - All builds passing (`npm run build` successful)
+
+**Files Created/Modified:**
+- Created 19 new MDX files in `/src/content/blog/`
+- Modified `src/components/blog/blog-post-card.tsx`
+- Modified `src/app/blog/[slug]/page.tsx`
+- Moved 35+ image files to `/public/images/blog/`
+
+**Git Commits:**
+- Commit: `670bfda` - "Fix blog post image uniqueness - ensure all 19 posts have unique images"
+- Pushed to main branch
+
+**Result:**
+- ✅ Blog system fully functional with 22 posts
+- ✅ All images displaying correctly
+- ✅ No duplicate images
+- ✅ Responsive design working
+- ✅ Ready for production
 
 ---
 
