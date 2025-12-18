@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag, User } from "lucide-react";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -122,6 +123,20 @@ export default async function BlogPostPage({
       <section className="py-24 md:py-32">
         <div className="container">
           <article className="max-w-3xl mx-auto">
+            {/* Featured Image */}
+            {post.image && (
+              <div className="relative aspect-video mb-12 rounded-2xl overflow-hidden">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 896px"
+                />
+              </div>
+            )}
+
             <div className="tech-card p-8 md:p-12">
               <MDXRemote source={post.content} components={components} />
             </div>

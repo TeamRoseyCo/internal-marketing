@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Tag } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -29,15 +30,26 @@ export function BlogPostCard({ post, color, index }: BlogPostCardProps) {
             {/* Subtle top highlight for glass effect */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            {/* Image Placeholder with gradient */}
-            <div
-              className="aspect-video relative"
-              style={{
-                background: `linear-gradient(135deg, hsl(var(--${color}) / 0.25), hsl(var(--${color}) / 0.08))`,
-              }}
-            >
+            {/* Featured Image */}
+            <div className="aspect-video relative overflow-hidden">
+              {post.image ? (
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              ) : (
+                <div
+                  className="w-full h-full"
+                  style={{
+                    background: `linear-gradient(135deg, hsl(var(--${color}) / 0.25), hsl(var(--${color}) / 0.08))`,
+                  }}
+                />
+              )}
               {/* Category tag overlay */}
-              <div className="absolute bottom-4 left-4">
+              <div className="absolute bottom-4 left-4 z-10">
                 <span
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm"
                   style={{
