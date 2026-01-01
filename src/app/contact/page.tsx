@@ -37,8 +37,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "team@flowryse.com",
-    href: "mailto:team@flowryse.com",
+    value: "team@roseyco.com",
+    href: "mailto:team@roseyco.com",
   },
   {
     icon: Phone,
@@ -329,12 +329,12 @@ export default function ContactPage() {
 
                 {/* What to Expect */}
                 <div className="tech-card p-6 mt-8">
-                  <h3 className="font-semibold mb-4 text-brand-cyan">
+                  <h3 className="font-semibold mb-4 text-brand-green">
                     What to Expect
                   </h3>
                   <ul className="space-y-3 text-sm text-muted-foreground">
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-foreground">
                           Quick Response:
@@ -343,7 +343,7 @@ export default function ContactPage() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-foreground">
                           Strategy Call:
@@ -352,7 +352,7 @@ export default function ContactPage() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-foreground">
                           Custom Proposal:
@@ -361,7 +361,7 @@ export default function ContactPage() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" />
                       <span>
                         <strong className="text-foreground">No Pressure:</strong>{" "}
                         Zero obligations — just valuable insights for your
@@ -399,7 +399,7 @@ export default function ContactPage() {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
             style={{
-              background: "radial-gradient(circle, hsl(180 70% 50% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(130 65% 45% / 0.15), transparent 70%)",
             }}
           />
         </div>

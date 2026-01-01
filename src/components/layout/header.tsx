@@ -52,12 +52,13 @@ export function Header() {
         {/* Logo - Dominant Presence */}
         <Link href="/" className="flex items-center gap-2 group">
           <Image
-            src="/FLOWRYSE LOGO FULL.png"
-            alt="Flowryse - Global Marketing Agency"
+            src="/roseyco-logo.png"
+            alt="Rosey Co. - Global Social Media Marketing Agency"
             width={400}
-            height={120}
-            className="h-10 sm:h-12 md:h-14 lg:h-16 xl:h-18 w-auto transition-transform duration-300 group-hover:scale-105"
+            height={220}
+            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
             priority
+            unoptimized
           />
         </Link>
 
@@ -76,7 +77,7 @@ export function Header() {
               >
                 {item.label}
                 {/* Animated underline */}
-                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-brand-purple group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300" />
+                <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-brand-green group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300" />
               </Link>
             </motion.div>
           ))}
@@ -152,7 +153,7 @@ function MobileMenu({
             <Link
               href={item.href}
               onClick={onClose}
-              className="block py-4 px-6 text-xl font-medium text-center text-foreground/80 hover:text-foreground rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:via-brand-purple/10 hover:to-primary/10 hover:shadow-[0_0_30px_-5px_hsl(320_80%_55%/0.3)]"
+              className="block py-4 px-6 text-xl font-medium text-center text-foreground/80 hover:text-foreground rounded-2xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary/10 hover:via-brand-green/10 hover:to-primary/10 hover:shadow-[0_0_30px_-5px_hsl(0_75%_50%/0.3)]"
             >
               {item.label}
             </Link>

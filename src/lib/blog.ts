@@ -50,7 +50,7 @@ export function getAllPosts(): BlogPostMeta[] {
         category: data.category || "General",
         date: data.date || new Date().toISOString().split("T")[0],
         readTime: readingTime(content).text,
-        author: data.author || "Flowryse Team",
+        author: data.author || "Rosey Co. Team",
         image: data.image,
         tags: data.tags || [],
       } as BlogPostMeta;
@@ -77,7 +77,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     category: data.category || "General",
     date: data.date || new Date().toISOString().split("T")[0],
     readTime: readingTime(content).text,
-    author: data.author || "Flowryse Team",
+    author: data.author || "Rosey Co. Team",
     image: data.image,
     tags: data.tags || [],
     content,

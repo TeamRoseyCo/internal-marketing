@@ -28,7 +28,8 @@ const staggerItem = {
   visible: { opacity: 1, y: 0 },
 };
 
-// Services data with accent colors (matching homepage)
+// Services data with brand accent colors (red/green palette - matching homepage)
+// Green cards get red accents (KPI/button), red cards get green accents
 const services = [
   {
     icon: TrendingUp,
@@ -43,9 +44,10 @@ const services = [
       "Content Strategy",
     ],
     href: "/services/seo",
-    cardClass: "service-card service-card-cyan",
-    iconColor: "hsl(180 70% 50%)",
-    iconBg: "hsl(180 70% 50% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
+    accentColor: "hsl(0 75% 50%)", // Red accent for KPI/button
     stats: { value: 300, suffix: "%", label: "Avg. Traffic Increase" },
   },
   {
@@ -61,9 +63,10 @@ const services = [
       "Brand Strategy",
     ],
     href: "/services/social-media",
-    cardClass: "service-card service-card-purple",
-    iconColor: "hsl(276 60% 55%)",
-    iconBg: "hsl(276 60% 55% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
+    accentColor: "hsl(130 45% 32%)", // Darker green accent for KPI/button
     stats: { value: 5, suffix: "x", label: "Engagement Growth" },
   },
   {
@@ -79,9 +82,10 @@ const services = [
       "Conversion Tracking",
     ],
     href: "/services/paid-ads",
-    cardClass: "service-card service-card-magenta",
-    iconColor: "hsl(320 80% 55%)",
-    iconBg: "hsl(320 80% 55% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
+    accentColor: "hsl(0 75% 50%)", // Red accent for KPI/button
     stats: { value: 21, suffix: "x", label: "Average ROAS" },
   },
   {
@@ -97,9 +101,10 @@ const services = [
       "Analytics Integration",
     ],
     href: "/services/website-design",
-    cardClass: "service-card service-card-blue",
-    iconColor: "hsl(220 70% 60%)",
-    iconBg: "hsl(220 70% 60% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
+    accentColor: "hsl(130 45% 32%)", // Darker green accent for KPI/button
     stats: { value: 2.5, suffix: "x", label: "Conversion Rate Boost" },
   },
 ];
@@ -243,10 +248,17 @@ export default function ServicesPage() {
                           ))}
                         </ul>
 
-                        <Button asChild className="btn-hero w-fit group text-base px-6 py-4 h-auto">
+                        <Button
+                          asChild
+                          className="w-fit group text-base px-6 py-4 h-auto font-medium transition-all duration-300"
+                          style={{
+                            backgroundColor: service.accentColor,
+                            color: "white",
+                          }}
+                        >
                           <Link
                             href={service.href}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-2 hover:opacity-90"
                           >
                             Learn More
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -269,7 +281,8 @@ export default function ServicesPage() {
                           <div className="w-full h-full rounded-3xl bg-background/80 backdrop-blur-sm flex items-center justify-center border border-border/30">
                             <div className="text-center">
                               <motion.p
-                                className="text-6xl md:text-7xl lg:text-8xl font-bold gradient-text mb-4"
+                                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4"
+                                style={{ color: service.accentColor }}
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                               >
@@ -302,13 +315,13 @@ export default function ServicesPage() {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
             }}
           />
           <div
             className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
             style={{
-              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(130 65% 45% / 0.15), transparent 70%)",
             }}
           />
         </div>
@@ -356,10 +369,10 @@ export default function ServicesPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   View Case Studies
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>

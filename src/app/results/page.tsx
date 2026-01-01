@@ -61,9 +61,9 @@ const caseStudies = [
       { metric: "Revenue", before: "$45K/mo", after: "$180K/mo" },
       { metric: "CPA", before: "$85", after: "$32" },
     ],
-    cardClass: "service-card service-card-magenta",
-    iconColor: "hsl(320 80% 55%)",
-    iconBg: "hsl(320 80% 55% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
   },
   {
     client: "B2B SaaS Company",
@@ -78,9 +78,9 @@ const caseStudies = [
       { metric: "Leads", before: "15/mo", after: "120/mo" },
       { metric: "Domain Authority", before: "24", after: "48" },
     ],
-    cardClass: "service-card service-card-cyan",
-    iconColor: "hsl(180 70% 50%)",
-    iconBg: "hsl(180 70% 50% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
   },
   {
     client: "Real Estate Agency",
@@ -95,9 +95,9 @@ const caseStudies = [
       { metric: "Engagement", before: "1.2%", after: "6.8%" },
       { metric: "Leads/Month", before: "8", after: "65" },
     ],
-    cardClass: "service-card service-card-purple",
-    iconColor: "hsl(276 60% 55%)",
-    iconBg: "hsl(276 60% 55% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
   },
   {
     client: "Professional Services",
@@ -112,9 +112,9 @@ const caseStudies = [
       { metric: "Page Speed", before: "6.2s", after: "1.4s" },
       { metric: "Leads/Month", before: "12", after: "58" },
     ],
-    cardClass: "service-card service-card-blue",
-    iconColor: "hsl(220 70% 60%)",
-    iconBg: "hsl(220 70% 60% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
   },
 ];
 
@@ -122,7 +122,7 @@ const caseStudies = [
 const testimonials = [
   {
     quote:
-      "Flowryse transformed our marketing completely. We went from struggling to get leads to having more than we can handle. The ROI has been incredible.",
+      "Rosey Co. transformed our marketing completely. We went from struggling to get leads to having more than we can handle. The ROI has been incredible.",
     author: "Sarah M.",
     role: "CEO, E-Commerce Brand",
     rating: 5,
@@ -136,14 +136,14 @@ const testimonials = [
   },
   {
     quote:
-      "The team at Flowryse doesn't just run ads — they build systems. Our cost per lead dropped by 60% while our lead quality went up.",
+      "The team at Rosey Co. doesn't just run ads — they build systems. Our cost per lead dropped by 60% while our lead quality went up.",
     author: "Jennifer L.",
     role: "Marketing Director",
     rating: 5,
   },
   {
     quote:
-      "Best decision we made was hiring Flowryse. Professional, transparent, and most importantly — they get results. 10/10 would recommend.",
+      "Best decision we made was hiring Rosey Co. Professional, transparent, and most importantly — they get results. 10/10 would recommend.",
     author: "David R.",
     role: "Business Owner",
     rating: 5,
@@ -459,7 +459,7 @@ export default function ResultsPage() {
 
                     {/* Quote */}
                     <div className="relative flex-1 mb-6">
-                      <Quote className="absolute -top-2 -left-2 w-10 h-10 text-brand-purple/20" />
+                      <Quote className="absolute -top-2 -left-2 w-10 h-10 text-brand-green/20" />
                       <p className="text-base text-muted-foreground leading-relaxed pl-6">
                         {testimonial.quote}
                       </p>
@@ -487,13 +487,13 @@ export default function ResultsPage() {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
             }}
           />
           <div
             className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
             style={{
-              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(130 65% 40% / 0.15), transparent 70%)",
             }}
           />
         </div>

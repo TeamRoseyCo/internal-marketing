@@ -74,7 +74,7 @@ const staggerItem = {
   visible: { opacity: 1, y: 0 },
 };
 
-// Services data with accent colors
+// Services data with brand accent colors (red/green palette)
 const services = [
   {
     icon: TrendingUp,
@@ -82,9 +82,9 @@ const services = [
     description:
       "Dominate search results and get found by customers actively looking for your services.",
     href: "/services/seo",
-    cardClass: "service-card service-card-cyan",
-    iconColor: "hsl(180 70% 50%)",
-    iconBg: "hsl(180 70% 50% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
   },
   {
     icon: Users,
@@ -92,9 +92,9 @@ const services = [
     description:
       "Build your brand presence and engage your audience across all major platforms.",
     href: "/services/social-media",
-    cardClass: "service-card service-card-purple",
-    iconColor: "hsl(276 60% 55%)",
-    iconBg: "hsl(276 60% 55% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
   },
   {
     icon: Target,
@@ -102,9 +102,9 @@ const services = [
     description:
       "ROI-focused Google Ads and Meta Ads campaigns that convert clicks into customers.",
     href: "/services/paid-ads",
-    cardClass: "service-card service-card-magenta",
-    iconColor: "hsl(320 80% 55%)",
-    iconBg: "hsl(320 80% 55% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 45%)",
+    iconBg: "hsl(130 65% 45% / 0.15)",
   },
   {
     icon: Zap,
@@ -112,9 +112,9 @@ const services = [
     description:
       "High-converting websites designed to turn visitors into leads and customers.",
     href: "/services/website-design",
-    cardClass: "service-card service-card-blue",
-    iconColor: "hsl(220 70% 60%)",
-    iconBg: "hsl(220 70% 60% / 0.15)",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 50%)",
+    iconBg: "hsl(0 75% 50% / 0.15)",
   },
 ];
 
@@ -139,7 +139,7 @@ const faqs = [
       "Absolutely! We work with clients globally. Our strategies work anywhere Google and Meta operate, and we adapt our approach to your specific market.",
   },
   {
-    question: "What makes Flowryse different from other agencies?",
+    question: "What makes Rosey Co. different from other agencies?",
     answer:
       "We're results-obsessed. Every campaign is tracked dollar-for-dollar, and we focus on ROI, not vanity metrics. If we don't deliver leads, we pause fees until we do.",
   },
@@ -228,10 +228,10 @@ export default function HomePage() {
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+            <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
               <Link href="/results" className="flex items-center gap-2">
                 See Our Results
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
               </Link>
             </Button>
           </motion.div>
@@ -429,7 +429,7 @@ export default function HomePage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="aspect-square rounded-3xl p-1 bg-gradient-to-br from-primary/20 via-brand-purple/10 to-brand-cyan/20">
+              <div className="aspect-square rounded-3xl p-1 bg-gradient-to-br from-primary/20 via-brand-green/10 to-brand-forest/20">
                 <div className="w-full h-full rounded-3xl bg-card/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
                   <div className="text-center p-12">
                     <motion.div
@@ -437,7 +437,7 @@ export default function HomePage() {
                       animate={{ rotate: 360 }}
                       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                     >
-                      <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary/20 to-brand-purple/20 flex items-center justify-center">
+                      <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary/20 to-brand-green/20 flex items-center justify-center">
                         <TrendingUp className="w-12 h-12 text-primary" />
                       </div>
                     </motion.div>
@@ -468,7 +468,7 @@ export default function HomePage() {
               Common <span className="gradient-accent-text">Questions</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Everything you need to know about working with Flowryse.
+              Everything you need to know about working with Rosey Co.
             </p>
           </motion.div>
 
@@ -522,13 +522,13 @@ export default function HomePage() {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
             }}
           />
           <div
             className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
             style={{
-              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(130 65% 45% / 0.15), transparent 70%)",
             }}
           />
         </div>
@@ -577,10 +577,10 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group relative text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   View Case Studies
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>

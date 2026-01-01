@@ -36,10 +36,10 @@ export default function PrivacyPolicyPage() {
                 <section>
                   <h2 className="font-serif text-2xl font-bold mb-4">Introduction</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    Flowryse (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;)
+                    Rosey Co. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;)
                     is committed to protecting your privacy. This Privacy Policy
                     explains how we collect, use, disclose, and safeguard your
-                    information when you visit our website flowryse.com and use
+                    information when you visit our website roseyco.com and use
                     our services.
                   </p>
                 </section>
@@ -147,10 +147,10 @@ export default function PrivacyPolicyPage() {
                     If you have any questions about this Privacy Policy, please
                     contact us at{" "}
                     <a
-                      href="mailto:team@flowryse.com"
+                      href="mailto:team@roseyco.com"
                       className="text-primary hover:underline"
                     >
-                      team@flowryse.com
+                      team@roseyco.com
                     </a>
                     .
                   </p>

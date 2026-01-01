@@ -103,9 +103,9 @@ const features = [
 ];
 
 const techStack = [
-  { name: "Next.js", description: "React Framework", color: "hsl(180 70% 50%)" },
-  { name: "Tailwind CSS", description: "Modern Styling", color: "hsl(276 60% 55%)" },
-  { name: "Vercel", description: "Fast Hosting", color: "hsl(320 80% 55%)" },
+  { name: "Next.js", description: "React Framework", color: "hsl(355 70% 45%)" },
+  { name: "Tailwind CSS", description: "Modern Styling", color: "hsl(130 65% 45%)" },
+  { name: "Vercel", description: "Fast Hosting", color: "hsl(0 75% 50%)" },
 ];
 
 const stats = [
@@ -122,7 +122,7 @@ export default function WebsiteDesignPage() {
         <div className="container py-16 md:py-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
             <motion.span
-              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(220_70%_60%/0.1)] text-[hsl(220_70%_60%)] border border-[hsl(220_70%_60%/0.2)]"
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(355_70%_45%/0.1)] text-[hsl(355_70%_45%)] border border-[hsl(355_70%_45%/0.2)]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -163,10 +163,10 @@ export default function WebsiteDesignPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   See Our Work
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>
@@ -238,7 +238,7 @@ export default function WebsiteDesignPage() {
                 key={tech.name}
                 variants={staggerItem}
                 whileHover={{ scale: 1.05, y: -4 }}
-                className="service-card service-card-blue p-6 text-center"
+                className="service-card service-card-crimson p-6 text-center"
               >
                 <h3
                   className="font-semibold text-lg mb-1"
@@ -292,10 +292,10 @@ export default function WebsiteDesignPage() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="service-card service-card-blue p-7 md:p-8 h-full"
+                  className="service-card service-card-crimson p-7 md:p-8 h-full"
                 >
-                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(220_70%_60%/0.15)] border border-[hsl(220_70%_60%/0.3)] flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-[hsl(220_70%_60%)]" />
+                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(355_70%_45%/0.15)] border border-[hsl(355_70%_45%/0.3)] flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-[hsl(355_70%_45%)]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -330,7 +330,7 @@ export default function WebsiteDesignPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(220_70%_60%)] via-[hsl(276_60%_55%)] to-[hsl(320_80%_55%)] hidden md:block" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(355_70%_45%)] via-[hsl(130_65%_45%)] to-[hsl(0_75%_50%)] hidden md:block" />
 
               <motion.div
                 className="space-y-8"
@@ -357,7 +357,7 @@ export default function WebsiteDesignPage() {
                         {/* Content */}
                         <motion.div
                           whileHover={{ scale: 1.02 }}
-                          className={`flex-1 service-card service-card-blue p-6 md:p-8 ${
+                          className={`flex-1 service-card service-card-crimson p-6 md:p-8 ${
                             isLeft ? "md:text-right" : ""
                           }`}
                         >
@@ -366,7 +366,7 @@ export default function WebsiteDesignPage() {
                               isLeft ? "md:flex-row-reverse" : ""
                             }`}
                           >
-                            <span className="text-sm font-mono text-[hsl(220_70%_60%)]">
+                            <span className="text-sm font-mono text-[hsl(355_70%_45%)]">
                               {step.number}
                             </span>
                             <h3 className="text-xl font-semibold">{step.title}</h3>
@@ -377,8 +377,8 @@ export default function WebsiteDesignPage() {
                         </motion.div>
 
                         {/* Icon */}
-                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(220_70%_60%/0.3)] items-center justify-center flex-shrink-0 z-10">
-                          <Icon className="w-6 h-6 text-[hsl(220_70%_60%)]" />
+                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(355_70%_45%/0.3)] items-center justify-center flex-shrink-0 z-10">
+                          <Icon className="w-6 h-6 text-[hsl(355_70%_45%)]" />
                         </div>
 
                         {/* Spacer for alignment */}
@@ -403,9 +403,9 @@ export default function WebsiteDesignPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
             >
-              <div className="service-card service-card-purple p-8 md:p-10">
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.15)] border border-[hsl(276_60%_55%/0.3)] flex items-center justify-center">
-                  <Smartphone className="w-8 h-8 text-[hsl(276_60%_55%)]" />
+              <div className="service-card service-card-green p-8 md:p-10">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(130_65%_45%/0.15)] border border-[hsl(130_65%_45%/0.3)] flex items-center justify-center">
+                  <Smartphone className="w-8 h-8 text-[hsl(130_65%_45%)]" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">
                   Mobile-First Design
@@ -423,8 +423,8 @@ export default function WebsiteDesignPage() {
                     "Mobile-First SEO",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-base">
-                      <span className="w-6 h-6 rounded-full bg-[hsl(276_60%_55%/0.15)] flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-4 h-4 text-[hsl(276_60%_55%)]" />
+                      <span className="w-6 h-6 rounded-full bg-[hsl(130_65%_45%/0.15)] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-[hsl(130_65%_45%)]" />
                       </span>
                       <span className="text-foreground/90">{item}</span>
                     </li>
@@ -452,9 +452,9 @@ export default function WebsiteDesignPage() {
                       <motion.div
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        className="w-24 h-44 mx-auto mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.1)] border-2 border-[hsl(276_60%_55%/0.3)] flex items-center justify-center"
+                        className="w-24 h-44 mx-auto mb-6 rounded-2xl bg-[hsl(130_65%_45%/0.1)] border-2 border-[hsl(130_65%_45%/0.3)] flex items-center justify-center"
                       >
-                        <Smartphone className="w-12 h-12 text-[hsl(276_60%_55%)]" />
+                        <Smartphone className="w-12 h-12 text-[hsl(130_65%_45%)]" />
                       </motion.div>
                       <p className="text-6xl md:text-7xl font-bold gradient-text mb-4">
                         <AnimatedCounter value={60} suffix="%+" duration={2} />
@@ -497,9 +497,9 @@ export default function WebsiteDesignPage() {
                           repeat: Infinity,
                           ease: "linear",
                         }}
-                        className="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-[hsl(320_80%_55%/0.3)] border-t-[hsl(320_80%_55%)] flex items-center justify-center"
+                        className="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-[hsl(0_75%_50%/0.3)] border-t-[hsl(0_75%_50%)] flex items-center justify-center"
                       >
-                        <Gauge className="w-12 h-12 text-[hsl(320_80%_55%)]" />
+                        <Gauge className="w-12 h-12 text-[hsl(0_75%_50%)]" />
                       </motion.div>
                       <p className="text-6xl md:text-7xl font-bold gradient-text mb-4">
                         {"<"}2s
@@ -518,9 +518,9 @@ export default function WebsiteDesignPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <div className="service-card service-card-magenta p-8 md:p-10">
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(320_80%_55%/0.15)] border border-[hsl(320_80%_55%/0.3)] flex items-center justify-center">
-                  <Gauge className="w-8 h-8 text-[hsl(320_80%_55%)]" />
+              <div className="service-card service-card-rose p-8 md:p-10">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(0_75%_50%/0.15)] border border-[hsl(0_75%_50%/0.3)] flex items-center justify-center">
+                  <Gauge className="w-8 h-8 text-[hsl(0_75%_50%)]" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">
                   Lightning Fast Performance
@@ -537,8 +537,8 @@ export default function WebsiteDesignPage() {
                     "Core Web Vitals",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-base">
-                      <span className="w-6 h-6 rounded-full bg-[hsl(320_80%_55%/0.15)] flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-4 h-4 text-[hsl(320_80%_55%)]" />
+                      <span className="w-6 h-6 rounded-full bg-[hsl(0_75%_50%/0.15)] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-[hsl(0_75%_50%)]" />
                       </span>
                       <span className="text-foreground/90">{item}</span>
                     </li>
@@ -611,10 +611,10 @@ export default function WebsiteDesignPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   View Case Studies
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>

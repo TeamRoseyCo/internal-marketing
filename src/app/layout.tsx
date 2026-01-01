@@ -25,15 +25,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://flowryse.com"),
+  metadataBase: new URL("https://roseyco.com"),
   title: {
-    default: "Flowryse - Global Marketing Agency | SEO, Social Media & Paid Ads",
-    template: "%s | Flowryse",
+    default: "Rosey Co. - Global Social Media Marketing Agency | SEO, Social Media & Paid Ads",
+    template: "%s | Rosey Co.",
   },
   description:
-    "Flowryse is a global marketing agency specializing in SEO, social media management, and paid advertising. Get more leads and grow your business with data-driven strategies.",
+    "Rosey Co. is a global social media marketing agency specializing in SEO, social media management, and paid advertising. Get more leads and grow your business with data-driven strategies.",
   keywords: [
-    "marketing agency",
+    "social media marketing agency",
     "SEO services",
     "social media management",
     "paid advertising",
@@ -43,15 +43,15 @@ export const metadata: Metadata = {
     "digital marketing",
     "lead generation",
   ],
-  authors: [{ name: "Flowryse" }],
-  creator: "Flowryse",
-  publisher: "Flowryse",
+  authors: [{ name: "Rosey Co." }],
+  creator: "Rosey Co.",
+  publisher: "Rosey Co.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://flowryse.com",
-    siteName: "Flowryse",
-    title: "Flowryse - Global Marketing Agency",
+    url: "https://roseyco.com",
+    siteName: "Rosey Co.",
+    title: "Rosey Co. - Global Social Media Marketing Agency",
     description:
       "Get more leads and grow your business with our data-driven SEO, social media management, and paid advertising services.",
     images: [
@@ -59,17 +59,17 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Flowryse - Global Marketing Agency",
+        alt: "Rosey Co. - Global Social Media Marketing Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flowryse - Global Marketing Agency",
+    title: "Rosey Co. - Global Social Media Marketing Agency",
     description:
       "Get more leads and grow your business with our data-driven marketing services.",
     images: ["/og-image.jpg"],
-    creator: "@FlowryseAI",
+    creator: "@roseyco",
   },
   robots: {
     index: true,
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   appleWebApp: {
-    title: "Flowryse",
+    title: "Rosey Co.",
     statusBarStyle: "black-translucent",
   },
   manifest: "/manifest.json",

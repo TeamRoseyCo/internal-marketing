@@ -104,9 +104,9 @@ const features = [
 ];
 
 const platforms = [
-  { name: "Google Ads", description: "Search & Display", color: "hsl(180 70% 50%)" },
-  { name: "Meta Ads", description: "Facebook & Instagram", color: "hsl(276 60% 55%)" },
-  { name: "YouTube Ads", description: "Video Marketing", color: "hsl(320 80% 55%)" },
+  { name: "Google Ads", description: "Search & Display", color: "hsl(355 70% 45%)" },
+  { name: "Meta Ads", description: "Facebook & Instagram", color: "hsl(130 65% 45%)" },
+  { name: "YouTube Ads", description: "Video Marketing", color: "hsl(0 75% 50%)" },
 ];
 
 const stats = [
@@ -123,7 +123,7 @@ export default function PaidAdsPage() {
         <div className="container py-16 md:py-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
             <motion.span
-              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(320_80%_55%/0.1)] text-[hsl(320_80%_55%)] border border-[hsl(320_80%_55%/0.2)]"
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(0_75%_50%/0.1)] text-[hsl(0_75%_50%)] border border-[hsl(0_75%_50%/0.2)]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -163,10 +163,10 @@ export default function PaidAdsPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   See ROAS Results
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>
@@ -233,7 +233,7 @@ export default function PaidAdsPage() {
                 key={platform.name}
                 variants={staggerItem}
                 whileHover={{ scale: 1.05, y: -4 }}
-                className="service-card service-card-magenta p-6 text-center"
+                className="service-card service-card-rose p-6 text-center"
               >
                 <h3
                   className="font-semibold text-lg mb-1"
@@ -287,10 +287,10 @@ export default function PaidAdsPage() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="service-card service-card-magenta p-7 md:p-8 h-full"
+                  className="service-card service-card-rose p-7 md:p-8 h-full"
                 >
-                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(320_80%_55%/0.15)] border border-[hsl(320_80%_55%/0.3)] flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-[hsl(320_80%_55%)]" />
+                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(0_75%_50%/0.15)] border border-[hsl(0_75%_50%/0.3)] flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-[hsl(0_75%_50%)]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -325,7 +325,7 @@ export default function PaidAdsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(320_80%_55%)] via-[hsl(276_60%_55%)] to-[hsl(180_70%_50%)] hidden md:block" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(0_75%_50%)] via-[hsl(276_60%_55%)] to-[hsl(180_70%_50%)] hidden md:block" />
 
               <motion.div
                 className="space-y-8"
@@ -352,7 +352,7 @@ export default function PaidAdsPage() {
                         {/* Content */}
                         <motion.div
                           whileHover={{ scale: 1.02 }}
-                          className={`flex-1 service-card service-card-magenta p-6 md:p-8 ${
+                          className={`flex-1 service-card service-card-rose p-6 md:p-8 ${
                             isLeft ? "md:text-right" : ""
                           }`}
                         >
@@ -361,7 +361,7 @@ export default function PaidAdsPage() {
                               isLeft ? "md:flex-row-reverse" : ""
                             }`}
                           >
-                            <span className="text-sm font-mono text-[hsl(320_80%_55%)]">
+                            <span className="text-sm font-mono text-[hsl(0_75%_50%)]">
                               {step.number}
                             </span>
                             <h3 className="text-xl font-semibold">{step.title}</h3>
@@ -372,8 +372,8 @@ export default function PaidAdsPage() {
                         </motion.div>
 
                         {/* Icon */}
-                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(320_80%_55%/0.3)] items-center justify-center flex-shrink-0 z-10">
-                          <Icon className="w-6 h-6 text-[hsl(320_80%_55%)]" />
+                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(0_75%_50%/0.3)] items-center justify-center flex-shrink-0 z-10">
+                          <Icon className="w-6 h-6 text-[hsl(0_75%_50%)]" />
                         </div>
 
                         {/* Spacer for alignment */}
@@ -398,7 +398,7 @@ export default function PaidAdsPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
             >
-              <div className="service-card service-card-cyan p-8 md:p-10">
+              <div className="service-card service-card-crimson p-8 md:p-10">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(180_70%_50%/0.15)] border border-[hsl(180_70%_50%/0.3)] flex items-center justify-center">
                   <DollarSign className="w-8 h-8 text-[hsl(180_70%_50%)]" />
                 </div>
@@ -515,7 +515,7 @@ export default function PaidAdsPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="order-1 lg:order-2"
             >
-              <div className="service-card service-card-purple p-8 md:p-10">
+              <div className="service-card service-card-green p-8 md:p-10">
                 <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.15)] border border-[hsl(276_60%_55%/0.3)] flex items-center justify-center">
                   <Repeat className="w-8 h-8 text-[hsl(276_60%_55%)]" />
                 </div>
@@ -608,10 +608,10 @@ export default function PaidAdsPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   View Case Studies
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>

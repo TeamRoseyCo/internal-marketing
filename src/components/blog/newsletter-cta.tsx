@@ -13,13 +13,13 @@ export function NewsletterCTA() {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
           style={{
-            background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+            background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
           }}
         />
         <div
           className="absolute top-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-20"
           style={{
-            background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+            background: "radial-gradient(circle, hsl(130 65% 45% / 0.15), transparent 70%)",
           }}
         />
       </div>

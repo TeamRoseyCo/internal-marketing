@@ -116,7 +116,7 @@ export default function SEOServicesPage() {
         <div className="container py-16 md:py-24 lg:py-32">
           <div className="max-w-5xl mx-auto text-center">
             <motion.span
-              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(180_70%_50%/0.1)] text-[hsl(180_70%_50%)] border border-[hsl(180_70%_50%/0.2)]"
+              className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-[hsl(130_65%_45%/0.1)] text-[hsl(130_65%_45%)] border border-[hsl(130_65%_45%/0.2)]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -157,10 +157,10 @@ export default function SEOServicesPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   See SEO Results
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>
@@ -241,8 +241,8 @@ export default function SEOServicesPage() {
                   transition={{ type: "spring", stiffness: 300 }}
                   className="service-card service-card-cyan p-7 md:p-8 h-full"
                 >
-                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(180_70%_50%/0.15)] border border-[hsl(180_70%_50%/0.3)] flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-[hsl(180_70%_50%)]" />
+                  <div className="w-12 h-12 mb-5 rounded-xl bg-[hsl(130_65%_45%/0.15)] border border-[hsl(130_65%_45%/0.3)] flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-[hsl(130_65%_45%)]" />
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">
@@ -277,7 +277,7 @@ export default function SEOServicesPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(180_70%_50%)] via-[hsl(276_60%_55%)] to-[hsl(320_80%_55%)] hidden md:block" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(130_65%_45%)] via-[hsl(0_75%_50%)] to-[hsl(355_70%_45%)] hidden md:block" />
 
               <motion.div
                 className="space-y-8"
@@ -313,7 +313,7 @@ export default function SEOServicesPage() {
                               isLeft ? "md:flex-row-reverse" : ""
                             }`}
                           >
-                            <span className="text-sm font-mono text-[hsl(180_70%_50%)]">
+                            <span className="text-sm font-mono text-[hsl(130_65%_45%)]">
                               {step.number}
                             </span>
                             <h3 className="text-xl font-semibold">{step.title}</h3>
@@ -324,8 +324,8 @@ export default function SEOServicesPage() {
                         </motion.div>
 
                         {/* Icon */}
-                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(180_70%_50%/0.3)] items-center justify-center flex-shrink-0 z-10">
-                          <Icon className="w-6 h-6 text-[hsl(180_70%_50%)]" />
+                        <div className="hidden md:flex w-16 h-16 rounded-full bg-background border-2 border-[hsl(130_65%_45%/0.3)] items-center justify-center flex-shrink-0 z-10">
+                          <Icon className="w-6 h-6 text-[hsl(130_65%_45%)]" />
                         </div>
 
                         {/* Spacer for alignment */}
@@ -351,8 +351,8 @@ export default function SEOServicesPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="service-card service-card-purple p-8 md:p-10">
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(276_60%_55%/0.15)] border border-[hsl(276_60%_55%/0.3)] flex items-center justify-center">
-                  <MapPin className="w-8 h-8 text-[hsl(276_60%_55%)]" />
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-[hsl(0_75%_50%/0.15)] border border-[hsl(0_75%_50%/0.3)] flex items-center justify-center">
+                  <MapPin className="w-8 h-8 text-[hsl(0_75%_50%)]" />
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">
                   Local SEO Expertise
@@ -370,8 +370,8 @@ export default function SEOServicesPage() {
                     "Location-Based Content",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-3 text-base">
-                      <span className="w-6 h-6 rounded-full bg-[hsl(276_60%_55%/0.15)] flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-4 h-4 text-[hsl(276_60%_55%)]" />
+                      <span className="w-6 h-6 rounded-full bg-[hsl(0_75%_50%/0.15)] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-[hsl(0_75%_50%)]" />
                       </span>
                       <span className="text-foreground/90">{item}</span>
                     </li>
@@ -391,7 +391,7 @@ export default function SEOServicesPage() {
                   className="aspect-square rounded-3xl p-1"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(276 60% 55% / 0.2), hsl(180 70% 50% / 0.1))",
+                      "linear-gradient(135deg, hsl(0 75% 50% / 0.2), hsl(130 65% 45% / 0.1))",
                   }}
                 >
                   <div className="w-full h-full rounded-3xl bg-background/80 backdrop-blur-sm flex items-center justify-center border border-border/30">
@@ -399,9 +399,9 @@ export default function SEOServicesPage() {
                       <motion.div
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ duration: 3, repeat: Infinity }}
-                        className="w-28 h-28 mx-auto mb-6 rounded-full bg-[hsl(276_60%_55%/0.1)] border border-[hsl(276_60%_55%/0.3)] flex items-center justify-center"
+                        className="w-28 h-28 mx-auto mb-6 rounded-full bg-[hsl(0_75%_50%/0.1)] border border-[hsl(0_75%_50%/0.3)] flex items-center justify-center"
                       >
-                        <MapPin className="w-14 h-14 text-[hsl(276_60%_55%)]" />
+                        <MapPin className="w-14 h-14 text-[hsl(0_75%_50%)]" />
                       </motion.div>
                       <p className="text-6xl md:text-7xl font-bold gradient-text mb-4">
                         3-Pack
@@ -425,13 +425,13 @@ export default function SEOServicesPage() {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
             style={{
-              background: "radial-gradient(circle, hsl(180 70% 50% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(130 65% 45% / 0.15), transparent 70%)",
             }}
           />
           <div
             className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20"
             style={{
-              background: "radial-gradient(circle, hsl(276 60% 55% / 0.15), transparent 70%)",
+              background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
             }}
           />
         </div>
@@ -478,10 +478,10 @@ export default function SEOServicesPage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto btn-ghost-glass overflow-hidden rounded-xl">
                 <Link href="/results" className="flex items-center gap-2">
                   View Case Studies
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </Link>
               </Button>
             </motion.div>

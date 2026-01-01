@@ -54,10 +54,10 @@ export default async function BlogPostPage({
 
   // Map category to color
   const categoryColors: Record<string, string> = {
-    "Paid Advertising": "brand-magenta",
-    SEO: "brand-cyan",
-    "Social Media": "brand-purple",
-    "Website Design": "brand-cyan",
+    "Paid Advertising": "brand-rose",
+    SEO: "brand-green",
+    "Social Media": "brand-forest",
+    "Website Design": "brand-green",
     General: "primary",
   };
   const color = categoryColors[post.category] || "primary";

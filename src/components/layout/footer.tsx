@@ -32,25 +32,25 @@ const footerLinks = {
 const socialLinks = [
   {
     icon: Instagram,
-    href: "https://www.instagram.com/flowryseai",
+    href: "https://www.instagram.com/roseyco",
     label: "Instagram",
     color: "rgba(228, 64, 95, 0.7)",
   },
   {
     icon: Facebook,
-    href: "https://www.facebook.com/profile.php?id=61577395522877",
+    href: "https://www.facebook.com/roseyco",
     label: "Facebook",
     color: "rgba(24, 119, 242, 0.7)",
   },
   {
     icon: XIcon,
-    href: "https://x.com/FlowryseAI",
+    href: "https://x.com/roseyco",
     label: "X",
     color: "rgba(255, 255, 255, 0.7)",
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/company/104070285",
+    href: "https://www.linkedin.com/company/roseyco",
     label: "LinkedIn",
     color: "rgba(10, 102, 194, 0.7)",
   },
@@ -74,11 +74,12 @@ export function Footer() {
           >
             <Link href="/" className="inline-block mb-6 group">
               <Image
-                src="/FLOWRYSE LOGO FULL.png"
-                alt="Flowryse"
+                src="/roseyco-logo.png"
+                alt="Rosey Co."
                 width={280}
-                height={80}
+                height={160}
                 className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                unoptimized
               />
             </Link>
             <p className="text-base text-muted-foreground mb-8 max-w-xs leading-relaxed">
@@ -180,17 +181,17 @@ export function Footer() {
                 transition={{ duration: 0.2 }}
               >
                 <a
-                  href="mailto:team@flowryse.com"
+                  href="mailto:team@roseyco.com"
                   className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group"
                 >
                   <span className="relative">
-                    <span className="w-10 h-10 rounded-xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/40 group-hover:via-brand-purple/20 group-hover:to-primary/40 transition-all duration-500 flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/40 group-hover:via-brand-green/20 group-hover:to-primary/40 transition-all duration-500 flex items-center justify-center">
                       <span className="w-full h-full rounded-xl bg-card/80 backdrop-blur-sm flex items-center justify-center">
                         <Mail className="w-4 h-4 group-hover:text-primary transition-colors" />
                       </span>
                     </span>
                   </span>
-                  team@flowryse.com
+                  team@roseyco.com
                 </a>
               </motion.li>
               <motion.li
@@ -202,7 +203,7 @@ export function Footer() {
                   className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group"
                 >
                   <span className="relative">
-                    <span className="w-10 h-10 rounded-xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/40 group-hover:via-brand-purple/20 group-hover:to-primary/40 transition-all duration-500 flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/40 group-hover:via-brand-green/20 group-hover:to-primary/40 transition-all duration-500 flex items-center justify-center">
                       <span className="w-full h-full rounded-xl bg-card/80 backdrop-blur-sm flex items-center justify-center">
                         <Phone className="w-4 h-4 group-hover:text-primary transition-colors" />
                       </span>
@@ -224,10 +225,10 @@ export function Footer() {
           viewport={{ once: true }}
         >
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Flowryse. All rights reserved.
+            &copy; {new Date().getFullYear()} Rosey Co. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Global Marketing Agency
+            Global Social Media Marketing Agency
           </p>
         </motion.div>
       </div>

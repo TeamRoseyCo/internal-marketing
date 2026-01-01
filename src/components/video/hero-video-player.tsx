@@ -89,10 +89,10 @@ export function HeroVideoPlayer({
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 {/* Outer glow ring with gradient */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-brand-purple/30 to-brand-cyan/20 blur-2xl group-hover:from-primary/40 group-hover:via-brand-purple/40 group-hover:to-brand-cyan/30 transition-all duration-300" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-brand-green/30 to-brand-forest/20 blur-2xl group-hover:from-primary/40 group-hover:via-brand-green/40 group-hover:to-brand-forest/30 transition-all duration-300" />
 
                 {/* Play button with gradient background */}
-                <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-primary via-brand-purple to-primary/90 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:border-white/50 group-hover:shadow-[0_0_60px_rgba(255,56,180,0.6)] transition-all duration-300 shadow-2xl">
+                <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-primary via-brand-green to-primary/90 backdrop-blur-sm border-2 border-white/30 flex items-center justify-center group-hover:border-white/50 group-hover:shadow-[0_0_60px_rgba(220,60,70,0.6)] transition-all duration-300 shadow-2xl">
                   <motion.div
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}

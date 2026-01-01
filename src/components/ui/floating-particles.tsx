@@ -27,19 +27,19 @@ export function FloatingParticles({
 }: FloatingParticlesProps) {
   const prefersReducedMotion = useReducedMotion();
 
-  // Color palettes - refined for luxury aesthetic
+  // Color palettes - brand red/green palette
   const luxuryColors = [
-    "hsl(320 60% 65% / 0.35)", // Muted magenta
-    "hsl(276 45% 55% / 0.3)", // Muted purple
+    "hsl(0 70% 55% / 0.35)", // Soft rose red
+    "hsl(355 60% 45% / 0.3)", // Muted crimson
     "hsl(40 20% 75% / 0.25)", // Warm off-white
-    "hsl(320 35% 55% / 0.25)", // Soft rose
+    "hsl(130 55% 45% / 0.25)", // Soft green
   ];
 
   const brandColors = [
-    "hsl(320 70% 50% / 0.4)", // Refined magenta
-    "hsl(276 55% 45% / 0.35)", // Muted purple
-    "hsl(180 60% 40% / 0.3)", // Soft cyan
-    "hsl(240 40% 50% / 0.25)", // Soft blue
+    "hsl(0 75% 50% / 0.4)", // Rose red
+    "hsl(355 70% 45% / 0.35)", // Crimson
+    "hsl(130 65% 45% / 0.3)", // Leaf green
+    "hsl(140 50% 38% / 0.25)", // Forest green
   ];
 
   const particleColors = colors || (variant === "luxury" ? luxuryColors : brandColors);
