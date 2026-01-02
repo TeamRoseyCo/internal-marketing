@@ -1,13 +1,18 @@
-# Flowryse Style Guide
+# Rosey Co Style Guide
 
 ## Design System: Refined Dark Luxury
 
-### Brand Colors (HSL)
+### Brand Colors (HSL) - Red & Green Palette
 ```css
---brand-magenta: hsl(320 80% 55%)   /* Primary - sophisticated, not neon */
---brand-purple: hsl(276 60% 50%)    /* Secondary - muted depth */
---brand-cyan: hsl(180 70% 45%)      /* Accent - subtle */
---brand-blue: hsl(220 70% 60%)      /* Additional accent */
+/* Primary Colors */
+--brand-rose: hsl(0 75% 50%)         /* True red - primary */
+--brand-green: hsl(130 65% 45%)      /* Leaf green - primary */
+
+/* Secondary/Accent Colors */
+--brand-crimson: hsl(355 70% 45%)    /* Deep crimson */
+--brand-burgundy: hsl(350 65% 32%)   /* Dark burgundy */
+--brand-scarlet: hsl(8 80% 55%)      /* Warm scarlet highlight */
+--brand-forest: hsl(140 50% 30%)     /* Dark forest */
 ```
 
 ### Typography
@@ -20,10 +25,10 @@
 
 ### Gradient Text Classes
 ```jsx
-// Hero gradient (magenta → purple)
+// Hero gradient (rose red → crimson)
 <span className="gradient-text">Text</span>
 
-// Accent gradient (purple → cyan)
+// Accent gradient (crimson → green)
 <span className="gradient-accent-text">Text</span>
 ```
 
@@ -158,9 +163,9 @@ function AnimatedCounter({ value, suffix = "", duration = 2 }: {
 </Button>
 ```
 
-### Secondary Button (Outline)
+### Secondary Button (Outline/Ghost Glass)
 ```tsx
-<Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
+<Button asChild variant="outline" size="lg" className="btn-ghost-glass text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto">
   <Link href="/results" className="flex items-center gap-2">
     See Our Results
     <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
@@ -197,11 +202,37 @@ const services = [
     title: "SEO Services",
     description: "...",
     href: "/services/seo",
-    cardClass: "service-card service-card-cyan",
-    iconColor: "hsl(180 70% 50%)",
-    iconBg: "hsl(180 70% 50% / 0.15)",
+    cardClass: "service-card service-card-green",
+    iconColor: "hsl(130 65% 50%)",
+    iconBg: "hsl(130 65% 50% / 0.15)",
   },
-  // service-card-purple, service-card-magenta, service-card-blue
+  {
+    icon: Share2,
+    title: "Social Media",
+    description: "...",
+    href: "/services/social-media",
+    cardClass: "service-card service-card-forest",
+    iconColor: "hsl(140 50% 35%)",
+    iconBg: "hsl(140 50% 35% / 0.15)",
+  },
+  {
+    icon: Target,
+    title: "Paid Ads",
+    description: "...",
+    href: "/services/paid-ads",
+    cardClass: "service-card service-card-rose",
+    iconColor: "hsl(0 75% 55%)",
+    iconBg: "hsl(0 75% 55% / 0.15)",
+  },
+  {
+    icon: Palette,
+    title: "Website Design",
+    description: "...",
+    href: "/services/website-design",
+    cardClass: "service-card service-card-burgundy",
+    iconColor: "hsl(350 65% 38%)",
+    iconBg: "hsl(350 65% 38% / 0.15)",
+  },
 ];
 
 // Card component
@@ -302,7 +333,7 @@ const services = [
     <div
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
       style={{
-        background: "radial-gradient(circle, hsl(320 80% 55% / 0.15), transparent 70%)",
+        background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)",
       }}
     />
   </div>
@@ -382,19 +413,27 @@ className="flex justify-center lg:justify-start"
 | Class | Purpose |
 |-------|---------|
 | `btn-hero` | Primary CTA button with gradient + glow |
-| `gradient-text` | Magenta→Purple gradient text |
-| `gradient-accent-text` | Purple→Cyan gradient text |
+| `btn-ghost-glass` | Glassmorphism ghost button (green accent) |
+| `gradient-text` | Rose→Crimson gradient text |
+| `gradient-accent-text` | Crimson→Green gradient text |
 | `service-card` | Base service card style |
-| `service-card-cyan` | Cyan-accented service card |
-| `service-card-purple` | Purple-accented service card |
-| `service-card-magenta` | Magenta-accented service card |
-| `service-card-blue` | Blue-accented service card |
+| `service-card-green` | Green-accented service card (SEO) |
+| `service-card-forest` | Forest green-accented service card (Social Media) |
+| `service-card-rose` | Rose red-accented service card (Paid Ads) |
+| `service-card-burgundy` | Burgundy-accented service card (Website Design) |
 | `tech-card` | Tech/feature card with top highlight |
 | `glass-card` | Glassmorphism card |
 | `bg-page-gradient` | Page-wide ambient gradient background |
-| `shadow-glow` | Magenta glow shadow |
-| `shadow-brand` | Purple glow shadow |
-| `shadow-cyan` | Cyan glow shadow |
+| `shadow-glow` | Rose red glow shadow |
+| `shadow-brand` | Crimson glow shadow |
+| `shadow-green` | Green glow shadow |
+| `text-brand-rose` | Rose red text color |
+| `text-brand-green` | Green text color |
+| `text-brand-crimson` | Crimson text color |
+| `text-brand-burgundy` | Burgundy text color |
+| `text-brand-scarlet` | Scarlet text color |
+| `text-glow-rose` | Rose red text glow |
+| `text-glow-green` | Green text glow |
 
 ---
 
@@ -448,9 +487,10 @@ export default function PageName() {
 - [ ] Add animation variants (fadeInUp, staggerContainer, staggerItem)
 - [ ] Update section padding to `py-24 md:py-32`
 - [ ] Add motion wrappers with `whileInView` animations
-- [ ] Update buttons to use `btn-hero` and outline patterns
+- [ ] Update buttons to use `btn-hero` and `btn-ghost-glass` patterns
 - [ ] Add gradient text to key headline words
 - [ ] Ensure responsive text sizes and padding
 - [ ] Add badges above main headlines where appropriate
 - [ ] Use glassmorphism patterns for cards
 - [ ] Hide mobile-problematic elements with `hidden md:block`
+- [ ] Use red/green color palette only (no magenta/cyan/purple)

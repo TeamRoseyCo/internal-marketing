@@ -205,7 +205,7 @@ export default function HomePage() {
             </motion.p>
           </div>
 
-          {/* VSL Video - Full Width Focus */}
+{/* VSL Video - Hidden for now
           <motion.div
             className="relative max-w-5xl mx-auto mb-16"
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -214,6 +214,7 @@ export default function HomePage() {
           >
             <HeroVideoPlayer />
           </motion.div>
+          */}
 
           {/* CTA Buttons - Centered */}
           <motion.div

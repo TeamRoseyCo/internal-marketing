@@ -1,6 +1,6 @@
-# Flowryse Website - Handoff Document
+# Rosey Co Website - Handoff Document
 
-**For:** Jason
+**For:** Jeison
 **From:** Arnis
 **Date:** December 17, 2025
 **Last Updated:** December 18, 2025
@@ -10,7 +10,7 @@
 
 ## Project Overview
 
-**What is this?** Flowryse is a global social media marketing agency website. We're rebuilding the website from an acquired Australian marketing agency into a modern Next.js platform.
+**What is this?** Rosey Co is a global social media marketing agency website. We're rebuilding the website from an acquired Australian marketing agency into a modern Next.js platform.
 
 **Current State:** The design and layout are complete. Blog system is fully functional with 19 posts migrated. Core functionality works. Now we need to finish remaining content migration, integrations, and polish.
 
@@ -189,7 +189,7 @@ Streamable links (for reference/preview):
 
 **Multi-Location Strategy:**
 
-Flowryse operates in multiple locations:
+Rosey Co operates in multiple locations:
 - Australia
 - United Kingdom
 - Ireland
@@ -393,9 +393,9 @@ npm run lint         # Run linter
 **Theme:** Dark luxury - sophisticated, premium, understated elegance
 
 **Brand Colors (from globals.css):**
-- Magenta: `hsl(320 80% 55%)` - Primary/CTA
-- Purple: `hsl(276 60% 50%)` - Secondary accent
-- Cyan: `hsl(180 70% 45%)` - Tertiary accent
+- Rose Red: `hsl(0 85% 55%)` - Primary/CTA
+- Crimson: `hsl(355 80% 45%)` - Secondary accent
+- Leaf Green: `hsl(130 75% 48%)` - Tertiary accent
 
 **Typography:**
 - Headlines: Fraunces (serif)
