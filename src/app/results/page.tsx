@@ -12,6 +12,8 @@ import {
   Home,
   Building2,
   ChevronDown,
+  Play,
+  Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
@@ -218,6 +220,45 @@ export default function ResultsPage() {
         </motion.div>
       </section>
 
+      {/* Trusted By / Client Logos Section */}
+      <section className="py-16 md:py-20 border-y border-border/30">
+        <div className="container">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-10">
+              Trusted by businesses worldwide
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
+              {/* Placeholder logos - replace with actual client logos */}
+              {[
+                "TechStart",
+                "GrowthCo",
+                "ScaleUp",
+                "Innovate",
+                "Elevate",
+                "Nexus",
+              ].map((company, index) => (
+                <motion.div
+                  key={company}
+                  className="text-2xl md:text-3xl font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors cursor-default"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  {company}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Overall Stats Section */}
       <section className="py-20 md:py-28">
         <div className="container">
@@ -407,6 +448,92 @@ export default function ResultsPage() {
         </div>
       </section>
 
+      {/* Video Portfolio Section */}
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        {/* Background accent */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full opacity-20"
+            style={{
+              background: "radial-gradient(circle, hsl(130 65% 40% / 0.15), transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="container relative z-10">
+          <motion.div
+            className="text-center mb-16 md:mb-20"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
+              Video <span className="gradient-accent-text">Portfolio</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+              See examples of our video production and marketing content.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {/* Video placeholders - replace with actual video embeds */}
+            {[
+              { title: "Brand Story Video", category: "Brand Content" },
+              { title: "Product Launch Ad", category: "Paid Advertising" },
+              { title: "Social Media Reel", category: "Social Content" },
+              { title: "Client Testimonial", category: "Testimonials" },
+              { title: "Explainer Video", category: "Educational" },
+              { title: "Event Highlight", category: "Event Coverage" },
+            ].map((video, index) => (
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
+                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden relative">
+                    {/* Video thumbnail placeholder */}
+                    <div className="aspect-video bg-gradient-to-br from-card to-card/50 flex items-center justify-center relative cursor-pointer group/play">
+                      {/* Play button */}
+                      <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center group-hover/play:bg-primary/30 group-hover/play:scale-110 transition-all duration-300">
+                        <Play className="w-6 h-6 text-primary ml-1" />
+                      </div>
+                      {/* Overlay on hover */}
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/play:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    {/* Video info */}
+                    <div className="p-5">
+                      <span className="text-xs uppercase tracking-wider text-primary font-medium">
+                        {video.category}
+                      </span>
+                      <h3 className="text-lg font-semibold mt-1">{video.title}</h3>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p
+            className="text-center text-muted-foreground mt-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+          >
+            Want to see more? <Link href="/contact" className="text-primary hover:underline">Get in touch</Link> for our full portfolio.
+          </motion.p>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="py-24 md:py-32">
         <div className="container">
@@ -476,6 +603,81 @@ export default function ResultsPage() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="py-24 md:py-32 border-t border-border/30">
+        <div className="container">
+          <motion.div
+            className="text-center mb-12 md:mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <Instagram className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight">
+                Follow Us on <span className="gradient-accent-text">Instagram</span>
+              </h2>
+            </div>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Get daily marketing tips, behind-the-scenes content, and client success stories.
+            </p>
+          </motion.div>
+
+          {/* Instagram Feed Placeholder - Replace with Elfsight/Behold embed */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+              <motion.div
+                key={index}
+                variants={staggerItem}
+                transition={{ duration: 0.4 }}
+              >
+                <a
+                  href="https://www.instagram.com/roseyco.official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block aspect-square rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/30 hover:border-primary/40 transition-all duration-300 overflow-hidden group relative"
+                >
+                  {/* Placeholder content */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Instagram className="w-8 h-8 text-muted-foreground/30 group-hover:text-primary/50 transition-colors" />
+                  </div>
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </a>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="text-center mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <Button asChild variant="outline" size="lg" className="btn-ghost-glass">
+              <a
+                href="https://www.instagram.com/roseyco.official"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Instagram className="w-5 h-5" />
+                @roseyco.official
+              </a>
+            </Button>
           </motion.div>
         </div>
       </section>

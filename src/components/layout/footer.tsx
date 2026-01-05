@@ -32,7 +32,7 @@ const footerLinks = {
 const socialLinks = [
   {
     icon: Instagram,
-    href: "https://www.instagram.com/roseyco",
+    href: "https://www.instagram.com/roseyco.official",
     label: "Instagram",
     color: "rgba(228, 64, 95, 0.7)",
   },

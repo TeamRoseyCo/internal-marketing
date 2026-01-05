@@ -117,7 +117,7 @@
 2. Featured case studies (2-3 highlighted)
 3. Client results grid (clean cards with metrics)
 4. Video portfolio section (VSLs, video editing work)
-5. Instagram feed embed (@flowryseai)
+5. Instagram feed embed (@roseyco.official)
 6. Client logos / trust bar
 7. CTA: "Get Results Like These"
 
@@ -128,7 +128,7 @@
 - **Behold** - Clean Instagram feed embed
 - **Custom API** - More control, more work
 
-**Instagram:** https://www.instagram.com/flowryseai (@flowryseai)
+**Instagram:** https://www.instagram.com/roseyco.official (@roseyco.official)
 
 ---
 
@@ -430,7 +430,7 @@ DM Arnis directly. For specific areas:
   - [x] Build verified and passing
 - [ ] Migrate free guides and set up download flow
 - [ ] Build out Results/Portfolio page with case studies
-- [ ] Add Instagram feed embed (@flowryseai)
+- [ ] Add Instagram feed embed (@roseyco.official)
 - [ ] Set up Google Reviews integration
 - [ ] Connect Resend.com for email notifications
 - [ ] Set up Microsoft Clarity
