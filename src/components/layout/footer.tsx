@@ -3,16 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Linkedin, Mail, Phone } from "lucide-react";
-
-// Custom X (Twitter) icon component
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
+import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 
 const footerLinks = {
   services: [
@@ -37,20 +28,8 @@ const socialLinks = [
     color: "rgba(228, 64, 95, 0.7)",
   },
   {
-    icon: Facebook,
-    href: "https://www.facebook.com/roseyco",
-    label: "Facebook",
-    color: "rgba(24, 119, 242, 0.7)",
-  },
-  {
-    icon: XIcon,
-    href: "https://x.com/roseyco",
-    label: "X",
-    color: "rgba(255, 255, 255, 0.7)",
-  },
-  {
     icon: Linkedin,
-    href: "https://www.linkedin.com/company/roseyco",
+    href: "https://www.linkedin.com/company/rosey-co/",
     label: "LinkedIn",
     color: "rgba(10, 102, 194, 0.7)",
   },
