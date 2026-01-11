@@ -5,21 +5,49 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Tag } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
+import type { LocaleCode } from "@/lib/locales";
 
 interface BlogPostCardProps {
   post: BlogPostMeta;
   color: string;
   index: number;
+  locale?: LocaleCode;
+  readMoreText?: string;
+  minReadText?: string;
 }
 
-export function BlogPostCard({ post, color, index }: BlogPostCardProps) {
+export function BlogPostCard({
+  post,
+  color,
+  index,
+  locale,
+  readMoreText = "Read More",
+  minReadText = "min read",
+}: BlogPostCardProps) {
+  // Build the blog post URL based on locale
+  const blogUrl = locale ? `/${locale}/blog/${post.slug}` : `/blog/${post.slug}`;
+
+  // Get the date locale string
+  const getDateLocale = (loc?: LocaleCode): string => {
+    if (!loc) return "en-US";
+    const localeMap: Record<LocaleCode, string> = {
+      us: "en-US",
+      au: "en-AU",
+      uk: "en-GB",
+      ie: "en-IE",
+      nl: "nl-NL",
+      dk: "da-DK",
+    };
+    return localeMap[loc] || "en-US";
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
     >
-      <Link href={`/blog/${post.slug}`} className="block group h-full">
+      <Link href={blogUrl} className="block group h-full">
         {/* Glassmorphism card wrapper with gradient border */}
         <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/30 group-hover:via-border/30 group-hover:to-primary/30 transition-all duration-500 h-full">
           <motion.article
@@ -79,7 +107,7 @@ export function BlogPostCard({ post, color, index }: BlogPostCardProps) {
               <div className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border/30">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  {new Date(post.date).toLocaleDateString("en-US", {
+                  {new Date(post.date).toLocaleDateString(getDateLocale(locale), {
                     month: "short",
                     day: "numeric",
                     year: "numeric",

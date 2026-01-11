@@ -6,7 +6,10 @@
       "Bash(npm run build:*)",
       "Bash(grep:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(git push)"
     ]
   }
 }
