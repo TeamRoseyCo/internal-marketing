@@ -67,17 +67,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
 
     // Images
-    img: ({ src, alt }) => (
-      <span className="block my-8">
-        <Image
-          src={src || ""}
-          alt={alt || ""}
-          width={800}
-          height={450}
-          className="rounded-lg w-full"
-        />
-      </span>
-    ),
+    img: ({ src, alt }) => {
+      // Generate fallback alt from filename if not provided
+      const fallbackAlt = src
+        ? src.split("/").pop()?.replace(/[-_]/g, " ").replace(/\.[^.]+$/, "") || "Blog image"
+        : "Blog image";
+      return (
+        <span className="block my-8">
+          <Image
+            src={src || ""}
+            alt={alt || fallbackAlt}
+            width={800}
+            height={450}
+            className="rounded-lg w-full"
+          />
+        </span>
+      );
+    },
 
     // Code blocks
     pre: ({ children }) => (

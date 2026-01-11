@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { RelatedArticles, seoArticles } from "@/components/blog/related-articles";
 
 // Animation variants
 const fadeInUp = {
@@ -417,6 +418,15 @@ export default function SEOServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Articles Section */}
+      <RelatedArticles
+        title="SEO Insights"
+        subtitle="Stay ahead with our latest SEO strategies and tips"
+        articles={seoArticles}
+        viewAllHref="/blog?category=seo"
+        viewAllText="View All SEO Articles"
+      />
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">

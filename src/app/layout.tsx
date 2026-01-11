@@ -3,12 +3,17 @@ import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 import { LenisProvider } from "@/components/providers/lenis-provider";
+import {
+  OrganizationStructuredData,
+  WebSiteStructuredData,
+} from "@/components/seo/structured-data";
 
 // DM Sans for body text - clean, modern, readable
 const dmSans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 // Fraunces for headlines - sophisticated serif display font
@@ -16,12 +21,14 @@ const fraunces = Fraunces({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 // Keep Geist Mono for code blocks
 const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -63,14 +70,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Rosey Co. - Global Social Media Marketing Agency",
-    description:
-      "Get more leads and grow your business with our data-driven marketing services.",
-    images: ["/og-image.jpg"],
-    creator: "@roseyco",
-  },
   robots: {
     index: true,
     follow: true,
@@ -103,6 +102,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <OrganizationStructuredData />
+        <WebSiteStructuredData />
+      </head>
       <body
         className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >

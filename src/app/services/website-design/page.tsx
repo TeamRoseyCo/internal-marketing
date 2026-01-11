@@ -13,6 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RelatedArticles, websiteDesignArticles } from "@/components/blog/related-articles";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 // Animation variants
@@ -549,6 +550,15 @@ export default function WebsiteDesignPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Articles Section */}
+      <RelatedArticles
+        title="Web Design & Conversion Insights"
+        subtitle="Build websites that convert with our latest strategies"
+        articles={websiteDesignArticles}
+        viewAllHref="/blog"
+        viewAllText="View All Articles"
+      />
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { RelatedArticles, paidAdsArticles } from "@/components/blog/related-articles";
 
 // Animation variants
 const fadeInUp = {
@@ -547,6 +548,15 @@ export default function PaidAdsPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Articles Section */}
+      <RelatedArticles
+        title="Paid Ads Insights"
+        subtitle="Maximize your ad spend with our latest strategies"
+        articles={paidAdsArticles}
+        viewAllHref="/blog?category=paid-ads"
+        viewAllText="View All Paid Ads Articles"
+      />
 
       {/* CTA Section */}
       <section className="py-24 md:py-32 relative overflow-hidden">
