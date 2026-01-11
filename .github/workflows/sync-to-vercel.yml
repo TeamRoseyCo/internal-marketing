@@ -1,0 +1,22 @@
+name: Sync to Vercel Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout org repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full history for proper sync
+
+      - name: Push to personal Vercel repo
+        env:
+          VERCEL_REPO_TOKEN: ${{ secrets.VERCEL_REPO_TOKEN }}
+        run: |
+          git remote add vercel https://x-access-token:${VERCEL_REPO_TOKEN}@github.com/arnispiekus/flowryse-vercel.git
+          git push vercel main --force
