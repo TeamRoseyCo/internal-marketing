@@ -1229,6 +1229,23 @@ export interface ResultsPageTranslations {
       realEstate: string;
       consulting: string;
     };
+    details: Array<{
+      challengeText: string;
+      solutionText: string;
+    }>;
+    metrics: {
+      roas: string;
+      revenue: string;
+      cpa: string;
+      organicTraffic: string;
+      leads: string;
+      domainAuthority: string;
+      followers: string;
+      engagement: string;
+      leadsPerMonth: string;
+      conversionRate: string;
+      pageSpeed: string;
+    };
   };
   videoPortfolio: {
     title: string;
@@ -1287,6 +1304,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Our Solution',
       results: 'The Results',
       industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Real Estate Agency', consulting: 'Professional Services' },
+      details: [
+        {
+          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
+          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimized landing pages.',
+        },
+        {
+          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
+          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimizations.',
+        },
+        {
+          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
+          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+        },
+        {
+          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
+          solutionText: 'Complete website redesign with conversion optimization, SEO, and analytics integration.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Revenue',
+        cpa: 'CPA',
+        organicTraffic: 'Organic Traffic',
+        leads: 'Leads',
+        domainAuthority: 'Domain Authority',
+        followers: 'Followers',
+        engagement: 'Engagement',
+        leadsPerMonth: 'Leads/Month',
+        conversionRate: 'Conversion Rate',
+        pageSpeed: 'Page Speed',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1336,6 +1384,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Onze Oplossing',
       results: 'De Resultaten',
       industries: { ecommerce: 'E-Commerce Merk', saas: 'B2B SaaS Bedrijf', realEstate: 'Makelaarskantoor', consulting: 'Professionele Diensten' },
+      details: [
+        {
+          challengeText: 'Moeite met het winstgevend opschalen van betaalde advertenties met stijgende CPA\'s en stagnerende ROAS.',
+          solutionText: 'Herstructurering van Meta Ads-account, implementatie van geavanceerde retargeting en optimalisatie van landingspagina\'s.',
+        },
+        {
+          challengeText: 'Lage organische zichtbaarheid en volledig afhankelijk van betaalde kanalen voor leadgeneratie.',
+          solutionText: 'Uitgebreide SEO-strategie gericht op high-intent zoekwoorden en technische optimalisaties.',
+        },
+        {
+          challengeText: 'Minimale social media-aanwezigheid en inconsistente leadstroom vanuit digitale kanalen.',
+          solutionText: 'Volledig social media management met contentstrategie, community building en betaalde sociale advertenties.',
+        },
+        {
+          challengeText: 'Verouderde website met slechte conversieratio\'s en geen duidelijke lead capture-strategie.',
+          solutionText: 'Complete website redesign met conversie-optimalisatie, SEO en analytics-integratie.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Omzet',
+        cpa: 'CPA',
+        organicTraffic: 'Organisch Verkeer',
+        leads: 'Leads',
+        domainAuthority: 'Domeinautoriteit',
+        followers: 'Volgers',
+        engagement: 'Betrokkenheid',
+        leadsPerMonth: 'Leads/Maand',
+        conversionRate: 'Conversieratio',
+        pageSpeed: 'Paginasnelheid',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1385,6 +1464,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Vores Løsning',
       results: 'Resultaterne',
       industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Virksomhed', realEstate: 'Ejendomsmægler', consulting: 'Professionelle Tjenester' },
+      details: [
+        {
+          challengeText: 'Svært at skalere betalte annoncer profitabelt med stigende CPA\'er og stagnerende ROAS.',
+          solutionText: 'Omstrukturering af Meta Ads-konto, implementering af avanceret retargeting og optimering af landingssider.',
+        },
+        {
+          challengeText: 'Lav organisk synlighed og fuldstændig afhængig af betalte kanaler til leadgenerering.',
+          solutionText: 'Omfattende SEO-strategi rettet mod søgeord med høj intention og tekniske optimeringer.',
+        },
+        {
+          challengeText: 'Minimal tilstedeværelse på sociale medier og inkonsistent leadflow fra digitale kanaler.',
+          solutionText: 'Fuld social media management med indholdsstrategi, community building og betalte sociale annoncer.',
+        },
+        {
+          challengeText: 'Forældet hjemmeside med dårlige konverteringsrater og ingen klar lead capture-strategi.',
+          solutionText: 'Komplet hjemmeside redesign med konverteringsoptimering, SEO og analytics-integration.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Omsætning',
+        cpa: 'CPA',
+        organicTraffic: 'Organisk Trafik',
+        leads: 'Leads',
+        domainAuthority: 'Domæneautoritet',
+        followers: 'Følgere',
+        engagement: 'Engagement',
+        leadsPerMonth: 'Leads/Måned',
+        conversionRate: 'Konverteringsrate',
+        pageSpeed: 'Sidehastighed',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1435,6 +1545,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Our Solution',
       results: 'The Results',
       industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Real Estate Agency', consulting: 'Professional Services' },
+      details: [
+        {
+          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
+          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimized landing pages.',
+        },
+        {
+          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
+          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimizations.',
+        },
+        {
+          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
+          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+        },
+        {
+          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
+          solutionText: 'Complete website redesign with conversion optimization, SEO, and analytics integration.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Revenue',
+        cpa: 'CPA',
+        organicTraffic: 'Organic Traffic',
+        leads: 'Leads',
+        domainAuthority: 'Domain Authority',
+        followers: 'Followers',
+        engagement: 'Engagement',
+        leadsPerMonth: 'Leads/Month',
+        conversionRate: 'Conversion Rate',
+        pageSpeed: 'Page Speed',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1485,6 +1626,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Our Solution',
       results: 'The Results',
       industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Estate Agency', consulting: 'Professional Services' },
+      details: [
+        {
+          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
+          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimised landing pages.',
+        },
+        {
+          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
+          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimisations.',
+        },
+        {
+          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
+          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+        },
+        {
+          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
+          solutionText: 'Complete website redesign with conversion optimisation, SEO, and analytics integration.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Revenue',
+        cpa: 'CPA',
+        organicTraffic: 'Organic Traffic',
+        leads: 'Leads',
+        domainAuthority: 'Domain Authority',
+        followers: 'Followers',
+        engagement: 'Engagement',
+        leadsPerMonth: 'Leads/Month',
+        conversionRate: 'Conversion Rate',
+        pageSpeed: 'Page Speed',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1535,6 +1707,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       solution: 'Our Solution',
       results: 'The Results',
       industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Estate Agency', consulting: 'Professional Services' },
+      details: [
+        {
+          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
+          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimised landing pages.',
+        },
+        {
+          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
+          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimisations.',
+        },
+        {
+          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
+          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+        },
+        {
+          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
+          solutionText: 'Complete website redesign with conversion optimisation, SEO, and analytics integration.',
+        },
+      ],
+      metrics: {
+        roas: 'ROAS',
+        revenue: 'Revenue',
+        cpa: 'CPA',
+        organicTraffic: 'Organic Traffic',
+        leads: 'Leads',
+        domainAuthority: 'Domain Authority',
+        followers: 'Followers',
+        engagement: 'Engagement',
+        leadsPerMonth: 'Leads/Month',
+        conversionRate: 'Conversion Rate',
+        pageSpeed: 'Page Speed',
+      },
     },
     videoPortfolio: {
       title: 'Video',
@@ -1698,6 +1901,9 @@ export interface BlogPageTranslations {
     socialMedia: string;
     websiteDesign: string;
     general: string;
+    aiMarketing: string;
+    caseStudies: string;
+    marketingStrategy: string;
   };
   posts: {
     readMore: string;
@@ -1742,6 +1948,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Website Design',
       general: 'General',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Case Studies',
+      marketingStrategy: 'Marketing Strategy',
     },
     posts: {
       readMore: 'Read More',
@@ -1784,6 +1993,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Website Ontwerp',
       general: 'Algemeen',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Casestudies',
+      marketingStrategy: 'Marketing Strategie',
     },
     posts: {
       readMore: 'Lees Meer',
@@ -1826,6 +2038,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Webdesign',
       general: 'Generelt',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Casestudier',
+      marketingStrategy: 'Marketingstrategi',
     },
     posts: {
       readMore: 'Læs Mere',
@@ -1868,6 +2083,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Website Design',
       general: 'General',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Case Studies',
+      marketingStrategy: 'Marketing Strategy',
     },
     posts: {
       readMore: 'Read More',
@@ -1910,6 +2128,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Website Design',
       general: 'General',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Case Studies',
+      marketingStrategy: 'Marketing Strategy',
     },
     posts: {
       readMore: 'Read More',
@@ -1952,6 +2173,9 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       socialMedia: 'Social Media',
       websiteDesign: 'Website Design',
       general: 'General',
+      aiMarketing: 'AI Marketing',
+      caseStudies: 'Case Studies',
+      marketingStrategy: 'Marketing Strategy',
     },
     posts: {
       readMore: 'Read More',

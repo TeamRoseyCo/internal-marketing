@@ -32,15 +32,23 @@ export async function generateMetadata({
 
 export default async function LocaleBlogPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ category?: string }>;
 }) {
   const { locale } = await params;
+  const { category } = await searchParams;
   const localeCode = isValidLocale(locale) ? locale : "us";
   const t = getBlogPageTranslations(localeCode);
 
-  const posts = getAllPosts();
-  const categories = getCategories();
+  const allPosts = getAllPosts(localeCode);
+  const categories = getCategories(localeCode);
+
+  // Filter posts by category if specified
+  const posts = category
+    ? allPosts.filter((post) => post.category === category)
+    : allPosts;
 
   // Map category to color
   const categoryColors: Record<string, string> = {
@@ -48,6 +56,9 @@ export default async function LocaleBlogPage({
     SEO: "brand-green",
     "Social Media": "brand-forest",
     "Website Design": "brand-green",
+    "AI Marketing": "brand-green",
+    "Case Studies": "brand-forest",
+    "Marketing Strategy": "brand-rose",
     General: "primary",
   };
 

@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { isValidLocale } from "@/lib/locales";
 
-const footerLinks = {
+const baseFooterLinks = {
   services: [
     { href: "/services/seo", label: "SEO Services" },
     { href: "/services/social-media", label: "Social Media Management" },
@@ -36,6 +38,23 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // Detect current locale from pathname
+  const currentLocale = pathname.split('/')[1];
+  const locale = isValidLocale(currentLocale) ? currentLocale : null;
+
+  // Build locale-aware footer links
+  const footerLinks = {
+    services: baseFooterLinks.services.map(link => ({
+      ...link,
+      href: locale ? `/${locale}${link.href}` : link.href
+    })),
+    company: baseFooterLinks.company.map(link => ({
+      ...link,
+      href: locale ? `/${locale}${link.href}` : link.href
+    }))
+  };
   return (
     <footer className="relative border-t border-border/30">
       {/* Subtle gradient at top of footer */}
@@ -51,7 +70,7 @@ export function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Link href="/" className="inline-block mb-6 group">
+            <Link href={locale ? `/${locale}` : "/"} className="inline-block mb-6 group">
               <Image
                 src="/roseyco-logo.png"
                 alt="Rosey Co."

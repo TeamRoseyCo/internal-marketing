@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { LocaleCode } from "./locales";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -30,18 +31,43 @@ export interface BlogPostMeta {
   tags?: string[];
 }
 
-export function getAllPosts(): BlogPostMeta[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
+// Helper function to format reading time based on locale
+function formatReadTime(minutes: number, locale: LocaleCode): string {
+  const readTimeText: Record<LocaleCode, string> = {
+    us: "min read",
+    au: "min read",
+    uk: "min read",
+    ie: "min read",
+    nl: "min leestijd",
+    dk: "min læsning",
+  };
+
+  return `${minutes} ${readTimeText[locale]}`;
+}
+
+export function getAllPosts(locale: LocaleCode = "us"): BlogPostMeta[] {
+  const localeBlogDir = path.join(BLOG_DIR, locale);
+
+  if (!fs.existsSync(localeBlogDir)) {
+    // Fallback to 'us' if locale folder doesn't exist
+    const fallbackDir = path.join(BLOG_DIR, "us");
+    if (!fs.existsSync(fallbackDir)) {
+      return [];
+    }
+    return getAllPosts("us");
   }
 
-  const files = fs.readdirSync(BLOG_DIR);
+  const files = fs.readdirSync(localeBlogDir);
   const posts = files
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
-      const filePath = path.join(BLOG_DIR, file);
+      const filePath = path.join(localeBlogDir, file);
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(fileContent);
+
+      // Calculate reading time in minutes
+      const readTimeResult = readingTime(content);
+      const minutes = Math.ceil(readTimeResult.minutes);
 
       return {
         slug: file.replace(".mdx", ""),
@@ -49,7 +75,7 @@ export function getAllPosts(): BlogPostMeta[] {
         excerpt: data.excerpt || "",
         category: data.category || "General",
         date: data.date || new Date().toISOString().split("T")[0],
-        readTime: readingTime(content).text,
+        readTime: formatReadTime(minutes, locale),
         author: data.author || "Rosey Co. Team",
         image: data.image,
         tags: data.tags || [],
@@ -60,15 +86,27 @@ export function getAllPosts(): BlogPostMeta[] {
   return posts;
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
-  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+export function getPostBySlug(slug: string, locale: LocaleCode = "us"): BlogPost | null {
+  const localeBlogDir = path.join(BLOG_DIR, locale);
+  const filePath = path.join(localeBlogDir, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
+    // Fallback logic: English locales (au, uk, ie) fall back to 'us'
+    if (["au", "uk", "ie"].includes(locale)) {
+      const fallbackPath = path.join(BLOG_DIR, "us", `${slug}.mdx`);
+      if (fs.existsSync(fallbackPath)) {
+        return getPostBySlug(slug, "us");
+      }
+    }
     return null;
   }
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
+
+  // Calculate reading time in minutes
+  const readTimeResult = readingTime(content);
+  const minutes = Math.ceil(readTimeResult.minutes);
 
   return {
     slug,
@@ -76,7 +114,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     excerpt: data.excerpt || "",
     category: data.category || "General",
     date: data.date || new Date().toISOString().split("T")[0],
-    readTime: readingTime(content).text,
+    readTime: formatReadTime(minutes, locale),
     author: data.author || "Rosey Co. Team",
     image: data.image,
     tags: data.tags || [],
@@ -84,19 +122,26 @@ export function getPostBySlug(slug: string): BlogPost | null {
   };
 }
 
-export function getPostSlugs(): string[] {
-  if (!fs.existsSync(BLOG_DIR)) {
-    return [];
+export function getPostSlugs(locale: LocaleCode = "us"): string[] {
+  const localeBlogDir = path.join(BLOG_DIR, locale);
+
+  if (!fs.existsSync(localeBlogDir)) {
+    // Fallback to 'us' if locale folder doesn't exist
+    const fallbackDir = path.join(BLOG_DIR, "us");
+    if (!fs.existsSync(fallbackDir)) {
+      return [];
+    }
+    return getPostSlugs("us");
   }
 
   return fs
-    .readdirSync(BLOG_DIR)
+    .readdirSync(localeBlogDir)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(".mdx", ""));
 }
 
-export function getCategories(): { name: string; count: number }[] {
-  const posts = getAllPosts();
+export function getCategories(locale: LocaleCode = "us"): { name: string; count: number }[] {
+  const posts = getAllPosts(locale);
   const categoryMap = new Map<string, number>();
 
   posts.forEach((post) => {

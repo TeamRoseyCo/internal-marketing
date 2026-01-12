@@ -11,14 +11,13 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/components/mdx/mdx-components";
 import { localeList, LocaleCode, isValidLocale } from "@/lib/locales";
 import { getBlogPageTranslations } from "@/lib/page-translations";
-import { TranslateButton } from "@/components/blog/translate-button";
 import { ArticleStructuredData } from "@/components/seo/structured-data";
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
   const params: { locale: string; slug: string }[] = [];
 
   for (const locale of localeList) {
+    const slugs = getPostSlugs(locale);
     for (const slug of slugs) {
       params.push({ locale, slug });
     }
@@ -33,7 +32,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  const post = getPostBySlug(slug);
+  const localeCode = isValidLocale(locale) ? locale : "us";
+  const post = getPostBySlug(slug, localeCode);
 
   if (!post) {
     return {
@@ -63,7 +63,7 @@ export default async function LocaleBlogPostPage({
   const localeCode = isValidLocale(locale) ? locale : "us";
   const t = getBlogPageTranslations(localeCode);
 
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, localeCode);
 
   if (!post) {
     notFound();
@@ -155,13 +155,6 @@ export default async function LocaleBlogPostPage({
                 {post.readTime}
               </span>
             </div>
-
-            {/* Translate Button for NL/DK */}
-            {(localeCode === "nl" || localeCode === "dk") && (
-              <div className="mt-8">
-                <TranslateButton locale={localeCode} slug={slug} />
-              </div>
-            )}
           </div>
         </div>
 

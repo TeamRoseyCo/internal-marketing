@@ -14,8 +14,8 @@ export const metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllPosts();
-  const categories = getCategories();
+  const posts = getAllPosts("us");
+  const categories = getCategories("us");
 
   // Map category to color
   const categoryColors: Record<string, string> = {

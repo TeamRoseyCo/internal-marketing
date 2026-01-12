@@ -7,7 +7,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/components/mdx/mdx-components";
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
+  const slugs = getPostSlugs("us");
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, "us");
 
   if (!post) {
     return {
@@ -44,7 +44,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, "us");
 
   if (!post) {
     notFound();

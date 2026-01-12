@@ -3,11 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { isValidLocale, type LocaleCode } from "@/lib/locales";
 
-const navItems = [
+const baseNavItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/results", label: "Results" },
@@ -18,6 +20,17 @@ const navItems = [
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Detect current locale from pathname
+  const currentLocale = pathname.split('/')[1];
+  const locale = isValidLocale(currentLocale) ? currentLocale : null;
+
+  // Build locale-aware navigation items
+  const navItems = baseNavItems.map(item => ({
+    ...item,
+    href: locale ? `/${locale}${item.href}` : item.href
+  }));
 
   // Add subtle background on scroll for readability
   useEffect(() => {
@@ -50,7 +63,7 @@ export function Header() {
       />
       <div className="container flex h-20 md:h-24 items-center justify-between relative" style={{ zIndex: 9999 }}>
         {/* Logo - Dominant Presence */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href={locale ? `/${locale}` : "/"} className="flex items-center gap-2 group">
           <Image
             src="/roseyco-logo.png"
             alt="Rosey Co. - Global Social Media Marketing Agency"
@@ -91,7 +104,7 @@ export function Header() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <Button asChild size="lg" className="btn-hero hidden sm:inline-flex text-base px-6">
-              <Link href="/contact">Get More Leads</Link>
+              <Link href={locale ? `/${locale}/contact` : "/contact"}>Get More Leads</Link>
             </Button>
           </motion.div>
 
@@ -166,7 +179,7 @@ function MobileMenu({
           className="mt-8"
         >
           <Button asChild size="lg" className="btn-hero text-base px-8 py-4">
-            <Link href="/contact" onClick={onClose}>
+            <Link href={navItems.find(item => item.label === "Contact")?.href || "/contact"} onClick={onClose}>
               Get More Leads
             </Link>
           </Button>
