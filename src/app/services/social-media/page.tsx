@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Instagram,
-  Facebook,
   Linkedin,
   MessageCircle,
   Camera,
@@ -106,9 +105,8 @@ const features = [
 ];
 
 const platforms = [
-  { icon: Instagram, name: "Instagram", color: "hsl(0 75% 50%)" },
-  { icon: Facebook, name: "Facebook", color: "hsl(130 65% 45%)" },
-  { icon: Linkedin, name: "LinkedIn", color: "hsl(140 50% 38%)" },
+  { icon: Instagram, name: "Instagram", color: "hsl(0 75% 50%)", url: "https://www.instagram.com/roseyco.official" },
+  { icon: Linkedin, name: "LinkedIn", color: "hsl(140 50% 38%)", url: "https://www.linkedin.com/company/rosey-co/" },
 ];
 
 const stats = [
@@ -234,18 +232,21 @@ export default function SocialMediaPage() {
             {platforms.map((platform) => {
               const Icon = platform.icon;
               return (
-                <motion.div
+                <motion.a
                   key={platform.name}
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variants={staggerItem}
                   whileHover={{ scale: 1.05, y: -4 }}
-                  className="service-card service-card-purple px-8 py-5 flex items-center gap-4"
+                  className="service-card service-card-purple px-8 py-5 flex items-center gap-4 cursor-pointer"
                 >
                   <Icon
                     className="w-8 h-8"
                     style={{ color: platform.color }}
                   />
                   <span className="font-semibold text-lg">{platform.name}</span>
-                </motion.div>
+                </motion.a>
               );
             })}
           </motion.div>

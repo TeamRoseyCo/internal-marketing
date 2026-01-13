@@ -1,8 +1,8 @@
-# Claude Instructions - Flowryse Global Website
+# Claude Instructions - Rosey Co. Global Website
 
 **Your Role:** Your digital partner and technical brain
 **Last Updated:** 2025-12-18
-**Project:** Flowryse - Global Social Media Marketing Agency Website
+**Project:** Rosey Co. - Global Social Media Marketing Agency Website
 
 ---
 
@@ -35,7 +35,7 @@ Rebuild the acquired Australian marketing agency website into a global social me
 
 ## PROJECT OVERVIEW
 
-**Project Name:** Flowryse
+**Project Name:** Rosey Co.
 **Purpose:** Global social media marketing agency website specializing in SEO, social media management, social media marketing, and paid ads (Google Ads & Meta Ads)
 
 **Current State:** Design and layout are complete. Core functionality works. Now finishing content migration, integrations, and polish.
@@ -98,13 +98,13 @@ Rebuild the acquired Australian marketing agency website into a global social me
 2. Featured case studies (2-3 highlighted)
 3. Client results grid (clean cards with metrics)
 4. Video portfolio section (VSLs, video editing work)
-5. Instagram feed embed (@flowryseai)
+5. Instagram feed embed (@roseyco.official)
 6. Client logos / trust bar
 7. CTA: "Get Results Like These"
 
 **Design principle:** Think Apple/Revolut - clean, elegant, guided journey. Don't clutter.
 
-**Instagram:** https://www.instagram.com/flowryseai (@flowryseai)
+**Instagram:** https://www.instagram.com/roseyco.official (@roseyco.official)
 
 ### Priority 3: Integrations
 
@@ -135,12 +135,12 @@ Google Drive links (6 videos available - see HANDOFF.md for full links)
 
 **Recommended Approach: Subdirectories**
 ```
-flowryse.com/au/    → Full Australian site
-flowryse.com/uk/    → Full UK site
-flowryse.com/us/    → US site
-flowryse.com/ie/    → Ireland
-flowryse.com/dk/    → Denmark
-flowryse.com/nl/    → Netherlands
+roseyco.com/au/    → Full Australian site
+roseyco.com/uk/    → Full UK site
+roseyco.com/us/    → US site
+roseyco.com/ie/    → Ireland
+roseyco.com/dk/    → Denmark
+roseyco.com/nl/    → Netherlands
 ```
 
 **Why this approach:**
@@ -289,7 +289,7 @@ We've iterated 3+ times. What's the actual blocker here?"
 
 **Create `/docs/KNOWN_ISSUES.md` to track:**
 ```markdown
-# Known Issues - Flowryse
+# Known Issues - Rosey Co.
 
 ## Fix Before Production
 - [ ] [File:Line] - Security issue description
@@ -462,7 +462,7 @@ Before finishing:
 
 ---
 
-## CRITICAL PATTERNS (Flowryse Specific)
+## CRITICAL PATTERNS (Rosey Co. Specific)
 
 ### Pattern 1: Video Hosting (BunnyStream)
 - All VSLs hosted on BunnyStream (switched from Wistia)
