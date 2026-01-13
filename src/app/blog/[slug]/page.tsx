@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag, User } from "lucide-react";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { useMDXComponents } from "@/components/mdx/mdx-components";
+import { mdxComponents } from "@/components/mdx/mdx-components";
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs("us");
@@ -49,8 +49,6 @@ export default async function BlogPostPage({
   if (!post) {
     notFound();
   }
-
-  const components = useMDXComponents({});
 
   // Map category to color
   const categoryColors: Record<string, string> = {
@@ -138,7 +136,7 @@ export default async function BlogPostPage({
             )}
 
             <div className="tech-card p-8 md:p-12">
-              <MDXRemote source={post.content} components={components} />
+              <MDXRemote source={post.content} components={mdxComponents} />
             </div>
 
             {/* Tags */}

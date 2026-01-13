@@ -19,7 +19,6 @@ interface HeroVideoPlayerProps {
 }
 
 export function HeroVideoPlayer({
-  videoId = process.env.NEXT_PUBLIC_BUNNY_VIDEO_ID_HERO,
   hlsUrl = process.env.NEXT_PUBLIC_BUNNY_VIDEO_HLS_URL,
   thumbnailUrl = process.env.NEXT_PUBLIC_BUNNY_VIDEO_THUMBNAIL_URL,
   previewUrl = process.env.NEXT_PUBLIC_BUNNY_VIDEO_PREVIEW_URL,

@@ -2,8 +2,8 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import Image from "next/image";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
+// MDX components object for server components (non-hook export)
+export const mdxComponents: MDXComponents = {
     // Headings
     h1: ({ children }) => (
       <h1 className="text-4xl font-bold tracking-tight mb-6 mt-12 first:mt-0">
@@ -123,7 +123,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </td>
     ),
+};
 
+// Hook version for client components (keeps existing functionality)
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...mdxComponents,
     ...components,
   };
 }

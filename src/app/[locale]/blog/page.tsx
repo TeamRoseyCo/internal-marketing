@@ -11,6 +11,10 @@ import { LocaleBlogHero } from "@/components/blog/locale-blog-hero";
 import { LocaleBlogCategories } from "@/components/blog/locale-blog-categories";
 import { LocaleNewsletterCTA } from "@/components/blog/locale-newsletter-cta";
 
+// Force static generation with ISR (revalidate every hour)
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Rebuild every 1 hour
+
 export async function generateStaticParams() {
   return localeList.map((locale) => ({ locale }));
 }
@@ -86,8 +90,6 @@ export default async function LocaleBlogPage({
                   color={categoryColors[post.category] || "primary"}
                   index={index}
                   locale={localeCode}
-                  readMoreText={t.posts.readMore}
-                  minReadText={t.posts.minRead}
                 />
               ))}
             </div>

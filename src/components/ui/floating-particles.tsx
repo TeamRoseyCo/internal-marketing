@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 interface FloatingParticlesProps {

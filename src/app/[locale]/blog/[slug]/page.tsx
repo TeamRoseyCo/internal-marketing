@@ -8,7 +8,7 @@ import Image from "next/image";
 import { ArrowLeft, Calendar, Clock, Tag, User } from "lucide-react";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { useMDXComponents } from "@/components/mdx/mdx-components";
+import { mdxComponents } from "@/components/mdx/mdx-components";
 import { localeList, LocaleCode, isValidLocale } from "@/lib/locales";
 import { getBlogPageTranslations } from "@/lib/page-translations";
 import { ArticleStructuredData } from "@/components/seo/structured-data";
@@ -68,8 +68,6 @@ export default async function LocaleBlogPostPage({
   if (!post) {
     notFound();
   }
-
-  const components = useMDXComponents({});
 
   // Map category to color
   const categoryColors: Record<string, string> = {
@@ -181,7 +179,7 @@ export default async function LocaleBlogPostPage({
             )}
 
             <div className="tech-card p-8 md:p-12">
-              <MDXRemote source={post.content} components={components} />
+              <MDXRemote source={post.content} components={mdxComponents} />
             </div>
 
             {/* Tags */}

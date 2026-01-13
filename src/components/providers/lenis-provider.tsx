@@ -15,6 +15,7 @@ interface LenisProviderProps {
 }
 
 export function LenisProvider({ children }: LenisProviderProps) {
+  const lenisRef = useRef<Lenis | null>(null);
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
   useEffect(() => {
@@ -31,7 +32,13 @@ export function LenisProvider({ children }: LenisProviderProps) {
       infinite: false,
     });
 
-    setLenis(lenisInstance);
+    lenisRef.current = lenisInstance;
+
+    // Set state after initial render to avoid cascading renders
+    // Use setTimeout to defer state update to next tick
+    const timeoutId = setTimeout(() => {
+      setLenis(lenisInstance);
+    }, 0);
 
     // RAF loop for Lenis
     function raf(time: number) {
@@ -48,6 +55,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener("resize", handleResize);
       lenisInstance.destroy();
     };

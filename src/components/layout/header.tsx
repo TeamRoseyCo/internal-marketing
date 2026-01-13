@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { isValidLocale, type LocaleCode } from "@/lib/locales";
+import { isValidLocale } from "@/lib/locales";
 
 const baseNavItems = [
   { href: "/", label: "Home" },

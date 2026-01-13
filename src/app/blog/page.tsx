@@ -1,11 +1,12 @@
-import Link from "next/link";
-import { Calendar, Clock, Tag } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
 import { BlogHero } from "@/components/blog/blog-hero";
 import { BlogCategories } from "@/components/blog/blog-categories";
 import { NewsletterCTA } from "@/components/blog/newsletter-cta";
+
+// Force static generation with ISR (revalidate every hour)
+export const dynamic = 'force-static';
+export const revalidate = 3600; // Rebuild every 1 hour
 
 export const metadata = {
   title: "Blog - Marketing Insights & Strategies",

@@ -16,8 +16,6 @@ const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } 
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } } };
 const staggerItem = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
-const processIcons = [Search, Palette, Code2, Gauge, Zap];
-
 interface LocaleWebDesignPageProps {
   params: Promise<{ locale: string }>;
 }

@@ -6,7 +6,7 @@
 import Link from "next/link";
 import { use } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Target, Search, BarChart3, DollarSign, Repeat, MousePointer2, TrendingUp, CheckCircle } from "lucide-react";
+import { ArrowRight, Target, Search, BarChart3, DollarSign, MousePointer2, TrendingUp, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { isValidLocale, LocaleCode } from "@/lib/locales";
@@ -15,8 +15,6 @@ import { ServiceStructuredData } from "@/components/seo/structured-data";
 const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } } };
 const staggerItem = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
-
-const processIcons = [Search, Target, MousePointer2, TrendingUp, BarChart3];
 
 interface LocalePaidAdsPageProps {
   params: Promise<{ locale: string }>;

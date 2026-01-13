@@ -7,7 +7,7 @@
 import Link from "next/link";
 import { use } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, Instagram, Facebook, Linkedin, MessageCircle, Camera, BarChart3, Calendar, Heart, CheckCircle } from "lucide-react";
+import { ArrowRight, Instagram, Facebook, Linkedin, MessageCircle, Camera, BarChart3, Calendar, Heart, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { isValidLocale, LocaleCode } from "@/lib/locales";
@@ -17,15 +17,6 @@ import { ServiceStructuredData } from "@/components/seo/structured-data";
 const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } } };
 const staggerItem = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
-
-// Content configuration - kept in English as base, translations would extend this
-const processSteps = [
-  { number: "01", titleKey: "Brand Audit", descKey: "We analyze your current social presence, audience demographics, and competitor strategies.", icon: BarChart3 },
-  { number: "02", titleKey: "Strategy Creation", descKey: "We develop a tailored content strategy aligned with your brand voice and business goals.", icon: Calendar },
-  { number: "03", titleKey: "Content Production", descKey: "Our creative team produces engaging content that resonates with your target audience.", icon: Camera },
-  { number: "04", titleKey: "Community Management", descKey: "We engage with your audience, respond to comments, and build genuine relationships.", icon: MessageCircle },
-  { number: "05", titleKey: "Analyze & Optimize", descKey: "Continuous performance tracking and strategy refinement based on real engagement data.", icon: Heart },
-];
 
 const features = [
   { title: "Content Creation", description: "Scroll-stopping graphics, videos, and copy tailored to each platform." },

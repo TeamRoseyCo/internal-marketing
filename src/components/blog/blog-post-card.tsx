@@ -12,8 +12,6 @@ interface BlogPostCardProps {
   color: string;
   index: number;
   locale?: LocaleCode;
-  readMoreText?: string;
-  minReadText?: string;
 }
 
 export function BlogPostCard({
@@ -21,8 +19,6 @@ export function BlogPostCard({
   color,
   index,
   locale,
-  readMoreText = "Read More",
-  minReadText = "min read",
 }: BlogPostCardProps) {
   // Build the blog post URL based on locale
   const blogUrl = locale ? `/${locale}/blog/${post.slug}` : `/blog/${post.slug}`;

@@ -1,5 +1,5 @@
-// src/middleware.ts
-// Vercel Edge Middleware for geo-based locale redirect
+// src/proxy.ts
+// Vercel Edge Proxy for geo-based locale redirect
 // Redirects users to their country-specific locale on first visit
 
 import { NextResponse } from 'next/server';
@@ -21,7 +21,7 @@ const DEFAULT_LOCALE = 'us';
 // Cookie name to track if user has been redirected
 const LOCALE_COOKIE = 'LOCALE_REDIRECTED';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip middleware for:
