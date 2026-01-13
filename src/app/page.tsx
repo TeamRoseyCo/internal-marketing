@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FloatingParticles } from "@/components/ui/floating-particles";
+import { FAQStructuredData } from "@/components/seo/structured-data";
 
 // Animated counter component
 function AnimatedCounter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
@@ -381,7 +382,11 @@ export default function HomePage() {
               </h2>
               <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
                 We don&apos;t just run campaigns. We become an extension of your team,
-                obsessed with your growth and committed to your success.
+                obsessed with your growth and committed to your success. See our{" "}
+                <Link href="/results" className="text-primary hover:underline">
+                  proven results
+                </Link>{" "}
+                across industries.
               </p>
 
               <motion.ul
@@ -455,6 +460,7 @@ export default function HomePage() {
 
       {/* FAQ Section */}
       <section className="py-24 md:py-32">
+        <FAQStructuredData questions={faqs} />
         <div className="container max-w-md mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -592,7 +598,10 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              No commitment required. 100% free consultation.
+              No commitment required. 100% free consultation.{" "}
+              <Link href="/blog" className="underline hover:text-primary transition-colors">
+                Or explore our blog
+              </Link>
             </motion.p>
           </motion.div>
         </div>

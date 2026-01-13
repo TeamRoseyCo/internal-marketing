@@ -7,6 +7,11 @@ import {
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from "@/components/seo/structured-data";
+import {
+  GoogleAnalytics,
+  MicrosoftClarity,
+  MetaPixel,
+} from "@/components/analytics";
 
 // DM Sans for body text - clean, modern, readable
 const dmSans = DM_Sans({
@@ -70,6 +75,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rosey Co. - Global Social Media Marketing Agency",
+    description:
+      "Get more leads and grow your business with our data-driven SEO, social media management, and paid advertising services.",
+    images: ["/og-image.jpg"],
+  },
   robots: {
     index: true,
     follow: true,
@@ -105,6 +117,9 @@ export default function RootLayout({
       <head>
         <OrganizationStructuredData />
         <WebSiteStructuredData />
+        <GoogleAnalytics />
+        <MicrosoftClarity />
+        <MetaPixel />
       </head>
       <body
         className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
