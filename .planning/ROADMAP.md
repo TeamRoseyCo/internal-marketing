@@ -21,6 +21,14 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 **Dependencies:** None (first phase)
 
+**Plans:** 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Fix hreflang infrastructure (layout + SEO utility)
+- [ ] 01-02-PLAN.md — Add per-page metadata with hreflang to all locale pages
+- [ ] 01-03-PLAN.md — Verify sitemap, robots, and LocalBusiness structured data
+- [ ] 01-04-PLAN.md — Build verification and Google Search Console setup
+
 **Requirements Covered:**
 - SEO-01: hreflang tags include all 6 locales + x-default
 - SEO-02: Locale-specific metadata per page
@@ -46,6 +54,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 **Dependencies:** None (can run parallel with Phase 1)
 
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
+
 **Requirements Covered:**
 - TRANS-01: Header component uses translation system
 - TRANS-02: Footer component uses translation system
@@ -69,6 +82,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 **Dependencies:** Phase 2 (components must use translation system before fixing translations)
 
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
+
 **Requirements Covered:**
 - TRANS-03: Dutch translations pass grammar validation
 - TRANS-04: Danish translations pass grammar validation
@@ -89,6 +107,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 **Goal:** First-time visitors automatically land on appropriate locale with manual override capability.
 
 **Dependencies:** Phase 1 (SEO foundation must be complete for proper redirects)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
 
 **Requirements Covered:**
 - GEO-01: Locale preference persists via cookie
@@ -114,6 +137,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 **Dependencies:** Phase 2 (components must support translations for content to render correctly)
 
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
+
 **Requirements Covered:**
 - CONTENT-01: Free guides migrated with download flow
 - CONTENT-02: Case studies migrated to Results page
@@ -136,6 +164,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 **Goal:** All lead capture forms work end-to-end with proper email notifications and analytics tracking.
 
 **Dependencies:** Phase 5 (content must exist before testing forms)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
 
 **Requirements Covered:**
 - INT-01: Resend domain verified
@@ -160,6 +193,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 **Goal:** Site achieves 90+ Lighthouse scores with production-ready Google Business Profile integration.
 
 **Dependencies:** Phase 6 (all integrations must be active before final performance testing)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (created by /gsd:plan-phase)
 
 **Requirements Covered:**
 - PERF-01: Lighthouse Performance 90+
@@ -187,7 +225,7 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 | Phase | Status | Requirements | Success Criteria | Notes |
 |-------|--------|--------------|------------------|-------|
-| Phase 1: SEO Foundation | Pending | 7/7 | 0/5 | BLOCKER for launch |
+| Phase 1: SEO Foundation | Planned | 7/7 | 0/5 | BLOCKER for launch |
 | Phase 2: Component Architecture | Pending | 5/5 | 0/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Pending | 3/3 | 0/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Pending | 6/6 | 0/5 | Post-launch acceptable |
@@ -220,11 +258,11 @@ Launch Rosey Co. global marketing agency website with flawless multi-location SE
 
 ## Next Steps
 
-1. **Approve roadmap** - Review phase structure and success criteria
-2. **Plan Phase 1** - Use `/gsd:plan-phase 1` to create execution plan for SEO Foundation
+1. **Execute Phase 1** - Use `/gsd:execute-phase 1` to run SEO Foundation plans
+2. **Plan Phase 2** - Use `/gsd:plan-phase 2` after Phase 1 completes
 3. **Execute Phases 1-3** - Critical path to launch
 4. **Ship & Iterate** - Launch with Phases 1-3, add Phases 4-7 incrementally
 
 ---
 
-*Last updated: 2026-01-25*
+*Last updated: 2026-01-26*
