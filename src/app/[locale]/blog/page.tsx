@@ -10,6 +10,7 @@ import { getBlogPageTranslations } from "@/lib/page-translations";
 import { LocaleBlogHero } from "@/components/blog/locale-blog-hero";
 import { LocaleBlogCategories } from "@/components/blog/locale-blog-categories";
 import { LocaleNewsletterCTA } from "@/components/blog/locale-newsletter-cta";
+import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
 
 // Force static generation with ISR (revalidate every hour)
 export const dynamic = 'force-static';
@@ -31,6 +32,10 @@ export async function generateMetadata({
   return {
     title: t.meta.title,
     description: t.meta.description,
+    openGraph: {
+      locale: getOpenGraphLocale(localeCode),
+    },
+    alternates: generateHreflangAlternates(localeCode, '/blog'),
   };
 }
 

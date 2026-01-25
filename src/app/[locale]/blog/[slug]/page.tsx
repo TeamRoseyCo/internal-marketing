@@ -12,6 +12,7 @@ import { mdxComponents } from "@/components/mdx/mdx-components";
 import { localeList, LocaleCode, isValidLocale } from "@/lib/locales";
 import { getBlogPageTranslations } from "@/lib/page-translations";
 import { ArticleStructuredData } from "@/components/seo/structured-data";
+import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
@@ -50,7 +51,9 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
+      locale: getOpenGraphLocale(localeCode),
     },
+    alternates: generateHreflangAlternates(localeCode, `/blog/${slug}`),
   };
 }
 
