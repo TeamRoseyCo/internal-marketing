@@ -296,10 +296,10 @@ export const translations = {
     services: {
       title: 'Hoe Wij Jouw Bedrijf Laten',
       titleHighlight: 'Groeien',
-      subtitle: 'Van SEO tot betaalde advertenties, wij leveren datagestuurde strategieen die marketinguitgaven omzetten in meetbare omzet.',
+      subtitle: 'Van SEO tot betaalde advertenties, wij leveren datagestuurde strategieën die marketinguitgaven omzetten in meetbare omzet.',
       seo: {
         title: 'SEO Diensten',
-        description: 'Domineer zoekresultaten en word gevonden door klanten die actief zoeken naar jouw diensten.',
+        description: 'Domineer zoekresultaten en wordt gevonden door klanten die actief zoeken naar jouw diensten.',
       },
       socialMedia: {
         title: 'Social Media Management',
@@ -336,11 +336,11 @@ export const translations = {
       questions: [
         {
           question: 'Hoe snel kan ik resultaten zien?',
-          answer: 'De meeste klanten zien gekwalificeerde leads binnen de eerste 2-4 weken. We focussen op snelle resultaten terwijl we bouwen aan duurzame groeistrategieen op lange termijn.',
+          answer: 'De meeste klanten zien gekwalificeerde leads binnen de eerste 2-4 weken. We focussen op snelle resultaten terwijl we bouwen aan duurzame groeistrategieën op lange termijn.',
         },
         {
           question: 'Werken jullie met bedrijven wereldwijd?',
-          answer: 'Absoluut! We werken met klanten wereldwijd. Onze strategieen werken overal waar Google en Meta actief zijn, en we passen onze aanpak aan jouw specifieke markt aan.',
+          answer: 'Absoluut! We werken met klanten wereldwijd. Onze strategieën werken overal waar Google en Meta actief zijn, en we passen onze aanpak aan jouw specifieke markt aan.',
         },
         {
           question: 'Wat maakt Rosey Co. anders dan andere bureaus?',
@@ -432,11 +432,11 @@ export const translations = {
       subtitle: 'Fra SEO til betalte annoncer leverer vi datadrevne strategier, der omdanner marketingudgifter til målbar omsætning.',
       seo: {
         title: 'SEO Tjenester',
-        description: 'Dominér søgeresultater og bliv fundet af kunder, der aktivt leder efter dine tjenester.',
+        description: 'Dominer søgeresultater og bliv fundet af kunder, der aktivt leder efter dine tjenester.',
       },
       socialMedia: {
         title: 'Social Media Management',
-        description: 'Byg din brandtilstedeværelse og engagér dit publikum på alle store platforme.',
+        description: 'Byg din brandtilstedeværelse og engager dit publikum på alle store platforme.',
       },
       paidAds: {
         title: 'Betalt Annoncering',
