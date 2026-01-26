@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Processing guide email for:', email);
 
     const emailResponse = await resend.emails.send({
-      from: "Flowryse <noreply@flowryse.com>",
+      from: "Rosey Co <noreply@roseyco.com>",
       to: [email],
       subject: "🎯 Your Free Guide: Why Meta Ads Are The Greatest",
       html: `
@@ -48,12 +48,12 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="text-align: center; margin-bottom: 30px;">
                 <div style="display: inline-block; margin: 0 10px 20px 10px; vertical-align: top;">
                     <div style="border: 2px solid #8B5CF6; border-radius: 8px; padding: 4px; background: linear-gradient(135deg, #8B5CF6, #EC4899, #06B6D4); display: inline-block;">
-                        <img src="https://flowryse.com/guides/guide-front-cover.png" alt="4 Super Easy Ways Guide Cover" style="width: 180px; height: auto; border-radius: 4px; display: block;">
+                        <img src="https://roseyco.com/guides/guide-front-cover.png" alt="4 Super Easy Ways Guide Cover" style="width: 180px; height: auto; border-radius: 4px; display: block;">
                     </div>
                 </div>
                 <div style="display: inline-block; margin: 0 10px 20px 10px; vertical-align: top;">
                     <div style="border: 2px solid #EC4899; border-radius: 8px; padding: 4px; background: linear-gradient(135deg, #EC4899, #06B6D4, #8B5CF6); display: inline-block;">
-                        <img src="https://flowryse.com/guides/guide-back-cover.png" alt="Get More Out Of Your Advertising Dollar" style="width: 180px; height: auto; border-radius: 4px; display: block;">
+                        <img src="https://roseyco.com/guides/guide-back-cover.png" alt="Get More Out Of Your Advertising Dollar" style="width: 180px; height: auto; border-radius: 4px; display: block;">
                     </div>
                 </div>
                 <p style="font-size: 14px; color: #666; margin-top: 15px; font-style: italic;">
@@ -90,19 +90,19 @@ const handler = async (req: Request): Promise<Response> => {
                 <p style="margin-bottom: 15px;">Want to see these strategies in action for your business? Book a free strategy call with our team:</p>
                 
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://flowryse.com/book-a-call" style="background: #EC4899; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+                    <a href="https://roseyco.com/contact" style="background: #EC4899; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                         📞 Book Free Strategy Call
                     </a>
                 </div>
             </div>
             
             <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 12px; color: #666;">
-                <p>This email was sent by Flowryse because you requested our free Meta Ads guide.</p>
+                <p>This email was sent by Rosey Co because you requested our free Meta Ads guide.</p>
                 <p>If you no longer wish to receive emails, you can <a href="#" style="color: #8B5CF6;">unsubscribe here</a>.</p>
                 <p style="margin-top: 15px;">
-                    <strong>Flowryse</strong><br>
-                    ROI-driven ads for Australian local businesses<br>
-                    <a href="https://flowryse.com" style="color: #8B5CF6;">flowryse.com</a>
+                    <strong>Rosey Co</strong><br>
+                    Global social media marketing agency<br>
+                    <a href="https://roseyco.com" style="color: #8B5CF6;">roseyco.com</a>
                 </p>
             </div>
         </body>

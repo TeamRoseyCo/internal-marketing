@@ -200,12 +200,12 @@ Rosey Co operates in multiple locations:
 **Recommended Approach: Subdirectories (Option A)**
 
 ```
-flowryse.com/au/          → Full Australian site
-flowryse.com/uk/          → Full UK site
-flowryse.com/us/          → US site (or /us/missouri/, /us/kansas/)
-flowryse.com/ie/          → Ireland
-flowryse.com/dk/          → Denmark
-flowryse.com/nl/          → Netherlands
+roseyco.com/au/          → Full Australian site
+roseyco.com/uk/          → Full UK site
+roseyco.com/us/          → US site (or /us/missouri/, /us/kansas/)
+roseyco.com/ie/          → Ireland
+roseyco.com/dk/          → Denmark
+roseyco.com/nl/          → Netherlands
 ```
 
 **Why this approach:**
@@ -303,7 +303,7 @@ flowryse.com/nl/          → Netherlands
 | Vercel | Arnis setting up | Deployment platform |
 | Google Analytics | Needs setup | Create property, add to site |
 | Microsoft Clarity | Needs setup | Create account, add script |
-| Domain (flowryse.com) | Arnis handling | Currently points to old site |
+| Domain (roseyco.com) | Arnis handling | Currently points to old site |
 
 ---
 

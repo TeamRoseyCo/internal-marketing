@@ -41,8 +41,8 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email notification to business owner
     const emailResponse = await resend.emails.send({
-      from: "Flowryse <noreply@flowryse.com>",
-      to: ["brady@flowryse.com"], // Replace with your actual email
+      from: "Rosey Co <noreply@roseyco.com>",
+      to: ["team@roseyco.com"], // Replace with your actual email
       subject: `🔥 New Lead: ${record.full_name} from ${record.company}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

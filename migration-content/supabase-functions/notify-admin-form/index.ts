@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { formType, data, submissionTime }: AdminNotificationRequest = await req.json();
     console.log(`Processing ${formType} notification for admin`);
 
-    const adminEmail = "brady@flowryse.com";
+    const adminEmail = "team@roseyco.com";
     const currentTime = submissionTime || new Date().toLocaleString('en-AU', { 
       timeZone: 'Australia/Sydney',
       year: 'numeric',
@@ -180,7 +180,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const emailResponse = await resend.emails.send({
-      from: "Flowryse Notifications <noreply@flowryse.com>",
+      from: "Rosey Co Notifications <noreply@roseyco.com>",
       to: [adminEmail],
       subject: subject,
       html: htmlContent,

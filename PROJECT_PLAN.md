@@ -529,9 +529,9 @@ export const metadata: Metadata = {
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Flowryse',
-  url: 'https://flowryse.com',
-  logo: 'https://flowryse.com/logo.png',
+  name: 'Rosey Co',
+  url: 'https://roseyco.com',
+  logo: 'https://roseyco.com/logo.png',
   description: 'Global social media marketing agency specializing in SEO, social media management, and paid advertising.',
   serviceType: ['SEO', 'Social Media Management', 'Paid Advertising'],
   areaServed: 'Worldwide',

@@ -47,16 +47,16 @@ const handler = async (req: Request): Promise<Response> => {
     const commissionRate = (record.commission_rate * 100).toFixed(0);
 
     const emailResponse = await resend.emails.send({
-      from: "Flowryse <noreply@flowryse.com>",
+      from: "Rosey Co <noreply@roseyco.com>",
       to: [record.email],
-      subject: "Welcome to the Flowryse Affiliate Program! 🎉",
+      subject: "Welcome to the Rosey Co Affiliate Program! 🎉",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h1 style="color: #333; text-align: center;">Congratulations! You're Now a Flowryse Affiliate!</h1>
+          <h1 style="color: #333; text-align: center;">Congratulations! You're Now a Rosey Co Affiliate!</h1>
           
           <p>Hi ${record.full_name},</p>
           
-          <p>Great news! Your affiliate application has been approved and you're now officially part of the Flowryse Affiliate Program!</p>
+          <p>Great news! Your affiliate application has been approved and you're now officially part of the Rosey Co Affiliate Program!</p>
           
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h2 style="color: #333; margin-top: 0;">Your Affiliate Details</h2>
@@ -84,7 +84,7 @@ const handler = async (req: Request): Promise<Response> => {
           
           <div style="background-color: #e7f3ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #0066cc;">Marketing Materials</h3>
-            <p style="margin: 0;">We'll be sending you marketing materials, social media templates, and email swipe copy to help you promote Flowryse effectively. Keep an eye out for that in the next 24 hours!</p>
+            <p style="margin: 0;">We'll be sending you marketing materials, social media templates, and email swipe copy to help you promote Rosey Co effectively. Keep an eye out for that in the next 24 hours!</p>
           </div>
           
           <h3 style="color: #333;">Questions?</h3>
@@ -94,13 +94,13 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p style="margin-top: 30px;">
             Best regards,<br>
-            <strong>The Flowryse Team</strong><br>
-            <a href="mailto:brady@flowryse.com">brady@flowryse.com</a>
+            <strong>The Rosey Co Team</strong><br>
+            <a href="mailto:team@roseyco.com">team@roseyco.com</a>
           </p>
-          
+
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
           <p style="font-size: 12px; color: #666; text-align: center;">
-            You received this email because you applied to become a Flowryse affiliate and your application was approved.
+            You received this email because you applied to become a Rosey Co affiliate and your application was approved.
           </p>
         </div>
       `,

@@ -118,7 +118,7 @@ const ReferralPartner = () => {
   const faqs = [
     {
       question: "How do I refer someone?",
-      answer: "Simply fill out the contact form on this page with your details and the business you'd like to refer. Or email us directly at brady@flowryse.com. We'll reach out, mention your name, and handle everything from there."
+      answer: "Simply fill out the contact form on this page with your details and the business you'd like to refer. Or email us directly at team@roseyco.com. We'll reach out, mention your name, and handle everything from there."
     },
     {
       question: "When do I get paid?",
@@ -341,8 +341,8 @@ const ReferralPartner = () => {
                 <h3 className="font-bold text-lg">Or Contact Us Directly</h3>
                 
                 <div className="space-y-3">
-                  <a 
-                    href="mailto:brady@flowryse.com" 
+                  <a
+                    href="mailto:team@roseyco.com"
                     className="flex items-center gap-3 text-muted-foreground hover:text-brand-cyan transition-colors group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-brand-cyan/10 flex items-center justify-center group-hover:bg-brand-cyan/20 transition-colors">
@@ -350,7 +350,7 @@ const ReferralPartner = () => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">Email</p>
-                      <p className="text-foreground font-medium">brady@flowryse.com</p>
+                      <p className="text-foreground font-medium">team@roseyco.com</p>
                     </div>
                   </a>
                   

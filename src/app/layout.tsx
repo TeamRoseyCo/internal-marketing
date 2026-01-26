@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 import { LenisProvider } from "@/components/providers/lenis-provider";
@@ -29,12 +29,6 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-// Keep Geist Mono for code blocks
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://roseyco.com"),
@@ -122,7 +116,7 @@ export default function RootLayout({
         <MetaPixel />
       </head>
       <body
-        className={`${dmSans.variable} ${fraunces.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${dmSans.variable} ${fraunces.variable} antialiased min-h-screen flex flex-col`}
       >
         <LenisProvider>
           <div className="bg-page-gradient min-h-screen">

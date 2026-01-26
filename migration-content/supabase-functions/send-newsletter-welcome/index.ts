@@ -26,7 +26,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log('Processing newsletter welcome email for:', email);
 
     const emailResponse = await resend.emails.send({
-      from: "Flowryse <noreply@flowryse.com>",
+      from: "Rosey Co <noreply@roseyco.com>",
       to: [email],
       subject: "🎯 Welcome to ROI-Driven Marketing Tips!",
       html: `
@@ -35,7 +35,7 @@ const handler = async (req: Request): Promise<Response> => {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to Flowryse Newsletter</title>
+            <title>Welcome to Rosey Co Newsletter</title>
         </head>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="text-align: center; margin-bottom: 30px;">
@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
             <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
                 <p style="margin-bottom: 15px;"><strong>Hi ${firstName},</strong></p>
                 
-                <p style="margin-bottom: 15px;">Welcome to the Flowryse newsletter! You've just taken the first step toward turning your ad spend into predictable profit. 🚀</p>
+                <p style="margin-bottom: 15px;">Welcome to the Rosey Co newsletter! You've just taken the first step toward turning your ad spend into predictable profit. 🚀</p>
                 
                 <p style="margin-bottom: 15px;"><strong>Here's what you'll get every week:</strong></p>
                 <ul style="margin-bottom: 20px; padding-left: 20px;">
@@ -70,7 +70,7 @@ const handler = async (req: Request): Promise<Response> => {
                 <p style="margin-bottom: 15px;">Want to skip the learning curve and get results fast? Book a free strategy call to see how we can 10x your ROI:</p>
                 
                 <div style="text-align: center; margin: 20px 0;">
-                    <a href="https://flowryse.com/book-a-call" style="background: #EC4899; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+                    <a href="https://roseyco.com/contact" style="background: #EC4899; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                         📞 Book Free Strategy Call
                     </a>
                 </div>
@@ -79,12 +79,12 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             
             <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; text-align: center; font-size: 12px; color: #666;">
-                <p>You're receiving this because you signed up for ROI-driven marketing tips at Flowryse.com</p>
+                <p>You're receiving this because you signed up for ROI-driven marketing tips at RoseyCo.com</p>
                 <p>If you no longer wish to receive emails, you can <a href="#" style="color: #8B5CF6;">unsubscribe here</a>.</p>
                 <p style="margin-top: 15px;">
-                    <strong>Flowryse</strong><br>
-                    ROI-driven ads for Australian local businesses<br>
-                    <a href="https://flowryse.com" style="color: #8B5CF6;">flowryse.com</a>
+                    <strong>Rosey Co</strong><br>
+                    Global social media marketing agency<br>
+                    <a href="https://roseyco.com" style="color: #8B5CF6;">roseyco.com</a>
                 </p>
             </div>
         </body>

@@ -39,7 +39,7 @@ const handler = async (req: Request): Promise<Response> => {
     const calendlyLink = "https://calendly.com/brady-flowryse/strategy-meeting";
 
     const emailResponse = await resend.emails.send({
-      from: "Flowryse <noreply@flowryse.com>",
+      from: "Rosey Co <noreply@roseyco.com>",
       to: [record.email],
       subject: "Your Free Strategy Call is Almost Booked! 🚀",
       html: `
@@ -81,8 +81,8 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p style="margin-top: 30px;">
             Best regards,<br>
-            <strong>The Flowryse Team</strong><br>
-            <a href="mailto:brady@flowryse.com">brady@flowryse.com</a>
+            <strong>The Rosey Co Team</strong><br>
+            <a href="mailto:team@roseyco.com">team@roseyco.com</a>
           </p>
           
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
