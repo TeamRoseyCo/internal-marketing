@@ -12,6 +12,14 @@ import { LocaleCode, locales } from '@/lib/locales';
  * @param locale - Locale code for formatting
  * @returns Formatted currency string
  *
+ * Expected outputs for formatCurrency(1299, locale):
+ * - us: "$1,299.00"       (USD with comma separator)
+ * - au: "$1,299.00"       (AUD with comma separator)
+ * - uk: "£1,299.00"       (GBP with comma separator)
+ * - ie: "€1,299.00"       (EUR with comma separator)
+ * - nl: "€ 1.299,00"      (EUR with period separator, comma decimal)
+ * - dk: "1.299,00 kr."    (DKK with period separator, comma decimal, suffix)
+ *
  * @example
  * formatCurrency(1299, 'us'); // "$1,299.00"
  * formatCurrency(1299, 'uk'); // "£1,299.00"
