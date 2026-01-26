@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
-**Last Updated:** 2026-01-26
-**Current Phase:** 1 (SEO Foundation)
-**Project Status:** Phase 1 Complete - Ready for Phase 2
+**Last Updated:** 2026-01-27
+**Current Phase:** 3 (Translation Quality Assurance)
+**Project Status:** Phase 3 Plan 1 Complete - Grammar Validation Done
 
 ---
 
@@ -18,33 +18,33 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 
 ## Current Position
 
-**Phase:** 2 of 7 (Component Architecture)
-**Plan:** 4 of 4 complete (02-04)
-**Status:** Phase 2 Complete - Ready for Phase 3
-**Last activity:** 2026-01-26 - Completed 02-04-PLAN.md (Translation quality fixes & Phase 2 verification)
-**Progress:** 13/39 requirements complete (REQ-001 through REQ-013)
+**Phase:** 3 of 7 (Translation Quality Assurance)
+**Plan:** 1 of 2 complete (03-01)
+**Status:** Phase 3 in progress - Automated validation complete
+**Last activity:** 2026-01-27 - Completed 03-01-PLAN.md (Automated grammar validation & fixes)
+**Progress:** 14/39 requirements complete (REQ-001 through REQ-014)
 
 ```
-Progress: [███████░░░░░░░░░░░░░] 33% (13/39 requirements)
+Progress: [████████░░░░░░░░░░░░] 36% (14/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
-[░] Phase 3: Translation QA (BLOCKER)
+[▓] Phase 3: Translation QA (IN PROGRESS - Plan 1/2 complete)
 [░] Phase 4: Geolocation & Locale Switcher
 [░] Phase 5: Content & Results Page
 [░] Phase 6: Integrations & Analytics
 [░] Phase 7: Performance & Launch Validation
 ```
 
-**Next Action:** Execute Phase 3 (Translation Quality Audit & Improvement)
+**Next Action:** Execute Phase 3 Plan 2 (Native Speaker Review)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-26 (after 02-04 completion)
+- Last successful build: 2026-01-27 (after 03-01 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
 
@@ -81,6 +81,9 @@ Phases:
 | 2026-01-26 | Danish translations use proper UTF-8 characters | User credibility and professionalism | Danish users see grammatically correct text |
 | 2026-01-26 | formatCurrency ready in Phase 2, UI integration in Phase 5 | Function creation separate from component integration | Prevents over-engineering, maintains ship-fast momentum |
 | 2026-01-26 | Phase 2 scope: i18n foundation + Header/Footer conversion | Architectural foundation with proof of concept | Future components converted as they're worked on |
+| 2026-01-27 | Use LanguageTool API for automated grammar validation | Free tier sufficient for manual validation, no self-hosting needed | Zero cost translation QA with robust Dutch/Danish checking |
+| 2026-01-27 | Context-aware error filtering for translations | Business context requires English loanwords (SEO, marketing, ROI) | 40-60% false positive reduction, practical validation results |
+| 2026-01-27 | Tiered validation approach (Critical > High > Medium) | Focus MVP effort on high-impact user-facing content | 23 strings per locale covers all critical user touchpoints |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -88,7 +91,11 @@ Phases:
 - ~~Header component hardcoded in English~~ → **FIXED in 02-02**
 - ~~Footer component hardcoded in English~~ → **FIXED in 02-03**
 - ~~Danish translations use ASCII approximations~~ → **FIXED in 02-04**
-- Translation quality issues in NL/DK locales (deeper review needed in Phase 3)
+- ~~Translation quality issues in NL/DK locales~~ → **FIXED in 03-01 (Grammar validation)**
+  - ~~Dutch verb conjugation errors (word → wordt)~~ → **FIXED in 03-01**
+  - ~~Dutch missing diaeresis (strategieen → strategieën)~~ → **FIXED in 03-01**
+  - ~~Danish incorrect verb accents (Dominér → Dominer, engagér → engager)~~ → **FIXED in 03-01**
+- Translation naturalness and tone (native speaker review in Phase 3 Plan 2)
 - No geolocation persistence mechanism exists
 - Server-side 302 redirects required for SEO compliance
 
@@ -142,22 +149,23 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-26 - Executed Plan 02-03 (Footer Component Translation)
+**Session:** 2026-01-27 - Executed Plan 03-01 (Automated Grammar Validation & Fixes)
 **Completed:**
-- Header component converted to use useLocale() and useTranslation() hooks
-- Removed pathname parsing for locale detection (replaced with context)
-- Zero hardcoded English strings remain in header.tsx
-- Added fallback pattern for root-level pages without LocaleProvider
-- Desktop and mobile navigation display translated labels per locale
-- CTA button translates ("Get More Leads" → "Krijg Meer Leads", "Få Flere Leads")
+- Validated Dutch translations using LanguageTool API (23 critical + high priority strings)
+- Validated Danish translations using LanguageTool API (23 critical + high priority strings)
+- Fixed 6 Dutch grammar errors (verb conjugation, missing diaeresis) across translations.ts and page-translations.ts
+- Fixed 2 Danish grammar errors (incorrect verb accents) in translations.ts
+- Verified 100% translation key coverage for NL and DK locales (79 keys each)
+- Created comprehensive 03-VALIDATION.md report with before/after error counts
+- Zero critical errors remaining in Tier 1 (Critical) content
 - Build succeeds: 214 pages across 6 locales
-- Created 02-02-SUMMARY.md
+- Created 03-01-SUMMARY.md
 - Updated STATE.md
-- **Phase 2 Plan 2 complete (Header component internationalized)**
+- **Phase 3 Plan 1 complete (Automated grammar validation done)**
 
 **Commits:**
-- `58a2a93` - feat(02-03): add comprehensive footer translations (includes header translations)
-- `b0f1093` - feat(02-02): convert Header to use translation system
+- `474d133` - fix(03-01): correct Dutch grammar errors in translations
+- `4ae6a58` - fix(03-01): correct Dutch verb conjugation in page-translations
 
 **Previous commits (Phase 2 - Component Architecture):**
 - `fcf050a` - feat(02-01): create i18n context and types
@@ -175,7 +183,7 @@ Phases:
 - `fa49ff7` - docs(01-03): complete SEO infrastructure verification plan
 
 **Next Steps:**
-1. Execute Phase 3 (Translation Quality Audit & Improvement)
+1. Execute Phase 3 Plan 2 (Native Speaker Review)
 2. Execute Phase 4 (Geolocation & Locale Switcher)
 3. Execute Phase 5 (Content & Results Page)
 ### What to Remember for Next Session
@@ -190,6 +198,8 @@ Phases:
 - `.planning/ROADMAP.md` - Phase structure and success criteria
 - `.planning/REQUIREMENTS.md` - All 39 v1 requirements with traceability
 - `.planning/phases/01-seo-foundation/01-01-SUMMARY.md` - Hreflang implementation
+- `.planning/phases/03-translation-quality-assurance/03-VALIDATION.md` - Grammar validation report
+- `.planning/phases/03-translation-quality-assurance/03-01-SUMMARY.md` - Automated validation summary
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
