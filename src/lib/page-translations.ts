@@ -120,7 +120,7 @@ export const servicesPageTranslations: TranslationRecord<ServicesPageTranslation
     services: {
       seo: {
         title: 'SEO Diensten',
-        description: 'Domineer zoekresultaten en word gevonden door klanten die actief zoeken naar jouw diensten. Onze datagestuurde SEO-strategieën leveren duurzame organische groei.',
+        description: 'Domineer zoekresultaten en wordt gevonden door klanten die actief zoeken naar jouw diensten. Onze datagestuurde SEO-strategieën leveren duurzame organische groei.',
         features: ['Technische SEO Audits', 'On-Page Optimalisatie', 'Linkbuilding', 'Lokale SEO', 'Content Strategie'],
         stat: { label: 'Gem. Verkeer Toename' },
       },
@@ -486,7 +486,7 @@ export const seoPageTranslations: TranslationRecord<SEOPageTranslations> = {
     },
     localSeo: {
       title: 'Lokale SEO Expertise',
-      subtitle: 'Domineer lokale zoekresultaten en word gevonden door klanten in jouw omgeving. We optimaliseren je Google Bedrijfsprofiel, bouwen lokale citaties en creëren geo-gerichte content.',
+      subtitle: 'Domineer lokale zoekresultaten en wordt gevonden door klanten in jouw omgeving. We optimaliseren je Google Bedrijfsprofiel, bouwen lokale citaties en creëren geo-gerichte content.',
       features: ['Google Bedrijfsprofiel Optimalisatie', 'Lokale Citatie Building', 'Review Management Strategie', 'Locatie-Gebaseerde Content'],
       stat: '3-Pack',
       statLabel: 'Google Maps Rankings',
