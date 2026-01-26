@@ -7,30 +7,52 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLocale, useTranslation } from "@/lib/i18n";
 import { isValidLocale } from "@/lib/locales";
-
-const baseNavItems = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/results", label: "Results" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Detect current locale from pathname
-  const currentLocale = pathname.split('/')[1];
-  const locale = isValidLocale(currentLocale) ? currentLocale : null;
+  // Try to get locale from context (when LocaleProvider is available)
+  // Fall back to pathname parsing for root-level pages
+  let locale: string;
+  let t: (key: string) => string;
 
-  // Build locale-aware navigation items
-  const navItems = baseNavItems.map(item => ({
-    ...item,
-    href: locale ? `/${locale}${item.href}` : item.href
-  }));
+  try {
+    locale = useLocale();
+    const translation = useTranslation();
+    t = translation.t;
+  } catch {
+    // LocaleProvider not available (root-level pages)
+    // Use pathname parsing as fallback
+    const pathSegments = pathname.split('/');
+    const potentialLocale = pathSegments[1];
+    locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
+
+    // Fallback translations for root-level pages
+    t = (key: string) => {
+      const fallbackTranslations: Record<string, string> = {
+        "header.home": "Home",
+        "header.cta": "Get More Leads",
+        "nav.services": "Services",
+        "nav.results": "Results",
+        "nav.blog": "Blog",
+        "nav.contact": "Contact",
+      };
+      return fallbackTranslations[key] || key;
+    };
+  }
+
+  // Build locale-aware navigation items with translations
+  const navItems = [
+    { href: `/${locale}`, label: t("header.home") },
+    { href: `/${locale}/services`, label: t("nav.services") },
+    { href: `/${locale}/results`, label: t("nav.results") },
+    { href: `/${locale}/blog`, label: t("nav.blog") },
+    { href: `/${locale}/contact`, label: t("nav.contact") },
+  ];
 
   // Add subtle background on scroll for readability
   useEffect(() => {
@@ -63,7 +85,7 @@ export function Header() {
       />
       <div className="container flex h-20 md:h-24 items-center justify-between relative" style={{ zIndex: 9999 }}>
         {/* Logo - Dominant Presence */}
-        <Link href={locale ? `/${locale}` : "/"} className="flex items-center gap-2 group">
+        <Link href={`/${locale}`} className="flex items-center gap-2 group">
           <Image
             src="/roseyco-logo.png"
             alt="Rosey Co. - Global Social Media Marketing Agency"
@@ -104,7 +126,7 @@ export function Header() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <Button asChild size="lg" className="btn-hero hidden sm:inline-flex text-base px-6">
-              <Link href={locale ? `/${locale}/contact` : "/contact"}>Get More Leads</Link>
+              <Link href={`/${locale}/contact`}>{t("header.cta")}</Link>
             </Button>
           </motion.div>
 
@@ -132,6 +154,8 @@ export function Header() {
       isOpen={isMenuOpen}
       onClose={() => setIsMenuOpen(false)}
       navItems={navItems}
+      ctaText={t("header.cta")}
+      ctaHref={`/${locale}/contact`}
     />
     </>
   );
@@ -141,11 +165,15 @@ export function Header() {
 function MobileMenu({
   isOpen,
   onClose,
-  navItems
+  navItems,
+  ctaText,
+  ctaHref,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  navItems: { href: string; label: string }[]
+  navItems: { href: string; label: string }[];
+  ctaText: string;
+  ctaHref: string;
 }) {
   if (!isOpen) return null;
 
@@ -179,8 +207,8 @@ function MobileMenu({
           className="mt-8"
         >
           <Button asChild size="lg" className="btn-hero text-base px-8 py-4">
-            <Link href={navItems.find(item => item.label === "Contact")?.href || "/contact"} onClick={onClose}>
-              Get More Leads
+            <Link href={ctaHref} onClick={onClose}>
+              {ctaText}
             </Link>
           </Button>
         </motion.div>
