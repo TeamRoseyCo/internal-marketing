@@ -2,25 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
-import { isValidLocale } from "@/lib/locales";
-
-const baseFooterLinks = {
-  services: [
-    { href: "/services/seo", label: "SEO Services" },
-    { href: "/services/social-media", label: "Social Media Management" },
-    { href: "/services/paid-ads", label: "Paid Advertising" },
-    { href: "/services/website-design", label: "Website Design" },
-  ],
-  company: [
-    { href: "/results", label: "Results" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
-    { href: "/privacy-policy", label: "Privacy Policy" },
-  ],
-};
+import { useLocale, useTranslation } from "@/lib/i18n";
 
 const socialLinks = [
   {
@@ -38,23 +22,25 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const pathname = usePathname();
+  const locale = useLocale();
+  const { t } = useTranslation();
 
-  // Detect current locale from pathname
-  const currentLocale = pathname.split('/')[1];
-  const locale = isValidLocale(currentLocale) ? currentLocale : null;
-
-  // Build locale-aware footer links
+  // Build locale-aware footer links with translated labels
   const footerLinks = {
-    services: baseFooterLinks.services.map(link => ({
-      ...link,
-      href: locale ? `/${locale}${link.href}` : link.href
-    })),
-    company: baseFooterLinks.company.map(link => ({
-      ...link,
-      href: locale ? `/${locale}${link.href}` : link.href
-    }))
+    services: [
+      { href: `/${locale}/services/seo`, label: t("footer.services.seo") },
+      { href: `/${locale}/services/social-media`, label: t("footer.services.socialMedia") },
+      { href: `/${locale}/services/paid-ads`, label: t("footer.services.paidAds") },
+      { href: `/${locale}/services/website-design`, label: t("footer.services.webDesign") },
+    ],
+    company: [
+      { href: `/${locale}/results`, label: t("footer.company.results") },
+      { href: `/${locale}/blog`, label: t("footer.company.blog") },
+      { href: `/${locale}/contact`, label: t("footer.company.contact") },
+      { href: `/${locale}/privacy-policy`, label: t("footer.company.privacy") },
+    ],
   };
+
   return (
     <footer className="relative border-t border-border/30">
       {/* Subtle gradient at top of footer */}
@@ -70,7 +56,7 @@ export function Footer() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Link href={locale ? `/${locale}` : "/"} className="inline-block mb-6 group">
+            <Link href={`/${locale}`} className="inline-block mb-6 group">
               <Image
                 src="/roseyco-logo.png"
                 alt="Rosey Co."
@@ -81,7 +67,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-base text-muted-foreground mb-8 max-w-xs leading-relaxed">
-              We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.
+              {t("footer.brandDescription")}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => {
@@ -128,7 +114,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
+            <h3 className="text-lg font-semibold mb-6">{t("footer.headings.services")}</h3>
             <ul className="space-y-4">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
@@ -150,7 +136,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
+            <h3 className="text-lg font-semibold mb-6">{t("footer.headings.company")}</h3>
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -172,7 +158,7 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Contact</h3>
+            <h3 className="text-lg font-semibold mb-6">{t("footer.headings.contact")}</h3>
             <ul className="space-y-4">
               <motion.li
                 whileHover={{ x: 4 }}
@@ -223,10 +209,10 @@ export function Footer() {
           viewport={{ once: true }}
         >
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Rosey Co. All rights reserved.
+            &copy; {new Date().getFullYear()} Rosey Co. {t("footer.copyright")}
           </p>
           <p className="text-sm text-muted-foreground">
-            Global Social Media Marketing Agency
+            {t("footer.tagline")}
           </p>
         </motion.div>
       </div>
