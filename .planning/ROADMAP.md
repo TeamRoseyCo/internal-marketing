@@ -85,10 +85,11 @@ Plans:
 
 **Dependencies:** Phase 2 (components must use translation system before fixing translations)
 
-**Plans:** 0 plans
+**Plans:** 2 plans
 
 Plans:
-- [ ] TBD (created by /gsd:plan-phase)
+- [ ] 03-01-PLAN.md — Automated grammar validation and fixes for NL/DK translations
+- [ ] 03-02-PLAN.md — Native speaker review and final validation
 
 **Requirements Covered:**
 - TRANS-03: Dutch translations pass grammar validation
@@ -230,7 +231,7 @@ Plans:
 |-------|--------|--------------|------------------|-------|
 | Phase 1: SEO Foundation | Complete | 7/7 | 5/5 | BLOCKER for launch |
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
-| Phase 3: Translation QA | Pending | 3/3 | 0/5 | BLOCKER for launch |
+| Phase 3: Translation QA | Planned | 3/3 | 0/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Pending | 6/6 | 0/5 | Post-launch acceptable |
 | Phase 5: Content & Results | Pending | 5/5 | 0/5 | Post-launch acceptable |
 | Phase 6: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
@@ -244,8 +245,8 @@ Plans:
 
 **MUST COMPLETE BEFORE LAUNCH:**
 - Phase 1: SEO Foundation - COMPLETE
-- Phase 2: Component Architecture
-- Phase 3: Translation QA
+- Phase 2: Component Architecture - COMPLETE
+- Phase 3: Translation QA - PLANNED (2 plans ready)
 
 **CAN SHIP POST-LAUNCH:**
 - Phase 4: Geolocation (improves UX, not SEO blocker)
@@ -259,10 +260,9 @@ Plans:
 
 ## Next Steps
 
-1. **Execute Phase 2** - Use `/gsd:execute-phase 2` to run Component Architecture plans
-2. **Plan Phase 3** - Use `/gsd:plan-phase 3` after Phase 2 completes
-3. **Execute Phase 3** - Translation Quality Assurance
-4. **Ship & Iterate** - Launch with Phases 1-3, add Phases 4-7 incrementally
+1. **Execute Phase 3** - Use `/gsd:execute-phase 3` to run Translation QA plans
+2. **Plan Phase 4** - Use `/gsd:plan-phase 4` after Phase 3 completes
+3. **Ship & Iterate** - Launch with Phases 1-3, add Phases 4-7 incrementally
 
 ---
 
