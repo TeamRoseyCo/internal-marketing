@@ -6,3 +6,7 @@ export { LocaleProvider, useLocaleContext } from './context';
 export type { LocaleContextValue } from './context';
 
 export type { CommonTranslations, Translations, TranslationsRecord } from './types';
+
+export { useLocale, useTranslation } from './hooks';
+
+export { formatCurrency } from './formatters';
