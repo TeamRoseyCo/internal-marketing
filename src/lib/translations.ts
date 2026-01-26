@@ -10,6 +10,11 @@ export interface Translations {
     title: string;
     description: string;
   };
+  // Header
+  header: {
+    home: string;
+    cta: string;
+  };
   // Navigation
   nav: {
     services: string;
@@ -88,9 +93,30 @@ export interface Translations {
   };
   // Footer
   footer: {
+    // Section headings
+    headings: {
+      services: string;
+      company: string;
+      contact: string;
+    };
+    // Service links
+    services: {
+      seo: string;
+      socialMedia: string;
+      paidAds: string;
+      webDesign: string;
+    };
+    // Company links
+    company: {
+      results: string;
+      blog: string;
+      contact: string;
+      privacy: string;
+    };
+    // Brand and legal
+    brandDescription: string;
     copyright: string;
-    privacy: string;
-    terms: string;
+    tagline: string;
   };
   // Common
   common: {
@@ -108,6 +134,10 @@ export const translations = {
     meta: {
       title: 'Rosey Co. - Social Media Marketing Agency',
       description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services.',
+    },
+    header: {
+      home: 'Home',
+      cta: 'Get More Leads',
     },
     nav: {
       services: 'Services',
@@ -203,9 +233,26 @@ export const translations = {
       disclaimer: 'No commitment required. 100% free consultation.',
     },
     footer: {
+      headings: {
+        services: 'Services',
+        company: 'Company',
+        contact: 'Contact',
+      },
+      services: {
+        seo: 'SEO Services',
+        socialMedia: 'Social Media Management',
+        paidAds: 'Paid Advertising',
+        webDesign: 'Website Design',
+      },
+      company: {
+        results: 'Results',
+        blog: 'Blog',
+        contact: 'Contact',
+        privacy: 'Privacy Policy',
+      },
+      brandDescription: 'We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.',
       copyright: 'All rights reserved.',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
+      tagline: 'Global Social Media Marketing Agency',
     },
     common: {
       learnMore: 'Learn More',
@@ -220,6 +267,10 @@ export const translations = {
     meta: {
       title: 'Rosey Co. - Social Media Marketing Bureau',
       description: 'Krijg meer leads en laat je bedrijf groeien met datagestuurde SEO, social media management en betaalde advertenties.',
+    },
+    header: {
+      home: 'Home',
+      cta: 'Krijg Meer Leads',
     },
     nav: {
       services: 'Diensten',
@@ -315,9 +366,26 @@ export const translations = {
       disclaimer: 'Geen verplichting. 100% gratis consult.',
     },
     footer: {
+      headings: {
+        services: 'Diensten',
+        company: 'Bedrijf',
+        contact: 'Contact',
+      },
+      services: {
+        seo: 'SEO Diensten',
+        socialMedia: 'Social Media Management',
+        paidAds: 'Betaalde Advertenties',
+        webDesign: 'Website Ontwerp',
+      },
+      company: {
+        results: 'Resultaten',
+        blog: 'Blog',
+        contact: 'Contact',
+        privacy: 'Privacybeleid',
+      },
+      brandDescription: 'Wij helpen bedrijven wereldwijd meer klanten te genereren via SEO, social media management en betaalde advertenties.',
       copyright: 'Alle rechten voorbehouden.',
-      privacy: 'Privacybeleid',
-      terms: 'Algemene Voorwaarden',
+      tagline: 'Wereldwijd Social Media Marketing Bureau',
     },
     common: {
       learnMore: 'Meer Leren',
@@ -332,6 +400,10 @@ export const translations = {
     meta: {
       title: 'Rosey Co. - Social Media Marketing Bureau',
       description: 'Fa flere leads og voks din virksomhed med datadrevet SEO, social media management og betalt annoncering.',
+    },
+    header: {
+      home: 'Hjem',
+      cta: 'Få Flere Leads',
     },
     nav: {
       services: 'Tjenester',
@@ -427,9 +499,26 @@ export const translations = {
       disclaimer: 'Ingen forpligtelse. 100% gratis konsultation.',
     },
     footer: {
+      headings: {
+        services: 'Tjenester',
+        company: 'Virksomhed',
+        contact: 'Kontakt',
+      },
+      services: {
+        seo: 'SEO Tjenester',
+        socialMedia: 'Social Media Management',
+        paidAds: 'Betalt Annoncering',
+        webDesign: 'Webdesign',
+      },
+      company: {
+        results: 'Resultater',
+        blog: 'Blog',
+        contact: 'Kontakt',
+        privacy: 'Privatlivspolitik',
+      },
+      brandDescription: 'Vi hjælper virksomheder verden over med at generere flere kunder gennem SEO, social media management og betalt annoncering.',
       copyright: 'Alle rettigheder forbeholdes.',
-      privacy: 'Privatlivspolitik',
-      terms: 'Servicevilkar',
+      tagline: 'Globalt Social Media Marketing Bureau',
     },
     common: {
       learnMore: 'Laer Mere',
@@ -445,6 +534,10 @@ translations.au = {
   meta: {
     title: 'Rosey Co. - Social Media Marketing Agency Australia',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in Australia.',
+  },
+  header: {
+    home: 'Home',
+    cta: 'Get More Leads',
   },
   nav: {
     services: 'Services',
@@ -540,9 +633,26 @@ translations.au = {
     disclaimer: 'No commitment required. 100% free consultation.',
   },
   footer: {
+    headings: {
+      services: 'Services',
+      company: 'Company',
+      contact: 'Contact',
+    },
+    services: {
+      seo: 'SEO Services',
+      socialMedia: 'Social Media Management',
+      paidAds: 'Paid Advertising',
+      webDesign: 'Website Design',
+    },
+    company: {
+      results: 'Results',
+      blog: 'Blog',
+      contact: 'Contact',
+      privacy: 'Privacy Policy',
+    },
+    brandDescription: 'We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.',
     copyright: 'All rights reserved.',
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    tagline: 'Global Social Media Marketing Agency',
   },
   common: {
     learnMore: 'Learn More',
@@ -557,6 +667,10 @@ translations.uk = {
   meta: {
     title: 'Rosey Co. - Social Media Marketing Agency UK',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in the UK.',
+  },
+  header: {
+    home: 'Home',
+    cta: 'Get More Leads',
   },
   nav: {
     services: 'Services',
@@ -652,9 +766,26 @@ translations.uk = {
     disclaimer: 'No commitment required. 100% free consultation.',
   },
   footer: {
+    headings: {
+      services: 'Services',
+      company: 'Company',
+      contact: 'Contact',
+    },
+    services: {
+      seo: 'SEO Services',
+      socialMedia: 'Social Media Management',
+      paidAds: 'Paid Advertising',
+      webDesign: 'Website Design',
+    },
+    company: {
+      results: 'Results',
+      blog: 'Blog',
+      contact: 'Contact',
+      privacy: 'Privacy Policy',
+    },
+    brandDescription: 'We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.',
     copyright: 'All rights reserved.',
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    tagline: 'Global Social Media Marketing Agency',
   },
   common: {
     learnMore: 'Learn More',
@@ -669,6 +800,10 @@ translations.ie = {
   meta: {
     title: 'Rosey Co. - Social Media Marketing Agency Ireland',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in Ireland.',
+  },
+  header: {
+    home: 'Home',
+    cta: 'Get More Leads',
   },
   nav: {
     services: 'Services',
@@ -764,9 +899,26 @@ translations.ie = {
     disclaimer: 'No commitment required. 100% free consultation.',
   },
   footer: {
+    headings: {
+      services: 'Services',
+      company: 'Company',
+      contact: 'Contact',
+    },
+    services: {
+      seo: 'SEO Services',
+      socialMedia: 'Social Media Management',
+      paidAds: 'Paid Advertising',
+      webDesign: 'Website Design',
+    },
+    company: {
+      results: 'Results',
+      blog: 'Blog',
+      contact: 'Contact',
+      privacy: 'Privacy Policy',
+    },
+    brandDescription: 'We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.',
     copyright: 'All rights reserved.',
-    privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    tagline: 'Global Social Media Marketing Agency',
   },
   common: {
     learnMore: 'Learn More',
