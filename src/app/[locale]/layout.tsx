@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { isValidLocale, getLocale, localeList, LocaleCode } from "@/lib/locales";
 import { getTranslations } from "@/lib/translations";
 import { LocalBusinessStructuredData } from "@/components/seo/structured-data";
-import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
+import { getOpenGraphLocale } from "@/lib/seo";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     openGraph: {
       locale: getOpenGraphLocale(locale as LocaleCode),
     },
-    alternates: generateHreflangAlternates(locale as LocaleCode, ''),
+    // Note: alternates (hreflang) handled at page level for correct paths
   };
 }
 
