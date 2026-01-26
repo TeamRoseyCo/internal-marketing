@@ -8,6 +8,7 @@ import { isValidLocale, getLocale, localeList, LocaleCode } from "@/lib/locales"
 import { getTranslations } from "@/lib/translations";
 import { LocalBusinessStructuredData } from "@/components/seo/structured-data";
 import { getOpenGraphLocale } from "@/lib/seo";
+import { LocaleProvider } from "@/lib/i18n";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -49,9 +50,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   return (
-    <>
+    <LocaleProvider locale={locale}>
       <LocalBusinessStructuredData locale={locale} />
       {children}
-    </>
+    </LocaleProvider>
   );
 }
