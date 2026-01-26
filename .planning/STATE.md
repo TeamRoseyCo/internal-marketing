@@ -19,13 +19,13 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 ## Current Position
 
 **Phase:** 2 of 7 (Component Architecture)
-**Plan:** 3 of 3 complete (02-03)
+**Plan:** 4 of 4 complete (02-04)
 **Status:** Phase 2 Complete - Ready for Phase 3
-**Last activity:** 2026-01-26 - Completed 02-03-PLAN.md (Footer component translation)
-**Progress:** 12/39 requirements complete (REQ-001 through REQ-012)
+**Last activity:** 2026-01-26 - Completed 02-04-PLAN.md (Translation quality fixes & Phase 2 verification)
+**Progress:** 13/39 requirements complete (REQ-001 through REQ-013)
 
 ```
-Progress: [██████░░░░░░░░░░░░░░] 31% (12/39 requirements)
+Progress: [███████░░░░░░░░░░░░░] 33% (13/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
@@ -44,7 +44,7 @@ Phases:
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-26 (after 02-03 completion)
+- Last successful build: 2026-01-26 (after 02-04 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
 
@@ -78,13 +78,17 @@ Phases:
 | 2026-01-26 | Translation fallback chain (locale → English → key) | Graceful degradation prevents site breakage | Missing translations visible but non-breaking |
 | 2026-01-26 | Intl.NumberFormat for currency formatting | Browser API handles locale-specific formats | Correct currency display per locale automatically |
 | 2026-01-26 | Try-catch pattern for optional LocaleProvider | Components can work with or without context | Header works in both locale and root-level pages |
+| 2026-01-26 | Danish translations use proper UTF-8 characters | User credibility and professionalism | Danish users see grammatically correct text |
+| 2026-01-26 | formatCurrency ready in Phase 2, UI integration in Phase 5 | Function creation separate from component integration | Prevents over-engineering, maintains ship-fast momentum |
+| 2026-01-26 | Phase 2 scope: i18n foundation + Header/Footer conversion | Architectural foundation with proof of concept | Future components converted as they're worked on |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
 - ~~Components parse pathname to detect locale (anti-pattern)~~ → **FIXED in 02-01 (LocaleProvider)**
 - ~~Header component hardcoded in English~~ → **FIXED in 02-02**
 - ~~Footer component hardcoded in English~~ → **FIXED in 02-03**
-- Translation quality issues in NL/DK locales
+- ~~Danish translations use ASCII approximations~~ → **FIXED in 02-04**
+- Translation quality issues in NL/DK locales (deeper review needed in Phase 3)
 - No geolocation persistence mechanism exists
 - Server-side 302 redirects required for SEO compliance
 
@@ -101,7 +105,8 @@ Phases:
 - ~~Incomplete hreflang (only 3 of 6 locales configured)~~ → **FIXED in 01-01**
 - ~~Header component hardcoded in English~~ → **FIXED in 02-02**
 - ~~Footer component hardcoded in English~~ → **FIXED in 02-03**
-- Mixed-language content in NL/DK translations
+- ~~Danish ASCII approximations (Vakst, Fa, pa)~~ → **FIXED in 02-04**
+- Mixed-language content in NL/DK translations (deeper review in Phase 3)
 - No geolocation cookie persistence
 - No visible locale switcher
 
@@ -189,11 +194,16 @@ Phases:
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
 - `.planning/phases/02-component-architecture/02-02-SUMMARY.md` - Header component translation
+- `.planning/phases/02-component-architecture/02-03-SUMMARY.md` - Footer component translation
+- `.planning/phases/02-component-architecture/02-04-SUMMARY.md` - Translation quality fixes & Phase 2 verification
+- `.planning/phases/02-component-architecture/02-04-VERIFICATION.txt` - Phase 2 verification results
 - `src/lib/seo.ts` - SEO utilities (reuse in future plans)
 - `src/lib/i18n/` - i18n module (context, hooks, formatters)
+- `src/lib/translations.ts` - Translation strings for all locales (Danish characters fixed)
 - `src/app/sitemap.ts` - Sitemap generation for all locales
 - `src/components/seo/structured-data.tsx` - LocalBusiness and other schema components
 - `src/components/layout/header.tsx` - Header with translation fallback pattern
+- `src/components/layout/footer.tsx` - Footer with translation system
 - `CLAUDE.md` - Project instructions and development workflow
 
 **Patterns Established:**
@@ -205,6 +215,9 @@ Phases:
 - Verification tasks can complete without code changes when implementation is correct
 - Try-catch pattern for components that work with or without LocaleProvider
 - Fallback translations for root-level page compatibility
+- Danish translations use proper UTF-8 characters (æ, ø, å)
+- Currency formatting via Intl.NumberFormat for locale-specific formats
+- Comprehensive verification documents for phase completion
 
 ---
 
@@ -258,23 +271,23 @@ Phases:
 ---
 
 *State initialized: 2026-01-25*
-*Last updated: 2026-01-25 after completing 01-03-PLAN.md (Phase 1 complete)*
+*Last updated: 2026-01-26 after completing 02-04-PLAN.md (Phase 2 complete)*
 
-**Session:** 2026-01-26 - Executed Plan 02-03 (Footer Component Translation)
+**Session:** 2026-01-26 - Executed Plan 02-04 (Translation Quality Fixes & Phase 2 Verification)
 **Completed:**
-- Footer component converted to use useLocale() and useTranslation() hooks
-- Removed pathname parsing for locale detection (replaced with context)
-- Zero hardcoded English strings remain in footer.tsx
-- Comprehensive footer translations added for all 6 locales
-- Section headings translate: Services/Diensten/Tjenester, Company/Bedrijf/Virksomhed
-- All footer links display translated labels per locale
-- Brand description and tagline translate correctly
-- Danish special characters (æ, ø, å) render correctly
+- Fixed all Danish ASCII approximations in translations.ts (29+ instances)
+- Replaced "Vakst" → "vækst", "Fa" → "Få", "pa" → "på", and 20+ other words
+- Verified currency formatting works correctly for all 6 locales
+- Added expected output documentation to formatCurrency function
+- Verified all Phase 2 requirements complete (TRANS-01 through TRANS-08)
+- Created comprehensive verification document (02-04-VERIFICATION.txt)
+- Verified Header/Footer have zero hardcoded English strings
 - Build succeeds: 214 pages across 6 locales
-- Created 02-03-SUMMARY.md
+- Created 02-04-SUMMARY.md
 - Updated STATE.md
-- **Phase 2 Complete - All components internationalized**
+- **Phase 2 Complete - All architectural requirements met**
 
 **Commits:**
-- `58a2a93` - feat(02-03): add comprehensive footer translations
-- `7cb4b7b` - feat(02-03): convert Footer to use translation system
+- `edd73fe` - fix(02-04): fix Danish special characters in translations
+- `fc0c4a3` - docs(02-04): document currency formatting expectations
+- `273c31e` - docs(02-04): complete Phase 2 verification and create verification document
