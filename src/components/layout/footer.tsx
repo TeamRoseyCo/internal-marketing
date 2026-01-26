@@ -4,7 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useLocale, useTranslation } from "@/lib/i18n";
+import { isValidLocale } from "@/lib/locales";
 
 const socialLinks = [
   {
@@ -22,8 +24,45 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const locale = useLocale();
-  const { t } = useTranslation();
+  const pathname = usePathname();
+
+  // Try to get locale from context (when LocaleProvider is available)
+  // Fall back to pathname parsing for root-level pages
+  let locale: string;
+  let t: (key: string) => string;
+
+  try {
+    locale = useLocale();
+    const translation = useTranslation();
+    t = translation.t;
+  } catch {
+    // LocaleProvider not available (root-level pages)
+    // Use pathname parsing as fallback
+    const pathSegments = pathname.split('/');
+    const potentialLocale = pathSegments[1];
+    locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
+
+    // Fallback translations for root-level pages
+    t = (key: string) => {
+      const fallbackTranslations: Record<string, string> = {
+        "footer.headings.services": "Services",
+        "footer.headings.company": "Company",
+        "footer.headings.contact": "Contact",
+        "footer.services.seo": "SEO Services",
+        "footer.services.socialMedia": "Social Media Management",
+        "footer.services.paidAds": "Paid Advertising",
+        "footer.services.webDesign": "Website Design",
+        "footer.company.results": "Results",
+        "footer.company.blog": "Blog",
+        "footer.company.contact": "Contact",
+        "footer.company.privacy": "Privacy Policy",
+        "footer.brandDescription": "We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.",
+        "footer.copyright": "All rights reserved.",
+        "footer.tagline": "Global Social Media Marketing Agency",
+      };
+      return fallbackTranslations[key] || key;
+    };
+  }
 
   // Build locale-aware footer links with translated labels
   const footerLinks = {
