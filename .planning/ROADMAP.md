@@ -50,7 +50,7 @@ Plans:
 
 ## Phase 2: Component Architecture (BLOCKER)
 
-**Goal:** All components use centralized translation system with zero hardcoded English strings.
+**Goal:** Establish centralized translation infrastructure and convert global layout components (Header/Footer) to use it. This creates the architectural foundation for all future component translations.
 
 **Dependencies:** None (can run parallel with Phase 1)
 
@@ -67,7 +67,7 @@ Plans:
 - TRANS-02: Footer component uses translation system
 - TRANS-06: Currency formatting displays correctly per locale
 - TRANS-07: Build-time validation catches missing translation keys
-- TRANS-08: All components use centralized translation system
+- TRANS-08: Centralized translation system established (Header/Footer converted; remaining components converted as worked on in future phases)
 
 **Success Criteria:**
 
