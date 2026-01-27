@@ -516,8 +516,7 @@ export default function LocaleHomePage({ locale }: LocaleHomePageProps) {
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8">
               {t.cta.title}{" "}
-              <span className="gradient-text">{t.cta.titleHighlight}</span>{" "}
-              Your Business?
+              <span className="gradient-text">{t.cta.titleHighlight}</span>
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
               {t.cta.subtitle}

@@ -226,7 +226,7 @@ export const translations = {
     cta: {
       badge: "Let's Talk",
       title: 'Ready to',
-      titleHighlight: 'Grow',
+      titleHighlight: 'Grow Your Business?',
       subtitle: 'Book a free strategy call and discover how we can help you get more leads and scale your business.',
       button: 'Get Your Free Strategy Call',
       buttonSecondary: 'View Case Studies',
@@ -357,9 +357,9 @@ export const translations = {
       ],
     },
     cta: {
-      badge: 'Laten We Praten',
-      title: 'Klaar om te',
-      titleHighlight: 'Groeien',
+      badge: 'Neem Contact Op',
+      title: 'Klaar om',
+      titleHighlight: 'Je Bedrijf te Laten Groeien?',
       subtitle: 'Boek een gratis strategiegesprek en ontdek hoe wij je kunnen helpen meer leads te krijgen en je bedrijf te schalen.',
       button: 'Gratis Strategiegesprek',
       buttonSecondary: 'Bekijk Case Studies',
@@ -490,9 +490,9 @@ export const translations = {
       ],
     },
     cta: {
-      badge: 'Lad Os Tale',
+      badge: 'Kontakt Os',
       title: 'Klar til at',
-      titleHighlight: 'Vokse',
+      titleHighlight: 'Vokse Din Virksomhed?',
       subtitle: 'Book et gratis strategikald og opdag, hvordan vi kan hjælpe dig med at få flere leads og skalere din virksomhed.',
       button: 'Få Dit Gratis Strategikald',
       buttonSecondary: 'Se Case Studies',

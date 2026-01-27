@@ -144,7 +144,7 @@ export const servicesPageTranslations: TranslationRecord<ServicesPageTranslation
       },
     },
     cta: {
-      badge: 'Laten We Praten',
+      badge: 'Neem Contact Op',
       title: 'Niet Zeker Welke Dienst',
       titleHighlight: 'Bij Je Past?',
       subtitle: 'Boek een gratis strategiegesprek en we helpen je de beste aanpak te identificeren om je bedrijf te laten groeien.',
@@ -191,7 +191,7 @@ export const servicesPageTranslations: TranslationRecord<ServicesPageTranslation
       },
     },
     cta: {
-      badge: 'Lad Os Tale',
+      badge: 'Kontakt Os',
       title: 'Ikke Sikker På Hvilken Tjeneste',
       titleHighlight: 'Der Passer Dig?',
       subtitle: 'Book et gratis strategikald, og vi hjælper dig med at identificere den bedste tilgang til at vækste din virksomhed.',
