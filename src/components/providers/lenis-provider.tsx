@@ -47,6 +47,17 @@ export function LenisProvider({ children }: LenisProviderProps) {
     }
     requestAnimationFrame(raf);
 
+    // Stop/start Lenis based on tab visibility to save CPU
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        lenisInstance.stop();
+      } else {
+        lenisInstance.start();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     // Handle window resize
     const handleResize = () => {
       lenisInstance.resize();
@@ -56,6 +67,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
 
     return () => {
       clearTimeout(timeoutId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener("resize", handleResize);
       lenisInstance.destroy();
     };
