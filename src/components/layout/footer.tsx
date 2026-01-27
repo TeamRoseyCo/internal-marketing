@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslation } from "@/lib/i18n";
-import { isValidLocale } from "@/lib/locales";
+import { isValidLocale, locales } from "@/lib/locales";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 
 const socialLinks = [
@@ -223,7 +223,7 @@ export function Footer() {
                 transition={{ duration: 0.2 }}
               >
                 <a
-                  href="tel:+1234567890"
+                  href={`tel:${locales[locale as keyof typeof locales]?.phone || '+44 7722 432679'}`}
                   className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group"
                 >
                   <span className="relative">
@@ -233,7 +233,7 @@ export function Footer() {
                       </span>
                     </span>
                   </span>
-                  +1 (234) 567-890
+                  {locales[locale as keyof typeof locales]?.phone || '+44 7722 432679'}
                 </a>
               </motion.li>
             </ul>
