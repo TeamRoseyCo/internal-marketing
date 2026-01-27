@@ -24,7 +24,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'United States',
     countryCode: 'US',
     currency: 'USD',
-    phone: '+1 (555) 123-4567', // Update with real number
+    phone: '+1 (573) 268-5330',
     address: 'Missouri, United States',
     timezone: 'America/Chicago',
   },
@@ -35,7 +35,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Nederland',
     countryCode: 'NL',
     currency: 'EUR',
-    phone: '+31 20 123 4567', // Update with real number
+    phone: '+31 6 22 25 44 78',
     address: 'Amsterdam, Nederland',
     timezone: 'Europe/Amsterdam',
   },
@@ -46,7 +46,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Danmark',
     countryCode: 'DK',
     currency: 'DKK',
-    phone: '+45 12 34 56 78', // Update with real number
+    phone: '+45 6081 8826',
     address: 'København, Danmark',
     timezone: 'Europe/Copenhagen',
   },
@@ -57,7 +57,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Australia',
     countryCode: 'AU',
     currency: 'AUD',
-    phone: '+61 2 1234 5678', // Update with real number
+    phone: '+44 7722 432679', // Using Belfast number
     address: 'Sydney, Australia',
     timezone: 'Australia/Sydney',
   },
