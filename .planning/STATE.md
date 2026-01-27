@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-01-27
-**Current Phase:** 3 (Translation Quality Assurance)
-**Project Status:** Phase 3 Plan 1 Complete - Grammar Validation Done
+**Current Phase:** 4 (Geolocation & Locale Switcher)
+**Project Status:** Phase 4 Plan 1 Complete - Geolocation Detection & Cookie Persistence Done
 
 ---
 
@@ -18,35 +18,36 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 
 ## Current Position
 
-**Phase:** 3 of 7 (Translation Quality Assurance)
-**Plan:** 2 of 2 complete (03-02)
-**Status:** Phase 3 COMPLETE - Native speaker review done
-**Last activity:** 2026-01-27 - Completed 03-02-PLAN.md (Native speaker review & approval)
-**Progress:** 17/39 requirements complete (REQ-001 through REQ-017)
+**Phase:** 4 of 7 (Geolocation & Locale Switcher)
+**Plan:** 1 of 2 complete (04-01)
+**Status:** Phase 4 In Progress - Geolocation detection done, locale switcher next
+**Last activity:** 2026-01-27 - Completed 04-01-PLAN.md (Geolocation Detection & Cookie Persistence)
+**Progress:** 20/39 requirements complete (REQ-001 through REQ-020)
 
 ```
-Progress: [████████░░░░░░░░░░░░] 44% (17/39 requirements)
+Progress: [██████████░░░░░░░░░░] 51% (20/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
-[█] Phase 3: Translation QA (COMPLETE - All plans done)
-[░] Phase 4: Geolocation & Locale Switcher
+[█] Phase 3: Translation QA (COMPLETE)
+[▓] Phase 4: Geolocation & Locale Switcher (1/2 plans complete)
 [░] Phase 5: Content & Results Page
 [░] Phase 6: Integrations & Analytics
 [░] Phase 7: Performance & Launch Validation
 ```
 
-**Next Action:** Execute Phase 4 Plan 1 (Geolocation Detection & Cookie Persistence)
+**Next Action:** Execute Phase 4 Plan 2 (Locale Switcher Component)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-27 (after 03-02 completion)
+- Last successful build: 2026-01-27 (after 04-01 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
+- Middleware: Active (geolocation detection with cookie persistence)
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -85,6 +86,10 @@ Phases:
 | 2026-01-27 | Context-aware error filtering for translations | Business context requires English loanwords (SEO, marketing, ROI) | 40-60% false positive reduction, practical validation results |
 | 2026-01-27 | Tiered validation approach (Critical > High > Medium) | Focus MVP effort on high-impact user-facing content | 23 strings per locale covers all critical user touchpoints |
 | 2026-01-27 | Dutch hero text changed to "Gegarandeerde groei. Gegarandeerde klanten." | Native speaker feedback - new version flows more naturally | More professional and credible first impression for Dutch visitors |
+| 2026-01-27 | Use Vercel geolocation header (x-vercel-ip-country) | Free on all Vercel deployments, no external API needed | Zero cost geolocation with reliable IP detection |
+| 2026-01-27 | NEXT_LOCALE cookie is strictly necessary (no consent required) | GDPR Article 5(3) - essential for multi-locale navigation | Can set cookie before consent banner shows |
+| 2026-01-27 | Use 302 redirects (temporary) not 301 (permanent) | Allows flexibility if geolocation logic changes | Search engines won't cache redirect permanently |
+| 2026-01-27 | 1-year cookie expiry for NEXT_LOCALE | Balances persistence with GDPR best practices | Shorter than 2-year maximum, user-friendly |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -98,8 +103,8 @@ Phases:
   - ~~Danish incorrect verb accents (Dominér → Dominer, engagér → engager)~~ → **FIXED in 03-01**
   - ~~Dutch hero text unnatural phrasing~~ → **FIXED in 03-02 (Native speaker review)**
   - ~~Translation naturalness and tone~~ → **APPROVED in 03-02 (Native speaker review)**
-- No geolocation persistence mechanism exists
-- Server-side 302 redirects required for SEO compliance
+- ~~No geolocation persistence mechanism exists~~ → **FIXED in 04-01 (Middleware + NEXT_LOCALE cookie)**
+- ~~Server-side 302 redirects required for SEO compliance~~ → **FIXED in 04-01 (Middleware redirects)**
 
 ### Technical Constraints
 
@@ -117,8 +122,8 @@ Phases:
 - ~~Danish ASCII approximations (Vakst, Fa, pa)~~ → **FIXED in 02-04**
 - ~~Mixed-language content in NL/DK translations~~ → **FIXED in 03-01 (Context-aware filtering)**
 - ~~Translation quality and naturalness~~ → **FIXED in 03-02 (Native speaker approval)**
-- No geolocation cookie persistence (Phase 4)
-- No visible locale switcher (Phase 4)
+- ~~No geolocation cookie persistence~~ → **FIXED in 04-01 (Middleware + NEXT_LOCALE cookie)**
+- No visible locale switcher (Phase 4 Plan 2)
 
 **High Priority (Fix post-launch acceptable):**
 - Placeholder contact information (phone numbers, addresses)
@@ -152,23 +157,27 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-27 - Executed Plan 03-02 (Native Speaker Review)
+**Session:** 2026-01-27 - Executed Plan 04-01 (Geolocation Detection & Cookie Persistence)
 **Completed:**
-- Obtained native Dutch speaker approval with 1 correction applied (hero text naturalness)
-- Obtained native Danish speaker approval with zero changes needed
-- Fixed Dutch hero.title: "Meer Groei. Meer Klanten. Gegarandeerd." → "Gegarandeerde groei. Gegarandeerde klanten."
-- Updated 03-VALIDATION.md with comprehensive native speaker review section
-- All Phase 3 requirements (TRANS-03, TRANS-04, TRANS-05) now satisfied
-- Translation quality validated at two levels: automated grammar + native speaker naturalness
-- Build succeeds: 214 pages across 6 locales
-- Created 03-02-SUMMARY.md
+- Created geo-utils.ts with country-to-locale mapping and EU detection
+- Implemented Next.js middleware for geolocation-based locale detection
+- Middleware uses detection priority: cookie → geo header → default
+- Set NEXT_LOCALE cookie (strictly necessary, 1-year expiry)
+- Replaced root page.tsx with simple redirect fallback
+- Verified 302 redirects work correctly (/, /blog → /us/*, /us/blog)
+- Verified existing [locale] routes pass through without redirect
+- All 214 pages build successfully with middleware
+- Created 04-01-SUMMARY.md
 - Updated STATE.md
-- **Phase 3 COMPLETE - Translation Quality Assurance done**
+- **Phase 4 Plan 1 COMPLETE - Geolocation detection working**
 
 **Commits:**
-- `6db9a21` - fix(03-02): apply native speaker feedback to Dutch hero text
+- `69a3b8f` - feat(04-01): create geo-utils helper library
+- `ea8aea7` - feat(04-01): create middleware for geolocation redirect
+- `38a5637` - feat(04-01): replace root page with locale redirect
 
 **Previous commits (Phase 3 - Translation QA):**
+- `6db9a21` - fix(03-02): apply native speaker feedback to Dutch hero text
 - `474d133` - fix(03-01): correct Dutch grammar errors in translations
 - `4ae6a58` - fix(03-01): correct Dutch verb conjugation in page-translations
 
@@ -188,9 +197,9 @@ Phases:
 - `fa49ff7` - docs(01-03): complete SEO infrastructure verification plan
 
 **Next Steps:**
-1. Execute Phase 4 Plan 1 (Geolocation Detection & Cookie Persistence)
-2. Execute Phase 4 Plan 2 (Locale Switcher Component)
-3. Execute Phase 5 (Content & Results Page)
+1. Execute Phase 4 Plan 2 (Locale Switcher Component)
+2. Execute Phase 5 (Content & Results Page)
+3. Execute Phase 6 (Integrations & Analytics)
 ### What to Remember for Next Session
 
 **Critical Context:**
@@ -206,6 +215,7 @@ Phases:
 - `.planning/phases/03-translation-quality-assurance/03-VALIDATION.md` - Translation validation report (grammar + native review)
 - `.planning/phases/03-translation-quality-assurance/03-01-SUMMARY.md` - Automated validation summary
 - `.planning/phases/03-translation-quality-assurance/03-02-SUMMARY.md` - Native speaker review summary
+- `.planning/phases/04-geolocation-a-locale-switcher/04-01-SUMMARY.md` - Geolocation detection & cookie persistence
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
@@ -214,6 +224,8 @@ Phases:
 - `.planning/phases/02-component-architecture/02-04-SUMMARY.md` - Translation quality fixes & Phase 2 verification
 - `.planning/phases/02-component-architecture/02-04-VERIFICATION.txt` - Phase 2 verification results
 - `src/lib/seo.ts` - SEO utilities (reuse in future plans)
+- `src/lib/geo-utils.ts` - Geolocation utilities (country mapping, EU detection)
+- `src/middleware.ts` - Next.js middleware (geolocation detection, cookie persistence)
 - `src/lib/i18n/` - i18n module (context, hooks, formatters)
 - `src/lib/translations.ts` - Translation strings for all locales (Danish characters fixed)
 - `src/app/sitemap.ts` - Sitemap generation for all locales
@@ -234,6 +246,11 @@ Phases:
 - Danish translations use proper UTF-8 characters (æ, ø, å)
 - Currency formatting via Intl.NumberFormat for locale-specific formats
 - Comprehensive verification documents for phase completion
+- Middleware detection priority: cookie → geo header → default
+- Middleware matcher excludes API routes, Next.js internals, static files
+- Skip middleware redirect if path already has locale prefix (prevents loops)
+- Strictly necessary cookies (GDPR Article 5(3) exempt) set before consent
+- 302 redirects for SEO compliance (temporary, not permanent)
 
 ---
 
