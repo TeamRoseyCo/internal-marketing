@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-01-27
-**Current Phase:** 4 (Geolocation & Locale Switcher)
-**Project Status:** Phase 4 Complete - Geolocation & Locale Switcher Done
+**Current Phase:** 5 (Performance & Launch Validation)
+**Project Status:** Phase 5 Plan 1 Complete - Image & Script Optimization Done
 
 ---
 
@@ -18,24 +18,24 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 
 ## Current Position
 
-**Phase:** 4 of 5 (Geolocation & Locale Switcher)
-**Plan:** 3 of 3 complete (04-03)
-**Status:** Phase 4 Complete - Ready for Phase 5 (Performance & Launch Validation)
-**Last activity:** 2026-01-27 - Completed Phase 4, removed Phases 5-6 (Content/Results, Integrations)
-**Progress:** 23/28 requirements complete (REQ-001 through REQ-023)
+**Phase:** 5 of 5 (Performance & Launch Validation)
+**Plan:** 1 of 3 complete (05-01)
+**Status:** Phase 5 Plan 1 Complete - Image & Script Optimization Done
+**Last activity:** 2026-01-27 - Completed Plan 05-01 (priority loading, preconnect hints, Lenis optimization)
+**Progress:** 26/28 requirements complete (REQ-001 through REQ-026)
 
 ```
-Progress: [██████████████████░░] 82% (23/28 requirements)
+Progress: [███████████████████░] 93% (26/28 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
 [█] Phase 3: Translation QA (COMPLETE)
 [█] Phase 4: Geolocation & Locale Switcher (COMPLETE)
-[░] Phase 5: Performance & Launch Validation
+[▓] Phase 5: Performance & Launch Validation (1/3 plans complete)
 ```
 
-**Next Action:** Plan Phase 5 (Performance & Launch Validation)
+**Next Action:** Execute Plan 05-02 (CLS optimization for animations and dynamic content)
 
 ---
 
@@ -165,25 +165,23 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-27 - Executed Plan 04-03 (Cookie Consent Banner for EU Visitors)
+**Session:** 2026-01-27 - Executed Plan 05-01 (Image & Script Optimization)
 **Completed:**
-- Added cookieConsent translations for all 6 locales (us, au, uk, ie, nl, dk)
-- English locales: "Cookie Notice" with standard English text
-- Dutch (nl): "Cookie Melding" with proper Dutch translations
-- Danish (dk): "Cookie Meddelelse" with proper Danish translations
-- Created CookieConsent component with EU locale detection via isEULocale()
-- Component shows only for EU locales (nl, dk, ie) based on locale not IP
-- Consent stored in localStorage (key: 'cookie-consent', values: 'accepted' or 'declined')
-- Both Accept and Decline dismiss banner (NEXT_LOCALE is strictly necessary)
-- Integrated into locale layout after children inside LocaleProvider
-- Dark theme styling with gradient border and buttons
-- Framer Motion slide-up/slide-down animations
-- All 214 pages build successfully with cookie consent
-- Created 04-03-SUMMARY.md
-- Updated STATE.md
-- **Phase 4 Plan 3 COMPLETE - Phase 4 100% Complete**
+- Task 1: Verified hero video player has priority loading (no changes needed)
+- Task 2: Added preconnect hints to root layout for BunnyStream CDN and GTM
+- Task 3: Optimized Lenis provider with visibility change handler to stop when tab hidden
+- Task 4: Created baseline Lighthouse audit document with testing instructions
+- Build verification: 214 pages generated successfully
+- Created 05-01-SUMMARY.md with optimization analysis
+- Updated STATE.md and ROADMAP.md
+- **Phase 5 Plan 1 COMPLETE - 1 of 3 plans done**
 
 **Commits:**
+- `2eb60ae` - perf(05-01): add preconnect hints to root layout
+- `89155c4` - perf(05-01): optimize Lenis with visibility handling
+- `ad11e75` - docs(05-01): create baseline Lighthouse audit document
+
+**Previous Session (Phase 4 Plan 3):**
 - `be2c67a` - feat(04-03): add cookie consent translations for all 6 locales
 - `17a0a31` - feat(04-03): create CookieConsent component with EU locale detection
 - `d9d9ffc` - feat(04-03): integrate CookieConsent into locale layout
@@ -220,9 +218,9 @@ Phases:
 - `fa49ff7` - docs(01-03): complete SEO infrastructure verification plan
 
 **Next Steps:**
-1. Execute Phase 5 (Content & Results Page)
-2. Execute Phase 6 (Integrations & Analytics)
-3. Execute Phase 7 (Performance & Launch Validation)
+1. Execute Plan 05-02 (CLS optimization for animations and dynamic content)
+2. Execute Plan 05-03 (NAP audit, GBP coordination, and final Lighthouse validation)
+3. Ship to production and monitor real user metrics
 ### What to Remember for Next Session
 
 **Critical Context:**
@@ -241,6 +239,8 @@ Phases:
 - `.planning/phases/04-geolocation-a-locale-switcher/04-01-SUMMARY.md` - Geolocation detection & cookie persistence
 - `.planning/phases/04-geolocation-a-locale-switcher/04-02-SUMMARY.md` - Locale switcher component
 - `.planning/phases/04-geolocation-a-locale-switcher/04-03-SUMMARY.md` - Cookie consent banner (GDPR compliance)
+- `.planning/phases/05-performance-a-launch-validation/05-01-SUMMARY.md` - Image & script optimization
+- `.planning/phases/05-performance-a-launch-validation/lighthouse-baseline.md` - Baseline Lighthouse audit template
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure

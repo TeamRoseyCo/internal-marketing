@@ -146,7 +146,7 @@ Plans:
 **Plans:** 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Image & script optimization + baseline Lighthouse audit
+- [x] 05-01-PLAN.md — Image & script optimization + baseline Lighthouse audit
 - [ ] 05-02-PLAN.md — CLS optimization for animations and dynamic content
 - [ ] 05-03-PLAN.md — NAP audit, GBP coordination, and final Lighthouse validation
 
@@ -180,7 +180,7 @@ Plans:
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Performance & Launch | Planned | 10/10 | 0/5 | 3 plans in 3 waves |
+| Phase 5: Performance & Launch | In Progress | 10/10 | 2/5 | 1 of 3 plans complete |
 
 **Total Coverage:** 28/39 v1 requirements mapped (72%)
 
