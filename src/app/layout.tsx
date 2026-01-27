@@ -109,6 +109,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Preconnect to BunnyStream CDN for faster video loading */}
+        <link rel="preconnect" href="https://vz-ed4c89a0-c68.b-cdn.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vz-ed4c89a0-c68.b-cdn.net" />
+
+        {/* Preconnect to Google Tag Manager for analytics */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
         <OrganizationStructuredData />
         <WebSiteStructuredData />
         <GoogleAnalytics />
