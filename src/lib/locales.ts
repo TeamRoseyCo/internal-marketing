@@ -35,7 +35,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Nederland',
     countryCode: 'NL',
     currency: 'EUR',
-    phone: '+31 6 22 25 44 78',
+    phone: '+31 85 369 6471',
     address: 'Amsterdam, Nederland',
     timezone: 'Europe/Amsterdam',
   },
