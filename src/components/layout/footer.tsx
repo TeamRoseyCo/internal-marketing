@@ -7,6 +7,7 @@ import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslation } from "@/lib/i18n";
 import { isValidLocale } from "@/lib/locales";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 
 const socialLinks = [
   {
@@ -250,6 +251,13 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Rosey Co. {t("footer.copyright")}
           </p>
+
+          {/* Locale Switcher - Compact variant */}
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-muted-foreground hidden sm:inline">Region:</span>
+            <LocaleSwitcher variant="compact" />
+          </div>
+
           <p className="text-sm text-muted-foreground">
             {t("footer.tagline")}
           </p>
