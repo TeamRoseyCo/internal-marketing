@@ -68,8 +68,8 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'United Kingdom',
     countryCode: 'GB',
     currency: 'GBP',
-    phone: '+44 20 1234 5678', // Update with real number
-    address: 'London, United Kingdom',
+    phone: '+44 7722 432679', // Verified Belfast GBP
+    address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/London',
   },
   ie: {
@@ -79,8 +79,8 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Ireland',
     countryCode: 'IE',
     currency: 'EUR',
-    phone: '+353 1 234 5678', // Update with real number
-    address: 'Dublin, Ireland',
+    phone: '+44 7722 432679', // Verified Belfast GBP (covers UK + IE)
+    address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/Dublin',
   },
 };
