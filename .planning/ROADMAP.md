@@ -79,7 +79,7 @@ Plans:
 
 ---
 
-## Phase 3: Translation Quality Assurance (BLOCKER)
+## Phase 3: Translation Quality Assurance (BLOCKER) - COMPLETE
 
 **Goal:** All Dutch and Danish translations are grammatically correct with zero mixed-language content.
 
@@ -88,8 +88,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Automated grammar validation and fixes for NL/DK translations
-- [ ] 03-02-PLAN.md — Native speaker review and final validation
+- [x] 03-01-PLAN.md — Automated grammar validation and fixes for NL/DK translations
+- [x] 03-02-PLAN.md — Native speaker review and final validation
 
 **Requirements Covered:**
 - TRANS-03: Dutch translations pass grammar validation
@@ -112,10 +112,12 @@ Plans:
 
 **Dependencies:** Phase 1 (SEO foundation must be complete for proper redirects)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (created by /gsd:plan-phase)
+- [ ] 04-01-PLAN.md — Middleware geolocation detection and cookie persistence
+- [ ] 04-02-PLAN.md — Locale switcher component with Header/Footer integration
+- [ ] 04-03-PLAN.md — Cookie consent banner for EU visitors (GDPR compliance)
 
 **Requirements Covered:**
 - GEO-01: Locale preference persists via cookie
@@ -231,8 +233,8 @@ Plans:
 |-------|--------|--------------|------------------|-------|
 | Phase 1: SEO Foundation | Complete | 7/7 | 5/5 | BLOCKER for launch |
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
-| Phase 3: Translation QA | Planned | 3/3 | 0/5 | BLOCKER for launch |
-| Phase 4: Geolocation | Pending | 6/6 | 0/5 | Post-launch acceptable |
+| Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
+| Phase 4: Geolocation | Planned | 6/6 | 0/5 | 3 plans ready |
 | Phase 5: Content & Results | Pending | 5/5 | 0/5 | Post-launch acceptable |
 | Phase 6: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
 | Phase 7: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
@@ -246,10 +248,10 @@ Plans:
 **MUST COMPLETE BEFORE LAUNCH:**
 - Phase 1: SEO Foundation - COMPLETE
 - Phase 2: Component Architecture - COMPLETE
-- Phase 3: Translation QA - PLANNED (2 plans ready)
+- Phase 3: Translation QA - COMPLETE
 
 **CAN SHIP POST-LAUNCH:**
-- Phase 4: Geolocation (improves UX, not SEO blocker)
+- Phase 4: Geolocation (improves UX, not SEO blocker) - PLANNED (3 plans)
 - Phase 5: Content & Results (can launch with partial content)
 - Phase 6: Integrations (can launch with basic contact form)
 
@@ -260,10 +262,10 @@ Plans:
 
 ## Next Steps
 
-1. **Execute Phase 3** - Use `/gsd:execute-phase 3` to run Translation QA plans
-2. **Plan Phase 4** - Use `/gsd:plan-phase 4` after Phase 3 completes
-3. **Ship & Iterate** - Launch with Phases 1-3, add Phases 4-7 incrementally
+1. **Execute Phase 4** - Use `/gsd:execute-phase 4` to run Geolocation plans
+2. **Plan Phase 5** - Use `/gsd:plan-phase 5` after Phase 4 completes
+3. **Ship & Iterate** - Launch with Phases 1-4, add Phases 5-7 incrementally
 
 ---
 
-*Last updated: 2026-01-26*
+*Last updated: 2026-01-27*
