@@ -19,32 +19,32 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 ## Current Position
 
 **Phase:** 3 of 7 (Translation Quality Assurance)
-**Plan:** 1 of 2 complete (03-01)
-**Status:** Phase 3 in progress - Automated validation complete
-**Last activity:** 2026-01-27 - Completed 03-01-PLAN.md (Automated grammar validation & fixes)
-**Progress:** 14/39 requirements complete (REQ-001 through REQ-014)
+**Plan:** 2 of 2 complete (03-02)
+**Status:** Phase 3 COMPLETE - Native speaker review done
+**Last activity:** 2026-01-27 - Completed 03-02-PLAN.md (Native speaker review & approval)
+**Progress:** 17/39 requirements complete (REQ-001 through REQ-017)
 
 ```
-Progress: [████████░░░░░░░░░░░░] 36% (14/39 requirements)
+Progress: [████████░░░░░░░░░░░░] 44% (17/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
-[▓] Phase 3: Translation QA (IN PROGRESS - Plan 1/2 complete)
+[█] Phase 3: Translation QA (COMPLETE - All plans done)
 [░] Phase 4: Geolocation & Locale Switcher
 [░] Phase 5: Content & Results Page
 [░] Phase 6: Integrations & Analytics
 [░] Phase 7: Performance & Launch Validation
 ```
 
-**Next Action:** Execute Phase 3 Plan 2 (Native Speaker Review)
+**Next Action:** Execute Phase 4 Plan 1 (Geolocation Detection & Cookie Persistence)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-27 (after 03-01 completion)
+- Last successful build: 2026-01-27 (after 03-02 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
 
@@ -58,7 +58,7 @@ Phases:
 **Business Metrics:**
 - Locales configured: 6 (US, AU, UK, IE, NL, DK)
 - Blog posts: 22 (US), 19 translated (NL/DK)
-- Translation quality: Needs improvement (known issues)
+- Translation quality: ✅ Production-ready (native speaker approved)
 
 ---
 
@@ -84,6 +84,7 @@ Phases:
 | 2026-01-27 | Use LanguageTool API for automated grammar validation | Free tier sufficient for manual validation, no self-hosting needed | Zero cost translation QA with robust Dutch/Danish checking |
 | 2026-01-27 | Context-aware error filtering for translations | Business context requires English loanwords (SEO, marketing, ROI) | 40-60% false positive reduction, practical validation results |
 | 2026-01-27 | Tiered validation approach (Critical > High > Medium) | Focus MVP effort on high-impact user-facing content | 23 strings per locale covers all critical user touchpoints |
+| 2026-01-27 | Dutch hero text changed to "Gegarandeerde groei. Gegarandeerde klanten." | Native speaker feedback - new version flows more naturally | More professional and credible first impression for Dutch visitors |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -91,11 +92,12 @@ Phases:
 - ~~Header component hardcoded in English~~ → **FIXED in 02-02**
 - ~~Footer component hardcoded in English~~ → **FIXED in 02-03**
 - ~~Danish translations use ASCII approximations~~ → **FIXED in 02-04**
-- ~~Translation quality issues in NL/DK locales~~ → **FIXED in 03-01 (Grammar validation)**
+- ~~Translation quality issues in NL/DK locales~~ → **FIXED in Phase 3**
   - ~~Dutch verb conjugation errors (word → wordt)~~ → **FIXED in 03-01**
   - ~~Dutch missing diaeresis (strategieen → strategieën)~~ → **FIXED in 03-01**
   - ~~Danish incorrect verb accents (Dominér → Dominer, engagér → engager)~~ → **FIXED in 03-01**
-- Translation naturalness and tone (native speaker review in Phase 3 Plan 2)
+  - ~~Dutch hero text unnatural phrasing~~ → **FIXED in 03-02 (Native speaker review)**
+  - ~~Translation naturalness and tone~~ → **APPROVED in 03-02 (Native speaker review)**
 - No geolocation persistence mechanism exists
 - Server-side 302 redirects required for SEO compliance
 
@@ -113,9 +115,10 @@ Phases:
 - ~~Header component hardcoded in English~~ → **FIXED in 02-02**
 - ~~Footer component hardcoded in English~~ → **FIXED in 02-03**
 - ~~Danish ASCII approximations (Vakst, Fa, pa)~~ → **FIXED in 02-04**
-- Mixed-language content in NL/DK translations (deeper review in Phase 3)
-- No geolocation cookie persistence
-- No visible locale switcher
+- ~~Mixed-language content in NL/DK translations~~ → **FIXED in 03-01 (Context-aware filtering)**
+- ~~Translation quality and naturalness~~ → **FIXED in 03-02 (Native speaker approval)**
+- No geolocation cookie persistence (Phase 4)
+- No visible locale switcher (Phase 4)
 
 **High Priority (Fix post-launch acceptable):**
 - Placeholder contact information (phone numbers, addresses)
@@ -149,21 +152,23 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-27 - Executed Plan 03-01 (Automated Grammar Validation & Fixes)
+**Session:** 2026-01-27 - Executed Plan 03-02 (Native Speaker Review)
 **Completed:**
-- Validated Dutch translations using LanguageTool API (23 critical + high priority strings)
-- Validated Danish translations using LanguageTool API (23 critical + high priority strings)
-- Fixed 6 Dutch grammar errors (verb conjugation, missing diaeresis) across translations.ts and page-translations.ts
-- Fixed 2 Danish grammar errors (incorrect verb accents) in translations.ts
-- Verified 100% translation key coverage for NL and DK locales (79 keys each)
-- Created comprehensive 03-VALIDATION.md report with before/after error counts
-- Zero critical errors remaining in Tier 1 (Critical) content
+- Obtained native Dutch speaker approval with 1 correction applied (hero text naturalness)
+- Obtained native Danish speaker approval with zero changes needed
+- Fixed Dutch hero.title: "Meer Groei. Meer Klanten. Gegarandeerd." → "Gegarandeerde groei. Gegarandeerde klanten."
+- Updated 03-VALIDATION.md with comprehensive native speaker review section
+- All Phase 3 requirements (TRANS-03, TRANS-04, TRANS-05) now satisfied
+- Translation quality validated at two levels: automated grammar + native speaker naturalness
 - Build succeeds: 214 pages across 6 locales
-- Created 03-01-SUMMARY.md
+- Created 03-02-SUMMARY.md
 - Updated STATE.md
-- **Phase 3 Plan 1 complete (Automated grammar validation done)**
+- **Phase 3 COMPLETE - Translation Quality Assurance done**
 
 **Commits:**
+- `6db9a21` - fix(03-02): apply native speaker feedback to Dutch hero text
+
+**Previous commits (Phase 3 - Translation QA):**
 - `474d133` - fix(03-01): correct Dutch grammar errors in translations
 - `4ae6a58` - fix(03-01): correct Dutch verb conjugation in page-translations
 
@@ -183,8 +188,8 @@ Phases:
 - `fa49ff7` - docs(01-03): complete SEO infrastructure verification plan
 
 **Next Steps:**
-1. Execute Phase 3 Plan 2 (Native Speaker Review)
-2. Execute Phase 4 (Geolocation & Locale Switcher)
+1. Execute Phase 4 Plan 1 (Geolocation Detection & Cookie Persistence)
+2. Execute Phase 4 Plan 2 (Locale Switcher Component)
 3. Execute Phase 5 (Content & Results Page)
 ### What to Remember for Next Session
 
@@ -198,8 +203,9 @@ Phases:
 - `.planning/ROADMAP.md` - Phase structure and success criteria
 - `.planning/REQUIREMENTS.md` - All 39 v1 requirements with traceability
 - `.planning/phases/01-seo-foundation/01-01-SUMMARY.md` - Hreflang implementation
-- `.planning/phases/03-translation-quality-assurance/03-VALIDATION.md` - Grammar validation report
+- `.planning/phases/03-translation-quality-assurance/03-VALIDATION.md` - Translation validation report (grammar + native review)
 - `.planning/phases/03-translation-quality-assurance/03-01-SUMMARY.md` - Automated validation summary
+- `.planning/phases/03-translation-quality-assurance/03-02-SUMMARY.md` - Native speaker review summary
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
