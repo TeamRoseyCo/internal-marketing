@@ -125,6 +125,14 @@ export interface Translations {
     bookCall: string;
     viewResults: string;
   };
+  // Cookie consent
+  cookieConsent: {
+    title: string;
+    message: string;
+    accept: string;
+    decline: string;
+    learnMore: string;
+  };
 }
 
 // Using 'as' assertion since AU, UK, IE are added dynamically after initialization
@@ -260,6 +268,13 @@ export const translations = {
       bookCall: 'Book a Call',
       viewResults: 'View Results',
     },
+    cookieConsent: {
+      title: 'Cookie Notice',
+      message: 'We use cookies to remember your locale preference and improve your experience.',
+      accept: 'Accept',
+      decline: 'Decline',
+      learnMore: 'Learn more',
+    },
   },
 
   // Dutch (Netherlands)
@@ -393,6 +408,13 @@ export const translations = {
       bookCall: 'Gesprek Boeken',
       viewResults: 'Resultaten Bekijken',
     },
+    cookieConsent: {
+      title: 'Cookie Melding',
+      message: 'We gebruiken cookies om uw taalvoorkeur te onthouden en uw ervaring te verbeteren.',
+      accept: 'Accepteren',
+      decline: 'Weigeren',
+      learnMore: 'Meer informatie',
+    },
   },
 
   // Danish (Denmark)
@@ -525,6 +547,13 @@ export const translations = {
       getStarted: 'Kom I Gang',
       bookCall: 'Book et Opkald',
       viewResults: 'Se Resultater',
+    },
+    cookieConsent: {
+      title: 'Cookie Meddelelse',
+      message: 'Vi bruger cookies til at huske dine sprogindstillinger og forbedre din oplevelse.',
+      accept: 'Accepter',
+      decline: 'Afvis',
+      learnMore: 'Læs mere',
     },
   },
 } as Record<LocaleCode, Translations>;
@@ -660,6 +689,13 @@ translations.au = {
     bookCall: 'Book a Call',
     viewResults: 'View Results',
   },
+  cookieConsent: {
+    title: 'Cookie Notice',
+    message: 'We use cookies to remember your locale preference and improve your experience.',
+    accept: 'Accept',
+    decline: 'Decline',
+    learnMore: 'Learn more',
+  },
 };
 
 // United Kingdom - British English
@@ -793,6 +829,13 @@ translations.uk = {
     bookCall: 'Book a Call',
     viewResults: 'View Results',
   },
+  cookieConsent: {
+    title: 'Cookie Notice',
+    message: 'We use cookies to remember your locale preference and improve your experience.',
+    accept: 'Accept',
+    decline: 'Decline',
+    learnMore: 'Learn more',
+  },
 };
 
 // Ireland - Irish English (British spelling)
@@ -925,6 +968,13 @@ translations.ie = {
     getStarted: 'Get Started',
     bookCall: 'Book a Call',
     viewResults: 'View Results',
+  },
+  cookieConsent: {
+    title: 'Cookie Notice',
+    message: 'We use cookies to remember your locale preference and improve your experience.',
+    accept: 'Accept',
+    decline: 'Decline',
+    learnMore: 'Learn more',
   },
 };
 
