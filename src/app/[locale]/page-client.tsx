@@ -231,7 +231,7 @@ export default function LocaleHomePage({ locale }: LocaleHomePageProps) {
       <section className="py-20 md:py-28">
         <div className="container">
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 min-h-[150px] md:min-h-[200px]"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -283,7 +283,7 @@ export default function LocaleHomePage({ locale }: LocaleHomePageProps) {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center sm:justify-items-stretch"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 justify-items-center sm:justify-items-stretch min-h-[400px] lg:min-h-[300px]"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -348,7 +348,7 @@ export default function LocaleHomePage({ locale }: LocaleHomePageProps) {
               </p>
 
               <motion.ul
-                className="space-y-5 inline-block text-left"
+                className="space-y-5 inline-block text-left min-h-[200px]"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
