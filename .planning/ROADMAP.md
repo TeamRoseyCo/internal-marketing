@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-25
 **Project:** Multi-location SEO infrastructure across 6 locales (US, AU, UK, IE, NL, DK)
-**Depth:** Standard (7 phases)
-**Coverage:** 39/39 v1 requirements mapped
+**Depth:** Standard (6 phases)
+**Coverage:** 34/39 v1 requirements mapped
 
 ---
 
@@ -137,42 +137,11 @@ Plans:
 
 ---
 
-## Phase 5: Content & Results Page
-
-**Goal:** Results page showcases real client work with case studies, videos, and Instagram social proof.
-
-**Dependencies:** Phase 2 (components must support translations for content to render correctly)
-
-**Plans:** 4 plans
-
-Plans:
-- [ ] 05-01-PLAN.md — Results page foundation with case studies and client logos
-- [ ] 05-02-PLAN.md — BunnyStream VSL video grid integration
-- [ ] 05-03-PLAN.md — Instagram feed widget (Behold) integration
-- [ ] 05-04-PLAN.md — Free guide download flow with email delivery
-
-**Requirements Covered:**
-- CONTENT-01: Free guides migrated with download flow
-- CONTENT-02: Case studies migrated to Results page
-- RESULTS-01: Real client logos displayed
-- RESULTS-02: VSL videos from BunnyStream
-- RESULTS-03: Instagram feed widget integrated
-
-**Success Criteria:**
-
-1. User downloads free guide "SEO Checklist" from homepage, receives email with PDF within 2 minutes
-2. User views Results page and sees 3+ case studies with real metrics (not placeholder text like "500% increase")
-3. User scrolls to portfolio section and sees embedded BunnyStream videos playing smoothly
-4. User reaches bottom of Results page and sees live Instagram feed from @roseyco.official with latest 9 posts
-5. Case study cards display client logos as images (not generic placeholder icons)
-
----
-
-## Phase 6: Integrations & Analytics
+## Phase 5: Integrations & Analytics
 
 **Goal:** All lead capture forms work end-to-end with proper email notifications and analytics tracking.
 
-**Dependencies:** Phase 5 (content must exist before testing forms)
+**Dependencies:** Phase 4 (geolocation and locale infrastructure must be complete)
 
 **Plans:** 0 plans
 
@@ -197,11 +166,11 @@ Plans:
 
 ---
 
-## Phase 7: Performance & Launch Validation
+## Phase 6: Performance & Launch Validation
 
 **Goal:** Site achieves 90+ Lighthouse scores with production-ready Google Business Profile integration.
 
-**Dependencies:** Phase 6 (all integrations must be active before final performance testing)
+**Dependencies:** Phase 5 (all integrations must be active before final performance testing)
 
 **Plans:** 0 plans
 
@@ -238,11 +207,10 @@ Plans:
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Content & Results | Planned | 5/5 | 0/5 | 4 plans in 2 waves |
-| Phase 6: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
-| Phase 7: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
+| Phase 5: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
+| Phase 6: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
 
-**Total Coverage:** 39/39 v1 requirements mapped (100%)
+**Total Coverage:** 34/39 v1 requirements mapped (87%)
 
 ---
 
@@ -255,19 +223,18 @@ Plans:
 
 **CAN SHIP POST-LAUNCH:**
 - Phase 4: Geolocation (improves UX, not SEO blocker) - COMPLETE
-- Phase 5: Content & Results (can launch with partial content) - PLANNED (4 plans)
-- Phase 6: Integrations (can launch with basic contact form)
+- Phase 5: Integrations (can launch with basic contact form)
 
 **FINAL VALIDATION:**
-- Phase 7: Performance & Launch (polish before production)
+- Phase 6: Performance & Launch (polish before production)
 
 ---
 
 ## Next Steps
 
-1. **Execute Phase 5** - Use `/gsd:execute-phase 5` to run Content & Results plans
+1. **Plan Phase 5** - Use `/gsd:plan-phase 5` to plan Integrations & Analytics
 2. **Plan Phase 6** - Use `/gsd:plan-phase 6` after Phase 5 completes
-3. **Ship & Iterate** - Launch with Phases 1-5, add Phases 6-7 incrementally
+3. **Ship & Iterate** - Launch with Phases 1-4 complete, add Phases 5-6 incrementally
 
 ---
 

@@ -47,14 +47,6 @@ Requirements for multi-location website launch across all 6 locales (US, AU, UK,
 - [ ] **PERF-06**: Analytics scripts optimized with Next.js Script component
 - [ ] **PERF-07**: Core Web Vitals pass in production (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 
-### Content & Results Page
-
-- [ ] **CONTENT-01**: Free guides migrated from `/migration-content/guides/` with download flow
-- [ ] **CONTENT-02**: Case studies migrated to Results page with real metrics
-- [ ] **RESULTS-01**: Results page displays real client logos (not placeholders)
-- [ ] **RESULTS-02**: Results page includes VSL videos from BunnyStream
-- [ ] **RESULTS-03**: Instagram feed widget integrated on Results page
-
 ### Integrations & Analytics
 
 - [ ] **INT-01**: Resend domain verified (roseyco.com) for email notifications
@@ -134,42 +126,37 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEO-05 | Phase 1 | Pending |
 | SEO-06 | Phase 1 | Pending |
 | SEO-07 | Phase 1 | Pending |
-| PERF-01 | Phase 7 | Pending |
-| PERF-02 | Phase 7 | Pending |
-| PERF-03 | Phase 7 | Pending |
-| PERF-04 | Phase 7 | Pending |
-| PERF-05 | Phase 7 | Pending |
-| PERF-06 | Phase 7 | Pending |
-| PERF-07 | Phase 7 | Pending |
-| CONTENT-01 | Phase 5 | Pending |
-| CONTENT-02 | Phase 5 | Pending |
-| RESULTS-01 | Phase 5 | Pending |
-| RESULTS-02 | Phase 5 | Pending |
-| RESULTS-03 | Phase 5 | Pending |
-| INT-01 | Phase 6 | Pending |
-| INT-02 | Phase 6 | Pending |
-| INT-03 | Phase 6 | Pending |
-| INT-04 | Phase 6 | Pending |
-| INT-05 | Phase 6 | Pending |
-| INT-06 | Phase 6 | Pending |
-| GBP-01 | Phase 7 | Pending |
-| GBP-02 | Phase 7 | Pending |
-| GBP-03 | Phase 7 | Pending |
+| PERF-01 | Phase 6 | Pending |
+| PERF-02 | Phase 6 | Pending |
+| PERF-03 | Phase 6 | Pending |
+| PERF-04 | Phase 6 | Pending |
+| PERF-05 | Phase 6 | Pending |
+| PERF-06 | Phase 6 | Pending |
+| PERF-07 | Phase 6 | Pending |
+| INT-01 | Phase 5 | Pending |
+| INT-02 | Phase 5 | Pending |
+| INT-03 | Phase 5 | Pending |
+| INT-04 | Phase 5 | Pending |
+| INT-05 | Phase 5 | Pending |
+| INT-06 | Phase 5 | Pending |
+| GBP-01 | Phase 6 | Pending |
+| GBP-02 | Phase 6 | Pending |
+| GBP-03 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 39 total
-- Mapped to phases: 39 (100% coverage)
+- v1 requirements: 34 total
+- Mapped to phases: 34 (100% coverage)
 - Unmapped: 0
+- Removed: 5 (CONTENT-01, CONTENT-02, RESULTS-01, RESULTS-02, RESULTS-03)
 
 **Phase Breakdown:**
 - Phase 1 (SEO Foundation): 7 requirements
 - Phase 2 (Component Architecture): 5 requirements
 - Phase 3 (Translation QA): 3 requirements
 - Phase 4 (Geolocation): 6 requirements
-- Phase 5 (Content & Results): 5 requirements
-- Phase 6 (Integrations): 6 requirements
-- Phase 7 (Performance & Launch): 10 requirements
+- Phase 5 (Integrations): 6 requirements
+- Phase 6 (Performance & Launch): 10 requirements
 
 ---
 *Requirements defined: 2026-01-25*
-*Last updated: 2026-01-25 after roadmap creation*
+*Last updated: 2026-01-27 after removing Phase 5 (Content & Results Page)*
