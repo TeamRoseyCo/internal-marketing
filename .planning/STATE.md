@@ -19,13 +19,13 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 ## Current Position
 
 **Phase:** 4 of 7 (Geolocation & Locale Switcher)
-**Plan:** 2 of 2 complete (04-02)
+**Plan:** 3 of 3 complete (04-03)
 **Status:** Phase 4 Complete - Ready for Phase 5 (Content & Results Page)
-**Last activity:** 2026-01-27 - Completed 04-02-PLAN.md (Locale Switcher Component)
-**Progress:** 22/39 requirements complete (REQ-001 through REQ-022)
+**Last activity:** 2026-01-27 - Completed 04-03-PLAN.md (Cookie Consent Banner for EU Visitors)
+**Progress:** 23/39 requirements complete (REQ-001 through REQ-023)
 
 ```
-Progress: [███████████░░░░░░░░░] 56% (22/39 requirements)
+Progress: [███████████░░░░░░░░░] 59% (23/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
@@ -44,11 +44,12 @@ Phases:
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-27 (after 04-02 completion)
+- Last successful build: 2026-01-27 (after 04-03 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
 - Middleware: Active (geolocation detection with cookie persistence)
 - Locale Switcher: Integrated in Header and Footer
+- Cookie Consent: Integrated in locale layout (EU locales only)
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -95,6 +96,8 @@ Phases:
 | 2026-01-27 | Two-variant LocaleSwitcher component | Dropdown for desktop (detailed), compact for mobile/footer (space-efficient) | Single component supports different UX contexts |
 | 2026-01-27 | UK locale uses GB flag | ISO 3166-1 standard, aligns with geolocation APIs | Technical accuracy with user-facing "United Kingdom" label |
 | 2026-01-27 | router.push() not replace() for locale switch | Users can navigate back to compare content | Better UX than blocking browser back button |
+| 2026-01-27 | Cookie consent uses locale-based EU detection | Simpler and more reliable than IP-based geolocation | User on VPN to NL sees banner, but locale switcher provides override |
+| 2026-01-27 | Both Accept and Decline dismiss cookie banner | NEXT_LOCALE is strictly necessary (GDPR exempt), banner is transparency | More user-friendly, aligns with legal exemption for essential cookies |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -164,22 +167,30 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-27 - Executed Plan 04-02 (Locale Switcher Component)
+**Session:** 2026-01-27 - Executed Plan 04-03 (Cookie Consent Banner for EU Visitors)
 **Completed:**
-- Installed country-flag-icons package (v1.6.9) for SVG flag components
-- Created LocaleSwitcher component with dropdown and compact variants
-- Dropdown variant: Current locale display + dropdown with all 6 options
-- Compact variant: Horizontal flag icons with current locale highlight
-- Integrated LocaleSwitcher into Header (desktop dropdown, mobile compact)
-- Integrated LocaleSwitcher into Footer (bottom bar, compact variant)
-- Sets NEXT_LOCALE cookie on locale selection (1-year expiry)
-- Navigates to equivalent page in new locale (preserves path)
-- All 214 pages build successfully with locale switcher
-- Created 04-02-SUMMARY.md
+- Added cookieConsent translations for all 6 locales (us, au, uk, ie, nl, dk)
+- English locales: "Cookie Notice" with standard English text
+- Dutch (nl): "Cookie Melding" with proper Dutch translations
+- Danish (dk): "Cookie Meddelelse" with proper Danish translations
+- Created CookieConsent component with EU locale detection via isEULocale()
+- Component shows only for EU locales (nl, dk, ie) based on locale not IP
+- Consent stored in localStorage (key: 'cookie-consent', values: 'accepted' or 'declined')
+- Both Accept and Decline dismiss banner (NEXT_LOCALE is strictly necessary)
+- Integrated into locale layout after children inside LocaleProvider
+- Dark theme styling with gradient border and buttons
+- Framer Motion slide-up/slide-down animations
+- All 214 pages build successfully with cookie consent
+- Created 04-03-SUMMARY.md
 - Updated STATE.md
-- **Phase 4 Plan 2 COMPLETE - Phase 4 Complete**
+- **Phase 4 Plan 3 COMPLETE - Phase 4 100% Complete**
 
 **Commits:**
+- `be2c67a` - feat(04-03): add cookie consent translations for all 6 locales
+- `17a0a31` - feat(04-03): create CookieConsent component with EU locale detection
+- `d9d9ffc` - feat(04-03): integrate CookieConsent into locale layout
+
+**Previous commits (Phase 4 Plan 2):**
 - `4adce55` - feat(04-02): install country-flag-icons package
 - `985aac1` - feat(04-02): create LocaleSwitcher component with dropdown and compact variants
 - `385ad98` - feat(04-02): integrate LocaleSwitcher into Header
@@ -231,6 +242,7 @@ Phases:
 - `.planning/phases/03-translation-quality-assurance/03-02-SUMMARY.md` - Native speaker review summary
 - `.planning/phases/04-geolocation-a-locale-switcher/04-01-SUMMARY.md` - Geolocation detection & cookie persistence
 - `.planning/phases/04-geolocation-a-locale-switcher/04-02-SUMMARY.md` - Locale switcher component
+- `.planning/phases/04-geolocation-a-locale-switcher/04-03-SUMMARY.md` - Cookie consent banner (GDPR compliance)
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
@@ -246,6 +258,7 @@ Phases:
 - `src/app/sitemap.ts` - Sitemap generation for all locales
 - `src/components/seo/structured-data.tsx` - LocalBusiness and other schema components
 - `src/components/locale-switcher.tsx` - Locale switcher with dropdown and compact variants
+- `src/components/cookie-consent.tsx` - Cookie consent banner for EU locales (GDPR compliance)
 - `src/components/layout/header.tsx` - Header with translation fallback pattern and locale switcher
 - `src/components/layout/footer.tsx` - Footer with translation system and locale switcher
 - `CLAUDE.md` - Project instructions and development workflow
@@ -271,6 +284,9 @@ Phases:
 - Flag + label pattern for locale representation with SVG flags
 - Click-outside handling with useRef and event listeners
 - Path preservation on locale switch (/us/services → /nl/services)
+- EU locale detection via isEULocale() for GDPR features
+- localStorage consent storage for cookie banner preferences
+- Try-catch LocaleProvider pattern for robust client components
 
 ---
 
