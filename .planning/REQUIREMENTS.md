@@ -9,12 +9,12 @@ Requirements for multi-location website launch across all 6 locales (US, AU, UK,
 
 ### Geolocation & Locale Persistence
 
-- [ ] **GEO-01**: User's locale preference persists across browser sessions via cookie
-- [ ] **GEO-02**: First-time visitors are automatically redirected to appropriate locale based on geo-detection
-- [ ] **GEO-03**: Visible locale switcher component allows manual locale override
-- [ ] **GEO-04**: Locale switcher appears in header (desktop dropdown) and footer (all devices)
-- [ ] **GEO-05**: Geolocation uses server-side 302 redirects (not JavaScript) for SEO compliance
-- [ ] **GEO-06**: Cookie consent banner displays for EU visitors (NL, DK, IE) per GDPR requirements
+- [x] **GEO-01**: User's locale preference persists across browser sessions via cookie
+- [x] **GEO-02**: First-time visitors are automatically redirected to appropriate locale based on geo-detection
+- [x] **GEO-03**: Visible locale switcher component allows manual locale override
+- [x] **GEO-04**: Locale switcher appears in header (desktop dropdown) and footer (all devices)
+- [x] **GEO-05**: Geolocation uses server-side 302 redirects (not JavaScript) for SEO compliance
+- [x] **GEO-06**: Cookie consent banner displays for EU visitors (NL, DK, IE) per GDPR requirements
 
 ### Translation Quality & Component Localization
 
