@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-01-27
 **Current Phase:** 4 (Geolocation & Locale Switcher)
-**Project Status:** Phase 4 Plan 1 Complete - Geolocation Detection & Cookie Persistence Done
+**Project Status:** Phase 4 Complete - Geolocation & Locale Switcher Done
 
 ---
 
@@ -19,35 +19,36 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 ## Current Position
 
 **Phase:** 4 of 7 (Geolocation & Locale Switcher)
-**Plan:** 1 of 2 complete (04-01)
-**Status:** Phase 4 In Progress - Geolocation detection done, locale switcher next
-**Last activity:** 2026-01-27 - Completed 04-01-PLAN.md (Geolocation Detection & Cookie Persistence)
-**Progress:** 20/39 requirements complete (REQ-001 through REQ-020)
+**Plan:** 2 of 2 complete (04-02)
+**Status:** Phase 4 Complete - Ready for Phase 5 (Content & Results Page)
+**Last activity:** 2026-01-27 - Completed 04-02-PLAN.md (Locale Switcher Component)
+**Progress:** 22/39 requirements complete (REQ-001 through REQ-022)
 
 ```
-Progress: [██████████░░░░░░░░░░] 51% (20/39 requirements)
+Progress: [███████████░░░░░░░░░] 56% (22/39 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
 [█] Phase 3: Translation QA (COMPLETE)
-[▓] Phase 4: Geolocation & Locale Switcher (1/2 plans complete)
+[█] Phase 4: Geolocation & Locale Switcher (COMPLETE)
 [░] Phase 5: Content & Results Page
 [░] Phase 6: Integrations & Analytics
 [░] Phase 7: Performance & Launch Validation
 ```
 
-**Next Action:** Execute Phase 4 Plan 2 (Locale Switcher Component)
+**Next Action:** Execute Phase 5 (Content & Results Page)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-01-27 (after 04-01 completion)
+- Last successful build: 2026-01-27 (after 04-02 completion)
 - Static generation: 214 pages across 6 locales
 - Build time: ~10-15 seconds
 - Middleware: Active (geolocation detection with cookie persistence)
+- Locale Switcher: Integrated in Header and Footer
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -90,6 +91,10 @@ Phases:
 | 2026-01-27 | NEXT_LOCALE cookie is strictly necessary (no consent required) | GDPR Article 5(3) - essential for multi-locale navigation | Can set cookie before consent banner shows |
 | 2026-01-27 | Use 302 redirects (temporary) not 301 (permanent) | Allows flexibility if geolocation logic changes | Search engines won't cache redirect permanently |
 | 2026-01-27 | 1-year cookie expiry for NEXT_LOCALE | Balances persistence with GDPR best practices | Shorter than 2-year maximum, user-friendly |
+| 2026-01-27 | country-flag-icons library for locale switcher | SVG flags with proper accessibility, lightweight | Professional flag display without emoji rendering issues |
+| 2026-01-27 | Two-variant LocaleSwitcher component | Dropdown for desktop (detailed), compact for mobile/footer (space-efficient) | Single component supports different UX contexts |
+| 2026-01-27 | UK locale uses GB flag | ISO 3166-1 standard, aligns with geolocation APIs | Technical accuracy with user-facing "United Kingdom" label |
+| 2026-01-27 | router.push() not replace() for locale switch | Users can navigate back to compare content | Better UX than blocking browser back button |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -105,6 +110,7 @@ Phases:
   - ~~Translation naturalness and tone~~ → **APPROVED in 03-02 (Native speaker review)**
 - ~~No geolocation persistence mechanism exists~~ → **FIXED in 04-01 (Middleware + NEXT_LOCALE cookie)**
 - ~~Server-side 302 redirects required for SEO compliance~~ → **FIXED in 04-01 (Middleware redirects)**
+- ~~No visible locale switcher for manual override~~ → **FIXED in 04-02 (LocaleSwitcher in Header/Footer)**
 
 ### Technical Constraints
 
@@ -123,7 +129,8 @@ Phases:
 - ~~Mixed-language content in NL/DK translations~~ → **FIXED in 03-01 (Context-aware filtering)**
 - ~~Translation quality and naturalness~~ → **FIXED in 03-02 (Native speaker approval)**
 - ~~No geolocation cookie persistence~~ → **FIXED in 04-01 (Middleware + NEXT_LOCALE cookie)**
-- No visible locale switcher (Phase 4 Plan 2)
+- ~~No visible locale switcher~~ → **FIXED in 04-02 (LocaleSwitcher in Header/Footer)**
+- None currently - All Phase 4 blockers resolved
 
 **High Priority (Fix post-launch acceptable):**
 - Placeholder contact information (phone numbers, addresses)
@@ -157,21 +164,28 @@ Phases:
 
 ### Last Session Summary
 
-**Session:** 2026-01-27 - Executed Plan 04-01 (Geolocation Detection & Cookie Persistence)
+**Session:** 2026-01-27 - Executed Plan 04-02 (Locale Switcher Component)
 **Completed:**
-- Created geo-utils.ts with country-to-locale mapping and EU detection
-- Implemented Next.js middleware for geolocation-based locale detection
-- Middleware uses detection priority: cookie → geo header → default
-- Set NEXT_LOCALE cookie (strictly necessary, 1-year expiry)
-- Replaced root page.tsx with simple redirect fallback
-- Verified 302 redirects work correctly (/, /blog → /us/*, /us/blog)
-- Verified existing [locale] routes pass through without redirect
-- All 214 pages build successfully with middleware
-- Created 04-01-SUMMARY.md
+- Installed country-flag-icons package (v1.6.9) for SVG flag components
+- Created LocaleSwitcher component with dropdown and compact variants
+- Dropdown variant: Current locale display + dropdown with all 6 options
+- Compact variant: Horizontal flag icons with current locale highlight
+- Integrated LocaleSwitcher into Header (desktop dropdown, mobile compact)
+- Integrated LocaleSwitcher into Footer (bottom bar, compact variant)
+- Sets NEXT_LOCALE cookie on locale selection (1-year expiry)
+- Navigates to equivalent page in new locale (preserves path)
+- All 214 pages build successfully with locale switcher
+- Created 04-02-SUMMARY.md
 - Updated STATE.md
-- **Phase 4 Plan 1 COMPLETE - Geolocation detection working**
+- **Phase 4 Plan 2 COMPLETE - Phase 4 Complete**
 
 **Commits:**
+- `4adce55` - feat(04-02): install country-flag-icons package
+- `985aac1` - feat(04-02): create LocaleSwitcher component with dropdown and compact variants
+- `385ad98` - feat(04-02): integrate LocaleSwitcher into Header
+- `d32777c` - feat(04-02): integrate LocaleSwitcher into Footer
+
+**Previous commits (Phase 4 Plan 1):**
 - `69a3b8f` - feat(04-01): create geo-utils helper library
 - `ea8aea7` - feat(04-01): create middleware for geolocation redirect
 - `38a5637` - feat(04-01): replace root page with locale redirect
@@ -197,9 +211,9 @@ Phases:
 - `fa49ff7` - docs(01-03): complete SEO infrastructure verification plan
 
 **Next Steps:**
-1. Execute Phase 4 Plan 2 (Locale Switcher Component)
-2. Execute Phase 5 (Content & Results Page)
-3. Execute Phase 6 (Integrations & Analytics)
+1. Execute Phase 5 (Content & Results Page)
+2. Execute Phase 6 (Integrations & Analytics)
+3. Execute Phase 7 (Performance & Launch Validation)
 ### What to Remember for Next Session
 
 **Critical Context:**
@@ -216,6 +230,7 @@ Phases:
 - `.planning/phases/03-translation-quality-assurance/03-01-SUMMARY.md` - Automated validation summary
 - `.planning/phases/03-translation-quality-assurance/03-02-SUMMARY.md` - Native speaker review summary
 - `.planning/phases/04-geolocation-a-locale-switcher/04-01-SUMMARY.md` - Geolocation detection & cookie persistence
+- `.planning/phases/04-geolocation-a-locale-switcher/04-02-SUMMARY.md` - Locale switcher component
 - `.planning/phases/01-seo-foundation/01-02-SUMMARY.md` - Page-level metadata
 - `.planning/phases/01-seo-foundation/01-03-SUMMARY.md` - SEO infrastructure verification
 - `.planning/phases/02-component-architecture/02-01-SUMMARY.md` - i18n infrastructure
@@ -230,8 +245,9 @@ Phases:
 - `src/lib/translations.ts` - Translation strings for all locales (Danish characters fixed)
 - `src/app/sitemap.ts` - Sitemap generation for all locales
 - `src/components/seo/structured-data.tsx` - LocalBusiness and other schema components
-- `src/components/layout/header.tsx` - Header with translation fallback pattern
-- `src/components/layout/footer.tsx` - Footer with translation system
+- `src/components/locale-switcher.tsx` - Locale switcher with dropdown and compact variants
+- `src/components/layout/header.tsx` - Header with translation fallback pattern and locale switcher
+- `src/components/layout/footer.tsx` - Footer with translation system and locale switcher
 - `CLAUDE.md` - Project instructions and development workflow
 
 **Patterns Established:**
@@ -251,6 +267,10 @@ Phases:
 - Skip middleware redirect if path already has locale prefix (prevents loops)
 - Strictly necessary cookies (GDPR Article 5(3) exempt) set before consent
 - 302 redirects for SEO compliance (temporary, not permanent)
+- Two-variant component pattern (dropdown for detailed, compact for space-efficient)
+- Flag + label pattern for locale representation with SVG flags
+- Click-outside handling with useRef and event listeners
+- Path preservation on locale switch (/us/services → /nl/services)
 
 ---
 
@@ -304,7 +324,7 @@ Phases:
 ---
 
 *State initialized: 2026-01-25*
-*Last updated: 2026-01-26 after completing 02-04-PLAN.md (Phase 2 complete)*
+*Last updated: 2026-01-27 after completing 04-02-PLAN.md (Phase 4 complete)*
 
 **Session:** 2026-01-26 - Executed Plan 02-04 (Translation Quality Fixes & Phase 2 Verification)
 **Completed:**
