@@ -9,6 +9,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocale, useTranslation } from "@/lib/i18n";
 import { isValidLocale } from "@/lib/locales";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -118,8 +119,18 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA Button + Mobile Menu */}
+        {/* Locale Switcher + CTA Button + Mobile Menu */}
         <div className="flex items-center gap-4">
+          {/* Locale Switcher - Desktop only */}
+          <motion.div
+            className="hidden md:block"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            <LocaleSwitcher variant="dropdown" />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -156,6 +167,7 @@ export function Header() {
       navItems={navItems}
       ctaText={t("header.cta")}
       ctaHref={`/${locale}/contact`}
+      locale={locale}
     />
     </>
   );
@@ -168,12 +180,14 @@ function MobileMenu({
   navItems,
   ctaText,
   ctaHref,
+  locale,
 }: {
   isOpen: boolean;
   onClose: () => void;
   navItems: { href: string; label: string }[];
   ctaText: string;
   ctaHref: string;
+  locale: string;
 }) {
   if (!isOpen) return null;
 
@@ -200,11 +214,22 @@ function MobileMenu({
             </Link>
           </motion.div>
         ))}
+
+        {/* Locale Switcher - Compact variant for mobile */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: navItems.length * 0.05, duration: 0.3 }}
-          className="mt-8"
+          className="mt-8 mb-4"
+        >
+          <LocaleSwitcher variant="compact" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: (navItems.length + 1) * 0.05, duration: 0.3 }}
+          className="mt-4"
         >
           <Button asChild size="lg" className="btn-hero text-base px-8 py-4">
             <Link href={ctaHref} onClick={onClose}>
