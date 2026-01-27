@@ -143,10 +143,13 @@ Plans:
 
 **Dependencies:** Phase 2 (components must support translations for content to render correctly)
 
-**Plans:** 0 plans
+**Plans:** 4 plans
 
 Plans:
-- [ ] TBD (created by /gsd:plan-phase)
+- [ ] 05-01-PLAN.md — Results page foundation with case studies and client logos
+- [ ] 05-02-PLAN.md — BunnyStream VSL video grid integration
+- [ ] 05-03-PLAN.md — Instagram feed widget (Behold) integration
+- [ ] 05-04-PLAN.md — Free guide download flow with email delivery
 
 **Requirements Covered:**
 - CONTENT-01: Free guides migrated with download flow
@@ -235,7 +238,7 @@ Plans:
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Content & Results | Pending | 5/5 | 0/5 | Post-launch acceptable |
+| Phase 5: Content & Results | Planned | 5/5 | 0/5 | 4 plans in 2 waves |
 | Phase 6: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
 | Phase 7: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
 
@@ -251,8 +254,8 @@ Plans:
 - Phase 3: Translation QA - COMPLETE
 
 **CAN SHIP POST-LAUNCH:**
-- Phase 4: Geolocation (improves UX, not SEO blocker) - PLANNED (3 plans)
-- Phase 5: Content & Results (can launch with partial content)
+- Phase 4: Geolocation (improves UX, not SEO blocker) - COMPLETE
+- Phase 5: Content & Results (can launch with partial content) - PLANNED (4 plans)
 - Phase 6: Integrations (can launch with basic contact form)
 
 **FINAL VALIDATION:**
@@ -262,9 +265,9 @@ Plans:
 
 ## Next Steps
 
-1. **Execute Phase 4** - Use `/gsd:execute-phase 4` to run Geolocation plans
-2. **Plan Phase 5** - Use `/gsd:plan-phase 5` after Phase 4 completes
-3. **Ship & Iterate** - Launch with Phases 1-4, add Phases 5-7 incrementally
+1. **Execute Phase 5** - Use `/gsd:execute-phase 5` to run Content & Results plans
+2. **Plan Phase 6** - Use `/gsd:plan-phase 6` after Phase 5 completes
+3. **Ship & Iterate** - Launch with Phases 1-5, add Phases 6-7 incrementally
 
 ---
 
