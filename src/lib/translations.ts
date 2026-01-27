@@ -280,8 +280,8 @@ export const translations = {
     },
     hero: {
       badge: 'Wereldwijd Marketing Bureau',
-      title: 'Meer Groei. Meer Klanten.',
-      titleHighlight: 'Gegarandeerd.',
+      title: 'Gegarandeerde groei. Gegarandeerde klanten.',
+      titleHighlight: '',
       subtitle: 'Stop met wachten tot klanten jou vinden. Wij zetten jouw bedrijf voor mensen die actief zoeken naar jouw diensten.',
       cta: 'Gratis Strategiegesprek',
       ctaSecondary: 'Bekijk Onze Resultaten',
