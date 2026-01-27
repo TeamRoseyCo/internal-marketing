@@ -47,15 +47,6 @@ Requirements for multi-location website launch across all 6 locales (US, AU, UK,
 - [ ] **PERF-06**: Analytics scripts optimized with Next.js Script component
 - [ ] **PERF-07**: Core Web Vitals pass in production (LCP < 2.5s, FID < 100ms, CLS < 0.1)
 
-### Integrations & Analytics
-
-- [ ] **INT-01**: Resend domain verified (roseyco.com) for email notifications
-- [ ] **INT-02**: Contact form submissions trigger admin email + user confirmation
-- [ ] **INT-03**: Google Analytics 4 tracking active on all pages
-- [ ] **INT-04**: Microsoft Clarity session recording active
-- [ ] **INT-05**: Newsletter signup adds to email list and sends welcome email
-- [ ] **INT-06**: Guide download form saves lead and sends guide email
-
 ### Google Business Integration
 
 - [ ] **GBP-01**: Google Business Profile setup coordinated with Bailey
@@ -126,37 +117,30 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SEO-05 | Phase 1 | Pending |
 | SEO-06 | Phase 1 | Pending |
 | SEO-07 | Phase 1 | Pending |
-| PERF-01 | Phase 6 | Pending |
-| PERF-02 | Phase 6 | Pending |
-| PERF-03 | Phase 6 | Pending |
-| PERF-04 | Phase 6 | Pending |
-| PERF-05 | Phase 6 | Pending |
-| PERF-06 | Phase 6 | Pending |
-| PERF-07 | Phase 6 | Pending |
-| INT-01 | Phase 5 | Pending |
-| INT-02 | Phase 5 | Pending |
-| INT-03 | Phase 5 | Pending |
-| INT-04 | Phase 5 | Pending |
-| INT-05 | Phase 5 | Pending |
-| INT-06 | Phase 5 | Pending |
-| GBP-01 | Phase 6 | Pending |
-| GBP-02 | Phase 6 | Pending |
-| GBP-03 | Phase 6 | Pending |
+| PERF-01 | Phase 5 | Pending |
+| PERF-02 | Phase 5 | Pending |
+| PERF-03 | Phase 5 | Pending |
+| PERF-04 | Phase 5 | Pending |
+| PERF-05 | Phase 5 | Pending |
+| PERF-06 | Phase 5 | Pending |
+| PERF-07 | Phase 5 | Pending |
+| GBP-01 | Phase 5 | Pending |
+| GBP-02 | Phase 5 | Pending |
+| GBP-03 | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 34 total
-- Mapped to phases: 34 (100% coverage)
+- v1 requirements: 28 total
+- Mapped to phases: 28 (100% coverage)
 - Unmapped: 0
-- Removed: 5 (CONTENT-01, CONTENT-02, RESULTS-01, RESULTS-02, RESULTS-03)
+- Removed: 11 (CONTENT-01, CONTENT-02, RESULTS-01, RESULTS-02, RESULTS-03, INT-01 through INT-06)
 
 **Phase Breakdown:**
 - Phase 1 (SEO Foundation): 7 requirements
 - Phase 2 (Component Architecture): 5 requirements
 - Phase 3 (Translation QA): 3 requirements
 - Phase 4 (Geolocation): 6 requirements
-- Phase 5 (Integrations): 6 requirements
-- Phase 6 (Performance & Launch): 10 requirements
+- Phase 5 (Performance & Launch): 10 requirements
 
 ---
 *Requirements defined: 2026-01-25*
-*Last updated: 2026-01-27 after removing Phase 5 (Content & Results Page)*
+*Last updated: 2026-01-27 after removing Phases 5-6 (Content/Results, Integrations)*

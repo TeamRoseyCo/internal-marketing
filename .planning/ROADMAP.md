@@ -2,8 +2,8 @@
 
 **Created:** 2026-01-25
 **Project:** Multi-location SEO infrastructure across 6 locales (US, AU, UK, IE, NL, DK)
-**Depth:** Standard (6 phases)
-**Coverage:** 34/39 v1 requirements mapped
+**Depth:** Standard (5 phases)
+**Coverage:** 28/39 v1 requirements mapped
 
 ---
 
@@ -137,40 +137,11 @@ Plans:
 
 ---
 
-## Phase 5: Integrations & Analytics
-
-**Goal:** All lead capture forms work end-to-end with proper email notifications and analytics tracking.
-
-**Dependencies:** Phase 4 (geolocation and locale infrastructure must be complete)
-
-**Plans:** 0 plans
-
-Plans:
-- [ ] TBD (created by /gsd:plan-phase)
-
-**Requirements Covered:**
-- INT-01: Resend domain verified
-- INT-02: Contact form triggers emails
-- INT-03: Google Analytics 4 tracking active
-- INT-04: Microsoft Clarity session recording
-- INT-05: Newsletter signup working
-- INT-06: Guide download form working
-
-**Success Criteria:**
-
-1. User submits contact form, admin receives notification email within 30 seconds and user receives confirmation email
-2. User signs up for newsletter, welcome email arrives within 2 minutes and contact is added to Mailchimp list
-3. Google Analytics 4 dashboard shows real-time pageviews with correct locale dimension (e.g., "/nl/services" tagged as NL)
-4. Microsoft Clarity heatmap displays user interactions on homepage for all 6 locales
-5. Resend email logs show zero bounce/spam reports for transactional emails
-
----
-
-## Phase 6: Performance & Launch Validation
+## Phase 5: Performance & Launch Validation
 
 **Goal:** Site achieves 90+ Lighthouse scores with production-ready Google Business Profile integration.
 
-**Dependencies:** Phase 5 (all integrations must be active before final performance testing)
+**Dependencies:** Phase 4 (geolocation and locale infrastructure must be complete)
 
 **Plans:** 0 plans
 
@@ -207,10 +178,9 @@ Plans:
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Integrations | Pending | 6/6 | 0/5 | Post-launch acceptable |
-| Phase 6: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
+| Phase 5: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
 
-**Total Coverage:** 34/39 v1 requirements mapped (87%)
+**Total Coverage:** 28/39 v1 requirements mapped (72%)
 
 ---
 
@@ -223,18 +193,16 @@ Plans:
 
 **CAN SHIP POST-LAUNCH:**
 - Phase 4: Geolocation (improves UX, not SEO blocker) - COMPLETE
-- Phase 5: Integrations (can launch with basic contact form)
 
 **FINAL VALIDATION:**
-- Phase 6: Performance & Launch (polish before production)
+- Phase 5: Performance & Launch (polish before production)
 
 ---
 
 ## Next Steps
 
-1. **Plan Phase 5** - Use `/gsd:plan-phase 5` to plan Integrations & Analytics
-2. **Plan Phase 6** - Use `/gsd:plan-phase 6` after Phase 5 completes
-3. **Ship & Iterate** - Launch with Phases 1-4 complete, add Phases 5-6 incrementally
+1. **Plan Phase 5** - Use `/gsd:plan-phase 5` to plan Performance & Launch Validation
+2. **Ship & Iterate** - Launch with Phases 1-4 complete, add Phase 5 for final polish
 
 ---
 
