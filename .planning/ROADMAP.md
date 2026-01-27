@@ -1,21 +1,30 @@
-# Roadmap: Rosey Co. Multi-Location Launch
+# Roadmap: Rosey Co. Multi-Location & Belfast SEO Domination
 
 **Created:** 2026-01-25
-**Project:** Multi-location SEO infrastructure across 6 locales (US, AU, UK, IE, NL, DK)
-**Depth:** Standard (5 phases)
-**Coverage:** 28/39 v1 requirements mapped
+**Project:** Multi-location SEO infrastructure + Belfast topical authority strategy
+**Depth:** Standard (5-8 phases per milestone)
+
+---
+
+## Milestones
+
+- ✅ **v1.0 Multi-Location Launch** - Phases 1-5 (shipped 2026-01-27)
+- 🚧 **v1.1 Belfast SEO Domination** - Phases 6-12 (in progress)
 
 ---
 
 ## Overview
 
-Launch Rosey Co. global marketing agency website with flawless multi-location SEO. Each locale must rank independently in local search with perfect translations, currency formatting, and locale-aware metadata. The site foundation is complete - now executing critical path to production launch with proper geolocation, translation quality, and performance optimization.
-
-**Critical Path:** Phases 1-3 are BLOCKERS for launch. Phases 4-7 can ship incrementally post-launch.
+Build complete SEO domination in Belfast and Northern Ireland through topical authority strategy. After establishing flawless multi-location infrastructure (v1.0), now implementing advanced SEO playbook with topical clustering, pillar content, and comprehensive local search optimization to own Belfast market completely.
 
 ---
 
-## Phase 1: SEO Foundation (BLOCKER) - COMPLETE
+## Phases
+
+<details>
+<summary>✅ v1.0 Multi-Location Launch (Phases 1-5) - SHIPPED 2026-01-27</summary>
+
+### Phase 1: SEO Foundation (BLOCKER) - COMPLETE
 
 **Goal:** Google recognizes all 6 locale variants with proper hreflang configuration and no duplicate content warnings.
 
@@ -172,42 +181,114 @@ Plans:
 
 ---
 
-## Progress Tracking
+</details>
 
-| Phase | Status | Requirements | Success Criteria | Notes |
-|-------|--------|--------------|------------------|-------|
-| Phase 1: SEO Foundation | Complete | 7/7 | 5/5 | BLOCKER for launch |
-| Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
-| Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
-| Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Performance & Launch | Complete | 10/10 | 3/5 | Manual Lighthouse pending |
+### 🚧 v1.1 Belfast SEO Domination (In Progress)
 
-**Total Coverage:** 28/39 v1 requirements mapped (72%)
+**Milestone Goal:** Achieve complete SEO domination in Belfast and Northern Ireland through topical authority strategy, pillar content architecture, and advanced local SEO optimization.
+
+#### Phase 6: Belfast SEO Research & Strategy
+
+**Goal:** Research Belfast market, identify keyword opportunities, map topical clusters, and create comprehensive SEO strategy document.
+**Depends on:** Phase 5 (v1.0 must be complete)
+**Research:** Likely (market analysis, competitor research, keyword research)
+**Research topics:** Belfast search volume data, competitor analysis, local intent keywords, topical cluster opportunities
+**Plans:** TBD
+
+Plans:
+- [ ] 06-01: TBD (run /gsd:plan-phase 6 to break down)
+
+#### Phase 7: Topical Authority Architecture
+
+**Goal:** Design and implement pillar page + cluster content architecture with proper internal linking structure.
+**Depends on:** Phase 6
+**Research:** Likely (content architecture patterns, SEO best practices)
+**Research topics:** Pillar page structure, topic cluster linking, content hierarchy, schema markup for topics
+**Plans:** TBD
+
+Plans:
+- [ ] 07-01: TBD
+
+#### Phase 8: Belfast Location Pages
+
+**Goal:** Create comprehensive Belfast-focused location pages with proper LocalBusiness schema, NAP consistency, and embedded maps.
+**Depends on:** Phase 7
+**Research:** Unlikely (internal patterns established)
+**Plans:** TBD
+
+Plans:
+- [ ] 08-01: TBD
+
+#### Phase 9: Service-Location Content Matrix
+
+**Goal:** Build service-specific content for Belfast market (SEO in Belfast, Social Media Marketing Belfast, etc.) with proper cross-linking.
+**Depends on:** Phase 8
+**Research:** Unlikely (follows established patterns)
+**Plans:** TBD
+
+Plans:
+- [ ] 09-01: TBD
+
+#### Phase 10: Belfast Blog Content Strategy
+
+**Goal:** Create Belfast-focused blog content calendar, write high-value posts targeting local keywords, implement content distribution strategy.
+**Depends on:** Phase 9
+**Research:** Unlikely (established patterns, content writing)
+**Plans:** TBD
+
+Plans:
+- [ ] 10-01: TBD
+
+#### Phase 11: Local Link Building & Citations
+
+**Goal:** Build local citations (directories, business listings), establish local backlinks, integrate with Belfast Chamber of Commerce and local organizations.
+**Depends on:** Phase 10
+**Research:** Likely (citation sources, local organizations, link opportunities)
+**Research topics:** Belfast business directories, NI chamber of commerce, local press contacts, citation sources
+**Plans:** TBD
+
+Plans:
+- [ ] 11-01: TBD
+
+#### Phase 12: Belfast Analytics & Monitoring
+
+**Goal:** Set up Belfast-specific tracking, create custom dashboards for local performance, establish monitoring for Belfast keyword rankings and local pack positions.
+**Depends on:** Phase 11
+**Research:** Likely (analytics tools, rank tracking, local SEO monitoring)
+**Research topics:** Google Search Console filters, rank tracking tools, local pack monitoring, Belfast-specific analytics
+**Plans:** TBD
+
+Plans:
+- [ ] 12-01: TBD
 
 ---
 
-## Critical Path
+## Progress Tracking
 
-**MUST COMPLETE BEFORE LAUNCH:**
-- Phase 1: SEO Foundation - COMPLETE
-- Phase 2: Component Architecture - COMPLETE
-- Phase 3: Translation QA - COMPLETE
-
-**CAN SHIP POST-LAUNCH:**
-- Phase 4: Geolocation (improves UX, not SEO blocker) - COMPLETE
-
-**FINAL VALIDATION:**
-- Phase 5: Performance & Launch (polish before production) - COMPLETE (manual Lighthouse pending)
+| Phase | Milestone | Plans | Status | Completed |
+|-------|-----------|-------|--------|-----------|
+| 1. SEO Foundation | v1.0 | 4/4 | Complete | 2026-01-25 |
+| 2. Component Architecture | v1.0 | 4/4 | Complete | 2026-01-26 |
+| 3. Translation QA | v1.0 | 2/2 | Complete | 2026-01-27 |
+| 4. Geolocation | v1.0 | 3/3 | Complete | 2026-01-27 |
+| 5. Performance & Launch | v1.0 | 3/3 | Complete | 2026-01-27 |
+| 6. Belfast SEO Research | v1.1 | 0/? | Not started | - |
+| 7. Topical Authority | v1.1 | 0/? | Not started | - |
+| 8. Belfast Location Pages | v1.1 | 0/? | Not started | - |
+| 9. Service-Location Matrix | v1.1 | 0/? | Not started | - |
+| 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
+| 11. Link Building | v1.1 | 0/? | Not started | - |
+| 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
 
 ---
 
 ## Next Steps
 
-1. **Manual Lighthouse Audit** - Follow instructions in `final-lighthouse.md` to test all 6 locales
-2. **Coordinate with Bailey** - Share `gbp-coordination.md`, provide real contact info for US/AU/NL/DK
-3. **Production Deployment** - Deploy to Vercel and verify NAP consistency
-4. **GBP Setup** - Bailey creates listings with exact matching NAP data
-5. **Monitor & Optimize** - Track real user metrics via Vercel Analytics and Search Console
+**v1.1 Belfast SEO Domination:**
+
+Phase 6 (Belfast SEO Research & Strategy) is next. This phase requires deep research into Belfast market, competitors, keywords, and topical opportunities.
+
+Run: `/gsd:research-phase 6` or `/gsd:plan-phase 6` to begin.
 
 ---
 
