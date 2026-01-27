@@ -143,10 +143,12 @@ Plans:
 
 **Dependencies:** Phase 4 (geolocation and locale infrastructure must be complete)
 
-**Plans:** 0 plans
+**Plans:** 3 plans
 
 Plans:
-- [ ] TBD (created by /gsd:plan-phase)
+- [ ] 05-01-PLAN.md — Image & script optimization + baseline Lighthouse audit
+- [ ] 05-02-PLAN.md — CLS optimization for animations and dynamic content
+- [ ] 05-03-PLAN.md — NAP audit, GBP coordination, and final Lighthouse validation
 
 **Requirements Covered:**
 - PERF-01: Lighthouse Performance 90+
@@ -178,7 +180,7 @@ Plans:
 | Phase 2: Component Architecture | Complete | 5/5 | 5/5 | BLOCKER for launch |
 | Phase 3: Translation QA | Complete | 3/3 | 5/5 | BLOCKER for launch |
 | Phase 4: Geolocation | Complete | 6/6 | 5/5 | All requirements verified |
-| Phase 5: Performance & Launch | Pending | 10/10 | 0/5 | Final validation |
+| Phase 5: Performance & Launch | Planned | 10/10 | 0/5 | 3 plans in 3 waves |
 
 **Total Coverage:** 28/39 v1 requirements mapped (72%)
 
@@ -195,14 +197,15 @@ Plans:
 - Phase 4: Geolocation (improves UX, not SEO blocker) - COMPLETE
 
 **FINAL VALIDATION:**
-- Phase 5: Performance & Launch (polish before production)
+- Phase 5: Performance & Launch (polish before production) - PLANNED
 
 ---
 
 ## Next Steps
 
-1. **Plan Phase 5** - Use `/gsd:plan-phase 5` to plan Performance & Launch Validation
-2. **Ship & Iterate** - Launch with Phases 1-4 complete, add Phase 5 for final polish
+1. **Execute Phase 5** - Use `/gsd:execute-phase 5` to run Performance & Launch Validation
+2. **Coordinate with Bailey** - GBP setup requires real contact information
+3. **Ship & Monitor** - Deploy to production and monitor real user metrics
 
 ---
 
