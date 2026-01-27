@@ -13,6 +13,7 @@ interface LeadData {
   email: string;
   phone?: string;
   website?: string;
+  company_website?: string; // Honeypot field
   service: string;
   message: string;
 }
@@ -20,6 +21,14 @@ interface LeadData {
 export async function POST(request: NextRequest) {
   try {
     const data: LeadData = await request.json();
+
+    // Honeypot check - if filled, it's a bot (reject silently)
+    if (data.company_website) {
+      return NextResponse.json(
+        { error: 'Invalid submission' },
+        { status: 400 }
+      );
+    }
 
     // Validate required fields
     if (!data.firstName || !data.lastName || !data.email || !data.service || !data.message) {

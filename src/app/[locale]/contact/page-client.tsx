@@ -46,6 +46,7 @@ export default function ContactPageClient({ params }: LocaleContactPageProps) {
       email: formData.get('email') as string,
       phone: formData.get('phone') as string,
       website: formData.get('website') as string,
+      company_website: formData.get('company_website') as string, // Honeypot
       service: selectedService,
       message: formData.get('message') as string,
     };
@@ -173,6 +174,18 @@ export default function ContactPageClient({ params }: LocaleContactPageProps) {
                       type="url"
                       placeholder="https://yourwebsite.com"
                       className="bg-background"
+                    />
+                  </div>
+
+                  {/* Honeypot field - hidden from users, catches bots */}
+                  <div className="hidden" aria-hidden="true">
+                    <Label htmlFor="company_website">Company Website</Label>
+                    <Input
+                      id="company_website"
+                      name="company_website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
                     />
                   </div>
 
