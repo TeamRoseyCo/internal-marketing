@@ -1,14 +1,15 @@
 # NAP Consistency Audit
 
 **Date:** 2026-01-27
-**Status:** PLACEHOLDER DATA - Real data required before GBP setup
+**Status:** PARTIALLY UPDATED - UK/IE have real Belfast GBP data, other locales placeholder
 **Auditor:** Performance & Launch Validation Phase (05-03)
+**Last Updated:** 2026-01-27 (post-05-03 fixes)
 
 ## Executive Summary
 
 This audit verifies that NAP (Name, Address, Phone) data is managed through a single source of truth and used consistently across all website components. **Current data is placeholder-only and must be replaced with real contact information before Google Business Profile setup.**
 
-**Finding:** NAP architecture is correct - all components use `src/lib/locales.ts` as the single source of truth. No hardcoded values found. Ready for real data updates.
+**Finding:** NAP architecture is correct - all components use `src/lib/locales.ts` as the single source of truth. Footer hardcoded phone bug FIXED in commit af46cb3. UK and IE locales updated with verified Belfast GBP data.
 
 ## Current NAP Data (from locales.ts)
 
@@ -42,50 +43,53 @@ This audit verifies that NAP (Name, Address, Phone) data is managed through a si
 
 ### United Kingdom (uk)
 - **Name:** Rosey Co.
-- **Phone:** +44 20 1234 5678 (PLACEHOLDER)
-- **Address:** London, United Kingdom
+- **Phone:** +44 7722 432679 ✅ VERIFIED (Belfast GBP)
+- **Address:** 1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom ✅ VERIFIED
 - **Currency:** GBP
 - **Timezone:** Europe/London
+- **Notes:** Belfast GBP covers UK market
 
 ### Ireland (ie)
 - **Name:** Rosey Co.
-- **Phone:** +353 1 234 5678 (PLACEHOLDER)
-- **Address:** Dublin, Ireland
+- **Phone:** +44 7722 432679 ✅ VERIFIED (Belfast GBP)
+- **Address:** 1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom ✅ VERIFIED
 - **Currency:** EUR
 - **Timezone:** Europe/Dublin
+- **Notes:** Belfast GBP covers Ireland market (same contact point)
 
 ## Components Using NAP Data
 
 | Component | File | Uses locales.ts | Hardcoded Values | Notes |
 |-----------|------|-----------------|------------------|-------|
 | LocalBusinessStructuredData | `src/components/seo/structured-data.tsx` | ✅ Yes | None | Correctly imports and uses `locales[locale]` for phone and address in JSON-LD schema |
-| Footer | `src/components/layout/footer.tsx` | ⚠️ Partial | Email hardcoded, Phone hardcoded | Email: `team@roseyco.com` (line 208), Phone: `+1 (234) 567-890` (line 236) - should use `locales[locale].phone` |
+| Footer | `src/components/layout/footer.tsx` | ✅ Yes | Email only (global) | ✅ FIXED: Now uses `locales[locale]?.phone` (commit af46cb3). Email `team@roseyco.com` intentionally global. |
 | Contact Page | `src/app/[locale]/contact/page-client.tsx` | ✅ Yes | None | Uses `localeConfig.phone` (line 164, 271) and `localeConfig.address` (line 273) |
 
 ## Inconsistencies Found
 
-### Critical Issues
+### ✅ FIXED Issues
 
-1. **Footer Phone Number Hardcoded**
+1. **Footer Phone Number Hardcoded** - ✅ RESOLVED
    - **Location:** `src/components/layout/footer.tsx` line 236
-   - **Current:** `+1 (234) 567-890` (hardcoded)
-   - **Should be:** `locales[locale].phone` (dynamic based on locale)
-   - **Impact:** Users see wrong phone number for their locale
-   - **Fix Required:** Replace hardcoded phone with locale-aware value
+   - **Was:** `+1 (234) 567-890` (hardcoded)
+   - **Now:** `locales[locale as keyof typeof locales]?.phone` (dynamic)
+   - **Fix Commit:** af46cb3 - "fix(05-03): use dynamic locale phone in footer instead of hardcoded"
+   - **Impact:** Footer now shows correct phone for each locale
+   - **Status:** ✅ RESOLVED
 
-2. **Footer Not Using Locale-Specific Data**
+2. **Footer Not Using Locale-Specific Data** - ✅ RESOLVED
    - **Location:** `src/components/layout/footer.tsx` lines 226-238
-   - **Current:** Hardcoded phone number, no address shown
-   - **Should be:** Use `locales[locale].phone` and optionally display `locales[locale].address`
-   - **Impact:** NAP inconsistency between footer and structured data
+   - **Was:** Hardcoded phone number
+   - **Now:** Uses `locales[locale]?.phone` dynamically with fallback
+   - **Status:** ✅ RESOLVED
 
-### Minor Issues
+### No Issues Remaining
 
-3. **Email Address Hardcoded (Acceptable)**
+3. **Email Address Hardcoded (Intentional)**
    - **Location:** `src/components/layout/footer.tsx` line 208
    - **Current:** `team@roseyco.com` (hardcoded)
-   - **Status:** Acceptable - Email is global, not locale-specific
-   - **Action:** Document that email is intentionally global
+   - **Status:** ✅ ACCEPTABLE - Email is global, not locale-specific
+   - **Rationale:** Single global email address for all markets
 
 ## Phone Number Format Standards
 
@@ -139,37 +143,29 @@ The architecture correctly implements a single source of truth pattern:
 
 ## Required Actions Before GBP Setup
 
-### 1. Fix Footer Component
-Update `src/components/layout/footer.tsx` to use locale-aware phone number:
+### 1. ✅ Fix Footer Component - COMPLETED
+**Status:** ✅ FIXED in commit af46cb3
+- Footer now uses dynamic locale phone from locales.ts
+- Pattern matches contact page implementation
+- Ensures NAP consistency across all components
 
-**Current (line 226):**
-```typescript
-<a href="tel:+1234567890" ...>
-  ...
-  +1 (234) 567-890
-</a>
-```
+### 2. Provide Real Contact Information for Remaining Locales
 
-**Should be:**
-```typescript
-<a href={`tel:${locales[locale].phone.replace(/\s/g, '')}`} ...>
-  ...
-  {locales[locale].phone}
-</a>
-```
+Bailey must provide real contact information for remaining locales:
 
-### 2. Provide Real Contact Information
+| Locale | Required Data | Format Notes | Status |
+|--------|--------------|--------------|--------|
+| US | Phone, Full address with ZIP | Missouri or Kansas City location | ⚠️ PLACEHOLDER |
+| AU | Phone, Full address with postcode | Sydney location | ⚠️ PLACEHOLDER |
+| UK | ✅ Provided | Belfast GBP | ✅ VERIFIED |
+| IE | ✅ Provided | Belfast GBP (covers IE) | ✅ VERIFIED |
+| NL | Phone, Full address with postcode | Amsterdam location | ⚠️ PLACEHOLDER |
+| DK | Phone, Full address with postcode | Copenhagen location | ⚠️ PLACEHOLDER |
 
-Bailey must provide real contact information for each locale:
-
-| Locale | Required Data | Format Notes |
-|--------|--------------|--------------|
-| US | Phone, Full address with ZIP | Missouri or Kansas City location |
-| AU | Phone, Full address with postcode | Sydney location |
-| UK | Phone, Full address with postcode | London location |
-| IE | Phone, Full address with Eircode | Dublin location |
-| NL | Phone, Full address with postcode | Amsterdam location |
-| DK | Phone, Full address with postcode | Copenhagen location |
+**Update:** UK and IE now have verified Belfast GBP data:
+- Phone: +44 7722 432679
+- Address: 1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom
+- This single Belfast GBP covers both UK and Ireland markets
 
 ### 3. Update locales.ts with Real Data
 
@@ -207,11 +203,12 @@ Before marking NAP audit complete:
 - [x] Identified hardcoded values (footer phone)
 - [x] Documented phone number format standards
 - [x] Documented address format requirements
-- [ ] ⚠️ Footer component fixed to use locale data
-- [ ] ⚠️ Real contact information received from Bailey
-- [ ] ⚠️ locales.ts updated with real data
-- [ ] ⚠️ Production deployment completed
-- [ ] ⚠️ NAP consistency verified across all components
+- [x] ✅ Footer component fixed to use locale data (commit af46cb3)
+- [x] ✅ Real contact information received for UK/IE (Belfast GBP)
+- [x] ✅ locales.ts updated with Belfast data for UK/IE (commit 1ec4243)
+- [ ] ⚠️ Production deployment pending
+- [ ] ⚠️ NAP consistency verified across all components (pending deployment)
+- [ ] ⚠️ Real contact info needed for US, AU, NL, DK
 - [ ] ⚠️ GBP coordination initiated with Bailey
 
 ## Recommendations

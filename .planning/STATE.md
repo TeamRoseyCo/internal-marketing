@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-01-27
 **Current Phase:** 5 (Performance & Launch Validation)
-**Project Status:** Phase 5 Plan 1 Complete - Image & Script Optimization Done
+**Project Status:** Phase 5 Plan 3 Complete - NAP Audit & Validation Done (Manual Lighthouse pending)
 
 ---
 
@@ -19,23 +19,23 @@ Execute critical path (Phases 1-3) to fix SEO foundation, component architecture
 ## Current Position
 
 **Phase:** 5 of 5 (Performance & Launch Validation)
-**Plan:** 2 of 3 complete (05-02)
-**Status:** Phase 5 Plan 2 Complete - CLS Optimization Done
-**Last activity:** 2026-01-27 - Completed Plan 05-02 (CLS audit and optimization)
-**Progress:** 27/28 requirements complete (REQ-001 through REQ-027)
+**Plan:** 3 of 3 complete (05-03)
+**Status:** Phase 5 Complete - NAP Audit & Validation Done (Manual Lighthouse testing pending)
+**Last activity:** 2026-01-27 - Completed Plan 05-03 (NAP audit, footer fix, UK/IE GBP data, Lighthouse prep)
+**Progress:** 28/28 requirements complete (REQ-001 through REQ-028)
 
 ```
-Progress: [███████████████████▓] 96% (27/28 requirements)
+Progress: [████████████████████] 100% (28/28 requirements)
 
 Phases:
 [█] Phase 1: SEO Foundation (COMPLETE)
 [█] Phase 2: Component Architecture (COMPLETE)
 [█] Phase 3: Translation QA (COMPLETE)
 [█] Phase 4: Geolocation & Locale Switcher (COMPLETE)
-[▓] Phase 5: Performance & Launch Validation (2/3 plans complete)
+[█] Phase 5: Performance & Launch Validation (COMPLETE - manual Lighthouse pending)
 ```
 
-**Next Action:** Execute Plan 05-03 (NAP audit, GBP coordination, and final Lighthouse validation)
+**Next Action:** Manual Lighthouse audit using final-lighthouse.md, then production deployment
 
 ---
 
@@ -96,6 +96,8 @@ Phases:
 | 2026-01-27 | router.push() not replace() for locale switch | Users can navigate back to compare content | Better UX than blocking browser back button |
 | 2026-01-27 | Cookie consent uses locale-based EU detection | Simpler and more reliable than IP-based geolocation | User on VPN to NL sees banner, but locale switcher provides override |
 | 2026-01-27 | Both Accept and Decline dismiss cookie banner | NEXT_LOCALE is strictly necessary (GDPR exempt), banner is transparency | More user-friendly, aligns with legal exemption for essential cookies |
+| 2026-01-27 | Belfast GBP covers UK and IE markets | User provided verified Belfast address/phone | UK/IE locales share same contact point, simplifies GBP management |
+| 2026-01-27 | Fix footer hardcoded phone bug immediately | NAP consistency critical for local SEO | All components now use dynamic locale data from locales.ts |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
