@@ -19,6 +19,8 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 // Fraunces for headlines - sophisticated serif display font
@@ -27,6 +29,8 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 
@@ -109,13 +113,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        {/* Preconnect to BunnyStream CDN for faster video loading */}
+        {/* Preconnect to BunnyStream CDN for faster video loading - critical for hero video */}
         <link rel="preconnect" href="https://vz-ed4c89a0-c68.b-cdn.net" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://vz-ed4c89a0-c68.b-cdn.net" />
 
-        {/* Preconnect to Google Tag Manager for analytics */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for analytics (loaded lazily, so just DNS lookup) */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
         <OrganizationStructuredData />
         <WebSiteStructuredData />
@@ -126,10 +130,17 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${fraunces.variable} antialiased min-h-screen flex flex-col`}
       >
+        {/* Skip to main content link for keyboard navigation */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <LenisProvider>
           <div className="bg-page-gradient min-h-screen">
             <Header />
-            <main className="flex-1 pt-20 md:pt-24">{children}</main>
+            <main id="main-content" className="flex-1 pt-20 md:pt-24">{children}</main>
             <Footer />
           </div>
         </LenisProvider>
