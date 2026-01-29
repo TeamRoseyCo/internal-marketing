@@ -1,25 +1,24 @@
 'use client';
 
-// src/app/not-found.tsx
-// 404 Error Page - Dark luxury theme with Rosey Co branding
-// Displays when users navigate to non-existent pages
-// LOCALE-AWARE: Detects user's locale from URL and preserves it in navigation links
+// src/app/[locale]/not-found.tsx
+// Locale-specific 404 Error Page - Dark luxury theme with Rosey Co branding
+// Handles 404s within locale routes (e.g., /nl/fake-page, /us/wrong)
+// RELATED FILES: src/app/not-found.tsx (root-level 404)
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { Home, Mail } from 'lucide-react';
 import { isValidLocale } from '@/lib/locales';
 
-export default function NotFound() {
-  // Detect locale from current pathname
-  const pathname = usePathname();
-  const pathSegments = pathname.split('/');
-  const potentialLocale = pathSegments[1];
-  const locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
+export default function LocaleNotFound() {
+  // Get locale from URL params
+  const params = useParams();
+  const locale = isValidLocale(params.locale as string) ? params.locale : 'us';
 
   // Build locale-aware links
   const homeLink = `/${locale}`;
   const contactLink = `/${locale}/contact`;
+
   return (
     <div className="relative min-h-[70vh] flex items-center justify-center px-4 py-20">
       {/* Ambient background glow effects */}

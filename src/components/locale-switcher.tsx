@@ -9,9 +9,9 @@ import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { US, NL, DK, AU, GB, IE } from 'country-flag-icons/react/3x2';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale } from '@/lib/i18n';
 import { isValidLocale, type LocaleCode } from '@/lib/locales';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 /**
@@ -133,28 +133,39 @@ export function LocaleSwitcher({ variant = 'dropdown', className }: LocaleSwitch
     setIsOpen(false);
   }
 
-  // Compact variant: Horizontal flag icons
+  // Compact variant: Horizontal flag icons with refined styling
   if (variant === 'compact') {
     return (
-      <div className={cn('flex items-center gap-2', className)}>
-        {ALL_LOCALES.map((locale) => {
+      <div className={cn('flex items-center gap-3', className)}>
+        {ALL_LOCALES.map((locale, index) => {
           const Flag = FLAGS[locale];
           const isCurrent = locale === currentLocale;
 
           return (
-            <button
+            <motion.button
               key={locale}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.05, duration: 0.3 }}
               onClick={() => handleLocaleSwitch(locale)}
               className={cn(
-                'relative rounded overflow-hidden transition-all duration-200',
-                'hover:ring-2 hover:ring-primary/50 hover:scale-110',
-                isCurrent && 'ring-2 ring-primary scale-105'
+                'relative rounded-md overflow-hidden transition-all duration-300 group',
+                'hover:scale-110',
+                isCurrent && 'scale-105'
               )}
               aria-label={`Switch to ${LOCALE_LABELS[locale]}`}
               title={LOCALE_LABELS[locale]}
             >
-              <Flag className="w-6 h-[18px]" />
-            </button>
+              {/* Ring effect */}
+              <div className={cn(
+                'absolute inset-0 rounded-md transition-all duration-300',
+                isCurrent
+                  ? 'ring-2 ring-primary shadow-[0_0_10px_rgba(320,80%,55%,0.3)]'
+                  : 'ring-0 group-hover:ring-2 group-hover:ring-white/30'
+              )} />
+
+              <Flag className="w-7 h-[21px] relative z-10 shadow-md" />
+            </motion.button>
           );
         })}
       </div>
@@ -166,54 +177,91 @@ export function LocaleSwitcher({ variant = 'dropdown', className }: LocaleSwitch
 
   return (
     <div className={cn('relative', className)} ref={dropdownRef}>
-      <Button
-        variant="outline"
-        size="default"
+      {/* Trigger Button - Flag only, cleaner look */}
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="gap-2 px-3"
+        className={cn(
+          'flex items-center gap-2 px-3 py-2.5 rounded-lg',
+          'bg-background/40 backdrop-blur-sm',
+          'border border-white/10',
+          'hover:bg-background/60 hover:border-white/20',
+          'transition-all duration-300',
+          'group',
+          isOpen && 'bg-background/60 border-white/20'
+        )}
         aria-label="Select locale"
         aria-expanded={isOpen}
       >
-        <CurrentFlag className="w-5 h-[15px]" />
-        <span className="hidden sm:inline text-sm">
-          {LOCALE_LABELS[currentLocale]}
-        </span>
+        <CurrentFlag className="w-5 h-[15px] rounded-sm overflow-hidden shadow-sm" />
         <ChevronDown
           className={cn(
-            'w-4 h-4 transition-transform duration-200',
-            isOpen && 'rotate-180'
+            'w-4 h-4 text-foreground/60 transition-all duration-300',
+            'group-hover:text-foreground/80',
+            isOpen && 'rotate-180 text-foreground/80'
           )}
         />
-      </Button>
+      </button>
 
-      {/* Dropdown menu */}
-      {isOpen && (
-        <div className="absolute top-full right-0 mt-2 py-2 min-w-[200px] bg-card border border-border rounded-md shadow-lg z-50">
-          {ALL_LOCALES.map((locale) => {
-            const Flag = FLAGS[locale];
-            const isCurrent = locale === currentLocale;
+      {/* Dropdown menu - Framer Motion animated */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className={cn(
+              'absolute top-full right-0 mt-2 py-2 min-w-[220px]',
+              'bg-background/95 backdrop-blur-xl',
+              'border border-white/10',
+              'rounded-xl shadow-2xl',
+              'z-50'
+            )}
+          >
+            {ALL_LOCALES.map((locale, index) => {
+              const Flag = FLAGS[locale];
+              const isCurrent = locale === currentLocale;
 
-            return (
-              <button
-                key={locale}
-                onClick={() => handleLocaleSwitch(locale)}
-                className={cn(
-                  'w-full px-4 py-2 flex items-center gap-3 text-left text-sm',
-                  'hover:bg-accent transition-colors',
-                  isCurrent && 'bg-accent/50 font-medium'
-                )}
-                aria-label={`Switch to ${LOCALE_LABELS[locale]}`}
-              >
-                <Flag className="w-5 h-[15px]" />
-                <span>{LOCALE_LABELS[locale]}</span>
-                {isCurrent && (
-                  <span className="ml-auto text-xs text-muted-foreground">Current</span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-      )}
+              return (
+                <motion.button
+                  key={locale}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.03, duration: 0.2 }}
+                  onClick={() => handleLocaleSwitch(locale)}
+                  className={cn(
+                    'w-full px-4 py-3 flex items-center gap-3 text-left',
+                    'hover:bg-white/5 transition-all duration-200',
+                    'relative group',
+                    isCurrent && 'bg-white/5'
+                  )}
+                  aria-label={`Switch to ${LOCALE_LABELS[locale]}`}
+                >
+                  {/* Hover gradient effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/5 via-transparent to-transparent" />
+
+                  <Flag className="w-6 h-[18px] rounded overflow-hidden shadow-sm relative z-10" />
+                  <span className={cn(
+                    'text-sm font-medium relative z-10',
+                    isCurrent ? 'text-foreground' : 'text-foreground/80 group-hover:text-foreground'
+                  )}>
+                    {LOCALE_LABELS[locale]}
+                  </span>
+                  {isCurrent && (
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="ml-auto text-xs text-primary font-medium relative z-10"
+                    >
+                      Active
+                    </motion.span>
+                  )}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
