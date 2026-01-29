@@ -103,6 +103,7 @@ export function Footer() {
                 width={280}
                 height={160}
                 className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
                 unoptimized
               />
             </Link>
