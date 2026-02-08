@@ -119,6 +119,24 @@ const caseStudies = [
   },
 ];
 
+// Portfolio Videos Data
+const portfolioVideos = [
+  {
+    id: 1,
+    embedUrl: "https://player.mediadelivery.net/embed/565240/bc07a880-9b97-4674-be4a-c8ca75738946",
+    title: "Gaming Ad Campaign",
+    category: "Video Advertising",
+    description: "High-impact video ad creative for gaming industry client",
+  },
+  {
+    id: 2,
+    embedUrl: "https://player.mediadelivery.net/embed/565240/a8b54ecf-5efc-4bd4-bfbf-edc6e980079d",
+    title: "Ad Creative Example",
+    category: "Video Advertising",
+    description: "Professional video ad showcasing creative direction and production",
+  },
+];
+
 // Testimonials Data
 const testimonials = [
   {
@@ -477,43 +495,45 @@ export default function ResultsPage() {
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
           >
-            {/* Video placeholders - replace with actual video embeds */}
-            {[
-              { title: "Brand Story Video", category: "Brand Content" },
-              { title: "Product Launch Ad", category: "Paid Advertising" },
-              { title: "Social Media Reel", category: "Social Content" },
-              { title: "Client Testimonial", category: "Testimonials" },
-              { title: "Explainer Video", category: "Educational" },
-              { title: "Event Highlight", category: "Event Coverage" },
-            ].map((video, index) => (
+            {portfolioVideos.map((video) => (
               <motion.div
-                key={index}
+                key={video.id}
                 variants={staggerItem}
                 transition={{ duration: 0.5 }}
               >
                 <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
-                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden relative">
-                    {/* Video thumbnail placeholder */}
-                    <div className="aspect-video bg-gradient-to-br from-card to-card/50 flex items-center justify-center relative cursor-pointer group/play">
-                      {/* Play button */}
-                      <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center group-hover/play:bg-primary/30 group-hover/play:scale-110 transition-all duration-300">
-                        <Play className="w-6 h-6 text-primary ml-1" />
-                      </div>
-                      {/* Overlay on hover */}
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/play:opacity-100 transition-opacity duration-300" />
+                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden">
+                    {/* BunnyStream Video Embed */}
+                    <div className="aspect-video relative">
+                      <iframe
+                        src={video.embedUrl}
+                        loading="lazy"
+                        style={{
+                          border: "none",
+                          position: "absolute",
+                          top: 0,
+                          height: "100%",
+                          width: "100%",
+                        }}
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                        allowFullScreen
+                      />
                     </div>
                     {/* Video info */}
-                    <div className="p-5">
+                    <div className="p-6">
                       <span className="text-xs uppercase tracking-wider text-primary font-medium">
                         {video.category}
                       </span>
-                      <h3 className="text-lg font-semibold mt-1">{video.title}</h3>
+                      <h3 className="text-xl font-semibold mt-2">{video.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        {video.description}
+                      </p>
                     </div>
                   </div>
                 </div>

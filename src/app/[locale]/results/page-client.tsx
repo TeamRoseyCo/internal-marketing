@@ -87,6 +87,23 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
     { quote: "The new website they built us is beautiful AND it converts. Our lead capture went up 5x. Worth every penny.", author: "Chris P.", role: "Consultant", rating: 5 },
   ];
 
+  const portfolioVideos = [
+    {
+      id: 1,
+      embedUrl: "https://player.mediadelivery.net/embed/565240/bc07a880-9b97-4674-be4a-c8ca75738946",
+      title: "Gaming Ad Campaign",
+      category: "Video Advertising",
+      description: "High-impact video ad creative for gaming industry client",
+    },
+    {
+      id: 2,
+      embedUrl: "https://player.mediadelivery.net/embed/565240/a8b54ecf-5efc-4bd4-bfbf-edc6e980079d",
+      title: "Ad Creative Example",
+      category: "Video Advertising",
+      description: "Professional video ad showcasing creative direction and production",
+    },
+  ];
+
   return (
     <>
       {/* Hero */}
@@ -242,6 +259,40 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Video Portfolio */}
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, hsl(130 65% 40% / 0.15), transparent 70%)" }} />
+        </div>
+        <div className="container relative z-10">
+          <motion.div className="text-center mb-16 md:mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Video <span className="gradient-accent-text">Portfolio</span></h2>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">See examples of our video production and marketing content.</p>
+          </motion.div>
+          <motion.div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
+            {portfolioVideos.map((video) => (
+              <motion.div key={video.id} variants={staggerItem} transition={{ duration: 0.5 }}>
+                <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
+                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden">
+                    <div className="aspect-video relative">
+                      <iframe src={video.embedUrl} title={video.title} loading="lazy" style={{ border: "none", position: "absolute", top: 0, height: "100%", width: "100%" }} allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowFullScreen />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-xs uppercase tracking-wider text-primary font-medium">{video.category}</span>
+                      <h3 className="text-xl font-semibold mt-2">{video.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-2">{video.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          <motion.p className="text-center text-muted-foreground mt-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.5 }}>
+            Want to see more? <Link href={`/${validLocale}/contact`} className="text-primary hover:underline">Get in touch</Link> for our full portfolio.
+          </motion.p>
         </div>
       </section>
 
