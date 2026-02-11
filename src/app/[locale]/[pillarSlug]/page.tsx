@@ -228,20 +228,89 @@ export default async function PillarPage({
               </div>
             )}
 
+            {/* Related Services */}
+            {pillar.relatedPillars && pillar.relatedPillars.length > 0 && (
+              <div className="mt-12">
+                <h3 className="text-xl font-bold mb-6">
+                  {localeCode === 'uk' && pillarSlug.includes('belfast')
+                    ? 'Related Belfast Services'
+                    : 'Related Services'}
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {pillar.relatedPillars.map((relatedSlug) => {
+                    const related = getPillarBySlug(relatedSlug, localeCode);
+                    if (!related) return null;
+                    return (
+                      <Link
+                        key={relatedSlug}
+                        href={`/${localeCode}/${relatedSlug}/`}
+                        className="tech-card p-6 hover:border-primary/50 transition-all group"
+                      >
+                        <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                          {related.title.split('|')[0].trim()}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          {related.excerpt.length > 120
+                            ? related.excerpt.slice(0, 120) + '...'
+                            : related.excerpt}
+                        </p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* CTA */}
             <div className="mt-12 p-8 tech-card text-center">
-              <h3 className="text-xl font-bold mb-4">
-                Ready to grow your business?
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Let's discuss how we can help you achieve your goals.
-              </p>
-              <Link
-                href={`/${localeCode}/contact`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold btn-hero"
-              >
-                Get Started
-              </Link>
+              {localeCode === 'uk' && pillarSlug.includes('belfast') ? (
+                <>
+                  <h3 className="text-xl font-bold mb-4">
+                    Ready to grow your Belfast business?
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Visit our Belfast office or schedule a free consultation with our team.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link
+                      href={`/${localeCode}/contact`}
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold btn-hero"
+                    >
+                      Get Started
+                    </Link>
+                    <Link
+                      href="/uk/belfast/"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold border border-border bg-card hover:bg-accent transition-colors"
+                    >
+                      Visit Belfast Office
+                    </Link>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-4">
+                    Or call us:{' '}
+                    <a
+                      href="tel:+447722432679"
+                      className="text-primary hover:underline"
+                    >
+                      +44 7722 432679
+                    </a>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h3 className="text-xl font-bold mb-4">
+                    Ready to grow your business?
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Let's discuss how we can help you achieve your goals.
+                  </p>
+                  <Link
+                    href={`/${localeCode}/contact`}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold btn-hero"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
           </article>
         </div>
