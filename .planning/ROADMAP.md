@@ -236,13 +236,17 @@ Plans:
 
 #### Phase 10: Belfast Blog Content Strategy
 
-**Goal:** Create Belfast-focused blog content calendar, write high-value posts targeting local keywords, implement content distribution strategy.
+**Goal:** Fill Belfast pillar page placeholder content, extend blog infrastructure for cluster metadata, write 12 Belfast cluster blog posts across all 4 service pillars, and establish complete pillar-cluster topical authority architecture.
 **Depends on:** Phase 9
-**Research:** Unlikely (established patterns, content writing)
-**Plans:** TBD
+**Research:** Complete (10-RESEARCH.md)
+**Plans:** 5 plans
 
 Plans:
-- [ ] 10-01: TBD
+- [ ] 10-01-PLAN.md — Extend blog types for cluster support + expand keyword map + create content calendar
+- [ ] 10-02-PLAN.md — Fill all Belfast pillar page placeholder content (SEO, Social Media, Paid Ads, Website Design)
+- [ ] 10-03-PLAN.md — Write 6 cluster posts: SEO Belfast (4) + Social Media Belfast (2)
+- [ ] 10-04-PLAN.md — Write 6 cluster posts: Paid Ads Belfast (3) + Website Design Belfast (3)
+- [ ] 10-05-PLAN.md — Wire pillar-cluster relationships, verify bidirectional linking, full content audit
 
 #### Phase 11: Local Link Building & Citations
 
@@ -281,7 +285,7 @@ Plans:
 | 7. Topical Authority | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 8. Belfast Location Pages | v1.1 | 2/2 | Complete | 2026-02-11 |
 | 9. Service-Location Matrix | v1.1 | 2/2 | Complete | 2026-02-11 |
-| 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
+| 10. Belfast Blog Content | v1.1 | 0/5 | Planned | - |
 | 11. Link Building | v1.1 | 0/? | Not started | - |
 | 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
 
@@ -291,11 +295,11 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 9 (Service-Location Content Matrix) is planned with 2 plans.
+Phase 10 (Belfast Blog Content Strategy) is planned with 5 plans in 3 waves.
 
-**Next:** Discuss Phase 10
+**Next:** Execute Phase 10
 
-Run: `/gsd:discuss-phase 10`
+Run: `/gsd:execute-phase 10`
 
 ---
 
