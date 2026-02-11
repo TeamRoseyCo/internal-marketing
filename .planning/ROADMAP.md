@@ -183,7 +183,7 @@ Plans:
 
 </details>
 
-### 🚧 v1.1 Belfast SEO Domination (In Progress)
+### v1.1 Belfast SEO Domination (In Progress)
 
 **Milestone Goal:** Achieve complete SEO domination in Belfast and Northern Ireland through topical authority strategy, pillar content architecture, and advanced local SEO optimization.
 
@@ -225,13 +225,14 @@ Plans:
 
 #### Phase 9: Service-Location Content Matrix
 
-**Goal:** Build service-specific content for Belfast market (SEO in Belfast, Social Media Marketing Belfast, etc.) with proper cross-linking.
+**Goal:** Complete bidirectional cross-linking between Belfast location hub and pillar pages, enrich pillar content with local context, and connect global service pages to Belfast pillars for UK visitors.
 **Depends on:** Phase 8
-**Research:** Unlikely (follows established patterns)
-**Plans:** TBD
+**Research:** Complete (09-RESEARCH.md)
+**Plans:** 2 plans
 
 Plans:
-- [ ] 09-01: TBD
+- [ ] 09-01-PLAN.md — Enrich Belfast pillar pages with cross-links, local context, and Related Services UI
+- [ ] 09-02-PLAN.md — Add Belfast callout banners to UK global service pages
 
 #### Phase 10: Belfast Blog Content Strategy
 
@@ -279,7 +280,7 @@ Plans:
 | 6. Belfast SEO Research | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 7. Topical Authority | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 8. Belfast Location Pages | v1.1 | 2/2 | Complete | 2026-02-11 |
-| 9. Service-Location Matrix | v1.1 | 0/? | Not started | - |
+| 9. Service-Location Matrix | v1.1 | 0/2 | Planned | - |
 | 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
 | 11. Link Building | v1.1 | 0/? | Not started | - |
 | 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
@@ -290,11 +291,11 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 8 (Belfast Location Pages) is complete with 2 plans executed.
+Phase 9 (Service-Location Content Matrix) is planned with 2 plans.
 
-**Next:** Plan Phase 9 (Service-Location Content Matrix)
+**Next:** Execute Phase 9
 
-Run: `/gsd:discuss-phase 9` or `/gsd:plan-phase 9`
+Run: `/gsd:execute-phase 9`
 
 ---
 
