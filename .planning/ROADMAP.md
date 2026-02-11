@@ -231,8 +231,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — Enrich Belfast pillar pages with cross-links, local context, and Related Services UI
-- [ ] 09-02-PLAN.md — Add Belfast callout banners to UK global service pages
+- [x] 09-01-PLAN.md — Enrich Belfast pillar pages with cross-links, local context, and Related Services UI
+- [x] 09-02-PLAN.md — Add Belfast callout banners to UK global service pages
 
 #### Phase 10: Belfast Blog Content Strategy
 
@@ -280,7 +280,7 @@ Plans:
 | 6. Belfast SEO Research | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 7. Topical Authority | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 8. Belfast Location Pages | v1.1 | 2/2 | Complete | 2026-02-11 |
-| 9. Service-Location Matrix | v1.1 | 0/2 | Planned | - |
+| 9. Service-Location Matrix | v1.1 | 2/2 | Complete | 2026-02-11 |
 | 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
 | 11. Link Building | v1.1 | 0/? | Not started | - |
 | 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
@@ -293,9 +293,9 @@ Plans:
 
 Phase 9 (Service-Location Content Matrix) is planned with 2 plans.
 
-**Next:** Execute Phase 9
+**Next:** Discuss Phase 10
 
-Run: `/gsd:execute-phase 9`
+Run: `/gsd:discuss-phase 10`
 
 ---
 
