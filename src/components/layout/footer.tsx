@@ -43,25 +43,22 @@ export function Footer() {
     const potentialLocale = pathSegments[1];
     locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
 
-    // Fallback translations for root-level pages
+    // Get actual translations for the detected locale
+    const translations = require('@/lib/translations').getTranslations(locale);
+
     t = (key: string) => {
-      const fallbackTranslations: Record<string, string> = {
-        "footer.headings.services": "Services",
-        "footer.headings.company": "Company",
-        "footer.headings.contact": "Contact",
-        "footer.services.seo": "SEO Services",
-        "footer.services.socialMedia": "Social Media Management",
-        "footer.services.paidAds": "Paid Advertising",
-        "footer.services.webDesign": "Website Design",
-        "footer.company.results": "Results",
-        "footer.company.blog": "Blog",
-        "footer.company.contact": "Contact",
-        "footer.company.privacy": "Privacy Policy",
-        "footer.brandDescription": "We help businesses worldwide generate more customers through SEO, social media management, and paid advertising.",
-        "footer.copyright": "All rights reserved.",
-        "footer.tagline": "Global Social Media Marketing Agency",
-      };
-      return fallbackTranslations[key] || key;
+      const keys = key.split('.');
+      let value: any = translations;
+
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k];
+        } else {
+          return key;
+        }
+      }
+
+      return typeof value === 'string' ? value : key;
     };
   }
 

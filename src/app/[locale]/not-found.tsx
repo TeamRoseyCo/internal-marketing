@@ -9,11 +9,15 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Home, Mail } from 'lucide-react';
 import { isValidLocale } from '@/lib/locales';
+import { getTranslations } from '@/lib/translations';
 
 export default function LocaleNotFound() {
   // Get locale from URL params
   const params = useParams();
   const locale = isValidLocale(params.locale as string) ? params.locale : 'us';
+
+  // Get translations for detected locale
+  const t = getTranslations(locale as any);
 
   // Build locale-aware links
   const homeLink = `/${locale}`;
@@ -51,12 +55,12 @@ export default function LocaleNotFound() {
 
           {/* Heading - uses Fraunces serif font */}
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Page Not Found
+            {t.notFound.title}
           </h2>
 
           {/* Message */}
           <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-10 max-w-md mx-auto">
-            The page you're looking for doesn't exist or has been moved.
+            {t.notFound.message}
           </p>
 
           {/* Action Buttons - Locale-aware links */}
@@ -67,7 +71,7 @@ export default function LocaleNotFound() {
               className="btn-hero px-8 py-4 rounded-full flex items-center justify-center gap-3 text-base font-semibold transition-all duration-300 hover:scale-105"
             >
               <Home size={20} />
-              Go Home
+              {t.notFound.goHome}
             </Link>
 
             {/* Contact Us Button - Secondary outline */}
@@ -76,7 +80,7 @@ export default function LocaleNotFound() {
               className="group px-8 py-4 rounded-full flex items-center justify-center gap-3 text-base font-semibold border-2 border-primary/30 text-foreground hover:border-primary/60 hover:bg-primary/5 transition-all duration-300 hover:scale-105"
             >
               <Mail size={20} />
-              Contact Us
+              {t.notFound.contactUs}
             </Link>
           </div>
 

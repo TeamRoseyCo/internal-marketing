@@ -133,6 +133,13 @@ export interface Translations {
     decline: string;
     learnMore: string;
   };
+  // 404 Error page
+  notFound: {
+    title: string;
+    message: string;
+    goHome: string;
+    contactUs: string;
+  };
 }
 
 // Using 'as' assertion since AU, UK, IE are added dynamically after initialization
@@ -275,6 +282,12 @@ export const translations = {
       decline: 'Decline',
       learnMore: 'Learn more',
     },
+    notFound: {
+      title: 'Page Not Found',
+      message: "The page you're looking for doesn't exist or has been moved.",
+      goHome: 'Go Home',
+      contactUs: 'Contact Us',
+    },
   },
 
   // Dutch (Netherlands)
@@ -284,7 +297,7 @@ export const translations = {
       description: 'Krijg meer leads en laat je bedrijf groeien met datagestuurde SEO, social media management en betaalde advertenties.',
     },
     header: {
-      home: 'Home',
+      home: 'Startpagina',
       cta: 'Krijg Meer Leads',
     },
     nav: {
@@ -295,8 +308,8 @@ export const translations = {
     },
     hero: {
       badge: 'Wereldwijd Marketing Bureau',
-      title: 'Gegarandeerde groei. Gegarandeerde klanten.',
-      titleHighlight: '',
+      title: 'Gegarandeerde groei.',
+      titleHighlight: 'Gegarandeerde klanten.',
       subtitle: 'Stop met wachten tot klanten jou vinden. Wij zetten jouw bedrijf voor mensen die actief zoeken naar jouw diensten.',
       cta: 'Gratis Strategiegesprek',
       ctaSecondary: 'Bekijk Onze Resultaten',
@@ -414,6 +427,12 @@ export const translations = {
       accept: 'Accepteren',
       decline: 'Weigeren',
       learnMore: 'Meer informatie',
+    },
+    notFound: {
+      title: 'Pagina Niet Gevonden',
+      message: 'De pagina die je zoekt bestaat niet of is verplaatst.',
+      goHome: 'Naar Home',
+      contactUs: 'Neem Contact Op',
     },
   },
 
@@ -554,6 +573,12 @@ export const translations = {
       accept: 'Accepter',
       decline: 'Afvis',
       learnMore: 'Læs mere',
+    },
+    notFound: {
+      title: 'Side Ikke Fundet',
+      message: 'Siden du leder efter findes ikke eller er blevet flyttet.',
+      goHome: 'Gå Hjem',
+      contactUs: 'Kontakt Os',
     },
   },
 } as Record<LocaleCode, Translations>;
@@ -696,6 +721,12 @@ translations.au = {
     decline: 'Decline',
     learnMore: 'Learn more',
   },
+  notFound: {
+    title: 'Page Not Found',
+    message: "The page you're looking for doesn't exist or has been moved.",
+    goHome: 'Go Home',
+    contactUs: 'Contact Us',
+  },
 };
 
 // United Kingdom - British English
@@ -836,6 +867,12 @@ translations.uk = {
     decline: 'Decline',
     learnMore: 'Learn more',
   },
+  notFound: {
+    title: 'Page Not Found',
+    message: "The page you're looking for doesn't exist or has been moved.",
+    goHome: 'Go Home',
+    contactUs: 'Contact Us',
+  },
 };
 
 // Ireland - Irish English (British spelling)
@@ -975,6 +1012,12 @@ translations.ie = {
     accept: 'Accept',
     decline: 'Decline',
     learnMore: 'Learn more',
+  },
+  notFound: {
+    title: 'Page Not Found',
+    message: "The page you're looking for doesn't exist or has been moved.",
+    goHome: 'Go Home',
+    contactUs: 'Contact Us',
   },
 };
 

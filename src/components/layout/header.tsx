@@ -32,17 +32,22 @@ export function Header() {
     const potentialLocale = pathSegments[1];
     locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
 
-    // Fallback translations for root-level pages
+    // Get actual translations for the detected locale
+    const translations = require('@/lib/translations').getTranslations(locale);
+
     t = (key: string) => {
-      const fallbackTranslations: Record<string, string> = {
-        "header.home": "Home",
-        "header.cta": "Get More Leads",
-        "nav.services": "Services",
-        "nav.results": "Results",
-        "nav.blog": "Blog",
-        "nav.contact": "Contact",
-      };
-      return fallbackTranslations[key] || key;
+      const keys = key.split('.');
+      let value: any = translations;
+
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = value[k];
+        } else {
+          return key;
+        }
+      }
+
+      return typeof value === 'string' ? value : key;
     };
   }
 

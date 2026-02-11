@@ -170,11 +170,15 @@
 
   html {
     /* Lenis handles smooth scrolling via JS - don't use CSS scroll-behavior */
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Prevent horizontal scrolling on mobile */
+    overflow-x: hidden;
   }
 
   /* Headlines use serif font for sophistication */
