@@ -148,6 +148,18 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
           intent: 'commercial',
           primaryKeyword: 'link building Belfast',
           secondaryKeywords: ['backlinks Belfast', 'off-page SEO Belfast']
+        },
+        {
+          slug: 'seo-cost-belfast',
+          intent: 'informational',
+          primaryKeyword: 'SEO cost Belfast',
+          secondaryKeywords: ['SEO pricing Belfast', 'how much does SEO cost Belfast', 'Belfast SEO budget']
+        },
+        {
+          slug: 'how-to-rank-on-google-belfast',
+          intent: 'informational',
+          primaryKeyword: 'how to rank on Google Belfast',
+          secondaryKeywords: ['improve Google rankings Belfast', 'Belfast website optimization', 'rank higher Belfast']
         }
       ]
     },
@@ -160,13 +172,31 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
           slug: 'ppc-belfast',
           intent: 'commercial',
           primaryKeyword: 'PPC Belfast',
-          secondaryKeywords: ['pay per click Belfast', 'PPC management Belfast']
+          secondaryKeywords: ['pay per click Belfast', 'PPC management Belfast', 'PPC agency Belfast']
         },
         {
           slug: 'google-ads-cost-belfast',
           intent: 'informational',
           primaryKeyword: 'Google Ads cost Belfast',
-          secondaryKeywords: ['PPC pricing Belfast', 'advertising budget Belfast']
+          secondaryKeywords: ['PPC pricing Belfast', 'advertising budget Belfast', 'Google Ads budget Belfast']
+        },
+        {
+          slug: 'search-ads-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'search ads Belfast',
+          secondaryKeywords: ['Google search advertising Belfast', 'paid search Belfast', 'search campaign Belfast']
+        },
+        {
+          slug: 'shopping-ads-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'shopping ads Belfast',
+          secondaryKeywords: ['Google Shopping Belfast', 'product ads Belfast', 'ecommerce ads Belfast']
+        },
+        {
+          slug: 'google-ads-management-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'Google Ads management Belfast',
+          secondaryKeywords: ['PPC management Belfast', 'Google Ads expert Belfast', 'managed Google Ads Belfast']
         }
       ]
     },
@@ -179,13 +209,31 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
           slug: 'instagram-marketing-belfast',
           intent: 'commercial',
           primaryKeyword: 'Instagram marketing Belfast',
-          secondaryKeywords: ['Instagram ads Belfast', 'IG marketing Belfast']
+          secondaryKeywords: ['Instagram ads Belfast', 'IG marketing Belfast', 'grow Instagram Belfast']
         },
         {
           slug: 'facebook-marketing-belfast',
           intent: 'commercial',
           primaryKeyword: 'Facebook marketing Belfast',
-          secondaryKeywords: ['Facebook ads Belfast', 'FB advertising Belfast']
+          secondaryKeywords: ['Facebook ads Belfast', 'FB advertising Belfast', 'Facebook engagement Belfast']
+        },
+        {
+          slug: 'tiktok-marketing-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'TikTok marketing Belfast',
+          secondaryKeywords: ['TikTok ads Belfast', 'TikTok for business Belfast', 'TikTok strategy Belfast']
+        },
+        {
+          slug: 'linkedin-marketing-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'LinkedIn marketing Belfast',
+          secondaryKeywords: ['LinkedIn ads Belfast', 'B2B social media Belfast', 'LinkedIn strategy Belfast']
+        },
+        {
+          slug: 'social-media-strategy-belfast',
+          intent: 'informational',
+          primaryKeyword: 'social media strategy Belfast',
+          secondaryKeywords: ['social media tips Belfast', 'plan social media Belfast', 'social media guide Belfast']
         }
       ]
     },
@@ -193,7 +241,26 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
       pillarSlug: 'website-design-belfast',
       pillarIntent: 'commercial',
       primaryKeyword: 'website design Belfast',
-      clusters: []
+      clusters: [
+        {
+          slug: 'responsive-website-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'responsive website Belfast',
+          secondaryKeywords: ['mobile-friendly website Belfast', 'responsive design Belfast', 'mobile website Belfast']
+        },
+        {
+          slug: 'ecommerce-website-belfast',
+          intent: 'commercial',
+          primaryKeyword: 'ecommerce website Belfast',
+          secondaryKeywords: ['online store Belfast', 'ecommerce development Belfast', 'shopping website Belfast']
+        },
+        {
+          slug: 'web-design-trends-belfast',
+          intent: 'informational',
+          primaryKeyword: 'web design trends Belfast 2026',
+          secondaryKeywords: ['website design trends', 'modern web design Belfast', 'Belfast web design 2026']
+        }
+      ]
     }
   },
 

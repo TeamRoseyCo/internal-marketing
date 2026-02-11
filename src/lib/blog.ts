@@ -17,6 +17,9 @@ export interface BlogPost {
   image?: string;
   tags?: string[];
   content: string;
+  type?: 'standalone' | 'cluster';
+  pillarSlug?: string;
+  relatedClusters?: string[];
 }
 
 export interface BlogPostMeta {
@@ -29,6 +32,9 @@ export interface BlogPostMeta {
   author: string;
   image?: string;
   tags?: string[];
+  type?: 'standalone' | 'cluster';
+  pillarSlug?: string;
+  relatedClusters?: string[];
 }
 
 // Helper function to format reading time based on locale
@@ -79,6 +85,9 @@ export function getAllPosts(locale: LocaleCode = "us"): BlogPostMeta[] {
         author: data.author || "Rosey Co. Team",
         image: data.image,
         tags: data.tags || [],
+        ...(data.type && { type: data.type }),
+        ...(data.pillarSlug && { pillarSlug: data.pillarSlug }),
+        ...(data.relatedClusters && { relatedClusters: data.relatedClusters }),
       } as BlogPostMeta;
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -119,6 +128,9 @@ export function getPostBySlug(slug: string, locale: LocaleCode = "us"): BlogPost
     image: data.image,
     tags: data.tags || [],
     content,
+    ...(data.type && { type: data.type }),
+    ...(data.pillarSlug && { pillarSlug: data.pillarSlug }),
+    ...(data.relatedClusters && { relatedClusters: data.relatedClusters }),
   };
 }
 
