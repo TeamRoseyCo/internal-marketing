@@ -217,10 +217,11 @@ Plans:
 **Goal:** Create comprehensive Belfast-focused location pages with proper LocalBusiness schema, NAP consistency, and embedded maps.
 **Depends on:** Phase 7
 **Research:** Unlikely (internal patterns established)
-**Plans:** TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 08-01: TBD
+- [ ] 08-01-PLAN.md -- Enhanced Belfast LocalBusiness schema + structured address data + geo coordinates
+- [ ] 08-02-PLAN.md -- Belfast location page route with map embed, services links, FAQs, and sitemap update
 
 #### Phase 9: Service-Location Content Matrix
 
@@ -277,7 +278,7 @@ Plans:
 | 5. Performance & Launch | v1.0 | 3/3 | Complete | 2026-01-27 |
 | 6. Belfast SEO Research | v1.1 | 3/3 | Complete | 2026-02-11 |
 | 7. Topical Authority | v1.1 | 3/3 | Complete | 2026-02-11 |
-| 8. Belfast Location Pages | v1.1 | 0/? | Not started | - |
+| 8. Belfast Location Pages | v1.1 | 0/2 | Planned | - |
 | 9. Service-Location Matrix | v1.1 | 0/? | Not started | - |
 | 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
 | 11. Link Building | v1.1 | 0/? | Not started | - |
@@ -289,11 +290,11 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 7 (Topical Authority Architecture) is planned with 3 plans in 2 waves.
+Phase 8 (Belfast Location Pages) is planned with 2 plans in 2 waves.
 
-**Next:** Execute Phase 7
+**Next:** Execute Phase 8
 
-Run: `/gsd:execute-phase 7`
+Run: `/gsd:execute-phase 8`
 
 ---
 
