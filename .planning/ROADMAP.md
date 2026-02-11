@@ -250,14 +250,16 @@ Plans:
 
 #### Phase 11: Local Link Building & Citations
 
-**Goal:** Build local citations (directories, business listings), establish local backlinks, integrate with Belfast Chamber of Commerce and local organizations.
+**Goal:** Audit NAP consistency, build comprehensive citation management toolkit, create link building outreach templates and strategy, and establish Tier 1 directory presence for Belfast local SEO.
 **Depends on:** Phase 10
-**Research:** Likely (citation sources, local organizations, link opportunities)
+**Research:** Complete (11-RESEARCH.md)
 **Research topics:** Belfast business directories, NI chamber of commerce, local press contacts, citation sources
-**Plans:** TBD
+**Plans:** 3 plans
 
 Plans:
-- [ ] 11-01: TBD
+- [ ] 11-01-PLAN.md — NAP consistency audit + comprehensive citation tracker (35+ directories)
+- [ ] 11-02-PLAN.md — Outreach templates (HARO, media, partnerships) + Belfast link building strategy
+- [ ] 11-03-PLAN.md — Tier 1 directory submission guides + human verification of initial submissions
 
 #### Phase 12: Belfast Analytics & Monitoring
 
@@ -286,7 +288,7 @@ Plans:
 | 8. Belfast Location Pages | v1.1 | 2/2 | Complete | 2026-02-11 |
 | 9. Service-Location Matrix | v1.1 | 2/2 | Complete | 2026-02-11 |
 | 10. Belfast Blog Content | v1.1 | 5/5 | Complete | 2026-02-11 |
-| 11. Link Building | v1.1 | 0/? | Not started | - |
+| 11. Link Building | v1.1 | 0/3 | Planned | - |
 | 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
 
 ---
@@ -295,12 +297,12 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 11 (Local Link Building & Citations) is next.
+Phase 11 (Local Link Building & Citations) is planned and ready for execution.
 
-**Next:** Discuss or plan Phase 11
+**Next:** Execute Phase 11
 
-Run: `/gsd:execute-phase 10`
+Run: `/gsd:execute-phase 11`
 
 ---
 
-*Last updated: 2026-02-11 (Phase 10 complete)*
+*Last updated: 2026-02-11 (Phase 11 planned)*
