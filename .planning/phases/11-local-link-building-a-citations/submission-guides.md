@@ -7,6 +7,27 @@
 
 ---
 
+## ⚠️ ACTION REQUIRED - Manual Directory Submissions
+
+**THESE SUBMISSIONS REQUIRE HUMAN ACTION** - Directory submissions cannot be automated due to:
+- Account creation requirements
+- Email/phone verification
+- CAPTCHA challenges
+- Manual form submissions
+
+**Priority submissions (do these first):**
+1. **Google Business Profile** - Verify existing listing matches NAP (critical)
+2. **Foursquare** - Claim listing (powers 60-70% of AI search local results)
+3. **Bing Places** - Import from Google to save time
+4. **Apple Maps** - Required for Apple device searches
+5. **Facebook Business Page** - Social + local SEO
+
+**When to do this:** Allocate 2-4 hours to complete the top 5 priority submissions. Then continue with remaining Tier 1 (another 2-3 hours) and Tier 2 over following weeks.
+
+**Track progress:** Update `citation-tracker.md` after each submission with Status, Date Verified, and any issues encountered.
+
+---
+
 ## Quick Copy-Paste NAP Block
 
 **Use this EXACT format for ALL directory submissions:**
