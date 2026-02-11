@@ -2,24 +2,39 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import Image from "next/image";
 
+// Generate heading ID from text for anchor linking
+function generateHeadingId(children: React.ReactNode): string {
+  const text = typeof children === 'string'
+    ? children
+    : Array.isArray(children)
+      ? children.map(c => typeof c === 'string' ? c : '').join('')
+      : '';
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 // MDX components object for server components (non-hook export)
 export const mdxComponents: MDXComponents = {
-    // Headings
+    // Headings with auto-generated IDs for anchor linking
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold tracking-tight mb-6 mt-12 first:mt-0">
+      <h1 id={generateHeadingId(children)} className="text-4xl font-bold tracking-tight mb-6 mt-12 first:mt-0">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold tracking-tight mb-4 mt-10">
+      <h2 id={generateHeadingId(children)} className="text-3xl font-bold tracking-tight mb-4 mt-10">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-semibold mb-3 mt-8">{children}</h3>
+      <h3 id={generateHeadingId(children)} className="text-2xl font-semibold mb-3 mt-8">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl font-semibold mb-2 mt-6">{children}</h4>
+      <h4 id={generateHeadingId(children)} className="text-xl font-semibold mb-2 mt-6">{children}</h4>
     ),
 
     // Paragraphs and text
