@@ -14,6 +14,15 @@ export interface LocaleConfig {
   phone: string;
   address: string;
   timezone: string;
+  // Structured address fields for PostalAddress schema
+  streetAddress?: string;
+  addressLocality: string;
+  addressRegion?: string;
+  postalCode?: string;
+  geo?: {
+    latitude: number;
+    longitude: number;
+  };
 }
 
 export const locales: Record<LocaleCode, LocaleConfig> = {
@@ -27,6 +36,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+1 (573) 268-5330',
     address: 'Missouri, United States',
     timezone: 'America/Chicago',
+    addressLocality: 'Missouri',
   },
   nl: {
     code: 'nl',
@@ -38,6 +48,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+31 85 369 6471',
     address: 'Amsterdam, Nederland',
     timezone: 'Europe/Amsterdam',
+    addressLocality: 'Amsterdam',
   },
   dk: {
     code: 'dk',
@@ -49,6 +60,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+45 6081 8826',
     address: 'København, Danmark',
     timezone: 'Europe/Copenhagen',
+    addressLocality: 'København',
   },
   au: {
     code: 'au',
@@ -60,6 +72,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+44 7722 432679', // Using Belfast number
     address: 'Sydney, Australia',
     timezone: 'Australia/Sydney',
+    addressLocality: 'Sydney',
   },
   uk: {
     code: 'uk',
@@ -71,6 +84,14 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+44 7722 432679', // Verified Belfast GBP
     address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/London',
+    streetAddress: '1 Hollycroft Avenue',
+    addressLocality: 'Belfast',
+    addressRegion: 'Northern Ireland',
+    postalCode: 'BT5 5JE',
+    geo: {
+      latitude: 54.5833,
+      longitude: -5.9333,
+    },
   },
   ie: {
     code: 'ie',
@@ -82,6 +103,14 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     phone: '+44 7722 432679', // Verified Belfast GBP (covers UK + IE)
     address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/Dublin',
+    streetAddress: '1 Hollycroft Avenue',
+    addressLocality: 'Belfast',
+    addressRegion: 'Northern Ireland',
+    postalCode: 'BT5 5JE',
+    geo: {
+      latitude: 54.5833,
+      longitude: -5.9333,
+    },
   },
 };
 
