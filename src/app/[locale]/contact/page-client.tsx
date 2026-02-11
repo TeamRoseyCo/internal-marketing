@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { isValidLocale, LocaleCode, getLocale } from "@/lib/locales";
 import { getContactPageTranslations } from "@/lib/page-translations";
+import { trackFormSubmission, trackPhoneClick } from "@/lib/analytics";
 
 const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
 const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } } };
@@ -64,6 +65,7 @@ export default function ContactPageClient({ params }: LocaleContactPageProps) {
       }
 
       setIsSubmitted(true);
+      trackFormSubmission('contact', selectedService, validLocale);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
@@ -285,7 +287,14 @@ export default function ContactPageClient({ params }: LocaleContactPageProps) {
                       </div>
                     );
                     return item.href ? (
-                      <a key={item.label} href={item.href} className="block hover:opacity-80 transition-opacity">{content}</a>
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="block hover:opacity-80 transition-opacity"
+                        onClick={item.icon === Phone ? () => trackPhoneClick(localeConfig.phone, validLocale === 'uk' || validLocale === 'ie' ? 'Belfast' : localeConfig.addressLocality, 'contact-sidebar') : undefined}
+                      >
+                        {content}
+                      </a>
                     ) : (
                       <div key={item.label}>{content}</div>
                     );

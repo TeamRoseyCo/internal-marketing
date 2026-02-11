@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useLocale, useTranslation } from "@/lib/i18n";
 import { isValidLocale, locales } from "@/lib/locales";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { trackPhoneClick } from "@/lib/analytics";
 
 const socialLinks = [
   {
@@ -223,6 +224,7 @@ export function Footer() {
                 <a
                   href={`tel:${locales[locale as keyof typeof locales]?.phone || '+44 7722 432679'}`}
                   className="text-base text-muted-foreground hover:text-foreground transition-colors flex items-center gap-3 group"
+                  onClick={() => trackPhoneClick(locales[locale as keyof typeof locales]?.phone || '+44 7722 432679', locales[locale as keyof typeof locales]?.addressLocality || 'Belfast', 'footer')}
                 >
                   <span className="relative">
                     <span className="w-10 h-10 rounded-xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/40 group-hover:via-brand-green/20 group-hover:to-primary/40 transition-all duration-500 flex items-center justify-center">

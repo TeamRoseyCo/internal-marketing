@@ -4,11 +4,12 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, Phone, Clock, Mail, Search, Share2, CreditCard, Palette, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Search, Share2, CreditCard, Palette, ArrowRight, Navigation } from "lucide-react";
 import { isValidLocale, LocaleCode } from "@/lib/locales";
 import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
 import { LocalBusinessStructuredData } from "@/components/seo/structured-data";
 import { FAQStructuredData } from "@/components/seo/structured-data";
+import { TrackedPhone, TrackedDirections } from "@/components/analytics";
 
 // Only generate for UK locale
 export async function generateStaticParams() {
@@ -207,7 +208,7 @@ export default async function BelfastLocationPage({
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2">Address</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-3">
                       Rosey Co.
                       <br />
                       1 Hollycroft Avenue
@@ -216,6 +217,13 @@ export default async function BelfastLocationPage({
                       <br />
                       Northern Ireland
                     </p>
+                    <TrackedDirections
+                      address="1 Hollycroft Avenue, Belfast, BT5 5JE, UK"
+                      className="text-sm text-primary hover:underline flex items-center gap-1"
+                    >
+                      <Navigation className="w-4 h-4" />
+                      Get Directions
+                    </TrackedDirections>
                   </div>
                 </div>
 
@@ -226,12 +234,12 @@ export default async function BelfastLocationPage({
                   </div>
                   <div>
                     <h3 className="font-semibold mb-2">Phone</h3>
-                    <a
-                      href="tel:+447722432679"
+                    <TrackedPhone
+                      number="+44 7722 432679"
+                      location="Belfast"
+                      source="belfast-office-info"
                       className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      +44 7722 432679
-                    </a>
+                    />
                   </div>
                 </div>
 
@@ -410,12 +418,12 @@ export default async function BelfastLocationPage({
               </div>
               <p className="text-sm text-muted-foreground mt-6">
                 Or call us:{" "}
-                <a
-                  href="tel:+447722432679"
+                <TrackedPhone
+                  number="+44 7722 432679"
+                  location="Belfast"
+                  source="belfast-cta"
                   className="text-primary hover:underline font-medium"
-                >
-                  +44 7722 432679
-                </a>
+                />
               </p>
             </div>
           </div>
