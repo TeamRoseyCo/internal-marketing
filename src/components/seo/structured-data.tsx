@@ -53,7 +53,10 @@ interface LocalBusinessSchema {
   telephone: string;
   address: {
     "@type": "PostalAddress";
+    streetAddress?: string;
     addressLocality: string;
+    addressRegion?: string;
+    postalCode?: string;
     addressCountry: string;
   };
   geo?: {
@@ -68,10 +71,9 @@ interface LocalBusinessSchema {
     opens: string;
     closes: string;
   };
-  areaServed: {
-    "@type": "Country";
-    name: string;
-  };
+  // Using any for areaServed to support both single Country and array of City/AdministrativeArea/Country
+  // This is intentional to support enhanced Belfast city-level targeting without complex union types
+  areaServed: any;
   serviceType: string[];
 }
 
@@ -197,19 +199,35 @@ export function LocalBusinessStructuredData({
 }) {
   const config = locales[locale];
 
+  // Belfast locales (UK/IE) get enhanced city-level targeting
+  const isBelfastLocale = locale === 'uk' || locale === 'ie';
+
   const schema: LocalBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${BASE_URL}/${locale}`,
+    "@id": isBelfastLocale
+      ? `${BASE_URL}/${locale}#belfast-office`
+      : `${BASE_URL}/${locale}`,
     name: `Rosey Co. ${config.country}`,
     description: getLocalizedDescription(locale),
     url: `${BASE_URL}/${locale}`,
     telephone: config.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: config.address.split(",")[0].trim(),
+      streetAddress: config.streetAddress,
+      addressLocality: config.addressLocality,
+      addressRegion: config.addressRegion,
+      postalCode: config.postalCode,
       addressCountry: config.countryCode,
     },
+    // Add geo coordinates when available (Belfast locales)
+    ...(config.geo && {
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: config.geo.latitude,
+        longitude: config.geo.longitude,
+      },
+    }),
     priceRange: "$$",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -217,10 +235,17 @@ export function LocalBusinessStructuredData({
       opens: "09:00",
       closes: "17:00",
     },
-    areaServed: {
-      "@type": "Country",
-      name: config.country,
-    },
+    // Belfast locales get city-level areaServed, others get Country only
+    areaServed: isBelfastLocale
+      ? [
+          { "@type": "City", name: "Belfast" },
+          { "@type": "AdministrativeArea", name: "Northern Ireland" },
+          { "@type": "Country", name: "United Kingdom" },
+        ]
+      : {
+          "@type": "Country",
+          name: config.country,
+        },
     serviceType: [
       "SEO Services",
       "Social Media Management",
