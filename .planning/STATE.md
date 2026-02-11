@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-02-11
-**Current Phase:** 8 (Belfast Location Pages)
-**Project Status:** Phase 8 complete - Belfast location infrastructure production-ready
+**Current Phase:** 9 (Service-Location Content Matrix)
+**Project Status:** Phase 9 in progress - Building internal linking between global service pages and Belfast pillars
 
 ---
 
@@ -19,13 +19,13 @@ Belfast SEO domination through topical authority, location pages, and local sear
 ## Current Position
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
-**Phase:** 8 of 12 (Belfast Location Pages)
-**Plan:** 08-02 complete (2 of 2)
-**Status:** Phase 8 complete - Belfast location page with enhanced schema production-ready
-**Last activity:** 2026-02-11 - Completed Phase 8: Belfast Location Pages (2 plans executed, verified)
+**Phase:** 9 of 12 (Service-Location Content Matrix)
+**Plan:** 09-02 complete (1 of 2)
+**Status:** Internal linking established from UK global service pages to Belfast pillar pages
+**Last activity:** 2026-02-11 - Completed 09-02-PLAN.md
 
 ```
-Progress: ████░░░░░░ 40% (v1.1 milestone - Phase 8 complete: 2/2 plans)
+Progress: ████▓░░░░░ 43% (v1.1 milestone - Phase 9: 1/2 plans complete)
 
 v1.0 Complete:
 [█] Phase 1: SEO Foundation
@@ -38,21 +38,21 @@ v1.1 Belfast SEO:
 [█] Phase 6: Belfast SEO Research & Strategy (3/3 plans complete)
 [█] Phase 7: Topical Authority Architecture (3/3 plans complete)
 [█] Phase 8: Belfast Location Pages (2/2 plans complete)
-[░] Phase 9: Service-Location Content Matrix
+[▓] Phase 9: Service-Location Content Matrix (1/2 plans complete)
 [░] Phase 10: Belfast Blog Content Strategy
 [░] Phase 11: Local Link Building & Citations
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Plan Phase 9 (Service-Location Content Matrix)
+**Next Action:** Execute Plan 09-03 (if exists) or plan Phase 10
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-02-11 (after 08-02 completion)
-- Static generation: 239 pages across 6 locales (1 Belfast location page added)
+- Last successful build: 2026-02-11 (after 09-02 completion)
+- Static generation: 239 pages across 6 locales
 - Build time: ~10-15 seconds
 - Middleware: Active (geolocation detection with cookie persistence)
 - Locale Switcher: Integrated in Header and Footer
@@ -61,6 +61,7 @@ v1.1 Belfast SEO:
 - Belfast Pages: 5 pages (4 Belfast pillars + 1 Belfast location page)
 - Content Architecture: Pillar-cluster topical authority structure
 - LocalBusiness Schema: Enhanced with Belfast geo coordinates and city-level targeting
+- Internal Linking: UK global service pages → Belfast pillar pages (4 callout banners added)
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -135,6 +136,9 @@ v1.1 Belfast SEO:
 | 2026-02-11 | Belfast geo coordinates 54.5833, -5.9333 from verified GBP | Precise coordinates required for Google local pack ranking | UK/IE locales get enhanced LocalBusiness schema with GeoCoordinates |
 | 2026-02-11 | City-level areaServed for Belfast locales | Array format: City + AdministrativeArea + Country | Improves local search visibility and Google local pack appearance |
 | 2026-02-11 | TypeScript 'any' for areaServed schema field | Complex union type adds unnecessary complexity | Justified with comment, supports both single object and array variants |
+| 2026-02-11 | Belfast callouts placed after hero section | High visibility without disrupting page flow | UK visitors see Belfast option immediately after understanding service value |
+| 2026-02-11 | Tech-card styling for location callouts | Consistent with existing design system, professional appearance | Callouts feel native to the site, not like ads or interruptions |
+| 2026-02-11 | MapPin icon signals geographic relevance | Clear visual indicator of location-specific content | Users instantly recognize this as a local alternative |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -209,29 +213,28 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 08-02: Belfast Location Page Creation
+**Session:** 2026-02-11 - Executed Plan 09-02: Add Belfast Callouts to Global Service Pages
 **Completed:**
-- Created Belfast location landing page at /uk/belfast/ (UK locale only)
-  - 8 sections: hero, office info, Google Maps embed, services, value props, FAQs, CTA
-  - Links to all 4 Belfast pillar pages (SEO, Social Media, Paid Ads, Website Design)
-  - LocalBusiness and FAQ structured data schema
-  - NAP consistency: 1 Hollycroft Avenue, Belfast, BT5 5JE, +44 7722 432679
-  - Google Maps iframe embed showing Belfast office location
-  - FAQ accordion with 6 Belfast-specific questions
-  - Service cards with icons and descriptions
-  - Value propositions highlighting local expertise and SMB focus
-  - Click-to-call tel: links for phone number
-- Updated sitemap with Belfast location page entry
-  - Priority 0.85 (same as pillar pages)
-  - Monthly changeFrequency
-  - URL: /uk/belfast/
-- Build succeeds: 239 pages (238 + 1 Belfast location page)
+- Added Belfast-specific callout banners to all 4 UK global service pages
+  - SEO page: Links to /uk/seo-belfast/
+  - Social Media page: Links to /uk/social-media-belfast/
+  - Paid Ads page: Links to /uk/paid-ads-belfast/
+  - Website Design page: Links to /uk/website-design-belfast/
+- Callouts positioned after hero section (high visibility, non-disruptive)
+- Tech-card styling with MapPin icon and ArrowRight
+- Conditional rendering: Only visible for UK locale (validLocale === "uk")
+- Added MapPin icon imports to 3 files (social-media, paid-ads, website-design)
+- Non-UK locales unchanged (no visual or HTML bloat)
+- Build succeeds: 239 pages
 - TypeScript compiles cleanly with zero errors
-- Created 08-02-SUMMARY.md
+- Created 09-02-SUMMARY.md
 - Updated STATE.md
-- **Phase 8 Plan 2 Complete - Belfast location page ready for integration with pillar pages**
+- **Phase 9 Plan 2 Complete - Internal linking from global service pages to Belfast pillars established**
 
 **Commits:**
+- `685ee3f` - feat(09-02): add Belfast callout banners to UK global service pages
+
+**Previous Session (Plan 08-02):**
 - `1439612` - feat(08-02): create Belfast location page with office info, map, services, and FAQs
 - `b0e3b49` - feat(08-02): add Belfast location page to sitemap
 
@@ -304,9 +307,9 @@ v1.1 Belfast SEO:
 - `b930d92` - feat(07-01): create keyword map and placeholder pillar pages
 
 **Next Steps:**
-1. Continue Phase 08: Execute Plan 08-03 (Integrate Belfast page with pillar pages)
-2. Begin Phase 09: Service-Location Content Matrix
-3. Begin Phase 10: Belfast Blog Content Strategy
+1. Check if 09-03-PLAN.md exists, execute if present
+2. If Phase 9 complete, begin Phase 10: Belfast Blog Content Strategy
+3. Continue v1.1 Belfast SEO Domination milestone
 ### What to Remember for Next Session
 
 **Critical Context:**
