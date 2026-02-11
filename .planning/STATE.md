@@ -20,9 +20,9 @@ Belfast SEO domination through topical authority, location pages, and local sear
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
 **Phase:** 11 of 12 (Local Link Building & Citations)
-**Plan:** 11-02 complete (2 of 4)
-**Status:** Phase 11 in progress - Outreach toolkit complete (11 templates + 12-week strategy ready for execution)
-**Last activity:** 2026-02-11 - Completed Plan 11-02: Link Building Outreach Toolkit (11 templates across 4 channels, prioritized 12-week strategy)
+**Plan:** 11-03 complete (3 of 4)
+**Status:** Phase 11 in progress - Citation submission guides complete (14 Tier 1 directories with step-by-step instructions, manual submissions deferred for user execution)
+**Last activity:** 2026-02-11 - Completed Plan 11-03: Tier 1 Directory Submission Guides (1,582-line guide with copy-paste NAP block, manual submissions deferred)
 
 ```
 Progress: █████████░ 90% (v1.1 milestone - Phase 11 Plan 2 complete: Link building outreach toolkit ready)
@@ -40,11 +40,11 @@ v1.1 Belfast SEO:
 [█] Phase 8: Belfast Location Pages (2/2 plans complete)
 [█] Phase 9: Service-Location Content Matrix (2/2 plans complete)
 [█] Phase 10: Belfast Blog Content Strategy (5/5 plans COMPLETE - bidirectional linking verified)
-[▓] Phase 11: Local Link Building & Citations (2/4 plans complete - Outreach toolkit ready)
+[▓] Phase 11: Local Link Building & Citations (3/4 plans complete - Citation submission guides ready)
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Phase 11-03: Google Business Profile optimization + Tier 1 citation submissions (Foursquare, Apple Maps, Bing Places, major UK directories)
+**Next Action:** Phase 11-04: Tier 2 citation submissions (21 directories, priority order by domain authority)
 
 ---
 
@@ -92,6 +92,7 @@ v1.1 Belfast SEO:
 - Citation tracker: ✅ Created (35+ directories with Tier 1/2 prioritization, submission URLs, business descriptions)
 - Link building outreach templates: ✅ Created (11 templates: HARO, Belfast media, partnerships, community)
 - Link building strategy: ✅ Complete (12-week prioritized action plan, budget estimates, success criteria)
+- Tier 1 submission guides: ✅ Created (1,582-line guide with step-by-step instructions for 14 directories, copy-paste NAP block)
 
 ---
 
@@ -171,6 +172,9 @@ v1.1 Belfast SEO:
 | 2026-02-11 | HARO as primary media link channel | Daily monitoring with 2-hour response window; free tier sufficient | High-DR editorial backlinks (70-95) with 10-20% acceptance rate for well-matched queries |
 | 2026-02-11 | Relationship-based partnership outreach | Target 3-5 genuine partnerships vs. mass reciprocal link exchanges | Quality partnerships provide ongoing value (referrals, content, links); avoids Google penalties |
 | 2026-02-11 | Budget-conscious phased link building | Start free tools/opportunities, invest after 2-3 clients (£500-1400 initial, £50-250/month) | Aligns with Phase 6 decision to minimize upfront costs before client revenue |
+| 2026-02-11 | Manual directory submissions deferred for user execution | Directory submissions require human action (account creation, CAPTCHA, verification codes) | User completes submissions on own schedule using provided guides (estimated 4-6 hours total) |
+| 2026-02-11 | Copy-paste NAP block standardized in guides | Single authoritative NAP format prevents submission transcription errors | Ensures 100% NAP consistency across all 14 Tier 1 + 21 Tier 2 directory submissions |
+| 2026-02-11 | Chamber memberships documented as enquiry-first | Belfast/NI Chamber costs unknown, membership may not be worth citation value alone | Business evaluates membership ROI (dofollow link + networking vs. cost < £500/year) before committing |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -245,26 +249,24 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 10-03: Belfast Cluster Blog Posts
+**Session:** 2026-02-11 - Executed Plan 11-03: Tier 1 Directory Submission Guides
 
 **Completed:**
-- Created 6 Belfast cluster blog posts totaling 9,000+ words
-- 4 SEO Belfast cluster posts: local-seo-belfast, small-business-seo-belfast, technical-seo-belfast, link-building-belfast
-- 2 Social Media Belfast cluster posts: instagram-marketing-belfast, facebook-marketing-belfast
-- All posts link to parent pillar 2-3 times with varied anchor text
-- All posts link to /uk/belfast/ office page at least once
-- Genuine Belfast-specific examples throughout (Cathedral Quarter, Titanic Quarter, Lisburn Road, BT postcodes)
-- UK English used consistently (optimise, organised, whilst, colour)
-- Common Mistakes Belfast Businesses Make sections in all posts
-- Strategic dating: SEO posts Feb 17/20/24/27, Social Media posts Mar 3/6
-- Build succeeded: 250 pages (up from 246)
-- Created 10-03-SUMMARY.md
+- Created comprehensive 1,582-line submission guide document for all 14 Tier 1 directories
+- Each guide includes: URL, steps, NAP fields, categories, verification method, timeline, troubleshooting
+- Copy-paste NAP block for consistent submissions (eliminates transcription errors)
+- Chamber enquiry templates for Belfast Chamber and NI Chamber (membership required)
+- ACTION REQUIRED section added to ensure manual submissions not forgotten
+- Manual directory submissions deferred for user execution (estimated 4-6 hours total)
+- User will complete GBP verification, Foursquare claim, and Tier 1 submissions using guides
+- Citation tracker will be updated with Status after user completes submissions
+- Created 11-03-SUMMARY.md
 - Updated STATE.md
-- **Phase 10 Complete - Full pillar-cluster topical authority structure established**
+- **Phase 11 Plan 3 Complete - Citation submission guides ready for user execution**
 
 **Commits:**
-- `96fd71a` - feat(10-03): create 4 SEO Belfast cluster posts (5,600+ words)
-- `464c6ff` - feat(10-03): create 2 Social Media Belfast cluster posts (3,400+ words)
+- `de780b4` - docs(11-03): create Tier 1 directory submission guides
+- `9975df7` - docs(11-03): add ACTION REQUIRED section to submission guides
 
 **Current Session:** 2026-02-11 - Executed Plan 10-05: Belfast Pillar-Cluster Integration
 **Completed:**
