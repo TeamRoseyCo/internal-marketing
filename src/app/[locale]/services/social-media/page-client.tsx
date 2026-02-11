@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Linkedin, CheckCircle } from "lucide-react";
+import { ArrowRight, Instagram, Linkedin, CheckCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { isValidLocale, LocaleCode } from "@/lib/locales";
@@ -156,6 +156,33 @@ export default function SocialMediaPageClient({ params }: LocaleSocialMediaPageP
           </div>
         </div>
       </section>
+
+      {/* Belfast-Specific Callout - UK locale only */}
+      {validLocale === "uk" && (
+        <section className="py-8">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <Link
+                href="/uk/social-media-belfast/"
+                className="tech-card p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-primary/50 transition-all group"
+              >
+                <div className="flex-shrink-0">
+                  <MapPin className="w-8 h-8 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                    Looking for Social Media Marketing in Belfast?
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    See our Belfast-specific social media strategies tailored for local businesses.
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-primary flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Stats Section */}
       <section className="py-20 md:py-28">

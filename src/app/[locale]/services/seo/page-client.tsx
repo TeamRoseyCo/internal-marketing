@@ -99,6 +99,33 @@ export default function SEOPageClient({ params }: LocaleSEOPageProps) {
         </div>
       </section>
 
+      {/* Belfast-Specific Callout - UK locale only */}
+      {validLocale === "uk" && (
+        <section className="py-8">
+          <div className="container">
+            <div className="max-w-4xl mx-auto">
+              <Link
+                href="/uk/seo-belfast/"
+                className="tech-card p-6 md:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 hover:border-primary/50 transition-all group"
+              >
+                <div className="flex-shrink-0">
+                  <MapPin className="w-8 h-8 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                    Looking for SEO in Belfast?
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    See our Belfast-specific SEO strategies designed for Northern Ireland businesses.
+                  </p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-primary flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Stats Section */}
       <section className="py-20 md:py-28">
         <div className="container">
