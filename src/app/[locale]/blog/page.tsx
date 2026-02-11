@@ -12,9 +12,8 @@ import { LocaleBlogCategories } from "@/components/blog/locale-blog-categories";
 import { LocaleNewsletterCTA } from "@/components/blog/locale-newsletter-cta";
 import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
 
-// Force static generation with ISR (revalidate every hour)
-export const dynamic = 'force-static';
-export const revalidate = 3600; // Rebuild every 1 hour
+// Force dynamic rendering to support search params filtering
+export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return localeList.map((locale) => ({ locale }));

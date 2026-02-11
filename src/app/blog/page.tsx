@@ -4,9 +4,8 @@ import { BlogHero } from "@/components/blog/blog-hero";
 import { BlogCategories } from "@/components/blog/blog-categories";
 import { NewsletterCTA } from "@/components/blog/newsletter-cta";
 
-// Force static generation with ISR (revalidate every hour)
-export const dynamic = 'force-static';
-export const revalidate = 3600; // Rebuild every 1 hour
+// Force dynamic rendering to support search params filtering
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: "Blog - Marketing Insights & Strategies",
@@ -14,9 +13,19 @@ export const metadata = {
     "Actionable tips, strategies, and insights to help you grow your business through digital marketing.",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts("us");
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
+  const allPosts = getAllPosts("us");
   const categories = getCategories("us");
+
+  // Filter posts by category if specified
+  const posts = category
+    ? allPosts.filter((post) => post.category === category)
+    : allPosts;
 
   // Map category to color
   const categoryColors: Record<string, string> = {
