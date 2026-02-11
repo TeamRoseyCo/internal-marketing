@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-02-11
 **Current Phase:** 9 (Service-Location Content Matrix)
-**Project Status:** Phase 9 in progress - Building internal linking between global service pages and Belfast pillars
+**Project Status:** Phase 9 in progress - Belfast pillar cross-links and Related Services component active
 
 ---
 
@@ -20,9 +20,9 @@ Belfast SEO domination through topical authority, location pages, and local sear
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
 **Phase:** 9 of 12 (Service-Location Content Matrix)
-**Plan:** 09-02 complete (1 of 2)
-**Status:** Internal linking established from UK global service pages to Belfast pillar pages
-**Last activity:** 2026-02-11 - Completed 09-02-PLAN.md
+**Plan:** 09-01 complete (1 of 2)
+**Status:** Bidirectional internal linking complete between Belfast location hub and pillar pages
+**Last activity:** 2026-02-11 - Completed 09-01-PLAN.md
 
 ```
 Progress: ████▓░░░░░ 43% (v1.1 milestone - Phase 9: 1/2 plans complete)
@@ -44,7 +44,7 @@ v1.1 Belfast SEO:
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Execute Plan 09-03 (if exists) or plan Phase 10
+**Next Action:** Execute Plan 09-02 (Service-Location Content Matrix)
 
 ---
 
@@ -213,25 +213,31 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 09-02: Add Belfast Callouts to Global Service Pages
+**Session:** 2026-02-11 - Executed Plan 09-01: Belfast Pillar Cross-Links & Related Services
 **Completed:**
-- Added Belfast-specific callout banners to all 4 UK global service pages
-  - SEO page: Links to /uk/seo-belfast/
-  - Social Media page: Links to /uk/social-media-belfast/
-  - Paid Ads page: Links to /uk/paid-ads-belfast/
-  - Website Design page: Links to /uk/website-design-belfast/
-- Callouts positioned after hero section (high visibility, non-disruptive)
-- Tech-card styling with MapPin icon and ArrowRight
-- Conditional rendering: Only visible for UK locale (validLocale === "uk")
-- Added MapPin icon imports to 3 files (social-media, paid-ads, website-design)
-- Non-UK locales unchanged (no visual or HTML bloat)
+- Enriched all 4 Belfast pillar pages with bidirectional cross-links and local context
+  - Added Belfast office context section (links to /uk/belfast/, mentions Cathedral Quarter/Titanic Quarter)
+  - Added global service cross-link section (links to /uk/services/[service]/)
+  - Replaced generic CTAs with Belfast-specific CTAs (office link, phone number, NAP data)
+  - Maintained all [CONTENT TO BE WRITTEN IN PHASE 10] placeholders
+- Updated pillar page route with Related Services section and Belfast-aware CTA
+  - Related Services section renders when relatedPillars frontmatter exists
+  - Shows "Related Belfast Services" for Belfast pillars, "Related Services" for others
+  - Each related service displays as card with title, excerpt, and link
+  - Belfast CTA includes dual buttons (Get Started + Visit Belfast Office) and phone number
+  - Non-Belfast pillars render unchanged (no regression)
 - Build succeeds: 239 pages
 - TypeScript compiles cleanly with zero errors
-- Created 09-02-SUMMARY.md
+- Created 09-01-SUMMARY.md
 - Updated STATE.md
-- **Phase 9 Plan 2 Complete - Internal linking from global service pages to Belfast pillars established**
+- **Phase 9 Plan 1 Complete - Bidirectional internal linking complete between Belfast hub and pillar pages**
 
 **Commits:**
+- `54831f7` - feat(09-01): enrich seo-belfast and social-media-belfast with cross-links and local context
+- `2062c3b` - feat(09-01): enrich paid-ads-belfast and website-design-belfast with cross-links and local context
+- `acce13c` - feat(09-01): add Related Services section and Belfast-aware CTA to pillar pages
+
+**Previous Session (Plan 09-02):**
 - `685ee3f` - feat(09-02): add Belfast callout banners to UK global service pages
 
 **Previous Session (Plan 08-02):**
@@ -307,7 +313,7 @@ v1.1 Belfast SEO:
 - `b930d92` - feat(07-01): create keyword map and placeholder pillar pages
 
 **Next Steps:**
-1. Check if 09-03-PLAN.md exists, execute if present
+1. Execute Plan 09-02: Service-Location Content Matrix
 2. If Phase 9 complete, begin Phase 10: Belfast Blog Content Strategy
 3. Continue v1.1 Belfast SEO Domination milestone
 ### What to Remember for Next Session
