@@ -5,6 +5,7 @@
 import { MetadataRoute } from "next";
 import { localeList, LocaleCode } from "@/lib/locales";
 import { getPostSlugs } from "@/lib/blog";
+import { getPillarSlugs } from "@/lib/content";
 
 const BASE_URL = "https://roseyco.com";
 
@@ -94,6 +95,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: "monthly",
         priority: 0.6,
+      });
+    });
+  });
+
+  // Pillar pages for each locale
+  localeList.forEach((locale: LocaleCode) => {
+    const pillarSlugs = getPillarSlugs(locale);
+    pillarSlugs.forEach((slug) => {
+      sitemap.push({
+        url: `${BASE_URL}/${locale}/${slug}/`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.85,
       });
     });
   });
