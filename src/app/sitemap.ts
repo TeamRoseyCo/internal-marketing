@@ -112,5 +112,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
+  // Belfast location page (UK locale only)
+  sitemap.push({
+    url: `${BASE_URL}/uk/belfast/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  });
+
   return sitemap;
 }
