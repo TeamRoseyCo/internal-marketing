@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-02-11
-**Current Phase:** 9 (Service-Location Content Matrix)
-**Project Status:** Phase 9 complete - Bidirectional internal linking network established
+**Current Phase:** 10 (Belfast Blog Content Strategy)
+**Project Status:** Phase 10 in progress - Blog infrastructure and content calendar established
 
 ---
 
@@ -19,13 +19,13 @@ Belfast SEO domination through topical authority, location pages, and local sear
 ## Current Position
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
-**Phase:** 9 of 12 (Service-Location Content Matrix)
-**Plan:** 09-02 complete (2 of 2)
-**Status:** Phase 9 complete - Bidirectional internal linking network established
-**Last activity:** 2026-02-11 - Completed Phase 9: Service-Location Content Matrix (2 plans executed, verified)
+**Phase:** 10 of 12 (Belfast Blog Content Strategy)
+**Plan:** 10-01 complete (1 of 5)
+**Status:** Phase 10 in progress - Blog infrastructure extended, content calendar created
+**Last activity:** 2026-02-11 - Completed Plan 10-01: Blog infrastructure and content calendar
 
 ```
-Progress: █████░░░░░ 50% (v1.1 milestone - Phase 9 complete: 2/2 plans)
+Progress: █████▓░░░░ 54% (v1.1 milestone - Phase 10 in progress: 1/5 plans)
 
 v1.0 Complete:
 [█] Phase 1: SEO Foundation
@@ -39,12 +39,12 @@ v1.1 Belfast SEO:
 [█] Phase 7: Topical Authority Architecture (3/3 plans complete)
 [█] Phase 8: Belfast Location Pages (2/2 plans complete)
 [█] Phase 9: Service-Location Content Matrix (2/2 plans complete)
-[░] Phase 10: Belfast Blog Content Strategy
+[▓] Phase 10: Belfast Blog Content Strategy (1/5 plans complete)
 [░] Phase 11: Local Link Building & Citations
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Discuss Phase 10 (Belfast Blog Content Strategy)
+**Next Action:** Execute Plan 10-02 (SEO Cluster Posts) - Create 6 SEO Belfast blog posts
 
 ---
 
@@ -114,6 +114,9 @@ v1.1 Belfast SEO:
 | 2026-01-27 | Two-variant LocaleSwitcher component | Dropdown for desktop (detailed), compact for mobile/footer (space-efficient) | Single component supports different UX contexts |
 | 2026-01-27 | UK locale uses GB flag | ISO 3166-1 standard, aligns with geolocation APIs | Technical accuracy with user-facing "United Kingdom" label |
 | 2026-01-27 | router.push() not replace() for locale switch | Users can navigate back to compare content | Better UX than blocking browser back button |
+| 2026-02-11 | Optional cluster metadata fields in BlogPost interfaces | 19 existing blog posts must continue working without modification | Zero breaking changes, backward compatible with existing content |
+| 2026-02-11 | 19 Belfast cluster entries in UK keyword map | Phase 6 research identified 19+ viable cluster keywords across 4 pillars | Complete keyword coverage for Phase 10 Plans 02-05 |
+| 2026-02-11 | 12-week content calendar (24 topics, 2 posts/week) | Sustainable publishing pace for small team, quarterly planning cycle | Clear roadmap for Phase 10 execution with predictable schedule |
 | 2026-01-27 | Cookie consent uses locale-based EU detection | Simpler and more reliable than IP-based geolocation | User on VPN to NL sees banner, but locale switcher provides override |
 | 2026-01-27 | Both Accept and Decline dismiss cookie banner | NEXT_LOCALE is strictly necessary (GDPR exempt), banner is transparency | More user-friendly, aligns with legal exemption for essential cookies |
 | 2026-01-27 | Belfast GBP covers UK and IE markets | User provided verified Belfast address/phone | UK/IE locales share same contact point, simplifies GBP management |
@@ -213,31 +216,36 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 09-01: Belfast Pillar Cross-Links & Related Services
+**Session:** 2026-02-11 - Executed Plan 10-01: Blog Infrastructure & Content Calendar
 **Completed:**
-- Enriched all 4 Belfast pillar pages with bidirectional cross-links and local context
-  - Added Belfast office context section (links to /uk/belfast/, mentions Cathedral Quarter/Titanic Quarter)
-  - Added global service cross-link section (links to /uk/services/[service]/)
-  - Replaced generic CTAs with Belfast-specific CTAs (office link, phone number, NAP data)
-  - Maintained all [CONTENT TO BE WRITTEN IN PHASE 10] placeholders
-- Updated pillar page route with Related Services section and Belfast-aware CTA
-  - Related Services section renders when relatedPillars frontmatter exists
-  - Shows "Related Belfast Services" for Belfast pillars, "Related Services" for others
-  - Each related service displays as card with title, excerpt, and link
-  - Belfast CTA includes dual buttons (Get Started + Visit Belfast Office) and phone number
-  - Non-Belfast pillars render unchanged (no regression)
-- Build succeeds: 239 pages
+- Extended BlogPost and BlogPostMeta interfaces with optional cluster metadata
+  - Added type?: 'standalone' | 'cluster' (marks post as cluster content)
+  - Added pillarSlug?: string (links cluster to parent pillar)
+  - Added relatedClusters?: string[] (lateral cluster linking)
+  - Fields only included if present in frontmatter (zero breaking changes)
+- Expanded UK keyword map from 8 to 19 Belfast cluster entries across 4 pillars
+  - SEO Belfast: 6 clusters (added seo-cost-belfast, how-to-rank-on-google-belfast)
+  - Social Media Belfast: 5 clusters (added tiktok, linkedin, strategy)
+  - Paid Ads Belfast: 5 clusters (added search-ads, shopping-ads, management)
+  - Website Design Belfast: 3 clusters (added responsive, ecommerce, trends)
+- Created comprehensive 12-week content calendar with 24 planned Belfast blog topics
+  - Publishing cadence: 2 posts per week (Monday + Thursday)
+  - Balanced pillar distribution: 6-7 posts per pillar
+  - Includes workflow, MDX template, distribution checklist, performance tracking
+- Build succeeds: 239 pages (no regressions)
 - TypeScript compiles cleanly with zero errors
-- Created 09-01-SUMMARY.md
+- Created 10-01-SUMMARY.md (comprehensive documentation)
 - Updated STATE.md
-- **Phase 9 Plan 1 Complete - Bidirectional internal linking complete between Belfast hub and pillar pages**
+- **Phase 10 Plan 1 Complete - Blog infrastructure and content calendar ready for Plans 10-02 through 10-05**
 
 **Commits:**
+- `e4702d3` - feat(10-01): extend blog types and keyword map for cluster content
+- `a355eeb` - feat(10-01): create Belfast content calendar with 24 planned topics
+
+**Previous Session (Phase 9 Complete):**
 - `54831f7` - feat(09-01): enrich seo-belfast and social-media-belfast with cross-links and local context
 - `2062c3b` - feat(09-01): enrich paid-ads-belfast and website-design-belfast with cross-links and local context
 - `acce13c` - feat(09-01): add Related Services section and Belfast-aware CTA to pillar pages
-
-**Previous Session (Plan 09-02):**
 - `685ee3f` - feat(09-02): add Belfast callout banners to UK global service pages
 
 **Previous Session (Plan 08-02):**
