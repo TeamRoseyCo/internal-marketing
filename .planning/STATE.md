@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-02-11
-**Current Phase:** 7 (Topical Authority Architecture)
-**Project Status:** Phase 7 in progress - Plan 1 of 3 complete
+**Current Phase:** 8 (Belfast Location Pages)
+**Project Status:** Phase 8 in progress - Plan 1 of 3 complete
 
 ---
 
@@ -12,20 +12,20 @@
 Multi-location SEO infrastructure that works flawlessly - each locale must rank independently in local search with proper translations, currency formatting, and locale-aware metadata. If geolocation and translations don't work perfectly, the entire global strategy fails.
 
 **Current Focus:**
-Build topical authority architecture for Belfast SEO domination through pillar-cluster content strategy.
+Create Belfast-specific location pages with enhanced LocalBusiness schema, geo coordinates, and city-level targeting for local search domination.
 
 ---
 
 ## Current Position
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
-**Phase:** 7 of 12 (Topical Authority Architecture)
-**Plan:** 07-03 complete (3 of 3)
-**Status:** Phase 7 complete - Pillar-cluster architecture production-ready
-**Last activity:** 2026-02-11 - Completed 07-03: Pillar Page Integration
+**Phase:** 8 of 12 (Belfast Location Pages)
+**Plan:** 08-01 complete (1 of 3)
+**Status:** Phase 8 in progress - Belfast data infrastructure complete
+**Last activity:** 2026-02-11 - Completed 08-01: Belfast Location Data Infrastructure
 
 ```
-Progress: ███░░░░░░░ 33% (v1.1 milestone - Phase 7 complete: 3/3 plans)
+Progress: ███░░░░░░░ 35% (v1.1 milestone - Phase 8 plan 1 of 3 complete)
 
 v1.0 Complete:
 [█] Phase 1: SEO Foundation
@@ -37,21 +37,21 @@ v1.0 Complete:
 v1.1 Belfast SEO:
 [█] Phase 6: Belfast SEO Research & Strategy (3/3 plans complete)
 [█] Phase 7: Topical Authority Architecture (3/3 plans complete)
-[░] Phase 8: Belfast Location Pages
+[▓] Phase 8: Belfast Location Pages (1/3 plans complete)
 [░] Phase 9: Service-Location Content Matrix
 [░] Phase 10: Belfast Blog Content Strategy
 [░] Phase 11: Local Link Building & Citations
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Execute Phase 08 (Belfast Location Pages)
+**Next Action:** Continue Phase 08 (Plans 08-02 and 08-03)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-02-11 (after 07-03 completion)
+- Last successful build: 2026-02-11 (after 08-01 completion)
 - Static generation: 238 pages across 6 locales (24 pillar pages added)
 - Build time: ~10-15 seconds
 - Middleware: Active (geolocation detection with cookie persistence)
@@ -59,6 +59,7 @@ v1.1 Belfast SEO:
 - Cookie Consent: Integrated in locale layout (EU locales only)
 - Pillar Pages: 24 pillar pages (4 per locale × 6 locales)
 - Content Architecture: Pillar-cluster topical authority structure
+- LocalBusiness Schema: Enhanced with Belfast geo coordinates and city-level targeting
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -74,6 +75,8 @@ v1.1 Belfast SEO:
 - Belfast-specific pillars: 4 (UK locale only)
 - Translation quality: ✅ Production-ready (native speaker approved)
 - Content architecture: ✅ Pillar-cluster topical authority established
+- Belfast NAP data: ✅ Verified (1 Hollycroft Avenue, Belfast, BT5 5JE, +44 7722 432679)
+- Belfast geo coordinates: ✅ Configured (54.5833, -5.9333)
 
 ---
 
@@ -126,6 +129,10 @@ v1.1 Belfast SEO:
 | 2026-02-11 | Pillar pages priority 0.85 in sitemap | Signals importance to search engines (higher than blog 0.6, lower than homepage 0.9) | Search engines prioritize crawling pillar pages |
 | 2026-02-11 | AU/IE use US content, NL/DK get translated titles only | English locales share content, non-English need SEO titles | Fast implementation, full translation deferred to Phase 10 |
 | 2026-02-11 | Validation script detects missing clusters but doesn't block build | Belfast clusters planned for Phase 10, shouldn't block Phase 7 | Clean separation of architecture (Phase 7) and content (Phase 10) |
+| 2026-02-11 | Structured address in locales.ts with backward compatibility | Flat address for footer display, structured fields for schema markup | Enables PostalAddress schema without breaking existing components |
+| 2026-02-11 | Belfast geo coordinates 54.5833, -5.9333 from verified GBP | Precise coordinates required for Google local pack ranking | UK/IE locales get enhanced LocalBusiness schema with GeoCoordinates |
+| 2026-02-11 | City-level areaServed for Belfast locales | Array format: City + AdministrativeArea + Country | Improves local search visibility and Google local pack appearance |
+| 2026-02-11 | TypeScript 'any' for areaServed schema field | Complex union type adds unnecessary complexity | Justified with comment, supports both single object and array variants |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -200,36 +207,32 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 07-03: Pillar Page Integration
+**Session:** 2026-02-11 - Executed Plan 08-01: Belfast Location Data Infrastructure
 **Completed:**
-- Created pillar page dynamic route (src/app/[locale]/[pillarSlug]/page.tsx)
-  - generateStaticParams for all pillar pages across 6 locales
-  - generateMetadata with OpenGraph and hreflang alternates
-  - Full rendering pipeline: schema → breadcrumbs → TOC → MDX → clusters → CTA
-  - Follows exact blog post page pattern for consistency
-- Updated MDX heading components with auto-generated IDs
-  - Added generateHeadingId() function to src/components/mdx/mdx-components.tsx
-  - Applied to h1, h2, h3, h4 elements for TOC anchor linking
-  - Benefits both pillar pages and existing blog posts
-- Updated sitemap to include pillar pages
-  - Added pillar pages with priority 0.85 (higher than blog 0.6)
-  - Pillar pages now included in sitemap for all 6 locales
-- Copied pillar files to all locales (16 new files)
-  - AU: 4 pillar pages (English content same as US)
-  - IE: 4 pillar pages (English content same as US)
-  - NL: 4 pillar pages (Dutch titles/excerpts, English body)
-  - DK: 4 pillar pages (Danish titles/excerpts, English body)
-- Created content link validation script (scripts/validate-content-links.ts)
-  - Validates pillar-cluster references
-  - Checks cross-locale consistency
-  - Runs keyword cannibalization check
-  - Reports expected errors (Belfast clusters missing)
-- Build succeeds: 238 pages (24 pillar pages added, up from 214)
-- Created 07-03-SUMMARY.md
+- Enhanced locales.ts with structured address fields and geo coordinates
+  - Added streetAddress, addressLocality, addressRegion, postalCode to LocaleConfig interface
+  - Added geo coordinates (latitude, longitude) to LocaleConfig interface
+  - Populated UK/IE locales with verified Belfast GBP data (1 Hollycroft Avenue, BT5 5JE, +44 7722 432679)
+  - Belfast coordinates: 54.5833, -5.9333
+  - Extracted addressLocality for all other locales (US, AU, NL, DK)
+  - Maintained backward compatibility with existing flat address field
+- Enhanced LocalBusinessStructuredData with geo and structured PostalAddress
+  - Updated LocalBusinessSchema interface with full PostalAddress fields
+  - Added GeoCoordinates for Belfast locales (UK/IE)
+  - Expanded areaServed to city-level for Belfast: City + AdministrativeArea + Country
+  - Enhanced @id for Belfast office disambiguation (#belfast-office)
+  - Other locales continue with Country-only schema (no regression)
+- Build succeeds: 238 pages across 6 locales
+- TypeScript compiles cleanly with zero errors
+- Created 08-01-SUMMARY.md
 - Updated STATE.md
-- **Phase 7 Complete - Topical authority architecture production-ready**
+- **Phase 8 Plan 1 Complete - Belfast data infrastructure ready for location page creation**
 
 **Commits:**
+- `faa521f` - feat(08-01): enhance locales.ts with structured address and geo data
+- `1bc4cb4` - feat(08-01): enhance LocalBusiness schema with geo and structured address
+
+**Previous Session (Plan 07-03):**
 - `c6b1dec` - feat(07-03): create pillar page route with full rendering pipeline
 - `362e125` - feat(07-03): update sitemap, copy pillars to all locales, create validation script
 
@@ -294,11 +297,9 @@ v1.1 Belfast SEO:
 - `b930d92` - feat(07-01): create keyword map and placeholder pillar pages
 
 **Next Steps:**
-1. Execute Phase 08: Belfast Location Pages
-2. Create Belfast-specific location pages
-3. Integrate with Belfast pillar pages
-4. Add LocalBusiness schema markup
-5. Create Belfast-specific content
+1. Continue Phase 08: Execute Plan 08-02 (Create Belfast location page)
+2. Execute Plan 08-03 (Integrate Belfast page with pillar pages)
+3. Begin Phase 09: Service-Location Content Matrix
 ### What to Remember for Next Session
 
 **Critical Context:**
@@ -328,13 +329,15 @@ v1.1 Belfast SEO:
 - `.planning/phases/02-component-architecture/02-03-SUMMARY.md` - Footer component translation
 - `.planning/phases/02-component-architecture/02-04-SUMMARY.md` - Translation quality fixes & Phase 2 verification
 - `.planning/phases/02-component-architecture/02-04-VERIFICATION.txt` - Phase 2 verification results
+- `.planning/phases/08-belfast-location-pages/08-01-SUMMARY.md` - Belfast data infrastructure (structured address, geo coordinates)
 - `src/lib/seo.ts` - SEO utilities (reuse in future plans)
 - `src/lib/geo-utils.ts` - Geolocation utilities (country mapping, EU detection)
+- `src/lib/locales.ts` - Locale configuration with structured address and geo coordinates
 - `src/middleware.ts` - Next.js middleware (geolocation detection, cookie persistence)
 - `src/lib/i18n/` - i18n module (context, hooks, formatters)
 - `src/lib/translations.ts` - Translation strings for all locales (Danish characters fixed)
 - `src/app/sitemap.ts` - Sitemap generation for all locales
-- `src/components/seo/structured-data.tsx` - LocalBusiness and other schema components
+- `src/components/seo/structured-data.tsx` - LocalBusiness schema with geo coordinates and city-level areaServed
 - `src/components/locale-switcher.tsx` - Locale switcher with dropdown and compact variants
 - `src/components/cookie-consent.tsx` - Cookie consent banner for EU locales (GDPR compliance)
 - `src/components/layout/header.tsx` - Header with translation fallback pattern and locale switcher
@@ -365,6 +368,9 @@ v1.1 Belfast SEO:
 - EU locale detection via isEULocale() for GDPR features
 - localStorage consent storage for cookie banner preferences
 - Try-catch LocaleProvider pattern for robust client components
+- Structured address pattern: flat address for display + structured fields for schema
+- Belfast locales get enhanced schema: GeoCoordinates + city-level areaServed
+- Backward compatible locale config: new fields ADD to config without breaking existing
 
 ---
 
