@@ -202,14 +202,15 @@ Plans:
 
 #### Phase 7: Topical Authority Architecture
 
-**Goal:** Design and implement pillar page + cluster content architecture with proper internal linking structure.
+**Goal:** Build pillar-cluster content infrastructure with content loading functions, schema markup, navigation components, and pillar page routes for all 6 locales.
 **Depends on:** Phase 6
-**Research:** Likely (content architecture patterns, SEO best practices)
-**Research topics:** Pillar page structure, topic cluster linking, content hierarchy, schema markup for topics
-**Plans:** TBD
+**Research:** Complete (07-RESEARCH.md)
+**Plans:** 3 plans
 
 Plans:
-- [ ] 07-01: TBD
+- [ ] 07-01-PLAN.md — Content data layer (pillar types, loading functions, keyword map, placeholder MDX files)
+- [ ] 07-02-PLAN.md — Schema and UI components (PillarPageSchema, Breadcrumbs, TableOfContents, RelatedClusters)
+- [ ] 07-03-PLAN.md — Pillar page route integration, sitemap update, locale pillar files, validation script, build verification
 
 #### Phase 8: Belfast Location Pages
 
@@ -275,7 +276,7 @@ Plans:
 | 4. Geolocation | v1.0 | 3/3 | Complete | 2026-01-27 |
 | 5. Performance & Launch | v1.0 | 3/3 | Complete | 2026-01-27 |
 | 6. Belfast SEO Research | v1.1 | 3/3 | Complete | 2026-02-11 |
-| 7. Topical Authority | v1.1 | 0/? | Not started | - |
+| 7. Topical Authority | v1.1 | 0/3 | Planned | - |
 | 8. Belfast Location Pages | v1.1 | 0/? | Not started | - |
 | 9. Service-Location Matrix | v1.1 | 0/? | Not started | - |
 | 10. Belfast Blog Content | v1.1 | 0/? | Not started | - |
@@ -288,11 +289,11 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 6 (Belfast SEO Research & Strategy) is complete.
+Phase 7 (Topical Authority Architecture) is planned with 3 plans in 2 waves.
 
-**Next:** Phase 7 (Topical Authority Architecture) - Design and implement pillar page + cluster content architecture with proper internal linking structure.
+**Next:** Execute Phase 7
 
-Run: `/gsd:discuss-phase 7` or `/gsd:plan-phase 7`
+Run: `/gsd:execute-phase 7`
 
 ---
 
