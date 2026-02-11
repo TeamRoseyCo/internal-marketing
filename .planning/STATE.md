@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-02-11
-**Current Phase:** 11 (Local Link Building & Citations)
-**Project Status:** Phase 11 complete - Complete citation management toolkit with NAP audit, citation tracker, outreach templates, and submission guides
+**Current Phase:** 12 (Belfast Analytics & Monitoring)
+**Project Status:** Phase 12 in progress - GA4 event tracking infrastructure complete (Plan 01/01)
 
 ---
 
@@ -12,20 +12,20 @@
 Multi-location SEO infrastructure that works flawlessly - each locale must rank independently in local search with proper translations, currency formatting, and locale-aware metadata. If geolocation and translations don't work perfectly, the entire global strategy fails.
 
 **Current Focus:**
-Belfast SEO domination through topical authority, location pages, and local search optimization. Phase 11 complete with citation management toolkit ready for manual execution.
+Belfast SEO domination through topical authority, location pages, and local search optimization. Phase 12 in progress: GA4 custom event tracking for conversion measurement and ROI attribution.
 
 ---
 
 ## Current Position
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
-**Phase:** 11 of 12 (Local Link Building & Citations)
-**Plan:** 11-03 complete (3 of 3 - all plans complete)
-**Status:** Phase 11 COMPLETE - Citation management toolkit ready: NAP audit (97% consistency), citation tracker (35+ directories), outreach templates (11 templates), link building strategy (12-week plan), submission guides (14 Tier 1 directories)
-**Last activity:** 2026-02-11 - Completed Phase 11: Local Link Building & Citations (verified 5/5 must-haves, manual directory submissions deferred)
+**Phase:** 12 of 12 (Belfast Analytics & Monitoring)
+**Plan:** 12-01 complete (1 of 1 - phase complete)
+**Status:** Phase 12 COMPLETE - GA4 event tracking infrastructure: phone clicks, form submissions, direction requests with type-safe utilities and graceful degradation
+**Last activity:** 2026-02-11 - Completed Plan 12-01: GA4 Event Tracking Infrastructure (2 tasks, 2 commits, 4.7 minutes)
 
 ```
-Progress: ██████████ 92% (v1.1 milestone - Phase 11 COMPLETE: Citation management toolkit ready for execution)
+Progress: ████████████ 100% (v1.1 milestone COMPLETE - Belfast SEO Domination shipped)
 
 v1.0 Complete:
 [█] Phase 1: SEO Foundation
@@ -41,17 +41,17 @@ v1.1 Belfast SEO:
 [█] Phase 9: Service-Location Content Matrix (2/2 plans complete)
 [█] Phase 10: Belfast Blog Content Strategy (5/5 plans COMPLETE - bidirectional linking verified)
 [█] Phase 11: Local Link Building & Citations (3/3 plans COMPLETE - Toolkit ready for manual execution)
-[░] Phase 12: Belfast Analytics & Monitoring
+[█] Phase 12: Belfast Analytics & Monitoring (1/1 plans COMPLETE - GA4 event tracking operational)
 ```
 
-**Next Action:** Plan Phase 12 (Belfast Analytics & Monitoring)
+**Next Action:** v1.1 Belfast SEO Domination milestone COMPLETE - Begin Phase 13 planning (Expansion strategy TBD)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-02-11 (after 11-01 completion - NAP audit verified)
+- Last successful build: 2026-02-11 (after 12-01 completion - GA4 tracking integrated)
 - Static generation: 251 pages across 6 locales (239 baseline + 12 Belfast clusters)
 - Build time: ~10-15 seconds
 - TypeScript: Zero errors (`npx tsc --noEmit` clean)
@@ -67,6 +67,8 @@ v1.1 Belfast SEO:
 - Internal Linking: UK global service pages → Belfast pillar pages (4 callout banners added)
 - NAP Consistency: 97% verified (70 occurrences audited, zero critical discrepancies)
 - Citation Infrastructure: Ready with 35+ directory targets (14 Tier 1 + 21 Tier 2)
+- GA4 Event Tracking: Operational (phone clicks, form submissions, direction requests)
+- Analytics Components: TrackedPhone, TrackedDirections with graceful degradation
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -175,6 +177,9 @@ v1.1 Belfast SEO:
 | 2026-02-11 | Manual directory submissions deferred for user execution | Directory submissions require human action (account creation, CAPTCHA, verification codes) | User completes submissions on own schedule using provided guides (estimated 4-6 hours total) |
 | 2026-02-11 | Copy-paste NAP block standardized in guides | Single authoritative NAP format prevents submission transcription errors | Ensures 100% NAP consistency across all 14 Tier 1 + 21 Tier 2 directory submissions |
 | 2026-02-11 | Chamber memberships documented as enquiry-first | Belfast/NI Chamber costs unknown, membership may not be worth citation value alone | Business evaluates membership ROI (dofollow link + networking vs. cost < £500/year) before committing |
+| 2026-02-11 | GA4 custom events for Belfast conversions | Custom events (phone_call_click, form_submission, direction_request) allow precise tracking | Enables ROI measurement and attribution for Belfast SEO investment |
+| 2026-02-11 | Graceful degradation for analytics | All tracking checks for gtag availability before executing | Zero errors in dev/staging when GA4 not configured |
+| 2026-02-11 | Tracked component pattern for analytics | TrackedPhone and TrackedDirections encapsulate UI + analytics | Easy to add tracking to any phone link or directions button |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -249,26 +254,36 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 11-03: Tier 1 Directory Submission Guides
+**Session:** 2026-02-11 - Executed Plan 12-01: GA4 Event Tracking Infrastructure
 
 **Completed:**
-- Created comprehensive 1,582-line submission guide document for all 14 Tier 1 directories
-- Each guide includes: URL, steps, NAP fields, categories, verification method, timeline, troubleshooting
-- Copy-paste NAP block for consistent submissions (eliminates transcription errors)
-- Chamber enquiry templates for Belfast Chamber and NI Chamber (membership required)
-- ACTION REQUIRED section added to ensure manual submissions not forgotten
-- Manual directory submissions deferred for user execution (estimated 4-6 hours total)
-- User will complete GBP verification, Foursquare claim, and Tier 1 submissions using guides
-- Citation tracker will be updated with Status after user completes submissions
-- Created 11-03-SUMMARY.md
+- Created GA4 event tracking library (src/lib/analytics.ts) with 4 functions
+  - trackEvent(): Base function with window/gtag guard checks
+  - trackPhoneClick(): Tracks phone calls with location and source
+  - trackFormSubmission(): Tracks contact form submissions with service type
+  - trackDirectionRequest(): Tracks Google Maps direction requests
+- Created TypeScript declarations (src/types/gtag.d.ts) for window.gtag
+- Created TrackedPhone component (phone link with GA4 tracking)
+- Created TrackedDirections component (directions button with Google Maps + GA4 tracking)
+- Updated analytics/index.ts to export new components
+- Integrated tracking into Belfast page (2 phone links + 1 directions button)
+- Integrated tracking into contact form (form submission + phone click)
+- Integrated tracking into footer (phone click)
+- All tracking gracefully no-ops when GA4 not configured (no errors)
+- Build succeeds: 251 pages, TypeScript clean
+- Created 12-01-SUMMARY.md (comprehensive documentation)
 - Updated STATE.md
-- **Phase 11 Plan 3 Complete - Citation submission guides ready for user execution**
+- **Phase 12 COMPLETE - GA4 event tracking operational with type-safe utilities**
 
 **Commits:**
+- `55e6aa8` - feat(12-01): create GA4 event tracking library and components
+- `0ee935e` - feat(12-01): integrate GA4 event tracking into Belfast page, contact form, and footer
+
+**Previous Session (Plan 11-03):**
 - `de780b4` - docs(11-03): create Tier 1 directory submission guides
 - `9975df7` - docs(11-03): add ACTION REQUIRED section to submission guides
 
-**Current Session:** 2026-02-11 - Executed Plan 10-05: Belfast Pillar-Cluster Integration
+**Previous Session (Plan 10-05):**
 **Completed:**
 - Updated all 4 Belfast pillar clusterPages frontmatter arrays to reference actual cluster posts
 - Added 12 natural inline cluster reference links within pillar content
