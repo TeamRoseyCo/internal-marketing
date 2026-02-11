@@ -263,14 +263,15 @@ Plans:
 
 #### Phase 12: Belfast Analytics & Monitoring
 
-**Goal:** Set up Belfast-specific tracking, create custom dashboards for local performance, establish monitoring for Belfast keyword rankings and local pack positions.
+**Goal:** Implement GA4 custom event tracking for Belfast conversions (phone calls, form submissions, direction requests), create Belfast KPI dashboard specification, and establish monitoring playbooks with alert response procedures and competitive tracking.
 **Depends on:** Phase 11
-**Research:** Likely (analytics tools, rank tracking, local SEO monitoring)
+**Research:** Complete (12-RESEARCH.md)
 **Research topics:** Google Search Console filters, rank tracking tools, local pack monitoring, Belfast-specific analytics
-**Plans:** TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 12-01: TBD
+- [ ] 12-01-PLAN.md — GA4 custom event tracking infrastructure + Belfast page/contact/footer integration
+- [ ] 12-02-PLAN.md — Belfast analytics dashboard specification + monitoring playbook
 
 ---
 
@@ -289,7 +290,7 @@ Plans:
 | 9. Service-Location Matrix | v1.1 | 2/2 | Complete | 2026-02-11 |
 | 10. Belfast Blog Content | v1.1 | 5/5 | Complete | 2026-02-11 |
 | 11. Link Building | v1.1 | 3/3 | Complete | 2026-02-11 |
-| 12. Analytics & Monitoring | v1.1 | 0/? | Not started | - |
+| 12. Analytics & Monitoring | v1.1 | 0/2 | Planned | - |
 
 ---
 
@@ -297,12 +298,12 @@ Plans:
 
 **v1.1 Belfast SEO Domination:**
 
-Phase 11 (Local Link Building & Citations) is complete. Phase 12 (Belfast Analytics & Monitoring) needs planning.
+Phase 12 (Belfast Analytics & Monitoring) is planned with 2 plans in 1 wave (parallel execution).
 
-**Next:** Plan Phase 12
+**Next:** Execute Phase 12
 
-Run: `/gsd:discuss-phase 12` or `/gsd:plan-phase 12`
+Run: `/gsd:execute-phase 12`
 
 ---
 
-*Last updated: 2026-02-11 (Phase 11 complete)*
+*Last updated: 2026-02-11 (Phase 12 planned)*
