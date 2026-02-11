@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-02-11
 **Current Phase:** 12 (Belfast Analytics & Monitoring)
-**Project Status:** Phase 12 in progress - GA4 event tracking infrastructure complete (Plan 01/01)
+**Project Status:** Phase 12 COMPLETE - Belfast analytics monitoring toolkit ready: Dashboard specification (15 KPIs, GSC/GA4/Looker Studio setup), monitoring playbook (3 review cadences, 4 alert procedures, 5-competitor tracking)
 
 ---
 
@@ -12,7 +12,7 @@
 Multi-location SEO infrastructure that works flawlessly - each locale must rank independently in local search with proper translations, currency formatting, and locale-aware metadata. If geolocation and translations don't work perfectly, the entire global strategy fails.
 
 **Current Focus:**
-Belfast SEO domination through topical authority, location pages, and local search optimization. Phase 12 in progress: GA4 custom event tracking for conversion measurement and ROI attribution.
+Belfast SEO domination through topical authority, location pages, and local search optimization. Phase 12 complete: Full analytics monitoring toolkit with dashboard specs, alert playbooks, and competitive tracking framework.
 
 ---
 
@@ -20,9 +20,9 @@ Belfast SEO domination through topical authority, location pages, and local sear
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
 **Phase:** 12 of 12 (Belfast Analytics & Monitoring)
-**Plan:** 12-01 complete (1 of 1 - phase complete)
-**Status:** Phase 12 COMPLETE - GA4 event tracking infrastructure: phone clicks, form submissions, direction requests with type-safe utilities and graceful degradation
-**Last activity:** 2026-02-11 - Completed Plan 12-01: GA4 Event Tracking Infrastructure (2 tasks, 2 commits, 4.7 minutes)
+**Plan:** 12-02 complete (2 of 2 - all plans complete)
+**Status:** Phase 12 COMPLETE - Belfast analytics monitoring toolkit ready: Dashboard spec (15 KPIs, GSC/GA4/Looker Studio), monitoring playbook (weekly 15min, monthly 45min, quarterly 2hr reviews), alert procedures (4 scenarios), competitive tracking (5 Belfast competitors)
+**Last activity:** 2026-02-11 - Completed Plan 12-02: Belfast Analytics Monitoring Toolkit (verified 6/6 must-haves, 42 minutes)
 
 ```
 Progress: ████████████ 100% (v1.1 milestone COMPLETE - Belfast SEO Domination shipped)
@@ -41,10 +41,10 @@ v1.1 Belfast SEO:
 [█] Phase 9: Service-Location Content Matrix (2/2 plans complete)
 [█] Phase 10: Belfast Blog Content Strategy (5/5 plans COMPLETE - bidirectional linking verified)
 [█] Phase 11: Local Link Building & Citations (3/3 plans COMPLETE - Toolkit ready for manual execution)
-[█] Phase 12: Belfast Analytics & Monitoring (1/1 plans COMPLETE - GA4 event tracking operational)
+[█] Phase 12: Belfast Analytics & Monitoring (2/2 plans COMPLETE - Dashboard spec + monitoring playbook ready)
 ```
 
-**Next Action:** v1.1 Belfast SEO Domination milestone COMPLETE - Begin Phase 13 planning (Expansion strategy TBD)
+**Next Action:** **v1.1 Belfast SEO Domination milestone COMPLETE** (Phases 6-12 shipped) - User executes dashboard setup and begins monitoring. Next: Phase 13 planning or expand to new NI areas (Lisburn, Bangor, etc.)
 
 ---
 
@@ -69,6 +69,7 @@ v1.1 Belfast SEO:
 - Citation Infrastructure: Ready with 35+ directory targets (14 Tier 1 + 21 Tier 2)
 - GA4 Event Tracking: Operational (phone clicks, form submissions, direction requests)
 - Analytics Components: TrackedPhone, TrackedDirections with graceful degradation
+- Analytics Monitoring: Dashboard spec (15 KPIs), playbook (3 review cadences, 4 alert procedures), 5-competitor tracking framework
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -95,6 +96,8 @@ v1.1 Belfast SEO:
 - Link building outreach templates: ✅ Created (11 templates: HARO, Belfast media, partnerships, community)
 - Link building strategy: ✅ Complete (12-week prioritized action plan, budget estimates, success criteria)
 - Tier 1 submission guides: ✅ Created (1,582-line guide with step-by-step instructions for 14 directories, copy-paste NAP block)
+- Belfast analytics dashboard: ✅ Specification complete (15 KPIs, GSC/GA4/GBP/Looker Studio setup instructions, Clarity heatmaps, budget-phase tool recommendations)
+- Belfast monitoring playbook: ✅ Complete (weekly 15min/monthly 45min/quarterly 2hr review checklists, 4 alert response procedures, 5-competitor tracking framework, 32 keywords prioritized, 3 reporting templates)
 
 ---
 
@@ -180,6 +183,13 @@ v1.1 Belfast SEO:
 | 2026-02-11 | GA4 custom events for Belfast conversions | Custom events (phone_call_click, form_submission, direction_request) allow precise tracking | Enables ROI measurement and attribution for Belfast SEO investment |
 | 2026-02-11 | Graceful degradation for analytics | All tracking checks for gtag availability before executing | Zero errors in dev/staging when GA4 not configured |
 | 2026-02-11 | Tracked component pattern for analytics | TrackedPhone and TrackedDirections encapsulate UI + analytics | Easy to add tracking to any phone link or directions button |
+| 2026-02-11 | Three review cadences balance thoroughness with time efficiency | Weekly catches critical issues (15min sustainable), monthly analyzes trends (45min sufficient), quarterly drives strategy (2hr necessary) | Prevents alert fatigue while ensuring nothing critical missed, no daily monitoring (relies on automated alerts) |
+| 2026-02-11 | Looker Studio for free dashboard over paid alternatives | Pre-revenue phase needs £0 tools, Looker Studio integrates GSC + GA4 + GBP natively | Professional dashboard without upfront cost, upgrade to AgencyAnalytics ($99/mo) only after 5+ clients |
+| 2026-02-11 | Alert response procedures provide specific diagnostic steps | Generic "investigate" advice is useless, need actionable troubleshooting workflows | Non-technical user can follow step-by-step procedures, example: ranking drop → 6 diagnostic steps → 7-scenario action plan |
+| 2026-02-11 | 5-competitor tracking framework from Phase 6 research | Tracking 20+ competitors spreads resources thin, 5 covers market landscape | Digital 24 (reviews), ProfileTree (content), VINDICTA (enterprise), Rapid (direct), Loud Mouth (PPC) - concentrated competitive intelligence |
+| 2026-02-11 | Budget-phase tool recommendations align with client revenue | Don't pay for tools without revenue to justify cost | 0 clients: free tools, 1 client: +BrightLocal $39/mo, 2-3 clients: +SEMrush $199/mo - ROI-positive at each threshold |
+| 2026-02-11 | Keyword tracking prioritized: 7 primary (weekly), 15 secondary (monthly), 10 long-tail (quarterly) | Focus effort on high-value keywords, avoid tracking 100+ unnecessarily | Efficient monitoring without analysis paralysis, prioritized by commercial value and service alignment |
+| 2026-02-11 | 15 KPIs across 4 categories without overwhelming | Cover all critical dimensions (rankings, conversions, traffic, content) without metric bloat | Executive dashboard fits single screen, monthly review manageable in 45min |
 
 **Research Findings Incorporated:**
 - ~~Hreflang implementation incomplete (missing AU, UK, IE)~~ → **FIXED in 01-01**
@@ -254,19 +264,26 @@ v1.1 Belfast SEO:
 
 ### Last Session Summary
 
-**Session:** 2026-02-11 - Executed Plan 12-01: GA4 Event Tracking Infrastructure
+**Session:** 2026-02-11 - Executed Plan 12-02: Belfast Analytics Monitoring Toolkit
 
 **Completed:**
-- Created GA4 event tracking library (src/lib/analytics.ts) with 4 functions
-  - trackEvent(): Base function with window/gtag guard checks
-  - trackPhoneClick(): Tracks phone calls with location and source
-  - trackFormSubmission(): Tracks contact form submissions with service type
-  - trackDirectionRequest(): Tracks Google Maps direction requests
-- Created TypeScript declarations (src/types/gtag.d.ts) for window.gtag
-- Created TrackedPhone component (phone link with GA4 tracking)
-- Created TrackedDirections component (directions button with Google Maps + GA4 tracking)
-- Updated analytics/index.ts to export new components
-- Integrated tracking into Belfast page (2 phone links + 1 directions button)
+- Created belfast-analytics-dashboard.md (625 lines): Dashboard specification with 15 KPIs, GSC/GA4/GBP/Looker Studio setup instructions
+- 15 KPIs across 4 categories (Search Visibility, Local Actions, Traffic Quality, Content Performance) with Month 3/6/12 targets
+- Google Search Console setup: Belfast filters (3 saved filters), email alerts, GA4 linking, URL inspection for 5 key pages
+- GA4 custom events: Step-by-step instructions to mark phone_call_click, form_submission, direction_request as conversions
+- Looker Studio dashboard template: 5 sections (Executive Overview, Search Performance, Traffic Analysis, Conversions, Content Performance)
+- Microsoft Clarity setup for Belfast page heatmaps (4 priority pages)
+- Budget-phase tool recommendations: Free tier → BrightLocal $39/mo → SEMrush $199/mo based on client revenue
+- Created belfast-monitoring-playbook.md (1,186 lines): Operational playbook with review cadences, alert procedures, competitive tracking
+- Three review cadences: Weekly 15min (6 checklist items), monthly 45min (9 items), quarterly 2hr (7 items)
+- Four alert response procedures: Ranking drop, traffic drop, conversion drop, new competitor (each with 6-step diagnostic workflow + action plan matrix)
+- Competitive tracking framework: 5 Belfast competitors (Digital 24, ProfileTree, VINDICTA, Rapid Agency, Loud Mouth Media) with monthly position tracking template
+- Belfast keyword tracking list: 7 primary (weekly), 15 secondary (monthly), 10 long-tail (quarterly), prioritized by commercial value
+- Three reporting templates: Weekly status update, monthly performance report (1 page), quarterly strategy review (2-3 pages)
+- Verified 6/6 must-haves: 15 KPIs defined ✅, GSC filters ✅, GA4 conversions ✅, alert procedures ✅, review checklists ✅, 5 competitors ✅
+- Created 12-02-SUMMARY.md
+- Updated STATE.md with 7 new decisions
+- **Phase 12 Plan 2 Complete - Belfast analytics monitoring toolkit ready for setup and operational use**
 - Integrated tracking into contact form (form submission + phone click)
 - Integrated tracking into footer (phone click)
 - All tracking gracefully no-ops when GA4 not configured (no errors)
@@ -276,17 +293,17 @@ v1.1 Belfast SEO:
 - **Phase 12 COMPLETE - GA4 event tracking operational with type-safe utilities**
 
 **Commits:**
+- `8891221` - docs(12-02): create Belfast analytics dashboard specification
+- `efa49a7` - docs(12-02): create Belfast monitoring playbook
+- `2240b6f` - docs(12-02): complete Belfast Analytics Monitoring Toolkit plan
+
+**Previous Session (Plan 12-01):**
 - `55e6aa8` - feat(12-01): create GA4 event tracking library and components
 - `0ee935e` - feat(12-01): integrate GA4 event tracking into Belfast page, contact form, and footer
 
 **Previous Session (Plan 11-03):**
 - `de780b4` - docs(11-03): create Tier 1 directory submission guides
 - `9975df7` - docs(11-03): add ACTION REQUIRED section to submission guides
-
-**Previous Session (Plan 10-05):**
-**Completed:**
-- Updated all 4 Belfast pillar clusterPages frontmatter arrays to reference actual cluster posts
-- Added 12 natural inline cluster reference links within pillar content
 - Fixed MDX syntax errors in responsive-website-belfast.mdx (Rule 1 deviation)
 - Verified bidirectional linking: Pillars → Clusters (clusterPages + inline links), Clusters → Pillars (pillarSlug + 3-4 content links), Clusters → Location Hub (1-2 links)
 - All 12 cluster posts have correct type: "cluster" and pillarSlug frontmatter
@@ -409,9 +426,11 @@ v1.1 Belfast SEO:
 - `b930d92` - feat(07-01): create keyword map and placeholder pillar pages
 
 **Next Steps:**
-1. Execute Phase 11: Local Link Building & Citations
-2. Execute Phase 12: Belfast Analytics & Monitoring
-3. Complete v1.1 Belfast SEO Domination milestone
+1. **User action:** Execute dashboard setup (follow belfast-analytics-dashboard.md Sections 2-5, estimated 4-5 hours)
+2. **User action:** Set up review calendar (weekly/monthly/quarterly recurring events)
+3. **User action:** Create tracking spreadsheet (Google Sheets, 4 sheets structure provided in playbook)
+4. **Future:** Plan Phase 13 or expand to new Northern Ireland areas (Lisburn, Bangor, Newtownabbey)
+
 ### What to Remember for Next Session
 
 **Critical Context:**
