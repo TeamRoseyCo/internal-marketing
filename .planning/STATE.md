@@ -1,8 +1,8 @@
 # Project State: Rosey Co. Multi-Location Launch
 
 **Last Updated:** 2026-02-11
-**Current Phase:** 10 (Belfast Blog Content Strategy)
-**Project Status:** Phase 10 complete - All Belfast pillar content written with comprehensive topical authority depth
+**Current Phase:** 11 (Local Link Building & Citations)
+**Project Status:** Phase 11 in progress - NAP audit complete, citation tracker ready for directory submissions
 
 ---
 
@@ -12,20 +12,20 @@
 Multi-location SEO infrastructure that works flawlessly - each locale must rank independently in local search with proper translations, currency formatting, and locale-aware metadata. If geolocation and translations don't work perfectly, the entire global strategy fails.
 
 **Current Focus:**
-Belfast SEO domination through topical authority, location pages, and local search optimization.
+Belfast SEO domination through topical authority, location pages, and local search optimization. Phase 11 focuses on citation building and local link acquisition.
 
 ---
 
 ## Current Position
 
 **Milestone:** v1.1 Belfast SEO Domination (7 phases)
-**Phase:** 10 of 12 (Belfast Blog Content Strategy)
-**Plan:** 10-05 complete (5 of 5 - includes parallel execution)
-**Status:** Phase 10 COMPLETE - Belfast topical authority architecture fully operational with bidirectional pillar-cluster linking
-**Last activity:** 2026-02-11 - Completed Plan 10-05: Belfast Pillar-Cluster Integration (verified bidirectional linking, 251 pages, clean build)
+**Phase:** 11 of 12 (Local Link Building & Citations)
+**Plan:** 11-01 complete (1 of 4)
+**Status:** Phase 11 in progress - NAP consistency verified (97%), citation tracker ready with 35+ directory targets
+**Last activity:** 2026-02-11 - Completed Plan 11-01: NAP Audit & Citation Tracker (70 NAP occurrences audited, zero critical issues, citation-ready)
 
 ```
-Progress: ████████░░ 83% (v1.1 milestone - Phase 10 fully complete: 5/5 plans with verified architecture)
+Progress: █████████░ 88% (v1.1 milestone - Phase 11 Plan 1 complete: NAP audit and citation infrastructure ready)
 
 v1.0 Complete:
 [█] Phase 1: SEO Foundation
@@ -40,18 +40,18 @@ v1.1 Belfast SEO:
 [█] Phase 8: Belfast Location Pages (2/2 plans complete)
 [█] Phase 9: Service-Location Content Matrix (2/2 plans complete)
 [█] Phase 10: Belfast Blog Content Strategy (5/5 plans COMPLETE - bidirectional linking verified)
-[░] Phase 11: Local Link Building & Citations
+[▓] Phase 11: Local Link Building & Citations (1/4 plans complete - NAP audit and citation tracker ready)
 [░] Phase 12: Belfast Analytics & Monitoring
 ```
 
-**Next Action:** Discuss Phase 11 (Local Link Building & Citations)
+**Next Action:** Phase 11-02: Google Business Profile optimization + Tier 1 citation submissions (Foursquare, Apple Maps, Bing Places, major UK directories)
 
 ---
 
 ## Performance Metrics
 
 **Build Status:**
-- Last successful build: 2026-02-11 (after 10-05 completion - pillar-cluster integration verified)
+- Last successful build: 2026-02-11 (after 11-01 completion - NAP audit verified)
 - Static generation: 251 pages across 6 locales (239 baseline + 12 Belfast clusters)
 - Build time: ~10-15 seconds
 - TypeScript: Zero errors (`npx tsc --noEmit` clean)
@@ -65,6 +65,8 @@ v1.1 Belfast SEO:
 - Bidirectional Linking: Pillars ↔ Clusters ↔ Location Hub (100% operational)
 - LocalBusiness Schema: Enhanced with Belfast geo coordinates and city-level targeting
 - Internal Linking: UK global service pages → Belfast pillar pages (4 callout banners added)
+- NAP Consistency: 97% verified (70 occurrences audited, zero critical discrepancies)
+- Citation Infrastructure: Ready with 35+ directory targets (14 Tier 1 + 21 Tier 2)
 
 **Quality Metrics:**
 - Lighthouse Performance: Not measured
@@ -86,6 +88,8 @@ v1.1 Belfast SEO:
 - Bidirectional linking verified: ✅ Pillars → Clusters (clusterPages + inline links), Clusters → Pillars (pillarSlug + 3-4 content links), Clusters → Location Hub (1-2 links each)
 - Belfast NAP data: ✅ Verified (1 Hollycroft Avenue, Belfast, BT5 5JE, +44 7722 432679)
 - Belfast geo coordinates: ✅ Configured (54.5833, -5.9333)
+- NAP consistency audit: ✅ Complete (70 occurrences across 15 files, 97% consistency, citation-ready)
+- Citation tracker: ✅ Created (35+ directories with Tier 1/2 prioritization, submission URLs, business descriptions)
 
 ---
 
@@ -148,6 +152,11 @@ v1.1 Belfast SEO:
 | 2026-02-11 | Belfast geo coordinates 54.5833, -5.9333 from verified GBP | Precise coordinates required for Google local pack ranking | UK/IE locales get enhanced LocalBusiness schema with GeoCoordinates |
 | 2026-02-11 | City-level areaServed for Belfast locales | Array format: City + AdministrativeArea + Country | Improves local search visibility and Google local pack appearance |
 | 2026-02-11 | TypeScript 'any' for areaServed schema field | Complex union type adds unnecessary complexity | Justified with comment, supports both single object and array variants |
+| 2026-02-11 | locales.ts as single source of truth for NAP | Centralized authoritative NAP format prevents citation inconsistency | All dynamic NAP references (schema, footer, location pages) pull from locales.ts; 97% consistency verified |
+| 2026-02-11 | Tier-based citation prioritization (Tier 1: 14, Tier 2: 21) | Research shows quality > quantity; 14 high-authority sources provide 60-70% of ranking benefit | Focused effort on highest-impact citations first; phased 4-week implementation schedule |
+| 2026-02-11 | Foursquare as non-negotiable Tier 1 #2 priority | Foursquare powers 60-70% of AI search local recommendations (ChatGPT, Claude) | Most businesses ignore Foursquare; competitive advantage in AI search visibility |
+| 2026-02-11 | Pre-write business descriptions (50/100/250 words) | Different directories have different character limits; writing on-the-fly wastes time | Copy/paste ready descriptions ensure consistent messaging and save submission time |
+| 2026-02-11 | Chamber memberships documented as decision points | Belfast Chamber, NI Chamber, BNI require paid membership with unknown costs | Business must evaluate ROI of networking + citation value vs. cost; free citations prioritized first |
 | 2026-02-11 | Belfast callouts placed after hero section | High visibility without disrupting page flow | UK visitors see Belfast option immediately after understanding service value |
 | 2026-02-11 | Tech-card styling for location callouts | Consistent with existing design system, professional appearance | Callouts feel native to the site, not like ads or interruptions |
 | 2026-02-11 | MapPin icon signals geographic relevance | Clear visual indicator of location-specific content | Users instantly recognize this as a local alternative |
