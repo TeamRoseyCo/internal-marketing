@@ -278,7 +278,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
                 <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
                   <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden">
                     <div className="aspect-video relative">
-                      <iframe src={video.embedUrl} title={video.title} loading="lazy" style={{ border: "none", position: "absolute", top: 0, height: "100%", width: "100%" }} allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowFullScreen />
+                      <iframe src={video.embedUrl} title={video.title} loading="lazy" style={{ border: "none", position: "absolute", top: 0, height: "100%", width: "100%" }} allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen />
                     </div>
                     <div className="p-6">
                       <span className="text-xs uppercase tracking-wider text-primary font-medium">{video.category}</span>
