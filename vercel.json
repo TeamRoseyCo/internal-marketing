@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://roseyco.com/uk/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "roseyco.co.uk"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://roseyco.com/uk/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.roseyco.co.uk"
+        }
+      ]
+    }
+  ]
+}
