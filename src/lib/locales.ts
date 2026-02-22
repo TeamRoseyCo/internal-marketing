@@ -33,7 +33,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'United States',
     countryCode: 'US',
     currency: 'USD',
-    phone: '+1 (573) 268-5330',
+    phone: '+1 (307) 400-9814',
     address: 'Missouri, United States',
     timezone: 'America/Chicago',
     addressLocality: 'Missouri',
@@ -69,7 +69,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Australia',
     countryCode: 'AU',
     currency: 'AUD',
-    phone: '+44 7722 432679', // Using Belfast number
+    phone: '+44 7516 843959', // Using UK number
     address: 'Sydney, Australia',
     timezone: 'Australia/Sydney',
     addressLocality: 'Sydney',
@@ -81,7 +81,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'United Kingdom',
     countryCode: 'GB',
     currency: 'GBP',
-    phone: '+44 7722 432679', // Verified Belfast GBP
+    phone: '+44 7516 843959', // Verified Belfast GBP
     address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/London',
     streetAddress: '1 Hollycroft Avenue',
@@ -100,7 +100,7 @@ export const locales: Record<LocaleCode, LocaleConfig> = {
     country: 'Ireland',
     countryCode: 'IE',
     currency: 'EUR',
-    phone: '+44 7722 432679', // Verified Belfast GBP (covers UK + IE)
+    phone: '+353 89 973 8595', // IE dedicated number
     address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
     timezone: 'Europe/Dublin',
     streetAddress: '1 Hollycroft Avenue',
