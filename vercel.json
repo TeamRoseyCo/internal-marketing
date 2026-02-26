@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/belfast",
+      "destination": "/uk/belfast",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "destination": "https://roseyco.com/uk/:path*",
       "permanent": true,
