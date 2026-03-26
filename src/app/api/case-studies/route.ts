@@ -24,10 +24,12 @@ export async function GET(request: Request) {
         clients!inner (
           name,
           slug,
-          domain
+          domain,
+          is_internal
         )
       `)
-      .not('challenge', 'is', null);
+      .not('challenge', 'is', null)
+      .eq('clients.is_internal', false);
 
     if (slug) {
       query = query.eq('clients.slug', slug);
