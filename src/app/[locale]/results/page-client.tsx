@@ -26,7 +26,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
 
   const stats = [
     { value: 50, suffix: "+", label: t.stats.clients },
-    { value: 6, suffix: "x+", label: t.stats.roas },
+    { value: 11, suffix: "x", label: t.stats.roas },
     { value: 400, suffix: "K+", label: t.stats.impressions },
     { value: 30, suffix: "K+", label: t.stats.users },
   ];

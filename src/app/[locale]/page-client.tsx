@@ -80,7 +80,7 @@ const staggerItem = {
 
 // Stats data with numeric values for animation
 const statsValues = [
-  { value: 6, suffix: "x+" },
+  { value: 11, suffix: "x" },
   { value: 400, suffix: "K+" },
   { value: 30, suffix: "K+" },
   { value: 50, suffix: "+" },
