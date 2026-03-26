@@ -31,7 +31,7 @@ export default function PaidAdsPageClient({ params }: LocalePaidAdsPageProps) {
       subtitle: "ROI-focused Google Ads and Meta Ads campaigns that convert clicks into customers. Every dollar tracked, every result measured.",
       ctaPrimary: "Get Your Free Ads Audit",
       ctaSecondary: "See ROAS Results",
-      stats: [{ value: 21, suffix: "x", label: "Average ROAS" }, { value: 100, suffix: "+", label: "Leads in 48hrs" }, { value: 40, suffix: "%", label: "Lower Cost Per Lead" }],
+      stats: [{ value: 6, suffix: "x+", label: "Average ROAS" }, { value: 8, suffix: ".2x", label: "Peak ROAS" }, { value: 40, suffix: "%", label: "Lower Cost Per Lead" }],
       platformsText: "We manage campaigns across all major advertising platforms",
       platforms: [{ name: "Google Ads", desc: "Search & Display" }, { name: "Meta Ads", desc: "Facebook & Instagram" }, { name: "YouTube Ads", desc: "Video Marketing" }],
       featuresTitle: "Full-Funnel Ad",
@@ -75,7 +75,7 @@ export default function PaidAdsPageClient({ params }: LocalePaidAdsPageProps) {
       subtitle: "ROI-gerichte Google Ads en Meta Ads campagnes die klikken omzetten in klanten. Elke euro gevolgd, elk resultaat gemeten.",
       ctaPrimary: "Gratis Ads Audit",
       ctaSecondary: "Bekijk ROAS Resultaten",
-      stats: [{ value: 21, suffix: "x", label: "Gemiddelde ROAS" }, { value: 100, suffix: "+", label: "Leads in 48 uur" }, { value: 40, suffix: "%", label: "Lagere Kosten Per Lead" }],
+      stats: [{ value: 6, suffix: "x+", label: "Gemiddelde ROAS" }, { value: 8, suffix: ".2x", label: "Hoogste ROAS" }, { value: 40, suffix: "%", label: "Lagere Kosten Per Lead" }],
       platformsText: "We beheren campagnes op alle belangrijke advertentieplatforms",
       platforms: [{ name: "Google Ads", desc: "Search & Display" }, { name: "Meta Ads", desc: "Facebook & Instagram" }, { name: "YouTube Ads", desc: "Video Marketing" }],
       featuresTitle: "Full-Funnel Ad",
@@ -119,7 +119,7 @@ export default function PaidAdsPageClient({ params }: LocalePaidAdsPageProps) {
       subtitle: "ROI-fokuserede Google Ads og Meta Ads kampagner, der konverterer klik til kunder. Hver krone sporet, hvert resultat målt.",
       ctaPrimary: "Få Din Gratis Ads Audit",
       ctaSecondary: "Se ROAS Resultater",
-      stats: [{ value: 21, suffix: "x", label: "Gennemsnitlig ROAS" }, { value: 100, suffix: "+", label: "Leads på 48 timer" }, { value: 40, suffix: "%", label: "Lavere Pris Per Lead" }],
+      stats: [{ value: 6, suffix: "x+", label: "Gennemsnitlig ROAS" }, { value: 8, suffix: ".2x", label: "Højeste ROAS" }, { value: 40, suffix: "%", label: "Lavere Pris Per Lead" }],
       platformsText: "Vi styrer kampagner på alle store annonceringsplatforme",
       platforms: [{ name: "Google Ads", desc: "Search & Display" }, { name: "Meta Ads", desc: "Facebook & Instagram" }, { name: "YouTube Ads", desc: "Video Marketing" }],
       featuresTitle: "Full-Funnel Ad",
@@ -296,7 +296,7 @@ export default function PaidAdsPageClient({ params }: LocalePaidAdsPageProps) {
                       <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 3, repeat: Infinity }} className="w-28 h-28 mx-auto mb-6 rounded-full bg-[hsl(180_70%_50%/0.1)] border border-[hsl(180_70%_50%/0.3)] flex items-center justify-center">
                         <TrendingUp className="w-14 h-14 text-[hsl(180_70%_50%)]" />
                       </motion.div>
-                      <p className="text-6xl md:text-7xl font-bold gradient-text mb-4"><AnimatedCounter value={21} suffix="x" duration={2} /></p>
+                      <p className="text-6xl md:text-7xl font-bold gradient-text mb-4"><AnimatedCounter value={6} suffix="x+" duration={2} /></p>
                       <p className="text-lg text-muted-foreground">Average ROAS</p>
                     </div>
                   </div>

@@ -170,9 +170,9 @@ export const translations = {
       socialProof: 'Join 50+ businesses scaling profitably with targeted marketing.',
     },
     stats: {
-      roas: 'Average ROAS',
-      leads: 'Leads in 48hrs',
-      revenue: 'Revenue Growth',
+      roas: 'Avg ROAS',
+      leads: 'Search Impressions',
+      revenue: 'Users Reached',
       clients: 'Happy Clients',
     },
     services: {
@@ -316,9 +316,9 @@ export const translations = {
       socialProof: 'Sluit je aan bij 50+ bedrijven die winstgevend groeien met gerichte marketing.',
     },
     stats: {
-      roas: 'Gemiddelde ROAS',
-      leads: 'Leads in 48 uur',
-      revenue: 'Omzetgroei',
+      roas: 'Gem. ROAS',
+      leads: 'Zoekvertoningen',
+      revenue: 'Bereikte Gebruikers',
       clients: 'Tevreden Klanten',
     },
     services: {
@@ -462,9 +462,9 @@ export const translations = {
       socialProof: 'Slut dig til 50+ virksomheder, der vokser profitabelt med målrettet marketing.',
     },
     stats: {
-      roas: 'Gennemsnitlig ROAS',
-      leads: 'Leads på 48 timer',
-      revenue: 'Omsætningsvækst',
+      roas: 'Gns. ROAS',
+      leads: 'Søgevisninger',
+      revenue: 'Brugere Nået',
       clients: 'Glade Kunder',
     },
     services: {
@@ -609,9 +609,9 @@ translations.au = {
     socialProof: 'Join 50+ Australian businesses scaling profitably with targeted marketing.',
   },
   stats: {
-    roas: 'Average ROAS',
-    leads: 'Leads in 48hrs',
-    revenue: 'Revenue Growth',
+    roas: 'Avg ROAS',
+    leads: 'Search Impressions',
+    revenue: 'Users Reached',
     clients: 'Happy Clients',
   },
   services: {
@@ -755,9 +755,9 @@ translations.uk = {
     socialProof: 'Join 50+ UK businesses scaling profitably with targeted marketing.',
   },
   stats: {
-    roas: 'Average ROAS',
-    leads: 'Leads in 48hrs',
-    revenue: 'Revenue Growth',
+    roas: 'Avg ROAS',
+    leads: 'Search Impressions',
+    revenue: 'Users Reached',
     clients: 'Happy Clients',
   },
   services: {
@@ -901,9 +901,9 @@ translations.ie = {
     socialProof: 'Join 50+ Irish businesses scaling profitably with targeted marketing.',
   },
   stats: {
-    roas: 'Average ROAS',
-    leads: 'Leads in 48hrs',
-    revenue: 'Revenue Growth',
+    roas: 'Avg ROAS',
+    leads: 'Search Impressions',
+    revenue: 'Users Reached',
     clients: 'Happy Clients',
   },
   services: {

@@ -1211,10 +1211,10 @@ export interface ResultsPageTranslations {
   };
   trustedBy: string;
   stats: {
-    revenue: string;
-    roas: string;
     clients: string;
-    growth: string;
+    roas: string;
+    impressions: string;
+    users: string;
   };
   caseStudies: {
     title: string;
@@ -1224,10 +1224,10 @@ export interface ResultsPageTranslations {
     solution: string;
     results: string;
     industries: {
-      ecommerce: string;
-      saas: string;
+      construction: string;
+      homeGarden: string;
+      aviation: string;
       realEstate: string;
-      consulting: string;
     };
     details: Array<{
       challengeText: string;
@@ -1235,16 +1235,16 @@ export interface ResultsPageTranslations {
     }>;
     metrics: {
       roas: string;
-      revenue: string;
-      cpa: string;
-      organicTraffic: string;
-      leads: string;
-      domainAuthority: string;
-      followers: string;
-      engagement: string;
-      leadsPerMonth: string;
-      conversionRate: string;
+      sessions: string;
+      impressions: string;
+      conversions: string;
+      organicClicks: string;
+      pageWeight: string;
+      loadTime: string;
       pageSpeed: string;
+      timeSaved: string;
+      timePerDeal: string;
+      saasValue: string;
     };
   };
   videoPortfolio: {
@@ -1295,7 +1295,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: "We don't just talk about results — we prove them. Here's what we've achieved for businesses just like yours.",
     },
     trustedBy: 'Trusted by businesses worldwide',
-    stats: { revenue: 'Revenue Generated', roas: 'Average ROAS', clients: 'Happy Clients', growth: 'Avg. Growth' },
+    stats: { clients: 'Happy Clients', roas: 'Avg ROAS', impressions: 'Search Impressions', users: 'Users Reached' },
     caseStudies: {
       title: 'Client',
       titleHighlight: 'Case Studies',
@@ -1303,37 +1303,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'The Challenge',
       solution: 'Our Solution',
       results: 'The Results',
-      industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Real Estate Agency', consulting: 'Professional Services' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
-          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimized landing pages.',
+          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
-          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
-          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimizations.',
+          challengeText: 'Limited digital presence for outdoor living services in a market where homeowners increasingly search online before contacting contractors.',
+          solutionText: 'Full website build with local SEO, Google Business Profile optimization, and targeted Google Ads campaigns.',
         },
         {
-          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
-          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+          challengeText: 'Bloated WordPress site built with Kubio page builder — 258KB HTML, 3-5 second load times, failing to convert high-intent luxury buyers in the Netherlands.',
+          solutionText: 'Complete rebuild from scratch with interactive jet selection wizard, operating cost calculator, and bilingual NL/EN support.',
         },
         {
-          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
-          solutionText: 'Complete website redesign with conversion optimization, SEO, and analytics integration.',
+          challengeText: 'Transaction coordinators spending 2+ hours on manual paperwork per deal — creating leads, assigning agents, filling DotLoop forms, all by hand.',
+          solutionText: 'Custom website plus full transaction automation platform with intake app, CRM dashboard, and automated document workflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Revenue',
-        cpa: 'CPA',
-        organicTraffic: 'Organic Traffic',
-        leads: 'Leads',
-        domainAuthority: 'Domain Authority',
-        followers: 'Followers',
-        engagement: 'Engagement',
-        leadsPerMonth: 'Leads/Month',
-        conversionRate: 'Conversion Rate',
+        sessions: 'Sessions',
+        impressions: 'Search Impressions',
+        conversions: 'Conversions',
+        organicClicks: 'Organic Clicks',
+        pageWeight: 'Page Weight Reduction',
+        loadTime: 'Load Time',
         pageSpeed: 'Page Speed',
+        timeSaved: 'Time Saved',
+        timePerDeal: 'Time Per Deal',
+        saasValue: 'SaaS Product Value',
       },
     },
     videoPortfolio: {
@@ -1375,7 +1375,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: 'We praten niet alleen over resultaten — we bewijzen ze. Dit is wat we hebben bereikt voor bedrijven zoals het jouwe.',
     },
     trustedBy: 'Vertrouwd door bedrijven wereldwijd',
-    stats: { revenue: 'Omzet Gegenereerd', roas: 'Gemiddelde ROAS', clients: 'Tevreden Klanten', growth: 'Gem. Groei' },
+    stats: { clients: 'Tevreden Klanten', roas: 'Gem. ROAS', impressions: 'Zoekvertoningen', users: 'Bereikte Gebruikers' },
     caseStudies: {
       title: 'Klant',
       titleHighlight: 'Case Studies',
@@ -1383,37 +1383,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'De Uitdaging',
       solution: 'Onze Oplossing',
       results: 'De Resultaten',
-      industries: { ecommerce: 'E-Commerce Merk', saas: 'B2B SaaS Bedrijf', realEstate: 'Makelaarskantoor', consulting: 'Professionele Diensten' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Moeite met het winstgevend opschalen van betaalde advertenties met stijgende CPA\'s en stagnerende ROAS.',
-          solutionText: 'Herstructurering van Meta Ads-account, implementatie van geavanceerde retargeting en optimalisatie van landingspagina\'s.',
+          challengeText: 'Geen online zichtbaarheid in een competitieve Noord-Ierse bouwmarkt, volledig afhankelijk van mond-tot-mondreclame zonder digitale leadgeneratie.',
+          solutionText: 'Custom website met lokale SEO-strategie en Google Ads-campagnes gericht op zoektermen met hoge koopintentie in de bouwsector.',
         },
         {
-          challengeText: 'Lage organische zichtbaarheid en volledig afhankelijk van betaalde kanalen voor leadgeneratie.',
-          solutionText: 'Uitgebreide SEO-strategie gericht op high-intent zoekwoorden en technische optimalisaties.',
+          challengeText: 'Beperkte digitale aanwezigheid voor buitenlevendiensten in een markt waar huiseigenaren steeds vaker online zoeken voordat ze contact opnemen met aannemers.',
+          solutionText: 'Complete website met lokale SEO, Google Bedrijfsprofiel optimalisatie en gerichte Google Ads-campagnes.',
         },
         {
-          challengeText: 'Minimale social media-aanwezigheid en inconsistente leadstroom vanuit digitale kanalen.',
-          solutionText: 'Volledig social media management met contentstrategie, community building en betaalde sociale advertenties.',
+          challengeText: 'Opgeblazen WordPress-site gebouwd met Kubio page builder — 258KB HTML, 3-5 seconden laadtijd, die luxe kopers in Nederland niet kon converteren.',
+          solutionText: 'Volledige herbouw met interactieve jet selectiewizard, exploitatiekostencalculator en tweetalige NL/EN ondersteuning.',
         },
         {
-          challengeText: 'Verouderde website met slechte conversieratio\'s en geen duidelijke lead capture-strategie.',
-          solutionText: 'Complete website redesign met conversie-optimalisatie, SEO en analytics-integratie.',
+          challengeText: 'Transactiecoördinatoren besteedden 2+ uur aan handmatig papierwerk per deal — leads aanmaken, agenten toewijzen, DotLoop-formulieren invullen, allemaal handmatig.',
+          solutionText: 'Custom website plus compleet transactie-automatiseringsplatform met intake-app, CRM-dashboard en geautomatiseerde documentworkflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Omzet',
-        cpa: 'CPA',
-        organicTraffic: 'Organisch Verkeer',
-        leads: 'Leads',
-        domainAuthority: 'Domeinautoriteit',
-        followers: 'Volgers',
-        engagement: 'Betrokkenheid',
-        leadsPerMonth: 'Leads/Maand',
-        conversionRate: 'Conversieratio',
+        sessions: 'Sessies',
+        impressions: 'Zoekvertoningen',
+        conversions: 'Conversies',
+        organicClicks: 'Organische Klikken',
+        pageWeight: 'Paginagewicht Reductie',
+        loadTime: 'Laadtijd',
         pageSpeed: 'Paginasnelheid',
+        timeSaved: 'Tijd Bespaard',
+        timePerDeal: 'Tijd Per Deal',
+        saasValue: 'SaaS Productwaarde',
       },
     },
     videoPortfolio: {
@@ -1455,7 +1455,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: 'Vi taler ikke bare om resultater — vi beviser dem. Her er hvad vi har opnået for virksomheder som din.',
     },
     trustedBy: 'Betroet af virksomheder verden over',
-    stats: { revenue: 'Omsætning Genereret', roas: 'Gennemsnitlig ROAS', clients: 'Glade Kunder', growth: 'Gns. Vækst' },
+    stats: { clients: 'Glade Kunder', roas: 'Gns. ROAS', impressions: 'Søgevisninger', users: 'Brugere Nået' },
     caseStudies: {
       title: 'Kunde',
       titleHighlight: 'Case Studies',
@@ -1463,37 +1463,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'Udfordringen',
       solution: 'Vores Løsning',
       results: 'Resultaterne',
-      industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Virksomhed', realEstate: 'Ejendomsmægler', consulting: 'Professionelle Tjenester' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Svært at skalere betalte annoncer profitabelt med stigende CPA\'er og stagnerende ROAS.',
-          solutionText: 'Omstrukturering af Meta Ads-konto, implementering af avanceret retargeting og optimering af landingssider.',
+          challengeText: 'Ingen online synlighed på et konkurrencepræget nordirsk byggemarked, udelukkende afhængig af mund-til-mund uden digital leadgenerering.',
+          solutionText: 'Skræddersyet hjemmeside med lokal SEO-strategi og Google Ads-kampagner rettet mod højintentionelle byggesøgeord.',
         },
         {
-          challengeText: 'Lav organisk synlighed og fuldstændig afhængig af betalte kanaler til leadgenerering.',
-          solutionText: 'Omfattende SEO-strategi rettet mod søgeord med høj intention og tekniske optimeringer.',
+          challengeText: 'Begrænset digital tilstedeværelse for udendørs livsstilstjenester på et marked, hvor husejere i stigende grad søger online, før de kontakter entreprenører.',
+          solutionText: 'Komplet hjemmeside med lokal SEO, Google Virksomhedsprofil optimering og målrettede Google Ads-kampagner.',
         },
         {
-          challengeText: 'Minimal tilstedeværelse på sociale medier og inkonsistent leadflow fra digitale kanaler.',
-          solutionText: 'Fuld social media management med indholdsstrategi, community building og betalte sociale annoncer.',
+          challengeText: 'Oppustet WordPress-side bygget med Kubio page builder — 258KB HTML, 3-5 sekunders indlæsningstid, der ikke konverterede luksuriøse købere i Holland.',
+          solutionText: 'Komplet genopbygning med interaktiv jet-udvælgelsesguide, driftsomkostningsberegner og tosproget NL/EN understøttelse.',
         },
         {
-          challengeText: 'Forældet hjemmeside med dårlige konverteringsrater og ingen klar lead capture-strategi.',
-          solutionText: 'Komplet hjemmeside redesign med konverteringsoptimering, SEO og analytics-integration.',
+          challengeText: 'Transaktionskoordinatorer brugte 2+ timer på manuelt papirarbejde pr. handel — oprettelse af leads, tildeling af agenter, udfyldning af DotLoop-formularer, alt manuelt.',
+          solutionText: 'Skræddersyet hjemmeside plus komplet transaktionsautomatiseringsplatform med intake-app, CRM-dashboard og automatiserede dokumentworkflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Omsætning',
-        cpa: 'CPA',
-        organicTraffic: 'Organisk Trafik',
-        leads: 'Leads',
-        domainAuthority: 'Domæneautoritet',
-        followers: 'Følgere',
-        engagement: 'Engagement',
-        leadsPerMonth: 'Leads/Måned',
-        conversionRate: 'Konverteringsrate',
+        sessions: 'Sessioner',
+        impressions: 'Søgevisninger',
+        conversions: 'Konverteringer',
+        organicClicks: 'Organiske Klik',
+        pageWeight: 'Sidevægt Reduktion',
+        loadTime: 'Indlæsningstid',
         pageSpeed: 'Sidehastighed',
+        timeSaved: 'Tid Sparet',
+        timePerDeal: 'Tid Per Handel',
+        saasValue: 'SaaS Produktværdi',
       },
     },
     videoPortfolio: {
@@ -1536,7 +1536,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: "We don't just talk about results — we prove them. Here's what we've achieved for businesses just like yours.",
     },
     trustedBy: 'Trusted by businesses across Australia',
-    stats: { revenue: 'Revenue Generated', roas: 'Average ROAS', clients: 'Happy Clients', growth: 'Avg. Growth' },
+    stats: { clients: 'Happy Clients', roas: 'Avg ROAS', impressions: 'Search Impressions', users: 'Users Reached' },
     caseStudies: {
       title: 'Client',
       titleHighlight: 'Case Studies',
@@ -1544,37 +1544,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'The Challenge',
       solution: 'Our Solution',
       results: 'The Results',
-      industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Real Estate Agency', consulting: 'Professional Services' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
-          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimized landing pages.',
+          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
-          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
-          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimizations.',
+          challengeText: 'Limited digital presence for outdoor living services in a market where homeowners increasingly search online before contacting contractors.',
+          solutionText: 'Full website build with local SEO, Google Business Profile optimization, and targeted Google Ads campaigns.',
         },
         {
-          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
-          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+          challengeText: 'Bloated WordPress site built with Kubio page builder — 258KB HTML, 3-5 second load times, failing to convert high-intent luxury buyers in the Netherlands.',
+          solutionText: 'Complete rebuild from scratch with interactive jet selection wizard, operating cost calculator, and bilingual NL/EN support.',
         },
         {
-          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
-          solutionText: 'Complete website redesign with conversion optimization, SEO, and analytics integration.',
+          challengeText: 'Transaction coordinators spending 2+ hours on manual paperwork per deal — creating leads, assigning agents, filling DotLoop forms, all by hand.',
+          solutionText: 'Custom website plus full transaction automation platform with intake app, CRM dashboard, and automated document workflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Revenue',
-        cpa: 'CPA',
-        organicTraffic: 'Organic Traffic',
-        leads: 'Leads',
-        domainAuthority: 'Domain Authority',
-        followers: 'Followers',
-        engagement: 'Engagement',
-        leadsPerMonth: 'Leads/Month',
-        conversionRate: 'Conversion Rate',
+        sessions: 'Sessions',
+        impressions: 'Search Impressions',
+        conversions: 'Conversions',
+        organicClicks: 'Organic Clicks',
+        pageWeight: 'Page Weight Reduction',
+        loadTime: 'Load Time',
         pageSpeed: 'Page Speed',
+        timeSaved: 'Time Saved',
+        timePerDeal: 'Time Per Deal',
+        saasValue: 'SaaS Product Value',
       },
     },
     videoPortfolio: {
@@ -1617,7 +1617,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: "We don't just talk about results — we prove them. Here's what we've achieved for businesses just like yours.",
     },
     trustedBy: 'Trusted by businesses across the UK',
-    stats: { revenue: 'Revenue Generated', roas: 'Average ROAS', clients: 'Happy Clients', growth: 'Avg. Growth' },
+    stats: { clients: 'Happy Clients', roas: 'Avg ROAS', impressions: 'Search Impressions', users: 'Users Reached' },
     caseStudies: {
       title: 'Client',
       titleHighlight: 'Case Studies',
@@ -1625,37 +1625,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'The Challenge',
       solution: 'Our Solution',
       results: 'The Results',
-      industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Estate Agency', consulting: 'Professional Services' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
-          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimised landing pages.',
+          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
-          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
-          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimisations.',
+          challengeText: 'Limited digital presence for outdoor living services in a market where homeowners increasingly search online before contacting contractors.',
+          solutionText: 'Full website build with local SEO, Google Business Profile optimization, and targeted Google Ads campaigns.',
         },
         {
-          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
-          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+          challengeText: 'Bloated WordPress site built with Kubio page builder — 258KB HTML, 3-5 second load times, failing to convert high-intent luxury buyers in the Netherlands.',
+          solutionText: 'Complete rebuild from scratch with interactive jet selection wizard, operating cost calculator, and bilingual NL/EN support.',
         },
         {
-          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
-          solutionText: 'Complete website redesign with conversion optimisation, SEO, and analytics integration.',
+          challengeText: 'Transaction coordinators spending 2+ hours on manual paperwork per deal — creating leads, assigning agents, filling DotLoop forms, all by hand.',
+          solutionText: 'Custom website plus full transaction automation platform with intake app, CRM dashboard, and automated document workflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Revenue',
-        cpa: 'CPA',
-        organicTraffic: 'Organic Traffic',
-        leads: 'Leads',
-        domainAuthority: 'Domain Authority',
-        followers: 'Followers',
-        engagement: 'Engagement',
-        leadsPerMonth: 'Leads/Month',
-        conversionRate: 'Conversion Rate',
+        sessions: 'Sessions',
+        impressions: 'Search Impressions',
+        conversions: 'Conversions',
+        organicClicks: 'Organic Clicks',
+        pageWeight: 'Page Weight Reduction',
+        loadTime: 'Load Time',
         pageSpeed: 'Page Speed',
+        timeSaved: 'Time Saved',
+        timePerDeal: 'Time Per Deal',
+        saasValue: 'SaaS Product Value',
       },
     },
     videoPortfolio: {
@@ -1698,7 +1698,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       subtitle: "We don't just talk about results — we prove them. Here's what we've achieved for businesses just like yours.",
     },
     trustedBy: 'Trusted by businesses across Ireland',
-    stats: { revenue: 'Revenue Generated', roas: 'Average ROAS', clients: 'Happy Clients', growth: 'Avg. Growth' },
+    stats: { clients: 'Happy Clients', roas: 'Avg ROAS', impressions: 'Search Impressions', users: 'Users Reached' },
     caseStudies: {
       title: 'Client',
       titleHighlight: 'Case Studies',
@@ -1706,37 +1706,37 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       challenge: 'The Challenge',
       solution: 'Our Solution',
       results: 'The Results',
-      industries: { ecommerce: 'E-Commerce Brand', saas: 'B2B SaaS Company', realEstate: 'Estate Agency', consulting: 'Professional Services' },
+      industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Struggling to scale paid ads profitably with increasing CPAs and stagnant ROAS.',
-          solutionText: 'Restructured Meta Ads account, implemented advanced retargeting, and optimised landing pages.',
+          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
-          challengeText: 'Low organic visibility and relying entirely on paid channels for lead generation.',
-          solutionText: 'Comprehensive SEO strategy targeting high-intent keywords and technical optimisations.',
+          challengeText: 'Limited digital presence for outdoor living services in a market where homeowners increasingly search online before contacting contractors.',
+          solutionText: 'Full website build with local SEO, Google Business Profile optimization, and targeted Google Ads campaigns.',
         },
         {
-          challengeText: 'Minimal social media presence and inconsistent lead flow from digital channels.',
-          solutionText: 'Full social media management with content strategy, community building, and paid social ads.',
+          challengeText: 'Bloated WordPress site built with Kubio page builder — 258KB HTML, 3-5 second load times, failing to convert high-intent luxury buyers in the Netherlands.',
+          solutionText: 'Complete rebuild from scratch with interactive jet selection wizard, operating cost calculator, and bilingual NL/EN support.',
         },
         {
-          challengeText: 'Outdated website with poor conversion rates and no clear lead capture strategy.',
-          solutionText: 'Complete website redesign with conversion optimisation, SEO, and analytics integration.',
+          challengeText: 'Transaction coordinators spending 2+ hours on manual paperwork per deal — creating leads, assigning agents, filling DotLoop forms, all by hand.',
+          solutionText: 'Custom website plus full transaction automation platform with intake app, CRM dashboard, and automated document workflows.',
         },
       ],
       metrics: {
         roas: 'ROAS',
-        revenue: 'Revenue',
-        cpa: 'CPA',
-        organicTraffic: 'Organic Traffic',
-        leads: 'Leads',
-        domainAuthority: 'Domain Authority',
-        followers: 'Followers',
-        engagement: 'Engagement',
-        leadsPerMonth: 'Leads/Month',
-        conversionRate: 'Conversion Rate',
+        sessions: 'Sessions',
+        impressions: 'Search Impressions',
+        conversions: 'Conversions',
+        organicClicks: 'Organic Clicks',
+        pageWeight: 'Page Weight Reduction',
+        loadTime: 'Load Time',
         pageSpeed: 'Page Speed',
+        timeSaved: 'Time Saved',
+        timePerDeal: 'Time Per Deal',
+        saasValue: 'SaaS Product Value',
       },
     },
     videoPortfolio: {

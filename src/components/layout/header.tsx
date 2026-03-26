@@ -56,6 +56,7 @@ export function Header() {
     { href: `/${locale}`, label: t("header.home") },
     { href: `/${locale}/services`, label: t("nav.services") },
     { href: `/${locale}/results`, label: t("nav.results") },
+    { href: `/${locale}/case-studies`, label: "Case Studies" },
     { href: `/${locale}/blog`, label: t("nav.blog") },
     { href: `/${locale}/contact`, label: t("nav.contact") },
   ];

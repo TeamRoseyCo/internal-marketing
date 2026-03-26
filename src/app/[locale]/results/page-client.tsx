@@ -25,67 +25,60 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
   const t = getResultsPageTranslations(validLocale);
 
   const stats = [
-    { value: 10, suffix: "M+", label: t.stats.revenue, prefix: "$" },
-    { value: 21, suffix: "x", label: t.stats.roas },
     { value: 50, suffix: "+", label: t.stats.clients },
-    { value: 300, suffix: "%", label: t.stats.growth },
+    { value: 6, suffix: "x+", label: t.stats.roas },
+    { value: 400, suffix: "K+", label: t.stats.impressions },
+    { value: 30, suffix: "K+", label: t.stats.users },
   ];
 
   const caseStudies = [
     {
-      client: t.caseStudies.industries.ecommerce,
-      industry: "Retail",
-      icon: ShoppingCart,
+      client: t.caseStudies.industries.construction,
+      industry: "Construction",
+      icon: Building2,
       challenge: t.caseStudies.details[0].challengeText,
       solution: t.caseStudies.details[0].solutionText,
-      results: [{ metric: t.caseStudies.metrics.roas, before: "2.1x", after: "8.4x" }, { metric: t.caseStudies.metrics.revenue, before: "$45K/mo", after: "$180K/mo" }, { metric: t.caseStudies.metrics.cpa, before: "$85", after: "$32" }],
+      results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "8.2x" }, { metric: t.caseStudies.metrics.sessions, before: "0", after: "5.9K" }, { metric: t.caseStudies.metrics.impressions, before: "0", after: "16.4K" }],
       cardClass: "service-card service-card-green",
       iconColor: "hsl(130 65% 45%)",
       iconBg: "hsl(130 65% 45% / 0.15)",
     },
     {
-      client: t.caseStudies.industries.saas,
-      industry: "Technology",
-      icon: Briefcase,
+      client: t.caseStudies.industries.homeGarden,
+      industry: "Home & Garden",
+      icon: Home,
       challenge: t.caseStudies.details[1].challengeText,
       solution: t.caseStudies.details[1].solutionText,
-      results: [{ metric: t.caseStudies.metrics.organicTraffic, before: "2K/mo", after: "18K/mo" }, { metric: t.caseStudies.metrics.leads, before: "15/mo", after: "120/mo" }, { metric: t.caseStudies.metrics.domainAuthority, before: "24", after: "48" }],
+      results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "6.2x" }, { metric: t.caseStudies.metrics.conversions, before: "0", after: "22" }, { metric: t.caseStudies.metrics.organicClicks, before: "0", after: "700+" }],
       cardClass: "service-card service-card-rose",
       iconColor: "hsl(0 75% 50%)",
       iconBg: "hsl(0 75% 50% / 0.15)",
     },
     {
-      client: t.caseStudies.industries.realEstate,
-      industry: "Property",
-      icon: Home,
+      client: t.caseStudies.industries.aviation,
+      industry: "Aviation",
+      icon: Briefcase,
       challenge: t.caseStudies.details[2].challengeText,
       solution: t.caseStudies.details[2].solutionText,
-      results: [{ metric: t.caseStudies.metrics.followers, before: "800", after: "12K" }, { metric: t.caseStudies.metrics.engagement, before: "1.2%", after: "6.8%" }, { metric: t.caseStudies.metrics.leadsPerMonth, before: "8", after: "65" }],
+      results: [{ metric: t.caseStudies.metrics.pageWeight, before: "258KB", after: "15KB" }, { metric: t.caseStudies.metrics.loadTime, before: "3-5s", after: "<1s" }, { metric: t.caseStudies.metrics.pageSpeed, before: "Slow", after: "80% Faster" }],
       cardClass: "service-card service-card-green",
       iconColor: "hsl(130 65% 45%)",
       iconBg: "hsl(130 65% 45% / 0.15)",
     },
     {
-      client: t.caseStudies.industries.consulting,
-      industry: "Consulting",
-      icon: Building2,
+      client: t.caseStudies.industries.realEstate,
+      industry: "Real Estate",
+      icon: Home,
       challenge: t.caseStudies.details[3].challengeText,
       solution: t.caseStudies.details[3].solutionText,
-      results: [{ metric: t.caseStudies.metrics.conversionRate, before: "0.8%", after: "4.2%" }, { metric: t.caseStudies.metrics.pageSpeed, before: "6.2s", after: "1.4s" }, { metric: t.caseStudies.metrics.leadsPerMonth, before: "12", after: "58" }],
+      results: [{ metric: t.caseStudies.metrics.timeSaved, before: "0%", after: "95%" }, { metric: t.caseStudies.metrics.timePerDeal, before: "2hrs+", after: "10min" }, { metric: t.caseStudies.metrics.saasValue, before: "$0", after: "$10K" }],
       cardClass: "service-card service-card-rose",
       iconColor: "hsl(0 75% 50%)",
       iconBg: "hsl(0 75% 50% / 0.15)",
     },
   ];
 
-  const testimonials = [
-    { quote: "Rosey Co. transformed our marketing completely. We went from struggling to get leads to having more than we can handle. The ROI has been incredible.", author: "Sarah M.", role: "CEO, E-Commerce Brand", rating: 5 },
-    { quote: "Finally, a marketing agency that actually delivers on their promises. Our organic traffic grew 800% in 6 months. These guys know what they're doing.", author: "Michael T.", role: "Founder, SaaS Startup", rating: 5 },
-    { quote: "The team at Rosey Co. doesn't just run ads — they build systems. Our cost per lead dropped by 60% while our lead quality went up.", author: "Jennifer L.", role: "Marketing Director", rating: 5 },
-    { quote: "Best decision we made was hiring Rosey Co. Professional, transparent, and most importantly — they get results. 10/10 would recommend.", author: "David R.", role: "Business Owner", rating: 5 },
-    { quote: "Our social media went from dead to thriving. The content they create actually resonates with our audience and drives real business.", author: "Amanda K.", role: "Real Estate Agent", rating: 5 },
-    { quote: "The new website they built us is beautiful AND it converts. Our lead capture went up 5x. Worth every penny.", author: "Chris P.", role: "Consultant", rating: 5 },
-  ];
+  const testimonials: { quote: string; author: string; role: string; rating: number }[] = [];
 
   const portfolioVideos = [
     {
@@ -134,7 +127,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
           <motion.div className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <p className="text-sm uppercase tracking-widest text-muted-foreground mb-10">{t.trustedBy}</p>
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-              {["TechStart", "GrowthCo", "ScaleUp", "Innovate", "Elevate", "Nexus"].map((company, index) => (
+              {["GroundTek Civils", "NMG Outdoor Living", "Jet Select", "KCF Homes", "Machas Orchard", "Sharon Clare Hypnotherapy"].map((company, index) => (
                 <motion.div key={company} className="text-2xl md:text-3xl font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors cursor-default" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }}>
                   {company}
                 </motion.div>
@@ -151,7 +144,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
             {stats.map((stat, index) => (
               <motion.div key={index} className="text-center" variants={staggerItem} transition={{ duration: 0.6 }}>
                 <motion.p className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-3" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={2 + index * 0.3} />
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} duration={2 + index * 0.3} />
                 </motion.p>
                 <p className="text-base md:text-lg text-muted-foreground">{stat.label}</p>
               </motion.div>
@@ -228,6 +221,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
       </section>
 
       {/* Testimonials */}
+      {testimonials.length > 0 && (
       <section className="py-24 md:py-32">
         <div className="container">
           <motion.div className="text-center mb-16 md:mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
@@ -261,6 +255,7 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Video Portfolio */}
       <section className="py-24 md:py-32 relative overflow-hidden">
