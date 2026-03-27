@@ -1306,7 +1306,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          challengeText: 'No online visibility in a competitive West Midlands construction market, relying entirely on word of mouth with no digital lead generation.',
           solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
@@ -1386,7 +1386,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Geen online zichtbaarheid in een competitieve Noord-Ierse bouwmarkt, volledig afhankelijk van mond-tot-mondreclame zonder digitale leadgeneratie.',
+          challengeText: 'Geen online zichtbaarheid in een competitieve West Midlands bouwmarkt, volledig afhankelijk van mond-tot-mondreclame zonder digitale leadgeneratie.',
           solutionText: 'Custom website met lokale SEO-strategie en Google Ads-campagnes gericht op zoektermen met hoge koopintentie in de bouwsector.',
         },
         {
@@ -1466,7 +1466,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'Ingen online synlighed på et konkurrencepræget nordirsk byggemarked, udelukkende afhængig af mund-til-mund uden digital leadgenerering.',
+          challengeText: 'Ingen online synlighed på et konkurrencepræget West Midlands byggemarked, udelukkende afhængig af mund-til-mund uden digital leadgenerering.',
           solutionText: 'Skræddersyet hjemmeside med lokal SEO-strategi og Google Ads-kampagner rettet mod højintentionelle byggesøgeord.',
         },
         {
@@ -1547,7 +1547,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          challengeText: 'No online visibility in a competitive West Midlands construction market, relying entirely on word of mouth with no digital lead generation.',
           solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
@@ -1628,7 +1628,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          challengeText: 'No online visibility in a competitive West Midlands construction market, relying entirely on word of mouth with no digital lead generation.',
           solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
@@ -1709,7 +1709,7 @@ export const resultsPageTranslations: TranslationRecord<ResultsPageTranslations>
       industries: { construction: 'GroundTek Civils', homeGarden: 'NMG Outdoor Living', aviation: 'Jet Select', realEstate: 'KCF Homes' },
       details: [
         {
-          challengeText: 'No online visibility in a competitive Northern Ireland construction market, relying entirely on word of mouth with no digital lead generation.',
+          challengeText: 'No online visibility in a competitive West Midlands construction market, relying entirely on word of mouth with no digital lead generation.',
           solutionText: 'Custom website build with local SEO strategy and Google Ads campaigns targeting high-intent construction search terms.',
         },
         {
