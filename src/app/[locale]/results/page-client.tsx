@@ -35,7 +35,8 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
     {
       client: t.caseStudies.industries.construction,
       industry: "Construction",
-      icon: Building2,
+      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/fa0ea52f-f62e-402f-b5ca-0d6f5b3e9147-1765245746454.jpg",
+      website: "https://groundtekcivils.co.uk",
       challenge: t.caseStudies.details[0].challengeText,
       solution: t.caseStudies.details[0].solutionText,
       results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "8.2x" }, { metric: t.caseStudies.metrics.sessions, before: "0", after: "5.9K" }, { metric: t.caseStudies.metrics.impressions, before: "0", after: "16.4K" }],
@@ -46,7 +47,8 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
     {
       client: t.caseStudies.industries.homeGarden,
       industry: "Home & Garden",
-      icon: Home,
+      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/56415fc1-9611-4d57-8f6e-463fb195d555-1764877585727.png",
+      website: "https://nmgpvcsupplies.co.uk",
       challenge: t.caseStudies.details[1].challengeText,
       solution: t.caseStudies.details[1].solutionText,
       results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "6.2x" }, { metric: t.caseStudies.metrics.conversions, before: "0", after: "22" }, { metric: t.caseStudies.metrics.organicClicks, before: "0", after: "700+" }],
@@ -57,7 +59,8 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
     {
       client: t.caseStudies.industries.aviation,
       industry: "Aviation",
-      icon: Briefcase,
+      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/jet-select-1774357619.jpeg",
+      website: "https://jetselect.nl",
       challenge: t.caseStudies.details[2].challengeText,
       solution: t.caseStudies.details[2].solutionText,
       results: [{ metric: t.caseStudies.metrics.pageWeight, before: "258KB", after: "15KB" }, { metric: t.caseStudies.metrics.loadTime, before: "3-5s", after: "<1s" }, { metric: t.caseStudies.metrics.pageSpeed, before: "Slow", after: "80% Faster" }],
@@ -68,7 +71,8 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
     {
       client: t.caseStudies.industries.realEstate,
       industry: "Real Estate",
-      icon: Home,
+      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/c7300e25-321c-4e04-ba18-c951efc9417b-1765451008744.webp",
+      website: "https://kcfhomes.com",
       challenge: t.caseStudies.details[3].challengeText,
       solution: t.caseStudies.details[3].solutionText,
       results: [{ metric: t.caseStudies.metrics.timeSaved, before: "0%", after: "95%" }, { metric: t.caseStudies.metrics.timePerDeal, before: "2hrs+", after: "10min" }, { metric: t.caseStudies.metrics.saasValue, before: "$0", after: "$10K" }],
@@ -163,19 +167,21 @@ export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
 
           <motion.div className="space-y-8 md:space-y-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
             {caseStudies.map((study) => {
-              const Icon = study.icon;
               return (
                 <motion.div key={study.client} variants={staggerItem} transition={{ duration: 0.6 }}>
                   <div className={`${study.cardClass} overflow-hidden`}>
                     <div className="p-8 md:p-10 lg:p-12">
                       <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
-                        <div className="w-16 h-16 rounded-2xl flex items-center justify-center" style={{ backgroundColor: study.iconBg, border: `1px solid ${study.iconColor}30` }}>
-                          <Icon className="w-8 h-8" style={{ color: study.iconColor }} />
+                        <div className="w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden bg-white/10 border border-white/10">
+                          <img src={study.logo} alt={study.client} className="w-full h-full object-cover" />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <h3 className="text-2xl md:text-3xl font-bold">{study.client}</h3>
                           <p className="text-base text-muted-foreground">{study.industry}</p>
                         </div>
+                        <a href={study.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline transition-colors">
+                          Visit Website <ArrowRight className="w-3.5 h-3.5" />
+                        </a>
                       </div>
                       <div className="grid lg:grid-cols-3 gap-8">
                         <div>
