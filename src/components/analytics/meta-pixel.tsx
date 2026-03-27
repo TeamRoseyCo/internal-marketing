@@ -1,33 +1,32 @@
 // src/components/analytics/meta-pixel.tsx
-// Meta Pixel (Facebook Pixel) tracking component
-// Loads Meta Pixel script with environment variable configuration
-
-import Script from "next/script";
+// Meta Pixel tracking via Partytown web worker
 
 export function MetaPixel() {
   const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-  // Don't render if PIXEL_ID is not configured
   if (!PIXEL_ID) {
     return null;
   }
 
   return (
     <>
-      <Script id="meta-pixel" strategy="lazyOnload">
-        {`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '${PIXEL_ID}');
-          fbq('track', 'PageView');
-        `}
-      </Script>
+      <script
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${PIXEL_ID}');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
       <noscript>
         <img
           height="1"

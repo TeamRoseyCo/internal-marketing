@@ -45,3 +45,6 @@ next-env.d.ts
 .claude/settings.local.json
 tmpclaude-*
 .env*.local
+
+# Partytown lib files (generated at build time)
+public/~partytown

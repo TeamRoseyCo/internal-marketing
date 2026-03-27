@@ -12,6 +12,7 @@ import {
   MicrosoftClarity,
   MetaPixel,
 } from "@/components/analytics";
+import { Partytown } from "@qwik.dev/partytown/react";
 
 // DM Sans for body text - clean, modern, readable
 const dmSans = DM_Sans({
@@ -122,6 +123,9 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
 
+        <Partytown
+          forward={["dataLayer.push", "gtag", "fbq", "clarity"]}
+        />
         <OrganizationStructuredData />
         <WebSiteStructuredData />
         <GoogleAnalytics />
