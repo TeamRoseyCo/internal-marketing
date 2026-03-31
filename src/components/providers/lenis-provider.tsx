@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useRef, createContext, useContext, useState } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 // Create context for Lenis instance
@@ -17,6 +18,31 @@ interface LenisProviderProps {
 export function LenisProvider({ children }: LenisProviderProps) {
   const lenisRef = useRef<Lenis | null>(null);
   const [lenis, setLenis] = useState<Lenis | null>(null);
+  const pathname = usePathname();
+  const isPopstateRef = useRef(false);
+
+  // Track back/forward navigation so we don't force scroll-to-top on it
+  useEffect(() => {
+    const onPopstate = () => { isPopstateRef.current = true; };
+    window.addEventListener("popstate", onPopstate);
+    return () => window.removeEventListener("popstate", onPopstate);
+  }, []);
+
+  // Scroll to top on forward navigation — Lenis overrides the browser's
+  // native scroll control, so Next.js's built-in scroll restoration doesn't
+  // always work. Without this, some browsers/devices stay at the previous
+  // scroll position after clicking a link. Skips back/forward nav and hash
+  // links so those behave normally.
+  useEffect(() => {
+    if (isPopstateRef.current) {
+      isPopstateRef.current = false;
+      return;
+    }
+    if (window.location.hash) return;
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true, force: true });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     // Initialize Lenis with smooth scroll settings
@@ -30,6 +56,7 @@ export function LenisProvider({ children }: LenisProviderProps) {
       syncTouch: false, // Native touch feel on mobile
       touchMultiplier: 2,
       infinite: false,
+      stopInertiaOnNavigate: true,
     });
 
     lenisRef.current = lenisInstance;
