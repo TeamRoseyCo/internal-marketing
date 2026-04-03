@@ -20,28 +20,61 @@ export function LenisProvider({ children }: LenisProviderProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
   const pathname = usePathname();
   const isPopstateRef = useRef(false);
+  const scrollPositions = useRef<Map<string, number>>(new Map());
+  const prevPathnameRef = useRef(pathname);
 
-  // Track back/forward navigation so we don't force scroll-to-top on it
+  // Disable browser scroll restoration — Lenis owns scroll position, and
+  // without this Chromium re-applies the old scroll offset after our reset.
   useEffect(() => {
-    const onPopstate = () => { isPopstateRef.current = true; };
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  // Track back/forward navigation and restore saved scroll position
+  useEffect(() => {
+    const onPopstate = () => {
+      isPopstateRef.current = true;
+      // Restore scroll position for back/forward navigation
+      const saved = scrollPositions.current.get(window.location.pathname);
+      if (saved != null) {
+        requestAnimationFrame(() => {
+          window.scrollTo(0, saved);
+          lenisRef.current?.scrollTo(saved, { immediate: true, force: true });
+        });
+      }
+    };
     window.addEventListener("popstate", onPopstate);
     return () => window.removeEventListener("popstate", onPopstate);
   }, []);
 
-  // Scroll to top on forward navigation — Lenis overrides the browser's
-  // native scroll control, so Next.js's built-in scroll restoration doesn't
-  // always work. Without this, some browsers/devices stay at the previous
-  // scroll position after clicking a link. Skips back/forward nav and hash
-  // links so those behave normally.
+  // Scroll to top on forward navigation. Resets both native scroll and Lenis
+  // to prevent Chromium from restoring the old position after the effect runs.
+  // Uses rAF to wait for the browser's post-navigation layout pass.
   useEffect(() => {
+    // Save scroll position of the page we're leaving
+    if (prevPathnameRef.current !== pathname) {
+      scrollPositions.current.set(prevPathnameRef.current, window.scrollY);
+      prevPathnameRef.current = pathname;
+    }
+
     if (isPopstateRef.current) {
       isPopstateRef.current = false;
       return;
     }
     if (window.location.hash) return;
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true, force: true });
-    }
+
+    // Reset native scroll immediately so the browser doesn't hold a stale offset
+    window.scrollTo(0, 0);
+
+    // Reset Lenis after the next frame so it picks up the settled DOM
+    const raf = requestAnimationFrame(() => {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true, force: true });
+      }
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [pathname]);
 
   useEffect(() => {
