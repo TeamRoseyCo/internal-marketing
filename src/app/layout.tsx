@@ -149,6 +149,35 @@ export default function RootLayout({
             <Footer />
           </div>
         </LenisProvider>
+        {/* Rose AI Chat Widget */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.difyChatbotConfig = {
+                token: '7r6B6xLc0HHyhvc5',
+                baseUrl: 'https://dify.elevateoco.com'
+              }
+            `,
+          }}
+        />
+        <script
+          src="https://dify.elevateoco.com/embed.min.js"
+          id="7r6B6xLc0HHyhvc5"
+          defer
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              #dify-chatbot-bubble-button {
+                background-color: #E91E63 !important;
+              }
+              #dify-chatbot-bubble-window {
+                width: 24rem !important;
+                height: 40rem !important;
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
