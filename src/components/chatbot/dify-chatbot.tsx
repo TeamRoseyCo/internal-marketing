@@ -1,32 +1,45 @@
 // src/components/chatbot/dify-chatbot.tsx
 // Dify "Rose" AI chatbot embed — self-hosted at dify.elevateoco.com
-// Must be a client component (useLocale hook) and placed in body, not <head>.
+// Uses useEffect to guarantee config is set before embed script loads.
 // baseUrl points to self-hosted instance so the nginx watermark-removal fix applies.
 "use client";
 
-import Script from "next/script";
+import { useEffect } from "react";
 import { useLocale } from "@/lib/i18n";
 
 const DIFY_BASE_URL = "https://dify.elevateoco.com";
+const DIFY_TOKEN = (process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "")
+  .replace(/\n/g, "")
+  .trim();
 
 export function DifyChatbot() {
   const locale = useLocale();
-  const token = (process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "")
-    .replace(/\n/g, "")
-    .trim();
 
-  if (!token) return null;
+  useEffect(() => {
+    if (!DIFY_TOKEN) return;
 
-  return (
-    <>
-      <Script id="dify-chatbot-config" strategy="lazyOnload">
-        {`window.difyChatbotConfig = { token: '${token}', baseUrl: '${DIFY_BASE_URL}', inputs: { locale: '${locale}' } };`}
-      </Script>
-      <Script
-        src={`${DIFY_BASE_URL}/embed.min.js`}
-        id={token}
-        strategy="lazyOnload"
-      />
-    </>
-  );
+    // Set config synchronously before loading the script
+    (window as any).difyChatbotConfig = {
+      token: DIFY_TOKEN,
+      baseUrl: DIFY_BASE_URL,
+      inputs: { locale },
+    };
+
+    // Load embed script
+    const script = document.createElement("script");
+    script.src = `${DIFY_BASE_URL}/embed.min.js`;
+    script.id = DIFY_TOKEN;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+      delete (window as any).difyChatbotConfig;
+      // Clean up the chatbot DOM elements
+      document.getElementById("dify-chatbot-bubble-button")?.remove();
+      document.getElementById("dify-chatbot-bubble-window")?.remove();
+    };
+  }, [locale]);
+
+  return null;
 }
