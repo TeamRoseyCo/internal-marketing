@@ -17,21 +17,11 @@ export function DifyChatbot() {
 
   if (!token) return null;
 
-  const chatbotConfig = JSON.stringify({
-    token,
-    baseUrl: DIFY_BASE_URL,
-    inputs: { locale },
-  });
-
   return (
     <>
-      <Script
-        id="dify-chatbot-config"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `window.difyChatbotConfig = ${chatbotConfig};`,
-        }}
-      />
+      <Script id="dify-chatbot-config" strategy="lazyOnload">
+        {`window.difyChatbotConfig = { token: '${token}', baseUrl: '${DIFY_BASE_URL}', inputs: { locale: '${locale}' } };`}
+      </Script>
       <Script
         src={`${DIFY_BASE_URL}/embed.min.js`}
         id={token}
