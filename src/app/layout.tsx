@@ -12,6 +12,7 @@ import {
   MicrosoftClarity,
   MetaPixel,
 } from "@/components/analytics";
+import { DifyChatbot } from "@/components/chatbot";
 import { Partytown } from "@qwik.dev/partytown/react";
 
 // DM Sans for body text - clean, modern, readable
@@ -131,6 +132,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <MicrosoftClarity />
         <MetaPixel />
+        <DifyChatbot />
       </head>
       <body
         className={`${dmSans.variable} ${fraunces.variable} antialiased min-h-screen flex flex-col`}
