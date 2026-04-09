@@ -8,9 +8,7 @@ import { useEffect } from "react";
 import { useLocale } from "@/lib/i18n";
 
 const DIFY_BASE_URL = "https://dify.elevateoco.com";
-const DIFY_TOKEN = (process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "")
-  .replace(/\n/g, "")
-  .trim();
+const DIFY_TOKEN = "7r6B6xLc0HHyhvc5";
 
 export function DifyChatbot() {
   const locale = useLocale();
