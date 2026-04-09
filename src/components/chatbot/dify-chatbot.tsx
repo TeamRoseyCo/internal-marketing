@@ -8,21 +8,33 @@ import Script from "next/script";
 import { useLocale } from "@/lib/i18n";
 
 const DIFY_BASE_URL = "https://dify.elevateoco.com";
-const DIFY_TOKEN = process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "";
 
 export function DifyChatbot() {
   const locale = useLocale();
+  const token = (process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "")
+    .replace(/\\n/g, "")
+    .trim();
 
-  if (!DIFY_TOKEN) return null;
+  if (!token) return null;
+
+  const chatbotConfig = JSON.stringify({
+    token,
+    baseUrl: DIFY_BASE_URL,
+    inputs: { locale },
+  });
 
   return (
     <>
-      <Script id="dify-chatbot-config" strategy="lazyOnload">
-        {`window.difyChatbotConfig = { token: '${DIFY_TOKEN}', baseUrl: '${DIFY_BASE_URL}', inputs: { locale: '${locale}' } };`}
-      </Script>
+      {/* Inline script ensures config is set synchronously before embed.min.js runs */}
+      <script
+        id="dify-chatbot-config"
+        dangerouslySetInnerHTML={{
+          __html: `window.difyChatbotConfig = ${chatbotConfig};`,
+        }}
+      />
       <Script
         src={`${DIFY_BASE_URL}/embed.min.js`}
-        id={DIFY_TOKEN}
+        id={token}
         strategy="lazyOnload"
       />
     </>
