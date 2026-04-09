@@ -12,7 +12,7 @@ const DIFY_BASE_URL = "https://dify.elevateoco.com";
 export function DifyChatbot() {
   const locale = useLocale();
   const token = (process.env.NEXT_PUBLIC_DIFY_CHATBOT_TOKEN ?? "")
-    .replace(/\\n/g, "")
+    .replace(/\n/g, "")
     .trim();
 
   if (!token) return null;
@@ -25,9 +25,9 @@ export function DifyChatbot() {
 
   return (
     <>
-      {/* Inline script ensures config is set synchronously before embed.min.js runs */}
-      <script
+      <Script
         id="dify-chatbot-config"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `window.difyChatbotConfig = ${chatbotConfig};`,
         }}
