@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useLocale } from "@/lib/i18n";
 
 const DIFY_BASE_URL = "https://dify.elevateoco.com";
-const DIFY_TOKEN = "7r6B6xLc0HHyhvc5";
+const DIFY_TOKEN = "U2LCUJitw1J3ktjA";
 
 export function DifyChatbot() {
   const locale = useLocale();
