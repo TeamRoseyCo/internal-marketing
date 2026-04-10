@@ -39,5 +39,15 @@ export function DifyChatbot() {
     };
   }, [locale]);
 
-  return null;
+  // Dify's embed.min.js sets the iframe to position:absolute, which makes it
+  // stick to document coordinates instead of the viewport — so the chat window
+  // appears to stay where you scrolled. Force position:fixed so it stays pinned
+  // to the viewport next to the bubble button.
+  return (
+    <style>{`
+      #dify-chatbot-bubble-window {
+        position: fixed !important;
+      }
+    `}</style>
+  );
 }
