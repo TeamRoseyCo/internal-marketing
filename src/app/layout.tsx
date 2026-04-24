@@ -1,8 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { Header, Footer } from "@/components/layout";
+import { AppleNav, AppleFooter, RevealInit } from "@/components/apple";
+import { ExperimentBubble } from "@/components/apple/ExperimentBubble";
 import { LenisProvider } from "@/components/providers/lenis-provider";
+
+// Inter: near-identical to SF Pro, open source, served as var font for precise weights.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-ac",
+  display: "swap",
+  preload: true,
+});
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -13,27 +22,6 @@ import {
   MetaPixel,
 } from "@/components/analytics";
 import { Partytown } from "@qwik.dev/partytown/react";
-
-// DM Sans for body text - clean, modern, readable
-const dmSans = DM_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
-});
-
-// Fraunces for headlines - sophisticated serif display font
-const fraunces = Fraunces({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
-});
-
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://roseyco.com"),
@@ -113,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         {/* Preconnect to BunnyStream CDN for faster video loading - critical for hero video */}
         <link rel="preconnect" href="https://vz-ed4c89a0-c68.b-cdn.net" crossOrigin="anonymous" />
@@ -132,9 +120,7 @@ export default function RootLayout({
         <MicrosoftClarity />
         <MetaPixel />
       </head>
-      <body
-        className={`${dmSans.variable} ${fraunces.variable} antialiased min-h-screen flex flex-col`}
-      >
+      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
         {/* Skip to main content link for keyboard navigation */}
         <a
           href="#main-content"
@@ -142,13 +128,14 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <AppleNav />
+        <RevealInit />
+        <div className="ac-nav-spacer" aria-hidden="true" />
         <LenisProvider>
-          <div className="bg-page-gradient min-h-screen">
-            <Header />
-            <main id="main-content" className="flex-1 pt-20 md:pt-24">{children}</main>
-            <Footer />
-          </div>
+          <main id="main-content" className="flex-1">{children}</main>
+          <AppleFooter />
         </LenisProvider>
+        <ExperimentBubble />
 
       </body>
     </html>

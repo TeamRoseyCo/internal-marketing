@@ -1,328 +1,137 @@
 "use client";
 
-// src/app/[locale]/results/page.tsx
-// Locale-specific Results page
+import {
+  Tile,
+  TileStack,
+  TilePair,
+  CTALink,
+  PillButton,
+  MockDashboard,
+  MockBrowser,
+  MockSearchResult,
+  MockPhone,
+  LogoStrip,
+  CloseSuite,
+} from "@/components/apple";
+import { LocaleCode, isValidLocale } from "@/lib/locales";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Star, Quote, ShoppingCart, Briefcase, Home, Building2, ChevronDown, Play, Instagram } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
-import { isValidLocale, LocaleCode } from "@/lib/locales";
-import { getResultsPageTranslations } from "@/lib/page-translations";
-
-const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } };
-const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } } };
-const staggerItem = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
-
-interface LocaleResultsPageProps {
+interface Props {
   params: { locale: string };
 }
 
-export default function ResultsPageClient({ params }: LocaleResultsPageProps) {
-  const { locale } = params;
-  const validLocale: LocaleCode = isValidLocale(locale) ? locale : 'us';
-  const t = getResultsPageTranslations(validLocale);
-
-  const stats = [
-    { value: 50, suffix: "+", label: t.stats.clients },
-    { value: 11, suffix: "x", label: t.stats.roas },
-    { value: 400, suffix: "K+", label: t.stats.impressions },
-    { value: 30, suffix: "K+", label: t.stats.users },
-  ];
-
-  const caseStudies = [
-    {
-      client: t.caseStudies.industries.construction,
-      industry: "Construction",
-      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/fa0ea52f-f62e-402f-b5ca-0d6f5b3e9147-1765245746454.jpg",
-      website: "https://groundtekcivils.co.uk",
-      challenge: t.caseStudies.details[0].challengeText,
-      solution: t.caseStudies.details[0].solutionText,
-      results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "8.2x" }, { metric: t.caseStudies.metrics.sessions, before: "0", after: "5.9K" }, { metric: t.caseStudies.metrics.impressions, before: "0", after: "16.4K" }],
-      cardClass: "service-card service-card-green",
-      iconColor: "hsl(130 65% 45%)",
-      iconBg: "hsl(130 65% 45% / 0.15)",
-    },
-    {
-      client: t.caseStudies.industries.homeGarden,
-      industry: "Home & Garden",
-      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/56415fc1-9611-4d57-8f6e-463fb195d555-1764877585727.png",
-      website: "https://nmgpvcsupplies.co.uk",
-      challenge: t.caseStudies.details[1].challengeText,
-      solution: t.caseStudies.details[1].solutionText,
-      results: [{ metric: t.caseStudies.metrics.roas, before: "0x", after: "6.2x" }, { metric: t.caseStudies.metrics.conversions, before: "0", after: "22" }, { metric: t.caseStudies.metrics.organicClicks, before: "0", after: "700+" }],
-      cardClass: "service-card service-card-rose",
-      iconColor: "hsl(0 75% 50%)",
-      iconBg: "hsl(0 75% 50% / 0.15)",
-    },
-    {
-      client: t.caseStudies.industries.aviation,
-      industry: "Aviation",
-      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/jet-select-1774357619.jpeg",
-      website: "https://jetselect.nl",
-      challenge: t.caseStudies.details[2].challengeText,
-      solution: t.caseStudies.details[2].solutionText,
-      results: [{ metric: t.caseStudies.metrics.pageWeight, before: "258KB", after: "15KB" }, { metric: t.caseStudies.metrics.loadTime, before: "3-5s", after: "<1s" }, { metric: t.caseStudies.metrics.pageSpeed, before: "Slow", after: "80% Faster" }],
-      cardClass: "service-card service-card-green",
-      iconColor: "hsl(130 65% 45%)",
-      iconBg: "hsl(130 65% 45% / 0.15)",
-    },
-    {
-      client: t.caseStudies.industries.realEstate,
-      industry: "Real Estate",
-      logo: "https://qrdrprxzzujsnjjdtyou.supabase.co/storage/v1/object/public/client-logos/c7300e25-321c-4e04-ba18-c951efc9417b-1765451008744.webp",
-      website: "https://kcfhomes.com",
-      challenge: t.caseStudies.details[3].challengeText,
-      solution: t.caseStudies.details[3].solutionText,
-      results: [{ metric: t.caseStudies.metrics.timeSaved, before: "0%", after: "95%" }, { metric: t.caseStudies.metrics.timePerDeal, before: "2hrs+", after: "10min" }, { metric: t.caseStudies.metrics.saasValue, before: "$0", after: "$10K" }],
-      cardClass: "service-card service-card-rose",
-      iconColor: "hsl(0 75% 50%)",
-      iconBg: "hsl(0 75% 50% / 0.15)",
-    },
-  ];
-
-  const testimonials: { quote: string; author: string; role: string; rating: number }[] = [];
-
-  const portfolioVideos = [
-    {
-      id: 1,
-      embedUrl: "https://player.mediadelivery.net/embed/565240/bc07a880-9b97-4674-be4a-c8ca75738946",
-      title: "Gaming Ad Campaign",
-      category: "Video Advertising",
-      description: "High-impact video ad creative for gaming industry client",
-    },
-    {
-      id: 2,
-      embedUrl: "https://player.mediadelivery.net/embed/565240/a8b54ecf-5efc-4bd4-bfbf-edc6e980079d",
-      title: "Ad Creative Example",
-      category: "Video Advertising",
-      description: "Professional video ad showcasing creative direction and production",
-    },
-  ];
+export default function ResultsPageClient({ params }: Props) {
+  const safe: LocaleCode = isValidLocale(params.locale) ? params.locale : "us";
+  const p = `/${safe}`;
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="container py-16 md:py-24 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.span className="inline-block px-5 py-2 mb-8 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              {t.hero.badge}
-            </motion.span>
-            <motion.h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
-              {t.hero.title} <span className="gradient-accent-text">{t.hero.titleHighlight}</span>
-            </motion.h1>
-            <motion.p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
-              {t.hero.subtitle}
-            </motion.p>
+    <TileStack>
+      <Tile
+        theme="light"
+        variant="A"
+        eyebrow="Results"
+        headline="The numbers."
+        tagline="A quiet shelf of wins we can show, and a longer one we cannot."
+        ctas={<PillButton href={`${p}/contact`}>Book a call</PillButton>}
+      />
+
+      <Tile
+        theme="light"
+        variant="A"
+        headline="Across the book."
+        tagline="Blended outcomes across every active client, month over month."
+        media={
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            <MockDashboard theme="light" label="Lead growth" value="247%" delta="Average" />
+            <MockDashboard theme="light" label="ROAS" value="6.4x" delta="Blended" />
+            <MockDashboard theme="light" label="Organic lift" value="+214%" delta="YoY" />
+            <MockDashboard theme="light" label="Time to traction" value="2-4 wks" delta="From launch" />
           </div>
-        </div>
-        <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.5 }}>
-          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}>
-            <ChevronDown className="w-7 h-7 text-muted-foreground/50" />
-          </motion.div>
-        </motion.div>
-      </section>
+        }
+        mediaPosition="below"
+      />
 
-      {/* Trusted By */}
-      <section className="py-16 md:py-20 border-y border-border/30">
-        <div className="container">
-          <motion.div className="text-center" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-10">{t.trustedBy}</p>
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-              {["GroundTek Civils", "NMG Outdoor Living", "Jet Select", "KCF Homes", "Machas Orchard", "Sharon Clare Hypnotherapy"].map((company, index) => (
-                <motion.div key={company} className="text-2xl md:text-3xl font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors cursor-default" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }}>
-                  {company}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <TilePair>
+        <Tile
+          theme="light"
+          variant="B"
+          eyebrow="Case study"
+          headline="3.2x revenue."
+          tagline="A founder-led brand stops buying impressions. Starts buying customers."
+          ctas={<CTALink href={`${p}/contact`}>Start yours</CTALink>}
+          media={
+            <MockSearchResult
+              query="premium coaching program"
+              site="northwind.coach"
+              title="Northwind. Private coaching for founders."
+              description="Executive coaching for founders scaling past seven figures. Waitlist open for the next cohort."
+              position={1}
+            />
+          }
+          mediaPosition="below"
+        />
+        <Tile
+          theme="light"
+          variant="B"
+          eyebrow="Case study"
+          headline="68 leads a week."
+          tagline="A local service business replaces a sales team with a funnel."
+          ctas={<CTALink href={`${p}/contact`}>Start yours</CTALink>}
+          media={
+            <MockBrowser url="2atcleaning.com" theme="light">
+              <div className="p-8 space-y-3 text-[#1d1d1f]">
+                <div className="text-[12px] uppercase tracking-widest text-[#6e6e73]">Commercial cleaning</div>
+                <div className="text-[30px] font-semibold leading-tight">Clean sites.<br />Closed contracts.</div>
+              </div>
+            </MockBrowser>
+          }
+          mediaPosition="below"
+        />
+      </TilePair>
 
-      {/* Stats */}
-      <section className="py-20 md:py-28">
-        <div className="container">
-          <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-            {stats.map((stat, index) => (
-              <motion.div key={index} className="text-center" variants={staggerItem} transition={{ duration: 0.6 }}>
-                <motion.p className="text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-3" whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} duration={2 + index * 0.3} />
-                </motion.p>
-                <p className="text-base md:text-lg text-muted-foreground">{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-24 md:py-32">
-        <div className="container">
-          <motion.div className="text-center mb-16 md:mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">{t.caseStudies.title} <span className="gradient-accent-text">{t.caseStudies.titleHighlight}</span></h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">{t.caseStudies.subtitle}</p>
-          </motion.div>
-
-          <motion.div className="space-y-8 md:space-y-12" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-            {caseStudies.map((study) => {
-              return (
-                <motion.div key={study.client} variants={staggerItem} transition={{ duration: 0.6 }}>
-                  <div className={`${study.cardClass} overflow-hidden`}>
-                    <div className="p-8 md:p-10 lg:p-12">
-                      <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
-                        <div className="w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden bg-white/10 border border-white/10">
-                          <img src={study.logo} alt={study.client} className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-2xl md:text-3xl font-bold">{study.client}</h3>
-                          <p className="text-base text-muted-foreground">{study.industry}</p>
-                        </div>
-                        <a href={study.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline transition-colors">
-                          Visit Website <ArrowRight className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                      <div className="grid lg:grid-cols-3 gap-8">
-                        <div>
-                          <h4 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: study.iconColor }}>
-                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: study.iconColor }} />
-                            {t.caseStudies.challenge}
-                          </h4>
-                          <p className="text-base text-muted-foreground leading-relaxed">{study.challenge}</p>
-                        </div>
-                        <div>
-                          <h4 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: study.iconColor }}>
-                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: study.iconColor }} />
-                            {t.caseStudies.solution}
-                          </h4>
-                          <p className="text-base text-muted-foreground leading-relaxed">{study.solution}</p>
-                        </div>
-                        <div>
-                          <h4 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: study.iconColor }}>
-                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: study.iconColor }} />
-                            {t.caseStudies.results}
-                          </h4>
-                          <div className="space-y-3">
-                            {study.results.map((result) => (
-                              <div key={result.metric} className="flex items-center justify-between text-base">
-                                <span className="text-muted-foreground">{result.metric}</span>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-muted-foreground/60 line-through">{result.before}</span>
-                                  <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                                  <span className="font-bold" style={{ color: study.iconColor }}>{result.after}</span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      {testimonials.length > 0 && (
-      <section className="py-24 md:py-32">
-        <div className="container">
-          <motion.div className="text-center mb-16 md:mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">{t.testimonials.title} <span className="gradient-text">{t.testimonials.titleHighlight}</span></h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">{t.testimonials.subtitle}</p>
-          </motion.div>
-
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-            {testimonials.map((testimonial, index) => (
-              <motion.div key={index} variants={staggerItem} transition={{ duration: 0.5 }}>
-                <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500 h-full">
-                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl p-6 md:p-8 h-full flex flex-col relative overflow-hidden">
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />
-                      ))}
-                    </div>
-                    <div className="relative flex-1 mb-6">
-                      <Quote className="absolute -top-2 -left-2 w-10 h-10 text-brand-green/20" />
-                      <p className="text-base text-muted-foreground leading-relaxed pl-6">{testimonial.quote}</p>
-                    </div>
-                    <div className="border-t border-border/50 pt-4">
-                      <p className="font-semibold text-lg">{testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
-                  </div>
+      <TilePair>
+        <Tile
+          theme="light"
+          variant="B"
+          eyebrow="Case study"
+          headline="4.8% conversion."
+          tagline="A legacy site becomes the fastest path to revenue in the business."
+          ctas={<CTALink href={`${p}/contact`}>Start yours</CTALink>}
+          media={<MockDashboard theme="light" label="Conversion rate" value="4.8%" delta="Up from 1.6%" />}
+          mediaPosition="below"
+        />
+        <Tile
+          theme="light"
+          variant="B"
+          eyebrow="Case study"
+          headline="18,200 followers."
+          tagline="A considered feed. One year. Zero paid amplification."
+          ctas={<CTALink href={`${p}/contact`}>Start yours</CTALink>}
+          media={
+            <MockPhone>
+              <div className="w-full h-full bg-gradient-to-b from-[#f5f5f7] to-white flex items-center justify-center p-6">
+                <div className="text-center text-[#1d1d1f]">
+                  <div className="text-[13px] uppercase tracking-widest text-[#6e6e73]">Organic reach</div>
+                  <div className="mt-2 text-[52px] font-semibold leading-none">2.4M</div>
+                  <div className="mt-1 text-[15px] text-[#6e6e73]">last 30 days</div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-      )}
+              </div>
+            </MockPhone>
+          }
+          mediaPosition="below"
+        />
+      </TilePair>
 
-      {/* Video Portfolio */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, hsl(130 65% 40% / 0.15), transparent 70%)" }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.div className="text-center mb-16 md:mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">Video <span className="gradient-accent-text">Portfolio</span></h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">See examples of our video production and marketing content.</p>
-          </motion.div>
-          <motion.div className="grid md:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}>
-            {portfolioVideos.map((video) => (
-              <motion.div key={video.id} variants={staggerItem} transition={{ duration: 0.5 }}>
-                <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group hover:from-primary/20 hover:via-border/30 hover:to-primary/20 transition-all duration-500">
-                  <div className="bg-card/60 backdrop-blur-xl rounded-2xl overflow-hidden">
-                    <div className="aspect-video relative">
-                      <iframe src={video.embedUrl} title={video.title} loading="lazy" style={{ border: "none", position: "absolute", top: 0, height: "100%", width: "100%" }} allow="accelerometer; gyroscope; encrypted-media; picture-in-picture;" allowFullScreen />
-                    </div>
-                    <div className="p-6">
-                      <span className="text-xs uppercase tracking-wider text-primary font-medium">{video.category}</span>
-                      <h3 className="text-xl font-semibold mt-2">{video.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-2">{video.description}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.p className="text-center text-muted-foreground mt-10" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.5 }}>
-            Want to see more? <Link href={`/${validLocale}/contact`} className="text-primary hover:underline">Get in touch</Link> for our full portfolio.
-          </motion.p>
-        </div>
-      </section>
+      <Tile
+        theme="light"
+        variant="A"
+        eyebrow="Clients"
+        headline="A quiet roster."
+        tagline="Operators who preferred the work to the announcement."
+        media={<LogoStrip />}
+        mediaPosition="below"
+      />
 
-      {/* CTA */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30" style={{ background: "radial-gradient(circle, hsl(0 75% 50% / 0.15), transparent 70%)" }} />
-        </div>
-        <div className="container relative z-10">
-          <motion.div className="text-center max-w-4xl mx-auto" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} transition={{ duration: 0.7 }}>
-            <motion.div className="inline-block mb-8" initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">{t.cta.badge}</span>
-            </motion.div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-tight mb-8">{t.cta.title} <span className="gradient-text">{t.cta.titleHighlight}</span></h2>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">{t.cta.subtitle}</p>
-            <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 0.6 }}>
-              <Button asChild size="lg" className="btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 h-auto">
-                <Link href={`/${validLocale}/contact`} className="flex items-center gap-2 sm:gap-3">{t.cta.button}<ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" /></Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="group text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 h-auto border-2 border-white/20 hover:border-primary/50 bg-transparent hover:bg-white/5 transition-all duration-300">
-                <Link href={`/${validLocale}/services`} className="flex items-center gap-2">{t.cta.buttonSecondary}<span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span></Link>
-              </Button>
-            </motion.div>
-            <motion.p className="mt-8 text-sm text-muted-foreground" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.5 }}>
-              {t.cta.disclaimer}
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-    </>
+      <CloseSuite prefix={p} />
+    </TileStack>
   );
 }

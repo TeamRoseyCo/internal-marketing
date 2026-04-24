@@ -147,7 +147,7 @@ export const translations = {
   // English (United States)
   us: {
     meta: {
-      title: 'Rosey Co. - Social Media Marketing Agency',
+      title: 'Rosey Co. | Social Media Marketing Agency',
       description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services.',
     },
     header: {
@@ -293,7 +293,7 @@ export const translations = {
   // Dutch (Netherlands)
   nl: {
     meta: {
-      title: 'Rosey Co. - Social Media Marketing Bureau',
+      title: 'Rosey Co. | Social Media Marketing Bureau',
       description: 'Krijg meer leads en laat je bedrijf groeien met datagestuurde SEO, social media management en betaalde advertenties.',
     },
     header: {
@@ -439,7 +439,7 @@ export const translations = {
   // Danish (Denmark)
   dk: {
     meta: {
-      title: 'Rosey Co. - Social Media Marketing Bureau',
+      title: 'Rosey Co. | Social Media Marketing Bureau',
       description: 'Få flere leads og voks din virksomhed med datadrevet SEO, social media management og betalt annoncering.',
     },
     header: {
@@ -586,7 +586,7 @@ export const translations = {
 // Australia - Australian English (uses British spelling with local terms)
 translations.au = {
   meta: {
-    title: 'Rosey Co. - Social Media Marketing Agency Australia',
+    title: 'Rosey Co. | Social Media Marketing Agency Australia',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in Australia.',
   },
   header: {
@@ -732,7 +732,7 @@ translations.au = {
 // United Kingdom - British English
 translations.uk = {
   meta: {
-    title: 'Rosey Co. - Social Media Marketing Agency UK',
+    title: 'Rosey Co. | Social Media Marketing Agency UK',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in the UK.',
   },
   header: {
@@ -878,7 +878,7 @@ translations.uk = {
 // Ireland - Irish English (British spelling)
 translations.ie = {
   meta: {
-    title: 'Rosey Co. - Social Media Marketing Agency Ireland',
+    title: 'Rosey Co. | Social Media Marketing Agency Ireland',
     description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in Ireland.',
   },
   header: {

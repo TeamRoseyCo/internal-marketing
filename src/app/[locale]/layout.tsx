@@ -10,7 +10,6 @@ import { LocalBusinessStructuredData } from "@/components/seo/structured-data";
 import { getOpenGraphLocale } from "@/lib/seo";
 import { LocaleProvider } from "@/lib/i18n";
 import { CookieConsent } from "@/components/cookie-consent";
-import { DifyChatbot } from "@/components/chatbot";
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -56,7 +55,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <LocalBusinessStructuredData locale={locale} />
       {children}
       <CookieConsent />
-      <DifyChatbot />
     </LocaleProvider>
   );
 }
