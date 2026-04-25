@@ -45,7 +45,12 @@ export function HeroVideoPlayer({
   }, [isPlaying]);
 
   return (
-    <div className={`relative w-full ${className}`}>
+    <motion.div
+      className={`relative w-full ${className}`}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+    >
       <div className="relative aspect-video rounded-3xl overflow-hidden shadow-glow bg-black border border-border/30">
 
         {/* Preview state - Animated thumbnail with play button */}
@@ -126,6 +131,6 @@ export function HeroVideoPlayer({
           </video>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

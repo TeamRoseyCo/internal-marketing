@@ -1,6 +1,8 @@
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
 import { BlogHero } from "@/components/blog/blog-hero";
+import { BlogIntro } from "@/components/blog/blog-intro";
+import { FeaturedBlogPost } from "@/components/blog/featured-blog-post";
 import { BlogCategories } from "@/components/blog/blog-categories";
 import { NewsletterCTA } from "@/components/blog/newsletter-cta";
 
@@ -27,6 +29,10 @@ export default async function BlogPage({
     ? allPosts.filter((post) => post.category === category)
     : allPosts;
 
+  // Get featured post (first one) and remaining posts
+  const featuredPost = posts.length > 0 ? posts[0] : null;
+  const remainingPosts = posts.length > 1 ? posts.slice(1) : [];
+
   // Map category to color
   const categoryColors: Record<string, string> = {
     "Paid Advertising": "brand-rose",
@@ -41,15 +47,30 @@ export default async function BlogPage({
       {/* Hero Section */}
       <BlogHero />
 
+      {/* Blog Intro */}
+      <BlogIntro
+        subtitle="Stories & Strategies"
+        title="Marketing Insights & Strategies"
+        description="Explore actionable tips, proven strategies, and data-driven insights to help you grow your business through digital marketing, SEO, social media, and paid advertising."
+      />
+
+      {/* Featured Blog Post */}
+      {featuredPost && !category && (
+        <FeaturedBlogPost
+          post={featuredPost}
+          color={categoryColors[featuredPost.category] || "primary"}
+        />
+      )}
+
       {/* Categories */}
       <BlogCategories categories={categories} />
 
       {/* Blog Posts Grid */}
       <section className="py-24 md:py-32">
         <div className="container">
-          {posts.length > 0 ? (
+          {remainingPosts.length > 0 || (category && posts.length > 0) ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+              {(category ? posts : remainingPosts).map((post, index) => (
                 <BlogPostCard
                   key={post.slug}
                   post={post}
@@ -65,11 +86,6 @@ export default async function BlogPage({
               </p>
             </div>
           )}
-
-          {/* Coming Soon */}
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground">More articles coming soon...</p>
-          </div>
         </div>
       </section>
 

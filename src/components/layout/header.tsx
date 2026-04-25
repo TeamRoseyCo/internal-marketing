@@ -92,16 +92,22 @@ export function Header() {
       />
       <div className="container flex h-20 md:h-24 items-center justify-between relative" style={{ zIndex: 9999 }}>
         {/* Logo - Dominant Presence */}
-        <Link href={`/${locale}`} className="flex items-center gap-2 group">
-          <Image
-            src="/roseyco-logo.png"
-            alt="Rosey Co. - Global Social Media Marketing Agency"
-            width={400}
-            height={220}
-            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
-            unoptimized
-          />
-        </Link>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Link href={`/${locale}`} className="flex items-center gap-2 group">
+            <Image
+              src="/roseyco-logo.png"
+              alt="Rosey Co. - Global Social Media Marketing Agency"
+              width={400}
+              height={220}
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-transform duration-300 group-hover:scale-105"
+              unoptimized
+            />
+          </Link>
+        </motion.div>
 
         {/* Desktop Navigation - Larger, Bolder Text */}
         <nav className="hidden md:flex items-center gap-2">
