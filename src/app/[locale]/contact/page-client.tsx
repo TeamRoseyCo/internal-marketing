@@ -1,8 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Tile, TileStack } from "@/components/apple";
 import { LocaleCode, isValidLocale } from "@/lib/locales";
+
+/**
+ * Cursor-follow glow: a soft radial gradient pinned to the mouse position.
+ * Inspired by Vercel/Linear-style border-glow effect.
+ */
+function useCursorGlow() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const el = ref.current ?? (e.currentTarget as HTMLDivElement);
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.setProperty("--mx", `${x}px`);
+    el.style.setProperty("--my", `${y}px`);
+    el.style.setProperty("--glow-opacity", "1");
+  }
+  function onMouseLeave(e: React.MouseEvent<HTMLElement>) {
+    (ref.current ?? (e.currentTarget as HTMLDivElement)).style.setProperty("--glow-opacity", "0");
+  }
+  return { ref, onMouseMove, onMouseLeave };
+}
 
 interface Props {
   params: { locale: string };
@@ -33,6 +54,7 @@ export default function ContactPageClient({ params }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [service, setService] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const formGlow = useCursorGlow();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -146,47 +168,77 @@ export default function ContactPageClient({ params }: Props) {
             }}
             className="contact-grid"
           >
-            {/* Left: form */}
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Field name="firstName" label="First Name" required />
-                <Field name="lastName" label="Last Name" required />
-              </div>
-              <Field name="email" label="Email Address" type="email" required />
-              <Field name="phone" label="Phone Number" type="tel" />
-              <Field name="website" label="Website URL" type="url" />
-              <Field name="companyWebsite" label="Company Website" type="url" />
-              <div>
-                <label className="text-[13px] text-[#6e6e73]" htmlFor="service">
-                  Service Interested In <span style={{ color: "#c62828" }}>*</span>
-                </label>
-                <select
-                  id="service"
-                  required
-                  value={service}
-                  onChange={(e) => setService(e.target.value)}
-                  className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
-                >
-                  <option value="">Choose a service</option>
-                  {SERVICES.map((s) => (
-                    <option key={s.value} value={s.value}>
-                      {s.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="text-[13px] text-[#6e6e73]" htmlFor="message">
-                  Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
-                />
-              </div>
+            {/* Left: form (with cursor-follow glow) */}
+            <div
+              ref={formGlow.ref}
+              onMouseMove={formGlow.onMouseMove}
+              onMouseLeave={formGlow.onMouseLeave}
+              className="contact-glow-card"
+            >
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-7 text-left relative z-10"
+              >
+              {/* Section: Who you are */}
+              <FormSection title="About you">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Field name="firstName" label="First Name" required />
+                  <Field name="lastName" label="Last Name" required />
+                </div>
+                <Field name="email" label="Email Address" type="email" required />
+                <Field name="phone" label="Phone Number" type="tel" optional />
+              </FormSection>
+
+              {/* Section: Your business */}
+              <FormSection title="Your business">
+                <Field name="website" label="Website URL" type="url" optional />
+                <Field name="companyWebsite" label="Company Website" type="url" optional />
+                <div>
+                  <label className="text-[13px] font-medium text-[#1d1d1f]" htmlFor="service">
+                    Service Interested In <span style={{ color: "#c62828" }}>*</span>
+                  </label>
+                  <div style={{ position: "relative", marginTop: 8 }}>
+                    <select
+                      id="service"
+                      required
+                      value={service}
+                      onChange={(e) => setService(e.target.value)}
+                      className="w-full appearance-none rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3.5 pr-10 text-[15px] text-[#1d1d1f] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition"
+                    >
+                      <option value="">Choose a service</option>
+                      {SERVICES.map((s) => (
+                        <option key={s.value} value={s.value}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                    <svg
+                      style={{ position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
+                      width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                </div>
+              </FormSection>
+
+              {/* Section: Tell us */}
+              <FormSection title="Tell us more">
+                <div>
+                  <label className="text-[13px] font-medium text-[#1d1d1f]" htmlFor="message">
+                    Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    placeholder="What are you trying to grow? What's blocking you right now?"
+                    className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder:text-[#86868b] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition resize-y"
+                  />
+                </div>
+              </FormSection>
+
               {/* Honeypot */}
               <input
                 type="text"
@@ -196,18 +248,50 @@ export default function ContactPageClient({ params }: Props) {
                 style={{ position: "absolute", left: "-9999px" }}
                 aria-hidden="true"
               />
-              {error && <div className="text-[14px]" style={{ color: "#c62828" }}>{error}</div>}
-              <div className="flex flex-col gap-3 mt-2">
+
+              {error && (
+                <div
+                  className="text-[14px]"
+                  style={{
+                    color: "#c62828",
+                    background: "#fdecec",
+                    border: "1px solid #f5b9bc",
+                    borderRadius: 12,
+                    padding: "12px 16px",
+                  }}
+                >
+                  {error}
+                </div>
+              )}
+
+              <div className="flex flex-col gap-3 mt-1">
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="ac-pill"
                   style={{
-                    padding: "14px 28px",
+                    padding: "16px 32px",
                     fontSize: "16px",
                     fontWeight: 600,
-                    opacity: submitting ? 0.6 : 1,
+                    color: "#fff",
+                    background: submitting ? "#7ab2ee" : "#0071e3",
+                    border: 0,
+                    borderRadius: 999,
+                    cursor: submitting ? "default" : "pointer",
+                    boxShadow: "0 8px 20px -8px rgba(0,113,227,0.5)",
+                    transition: "all 200ms ease",
                     alignSelf: "flex-start",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (submitting) return;
+                    e.currentTarget.style.background = "#0077ed";
+                    e.currentTarget.style.transform = "translateY(-1px)";
+                    e.currentTarget.style.boxShadow = "0 12px 28px -8px rgba(0,113,227,0.55)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (submitting) return;
+                    e.currentTarget.style.background = "#0071e3";
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 8px 20px -8px rgba(0,113,227,0.5)";
                   }}
                 >
                   {submitting ? "Sending…" : "Book Your Free Strategy Call"}
@@ -223,7 +307,8 @@ export default function ContactPageClient({ params }: Props) {
                   .
                 </p>
               </div>
-            </form>
+              </form>
+            </div>
 
             {/* Right: contact details */}
             <aside
@@ -281,12 +366,86 @@ export default function ContactPageClient({ params }: Props) {
           </div>
         </div>
 
-        {/* On small screens, stack columns */}
+        {/* Cursor-glow + responsive stacking */}
         <style jsx>{`
           @media (max-width: 900px) {
             :global(.contact-grid) {
               grid-template-columns: 1fr !important;
             }
+          }
+          :global(.contact-glow-card) {
+            position: relative;
+            background: #ffffff;
+            border-radius: 22px;
+            padding: clamp(28px, 3.5vw, 44px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+              0 12px 32px -16px rgba(0, 0, 0, 0.12);
+            --mx: 50%;
+            --my: 0%;
+            --glow-opacity: 0;
+          }
+          /* Glowing border ring (sits behind the card content) */
+          :global(.contact-glow-card)::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            padding: 1px;
+            background: radial-gradient(
+              260px circle at var(--mx) var(--my),
+              rgba(0, 113, 227, 0.85),
+              rgba(0, 113, 227, 0) 70%
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            opacity: var(--glow-opacity);
+            transition: opacity 250ms ease;
+            pointer-events: none;
+          }
+          /* Soft inner glow to lift the card on hover */
+          :global(.contact-glow-card)::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 22px;
+            background: radial-gradient(
+              360px circle at var(--mx) var(--my),
+              rgba(0, 113, 227, 0.06),
+              transparent 65%
+            );
+            opacity: var(--glow-opacity);
+            transition: opacity 250ms ease;
+            pointer-events: none;
+          }
+          /* Same effect for contact detail cards */
+          :global(.glow-card) {
+            position: relative;
+            --mx: 50%;
+            --my: 0%;
+            --glow-opacity: 0;
+          }
+          :global(.glow-card)::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 1px;
+            background: radial-gradient(
+              200px circle at var(--mx) var(--my),
+              rgba(0, 113, 227, 0.85),
+              rgba(0, 113, 227, 0) 70%
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            opacity: var(--glow-opacity);
+            transition: opacity 250ms ease;
+            pointer-events: none;
           }
         `}</style>
       </section>
@@ -322,36 +481,48 @@ function ContactCard({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: "28px",
+    padding: "24px",
     background: "#fff",
     border: "1px solid #d2d2d7",
     borderRadius: 18,
-    minHeight: 160,
-    transition: "all 200ms ease",
+    minHeight: 140,
+    transition: "transform 200ms ease, box-shadow 200ms ease",
     textDecoration: "none",
     color: "inherit",
   };
+
+  function handleMove(e: React.MouseEvent<HTMLElement>) {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    el.style.setProperty("--glow-opacity", "1");
+    el.style.transform = "translateY(-2px)";
+    el.style.boxShadow = "0 12px 28px -12px rgba(0,113,227,0.3)";
+  }
+  function handleLeave(e: React.MouseEvent<HTMLElement>) {
+    const el = e.currentTarget;
+    el.style.setProperty("--glow-opacity", "0");
+    el.style.transform = "translateY(0)";
+    el.style.boxShadow = "none";
+  }
+
   if (href) {
     return (
-      <a
-        href={href}
-        style={baseStyle}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "#0071e3";
-          e.currentTarget.style.transform = "translateY(-2px)";
-          e.currentTarget.style.boxShadow = "0 8px 24px -8px rgba(0,0,0,0.12)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "#d2d2d7";
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "none";
-        }}
-      >
-        {inner}
+      <a href={href} className="glow-card" style={baseStyle} onMouseMove={handleMove} onMouseLeave={handleLeave}>
+        <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", width: "100%" }}>
+          {inner}
+        </div>
       </a>
     );
   }
-  return <div style={baseStyle}>{inner}</div>;
+  return (
+    <div className="glow-card" style={baseStyle} onMouseMove={handleMove} onMouseLeave={handleLeave}>
+      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", width: "100%" }}>
+        {inner}
+      </div>
+    </div>
+  );
 }
 
 function Field({
@@ -359,26 +530,48 @@ function Field({
   label,
   type = "text",
   required,
+  optional,
+  placeholder,
 }: {
   name: string;
   label: string;
   type?: string;
   required?: boolean;
+  optional?: boolean;
+  placeholder?: string;
 }) {
   return (
     <div>
-      <label className="text-[13px] text-[#6e6e73]" htmlFor={name}>
-        {label}
-        {required && <span style={{ color: "#c62828" }}> *</span>}
+      <label
+        htmlFor={name}
+        className="flex items-center justify-between text-[13px] font-medium text-[#1d1d1f]"
+      >
+        <span>
+          {label}
+          {required && <span style={{ color: "#c62828" }}> *</span>}
+        </span>
+        {optional && <span className="text-[12px] font-normal text-[#86868b]">Optional</span>}
       </label>
       <input
         id={name}
         name={name}
         type={type}
         required={required}
+        placeholder={placeholder}
         autoComplete={type === "email" ? "email" : type === "tel" ? "tel" : "off"}
-        className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
+        className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder:text-[#86868b] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition"
       />
     </div>
+  );
+}
+
+function FormSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <fieldset className="flex flex-col gap-4 m-0 p-0 border-0">
+      <legend className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#86868b] mb-1">
+        {title}
+      </legend>
+      {children}
+    </fieldset>
   );
 }
