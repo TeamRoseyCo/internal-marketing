@@ -1,6 +1,6 @@
 // src/components/blog/featured-blog-post.tsx
 // Featured blog post with 2-column image + content layout
-// Inspired by Raha Resort blog design - clean, editorial, professional
+// Uses explicit colors with [data-theme="dark"] CSS overrides for proper theme support
 
 "use client";
 
@@ -47,7 +47,7 @@ export function FeaturedBlogPost({
   );
 
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-20 md:py-28 bg-[#fbfbfd]">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Featured Image */}
@@ -78,8 +78,7 @@ export function FeaturedBlogPost({
                   />
                 )}
 
-                {/* Category badge floating top-left */}
-                <span className="absolute top-6 left-6 bg-primary text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider">
+                <span className="absolute top-6 left-6 bg-[#0071e3] text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider">
                   {post.category}
                 </span>
               </div>
@@ -93,36 +92,32 @@ export function FeaturedBlogPost({
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className="block text-xs font-semibold tracking-[0.25em] uppercase text-primary mb-4">
+            <span className="block text-xs font-semibold tracking-[0.25em] uppercase text-[#0071e3] mb-4">
               Featured Article
             </span>
 
-            {/* Meta */}
-            <div className="flex items-center gap-4 text-sm text-foreground/60 mb-4">
+            <div className="flex items-center gap-4 text-sm text-[#6e6e73] mb-4">
               <span>{formattedDate}</span>
-              <span className="text-foreground/30">•</span>
+              <span className="opacity-50">•</span>
               <span>{post.readTime}</span>
             </div>
 
-            {/* Title */}
-            <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-serif font-medium text-foreground leading-[1.2] mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-serif font-medium text-[#1d1d1f] leading-[1.2] mb-6">
               <Link
                 href={blogUrl}
-                className="hover:text-primary transition-colors duration-300"
+                className="hover:text-[#0071e3] transition-colors duration-300"
               >
                 {post.title}
               </Link>
             </h2>
 
-            {/* Excerpt */}
-            <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-[#6e6e73] leading-relaxed mb-8">
               {post.excerpt}
             </p>
 
-            {/* CTA */}
             <Link
               href={blogUrl}
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded transition-all duration-300 font-semibold text-sm uppercase tracking-wider group"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#0071e3] text-[#0071e3] hover:bg-[#0071e3] hover:text-white rounded transition-all duration-300 font-semibold text-sm uppercase tracking-wider group"
             >
               Read Full Article
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

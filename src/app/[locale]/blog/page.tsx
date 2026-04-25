@@ -5,7 +5,9 @@
 import { Metadata } from "next";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
-import { localeList, LocaleCode, isValidLocale } from "@/lib/locales";
+import { BlogIntro } from "@/components/blog/blog-intro";
+import { FeaturedBlogPost } from "@/components/blog/featured-blog-post";
+import { localeList, isValidLocale } from "@/lib/locales";
 import { getBlogPageTranslations } from "@/lib/page-translations";
 import { LocaleBlogHero } from "@/components/blog/locale-blog-hero";
 import { LocaleBlogCategories } from "@/components/blog/locale-blog-categories";
@@ -58,6 +60,10 @@ export default async function LocaleBlogPage({
     ? allPosts.filter((post) => post.category === category)
     : allPosts;
 
+  // Featured post is first one (only when no category filter)
+  const featuredPost = !category && posts.length > 0 ? posts[0] : null;
+  const remainingPosts = !category && posts.length > 1 ? posts.slice(1) : posts;
+
   // Map category to color
   const categoryColors: Record<string, string> = {
     "Paid Advertising": "brand-rose",
@@ -72,10 +78,22 @@ export default async function LocaleBlogPage({
 
   return (
     <>
-      {/* Hero Section */}
       <LocaleBlogHero translations={t.hero} />
 
-      {/* Categories */}
+      <BlogIntro
+        subtitle="No Fluff. Just Wins."
+        title="Marketing Playbooks That Actually Work"
+        description="We don't write theory. We write the exact systems we use to fill calendars, drive bookings, and turn locals into paying customers — every single month."
+      />
+
+      {featuredPost && (
+        <FeaturedBlogPost
+          post={featuredPost}
+          color={categoryColors[featuredPost.category] || "primary"}
+          locale={localeCode}
+        />
+      )}
+
       <LocaleBlogCategories
         categories={categories}
         translations={t.categories}
@@ -83,11 +101,11 @@ export default async function LocaleBlogPage({
       />
 
       {/* Blog Posts Grid */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28 bg-[#f8f6f3]">
         <div className="container">
-          {posts.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+          {remainingPosts.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+              {remainingPosts.map((post, index) => (
                 <BlogPostCard
                   key={post.slug}
                   post={post}
@@ -99,20 +117,16 @@ export default async function LocaleBlogPage({
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">
-                {t.posts.noPosts}
-              </p>
+              <p className="text-[#6e6e73] mb-4">{t.posts.noPosts}</p>
             </div>
           )}
 
-          {/* Coming Soon */}
           <div className="text-center mt-12">
-            <p className="text-muted-foreground">{t.posts.moreComing}</p>
+            <p className="text-[#6e6e73]">{t.posts.moreComing}</p>
           </div>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
       <LocaleNewsletterCTA translations={t.newsletter} />
     </>
   );
