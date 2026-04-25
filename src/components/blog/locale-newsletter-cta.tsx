@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Mail, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/animations";
 import { BlogPageTranslations } from "@/lib/page-translations";
 
@@ -31,18 +29,6 @@ export function LocaleNewsletterCTA({ translations }: LocaleNewsletterCTAProps) 
 
       <div className="container relative z-10">
         <FadeIn className="text-center max-w-3xl mx-auto">
-          <motion.div
-            className="inline-block mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="px-5 py-2 text-sm font-medium tracking-wider uppercase rounded-full bg-primary/10 text-primary border border-primary/20">
-              {translations.badge}
-            </span>
-          </motion.div>
-
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
             {translations.title}{" "}
             <span className="gradient-text">{translations.titleHighlight}</span>
@@ -67,10 +53,13 @@ export function LocaleNewsletterCTA({ translations }: LocaleNewsletterCTAProps) 
                     className="w-full pl-12 pr-4 py-4 rounded-xl border border-border/50 bg-background/50 text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   />
                 </div>
-                <Button className="btn-hero text-base px-6 py-4 h-auto group">
+                <button
+                  type="button"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#006edb] shadow-md transition-colors whitespace-nowrap"
+                >
                   {translations.button}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
 
               <p className="text-sm text-muted-foreground mt-4 text-center">
