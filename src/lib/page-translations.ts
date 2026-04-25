@@ -1932,14 +1932,14 @@ export interface BlogPageTranslations {
 export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
   us: {
     meta: {
-      title: 'THE Blog To Get More Customers',
-      description: 'Simple marketing tactics that actually work for local businesses. No fluff, no theory — just proven strategies you can use this week to bring more customers through your door.',
+      title: 'Blog - Marketing Insights & Strategies',
+      description: 'Actionable tips, strategies, and insights to help you grow your business through digital marketing.',
     },
     hero: {
-      badge: 'The Blog',
-      title: 'THE Blog To Get More',
-      titleHighlight: 'Customers.',
-      subtitle: 'Simple marketing tactics that actually work for local businesses. No fluff, no theory — just proven strategies you can use this week to bring more customers through your door.',
+      badge: 'Our Blog',
+      title: 'Marketing Insights &',
+      titleHighlight: 'Strategies',
+      subtitle: 'Actionable tips, strategies, and insights to help you grow your business through digital marketing.',
     },
     categories: {
       all: 'All',
