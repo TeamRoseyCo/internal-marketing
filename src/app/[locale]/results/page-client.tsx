@@ -107,8 +107,8 @@ export default function ResultsPageClient({ params }: Props) {
           tagline="A considered feed. One year. Zero paid amplification."
           ctas={<CTALink href={`${p}/contact`}>Start yours</CTALink>}
           media={
-            <MockPhone>
-              <div className="w-full h-full bg-gradient-to-b from-[#f5f5f7] to-white flex items-center justify-center p-6">
+            <MockPhone horizontal>
+              <div className="w-full h-full bg-gradient-to-r from-[#f5f5f7] to-white flex items-center justify-center p-6">
                 <div className="text-center text-[#1d1d1f]">
                   <div className="text-[13px] uppercase tracking-widest text-[#6e6e73]">Organic reach</div>
                   <div className="mt-2 text-[52px] font-semibold leading-none">2.4M</div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Tile, TileStack } from "@/components/apple";
 import { LocaleCode, isValidLocale } from "@/lib/locales";
 
@@ -17,112 +17,14 @@ const SERVICES = [
   { value: "other", label: "Other / Not Sure" },
 ];
 
-// Apple-Support-style icon grid: each tile pre-fills the form's service field
-type HelpTile = {
-  key: string;
-  label: string;
-  serviceValue: string; // matches SERVICES[].value, or "" for general
-  icon: JSX.Element;
+// Direct contact details (mirrors live roseyco.com/us/contact)
+const CONTACT_DETAILS = {
+  email: "team@roseyco.com",
+  phone: "+1 (307) 400-9814",
+  phoneHref: "tel:+13074009814",
+  location: "Missouri, United States",
+  responseTime: "Within 24 hours",
 };
-
-const HELP_TILES: HelpTile[] = [
-  {
-    key: "seo",
-    label: "SEO",
-    serviceValue: "seo",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="28" cy="28" r="16" />
-        <path d="m40 40 14 14" />
-        <path d="M22 28h12M28 22v12" />
-      </svg>
-    ),
-  },
-  {
-    key: "paid-ads",
-    label: "Paid Ads",
-    serviceValue: "paid-ads",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M8 36V20a4 4 0 0 1 4-4h28l16-8v40l-16-8H12a4 4 0 0 1-4-4Z" />
-        <path d="M20 40v8a4 4 0 0 0 8 0v-8" />
-      </svg>
-    ),
-  },
-  {
-    key: "social",
-    label: "Social Media",
-    serviceValue: "social-media",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="8" y="8" width="48" height="48" rx="12" />
-        <circle cx="32" cy="32" r="10" />
-        <circle cx="46" cy="18" r="2.5" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    key: "website",
-    label: "Website Design",
-    serviceValue: "website-design",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="10" width="52" height="40" rx="3" />
-        <path d="M6 22h52" />
-        <circle cx="13" cy="16" r="1.5" fill="currentColor" />
-        <circle cx="19" cy="16" r="1.5" fill="currentColor" />
-        <circle cx="25" cy="16" r="1.5" fill="currentColor" />
-        <path d="M22 56h20M32 50v6" />
-      </svg>
-    ),
-  },
-  {
-    key: "all",
-    label: "Full Strategy",
-    serviceValue: "all",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M32 6v52M6 32h52" />
-        <circle cx="32" cy="32" r="22" />
-        <path d="M14 14 50 50M50 14 14 50" />
-      </svg>
-    ),
-  },
-  {
-    key: "billing",
-    label: "Billing",
-    serviceValue: "",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="14" width="52" height="36" rx="4" />
-        <path d="M6 26h52M14 40h12M32 40h6" />
-      </svg>
-    ),
-  },
-  {
-    key: "account",
-    label: "Account",
-    serviceValue: "",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="32" cy="22" r="10" />
-        <path d="M10 56c2-12 11-18 22-18s20 6 22 18" />
-      </svg>
-    ),
-  },
-  {
-    key: "other",
-    label: "Something else",
-    serviceValue: "",
-    icon: (
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="32" cy="32" r="24" />
-        <path d="M24 26c0-4 4-7 8-7s8 3 8 7c0 4-4 5-6 7-1 1-2 2-2 4" />
-        <circle cx="32" cy="46" r="1.5" fill="currentColor" />
-      </svg>
-    ),
-  },
-];
 
 export default function ContactPageClient({ params }: Props) {
   const safe: LocaleCode = isValidLocale(params.locale) ? params.locale : "us";
@@ -131,12 +33,6 @@ export default function ContactPageClient({ params }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [service, setService] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  function selectHelpTile(tile: HelpTile) {
-    setService(tile.serviceValue);
-    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -180,7 +76,7 @@ export default function ContactPageClient({ params }: Props) {
           variant="A"
           eyebrow="Received"
           headline="On the way."
-          tagline="A short reply lands in your inbox within one business day. Usually sooner."
+          tagline="A short reply lands in your inbox within 24 hours. Usually sooner."
         />
       </TileStack>
     );
@@ -188,219 +84,274 @@ export default function ContactPageClient({ params }: Props) {
 
   return (
     <TileStack>
-      {/* Apple-Support style hero: big circular logo + headline */}
+      {/* Single merged section: hero centered, then 2 cols (form left, details right) */}
       <section
         className="ac-tile ac-tile-light"
         data-ac-theme="light"
-        style={{
-          padding: "clamp(56px, 7vw, 96px) clamp(24px, 5vw, 56px)",
-          textAlign: "center",
-        }}
+        style={{ padding: "clamp(56px, 7vw, 96px) clamp(24px, 5vw, 56px)" }}
       >
-        <div
-          aria-hidden="true"
-          style={{
-            width: 96,
-            height: 96,
-            margin: "0 auto 24px",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle at 30% 30%, #ff6b8a 0%, #e8252a 55%, #c41015 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 10px 30px -8px rgba(232,37,42,0.4)",
-          }}
-        >
-          <svg viewBox="0 0 24 24" width="48" height="48" fill="white">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-          </svg>
-        </div>
-        <h1
-          style={{
-            fontSize: "clamp(36px, 5vw, 56px)",
-            fontWeight: 600,
-            letterSpacing: "-0.015em",
-            margin: "0 0 12px",
-            color: "#1d1d1f",
-            lineHeight: 1.1,
-          }}
-        >
-          Rosey Co. Support
-        </h1>
-        <p
-          style={{
-            fontSize: "clamp(18px, 2vw, 22px)",
-            color: "#6e6e73",
-            margin: 0,
-            fontWeight: 400,
-          }}
-        >
-          Need help growing? Start here.
-        </p>
-      </section>
-
-      {/* Apple-Support style icon grid */}
-      <section
-        className="ac-tile ac-tile-light"
-        data-ac-theme="light"
-        style={{ padding: "clamp(40px, 5vw, 72px) clamp(24px, 5vw, 56px)" }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-            gap: "clamp(16px, 2vw, 28px)",
-            maxWidth: 1080,
-            margin: "0 auto",
-          }}
-        >
-          {HELP_TILES.map((tile) => {
-            const isActive = service === tile.serviceValue && tile.serviceValue !== "";
-            return (
-              <button
-                key={tile.key}
-                type="button"
-                onClick={() => selectHelpTile(tile)}
-                className="ac-help-tile"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 14,
-                  padding: "28px 16px",
-                  background: isActive ? "#f5f5f7" : "transparent",
-                  border: "1px solid #d2d2d7",
-                  borderRadius: 18,
-                  cursor: "pointer",
-                  transition: "all 200ms ease",
-                  minHeight: 140,
-                  color: "#1d1d1f",
-                  fontFamily: "inherit",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#0071e3";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 8px 24px -8px rgba(0,0,0,0.12)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#d2d2d7";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <div style={{ width: 48, height: 48, color: "#0071e3" }}>
-                  {tile.icon}
-                </div>
-                <span style={{ fontSize: 14, fontWeight: 500, textAlign: "center" }}>
-                  {tile.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Original "Say hello" intro */}
-      <Tile
-        theme="light"
-        variant="A"
-        eyebrow="Or message us directly"
-        headline="Say hello."
-        tagline="Fifteen minutes. A real person. A direct answer."
-      />
-
-      {/* Original form (preserved) */}
-      <section
-        className="ac-tile ac-tile-light"
-        data-ac-theme="light"
-        style={{ padding: "clamp(32px, 5vw, 72px)" }}
-      >
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="w-full max-w-2xl mx-auto flex flex-col gap-5 text-left"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Field name="firstName" label="First Name" required />
-            <Field name="lastName" label="Last Name" required />
-          </div>
-          <Field name="email" label="Email Address" type="email" required />
-          <Field name="phone" label="Phone Number" type="tel" />
-          <Field name="website" label="Website URL" type="url" />
-          <Field name="companyWebsite" label="Company Website" type="url" />
-          <div>
-            <label className="text-[13px] text-[#6e6e73]" htmlFor="service">
-              Service Interested In <span style={{ color: "#c62828" }}>*</span>
-            </label>
-            <select
-              id="service"
-              required
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
-            >
-              <option value="">Choose a service</option>
-              {SERVICES.map((s) => (
-                <option key={s.value} value={s.value}>
-                  {s.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="text-[13px] text-[#6e6e73]" htmlFor="message">
-              Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              required
-              className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
-            />
-          </div>
-          {/* Honeypot — must remain empty */}
-          <input
-            type="text"
-            name="_hp_url"
-            tabIndex={-1}
-            autoComplete="off"
-            style={{ position: "absolute", left: "-9999px" }}
-            aria-hidden="true"
-          />
-          {error && <div className="text-[14px]" style={{ color: "#c62828" }}>{error}</div>}
-          <div className="flex flex-col gap-3 mt-2">
-            <button
-              type="submit"
-              disabled={submitting}
-              className="ac-pill"
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          {/* Hero header */}
+          <div style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}>
+            <div
+              aria-hidden="true"
               style={{
-                padding: "14px 28px",
-                fontSize: "16px",
-                fontWeight: 600,
-                opacity: submitting ? 0.6 : 1,
-                alignSelf: "flex-start",
+                width: 88,
+                height: 88,
+                margin: "0 auto 22px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle at 30% 30%, #ff6b8a 0%, #e8252a 55%, #c41015 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 10px 30px -8px rgba(232,37,42,0.4)",
               }}
             >
-              {submitting ? "Sending…" : "Book Your Free Strategy Call"}
-            </button>
-            <p className="text-[13px] text-[#6e6e73]">
-              By submitting this form, you agree to our{" "}
-              <a
-                href={`/${safe}/privacy-policy`}
-                className="underline hover:text-[#0071e3]"
-              >
-                Privacy Policy
-              </a>
-              .
+              <svg viewBox="0 0 24 24" width="44" height="44" fill="white">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </div>
+            <h1
+              style={{
+                fontSize: "clamp(34px, 4.5vw, 52px)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+                margin: "0 0 12px",
+                color: "#1d1d1f",
+                lineHeight: 1.1,
+              }}
+            >
+              Rosey Co. Support
+            </h1>
+            <p
+              style={{
+                fontSize: "clamp(17px, 1.6vw, 20px)",
+                color: "#6e6e73",
+                margin: 0,
+                fontWeight: 400,
+              }}
+            >
+              Need help growing? Start here.
             </p>
           </div>
-        </form>
+
+          {/* 2-column: form left, details right */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
+              gap: "clamp(32px, 4vw, 56px)",
+              alignItems: "start",
+            }}
+            className="contact-grid"
+          >
+            {/* Left: form */}
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Field name="firstName" label="First Name" required />
+                <Field name="lastName" label="Last Name" required />
+              </div>
+              <Field name="email" label="Email Address" type="email" required />
+              <Field name="phone" label="Phone Number" type="tel" />
+              <Field name="website" label="Website URL" type="url" />
+              <Field name="companyWebsite" label="Company Website" type="url" />
+              <div>
+                <label className="text-[13px] text-[#6e6e73]" htmlFor="service">
+                  Service Interested In <span style={{ color: "#c62828" }}>*</span>
+                </label>
+                <select
+                  id="service"
+                  required
+                  value={service}
+                  onChange={(e) => setService(e.target.value)}
+                  className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
+                >
+                  <option value="">Choose a service</option>
+                  {SERVICES.map((s) => (
+                    <option key={s.value} value={s.value}>
+                      {s.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="text-[13px] text-[#6e6e73]" htmlFor="message">
+                  Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
+                />
+              </div>
+              {/* Honeypot */}
+              <input
+                type="text"
+                name="_hp_url"
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ position: "absolute", left: "-9999px" }}
+                aria-hidden="true"
+              />
+              {error && <div className="text-[14px]" style={{ color: "#c62828" }}>{error}</div>}
+              <div className="flex flex-col gap-3 mt-2">
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="ac-pill"
+                  style={{
+                    padding: "14px 28px",
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    opacity: submitting ? 0.6 : 1,
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  {submitting ? "Sending…" : "Book Your Free Strategy Call"}
+                </button>
+                <p className="text-[13px] text-[#6e6e73]">
+                  By submitting this form, you agree to our{" "}
+                  <a
+                    href={`/${safe}/privacy-policy`}
+                    className="underline hover:text-[#0071e3]"
+                  >
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
+              </div>
+            </form>
+
+            {/* Right: contact details */}
+            <aside
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+              }}
+            >
+              <h2 style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6e6e73", margin: "0 0 8px" }}>
+                Or reach us directly
+              </h2>
+              <ContactCard
+                label="Call us"
+                value={CONTACT_DETAILS.phone}
+                href={CONTACT_DETAILS.phoneHref}
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                }
+              />
+              <ContactCard
+                label="Email us"
+                value={CONTACT_DETAILS.email}
+                href={`mailto:${CONTACT_DETAILS.email}`}
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                }
+              />
+              <ContactCard
+                label="Based in"
+                value={CONTACT_DETAILS.location}
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                }
+              />
+              <ContactCard
+                label="Reply time"
+                value={CONTACT_DETAILS.responseTime}
+                icon={
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                }
+              />
+            </aside>
+          </div>
+        </div>
+
+        {/* On small screens, stack columns */}
+        <style jsx>{`
+          @media (max-width: 900px) {
+            :global(.contact-grid) {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
       </section>
     </TileStack>
   );
+}
+
+function ContactCard({
+  label,
+  value,
+  href,
+  icon,
+}: {
+  label: string;
+  value: string;
+  href?: string;
+  icon: React.ReactNode;
+}) {
+  const inner = (
+    <>
+      <div style={{ width: 32, height: 32, color: "#0071e3", marginBottom: 14 }}>
+        {icon}
+      </div>
+      <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6e6e73", marginBottom: 6 }}>
+        {label}
+      </div>
+      <div style={{ fontSize: 17, fontWeight: 500, color: "#1d1d1f" }}>
+        {value}
+      </div>
+    </>
+  );
+  const baseStyle: React.CSSProperties = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    padding: "28px",
+    background: "#fff",
+    border: "1px solid #d2d2d7",
+    borderRadius: 18,
+    minHeight: 160,
+    transition: "all 200ms ease",
+    textDecoration: "none",
+    color: "inherit",
+  };
+  if (href) {
+    return (
+      <a
+        href={href}
+        style={baseStyle}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "#0071e3";
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.boxShadow = "0 8px 24px -8px rgba(0,0,0,0.12)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "#d2d2d7";
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        {inner}
+      </a>
+    );
+  }
+  return <div style={baseStyle}>{inner}</div>;
 }
 
 function Field({
