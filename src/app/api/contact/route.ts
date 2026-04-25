@@ -13,7 +13,8 @@ interface LeadData {
   email: string;
   phone?: string;
   website?: string;
-  company_website?: string; // Honeypot field
+  companyWebsite?: string; // Real field — the user's company website
+  _hp_url?: string;        // Honeypot — must be empty
   service: string;
   message: string;
 }
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
     const data: LeadData = await request.json();
 
     // Honeypot check - if filled, it's a bot (reject silently)
-    if (data.company_website) {
+    if (data._hp_url) {
       return NextResponse.json(
         { error: 'Invalid submission' },
         { status: 400 }
@@ -81,6 +82,7 @@ export async function POST(request: NextRequest) {
             <p><strong>Email:</strong> ${data.email}</p>
             <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
             <p><strong>Website:</strong> ${data.website || 'Not provided'}</p>
+            <p><strong>Company Website:</strong> ${data.companyWebsite || 'Not provided'}</p>
             <p><strong>Service Interest:</strong> ${data.service}</p>
             <h3>Message:</h3>
             <p>${data.message.replace(/\n/g, '<br>')}</p>

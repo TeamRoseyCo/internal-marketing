@@ -2,18 +2,19 @@
 
 import { useState, useRef } from "react";
 import { Tile, TileStack } from "@/components/apple";
-import { LocaleCode, isValidLocale, getLocale } from "@/lib/locales";
+import { LocaleCode, isValidLocale } from "@/lib/locales";
 
 interface Props {
   params: { locale: string };
 }
 
+// Service options match the live roseyco.com/us/contact form
 const SERVICES = [
-  { value: "seo", label: "SEO" },
-  { value: "paid-ads", label: "Paid Ads" },
-  { value: "social-media", label: "Social Media" },
+  { value: "seo", label: "SEO Services" },
+  { value: "social-media", label: "Social Media Management" },
+  { value: "paid-ads", label: "Paid Advertising" },
   { value: "website-design", label: "Website Design" },
-  { value: "all", label: "All of the above" },
+  { value: "other", label: "Other / Not Sure" },
 ];
 
 // Apple-Support-style icon grid: each tile pre-fills the form's service field
@@ -125,7 +126,6 @@ const HELP_TILES: HelpTile[] = [
 
 export default function ContactPageClient({ params }: Props) {
   const safe: LocaleCode = isValidLocale(params.locale) ? params.locale : "us";
-  const localeConfig = getLocale(safe);
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -149,7 +149,8 @@ export default function ContactPageClient({ params }: Props) {
       email: form.get("email") as string,
       phone: form.get("phone") as string,
       website: form.get("website") as string,
-      company_website: form.get("company_website") as string,
+      companyWebsite: form.get("companyWebsite") as string,
+      _hp_url: form.get("_hp_url") as string, // honeypot
       service,
       message: form.get("message") as string,
     };
@@ -322,18 +323,20 @@ export default function ContactPageClient({ params }: Props) {
           className="w-full max-w-2xl mx-auto flex flex-col gap-5 text-left"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Field name="firstName" label="First name" required />
-            <Field name="lastName" label="Last name" required />
+            <Field name="firstName" label="First Name" required />
+            <Field name="lastName" label="Last Name" required />
           </div>
-          <Field name="email" label="Email" type="email" required />
-          <Field name="phone" label="Phone" type="tel" />
-          <Field name="website" label="Website" type="url" />
+          <Field name="email" label="Email Address" type="email" required />
+          <Field name="phone" label="Phone Number" type="tel" />
+          <Field name="website" label="Website URL" type="url" />
+          <Field name="companyWebsite" label="Company Website" type="url" />
           <div>
             <label className="text-[13px] text-[#6e6e73]" htmlFor="service">
-              What can we help with?
+              Service Interested In <span style={{ color: "#c62828" }}>*</span>
             </label>
             <select
               id="service"
+              required
               value={service}
               onChange={(e) => setService(e.target.value)}
               className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
@@ -348,7 +351,7 @@ export default function ContactPageClient({ params }: Props) {
           </div>
           <div>
             <label className="text-[13px] text-[#6e6e73]" htmlFor="message">
-              Tell us the shape of the problem
+              Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
             </label>
             <textarea
               id="message"
@@ -358,28 +361,41 @@ export default function ContactPageClient({ params }: Props) {
               className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-white px-4 py-3 text-[15px] outline-none focus:border-[#0071e3]"
             />
           </div>
-          {/* Honeypot */}
+          {/* Honeypot — must remain empty */}
           <input
             type="text"
-            name="company_website"
+            name="_hp_url"
             tabIndex={-1}
             autoComplete="off"
             style={{ position: "absolute", left: "-9999px" }}
             aria-hidden="true"
           />
           {error && <div className="text-[14px]" style={{ color: "#c62828" }}>{error}</div>}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-3 mt-2">
             <button
               type="submit"
               disabled={submitting}
               className="ac-pill"
-              style={{ padding: "12px 24px", fontSize: "16px", opacity: submitting ? 0.6 : 1 }}
+              style={{
+                padding: "14px 28px",
+                fontSize: "16px",
+                fontWeight: 600,
+                opacity: submitting ? 0.6 : 1,
+                alignSelf: "flex-start",
+              }}
             >
-              {submitting ? "Sending" : "Send message"}
+              {submitting ? "Sending…" : "Book Your Free Strategy Call"}
             </button>
-            <div className="ac-caption">
-              Usually replied to within one business day from {localeConfig.country}.
-            </div>
+            <p className="text-[13px] text-[#6e6e73]">
+              By submitting this form, you agree to our{" "}
+              <a
+                href={`/${safe}/privacy-policy`}
+                className="underline hover:text-[#0071e3]"
+              >
+                Privacy Policy
+              </a>
+              .
+            </p>
           </div>
         </form>
       </section>
