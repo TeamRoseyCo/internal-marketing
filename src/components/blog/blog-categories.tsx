@@ -58,8 +58,8 @@ export function BlogCategories({ categories }: BlogCategoriesProps) {
                 whileTap={{ scale: 0.98 }}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-all duration-300 ${
                   isActive
-                    ? "bg-primary/10 text-primary border-primary/30 hover:bg-primary/20"
-                    : "bg-card/60 backdrop-blur-sm border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/5"
+                    ? "bg-primary text-white border-primary hover:bg-primary/90"
+                    : "bg-foreground/5 border-border/40 text-foreground hover:text-primary hover:border-primary/60 hover:bg-foreground/10"
                 }`}
               >
                 {category.name}{" "}
