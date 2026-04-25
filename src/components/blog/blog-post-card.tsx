@@ -90,12 +90,12 @@ export function BlogPostCard({
 
             <div className="p-6 flex flex-col flex-1">
               {/* Title */}
-              <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+              <h2 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2 text-foreground">
                 {post.title}
               </h2>
 
               {/* Excerpt */}
-              <p className="text-sm text-muted-foreground mb-4 flex-1 line-clamp-3 leading-relaxed">
+              <p className="text-sm mb-4 flex-1 line-clamp-3 leading-relaxed text-foreground/70">
                 {post.excerpt}
               </p>
 

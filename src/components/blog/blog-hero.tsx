@@ -29,8 +29,6 @@ export function BlogHero() {
         </div>
       </div>
 
-      {/* Gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
     </section>
   );
 }
