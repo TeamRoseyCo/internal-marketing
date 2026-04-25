@@ -66,10 +66,10 @@ export default async function BlogPage({
       <BlogCategories categories={categories} />
 
       {/* Blog Posts Grid */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28 bg-[#f8f6f3] dark:bg-[#0f0f12]">
         <div className="container">
           {remainingPosts.length > 0 || (category && posts.length > 0) ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
               {(category ? posts : remainingPosts).map((post, index) => (
                 <BlogPostCard
                   key={post.slug}
@@ -81,7 +81,7 @@ export default async function BlogPage({
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">
+              <p className="text-foreground/60 mb-4">
                 No posts yet. Check back soon!
               </p>
             </div>

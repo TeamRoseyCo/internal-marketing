@@ -1,11 +1,10 @@
 // src/components/blog/blog-intro.tsx
-// Blog intro section with subtitle, title, divider, and description
-// Inspired by Raha Resort design pattern
+// Blog intro section inspired by Raha Resort design
+// Clean centered subtitle, serif title, divider, description on light background
 
 "use client";
 
 import { motion } from "framer-motion";
-import { FadeIn } from "@/components/animations";
 
 interface BlogIntroProps {
   subtitle?: string;
@@ -16,40 +15,32 @@ interface BlogIntroProps {
 export function BlogIntro({
   subtitle = "Stories & Strategies",
   title = "Marketing Insights & Strategies",
-  description = "Actionable tips, strategies, and insights to help you grow your business through digital marketing.",
+  description = "Explore actionable tips, proven strategies, and data-driven insights to help you grow your business through digital marketing.",
 }: BlogIntroProps) {
   return (
-    <section className="py-20 md:py-24 bg-card/30 border-y border-border/20">
-      <motion.div
-        className="container"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        <div className="max-w-3xl mx-auto text-center">
-          <FadeIn delay={0.1}>
-            <span className="inline-block text-xs md:text-sm font-semibold tracking-widest uppercase text-primary/80 mb-4">
-              {subtitle}
-            </span>
-          </FadeIn>
+    <section className="py-20 md:py-28 bg-[#f8f6f3] dark:bg-[#0f0f12]">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <span className="block text-xs font-semibold tracking-[0.25em] uppercase text-primary mb-4">
+            {subtitle}
+          </span>
 
-          <FadeIn delay={0.2}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              {title}
-            </h2>
-          </FadeIn>
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-foreground mb-6 leading-tight">
+            {title}
+          </h2>
 
-          <FadeIn delay={0.25}>
-            <div className="w-16 h-1 bg-gradient-to-r from-primary via-brand-green to-primary mx-auto mb-6" />
-          </FadeIn>
+          <div className="w-16 h-[2px] bg-primary mx-auto mb-8" />
 
-          <FadeIn delay={0.3}>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-          </FadeIn>
-        </div>
-      </motion.div>
+          <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
+            {description}
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }

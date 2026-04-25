@@ -1,13 +1,13 @@
 // src/components/blog/featured-blog-post.tsx
-// Featured blog post with image + content side-by-side layout
-// Inspired by Raha Resort design pattern
+// Featured blog post with 2-column image + content layout
+// Inspired by Raha Resort blog design - clean, editorial, professional
 
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LocaleCode } from "@/lib/locales";
 
@@ -40,89 +40,72 @@ export function FeaturedBlogPost({
   const formattedDate = new Date(post.date).toLocaleDateString(
     getDateLocale(locale),
     {
-      month: "short",
+      month: "long",
       day: "numeric",
       year: "numeric",
     }
   );
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center"
-        >
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Featured Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative group"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-border/30">
-              {post.image ? (
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-              ) : (
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background: `linear-gradient(135deg, hsl(var(--${color}) / 0.25), hsl(var(--${color}) / 0.08))`,
-                  }}
-                />
-              )}
+            <Link href={blogUrl} className="block group">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-lg">
+                {post.image ? (
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(var(--${color}) / 0.4), hsl(var(--${color}) / 0.15))`,
+                    }}
+                  />
+                )}
 
-              {/* Category Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="absolute top-6 left-6 z-10"
-              >
-                <span
-                  className="inline-flex items-center px-4 py-2 rounded-lg text-xs font-semibold backdrop-blur-sm"
-                  style={{
-                    backgroundColor: `hsl(var(--${color}) / 0.2)`,
-                    color: `hsl(var(--${color}))`,
-                    border: `1px solid hsl(var(--${color}) / 0.3)`,
-                  }}
-                >
+                {/* Category badge floating top-left */}
+                <span className="absolute top-6 left-6 bg-primary text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider">
                   {post.category}
                 </span>
-              </motion.div>
-            </div>
+              </div>
+            </Link>
           </motion.div>
 
-          {/* Featured Content */}
+          {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col justify-center space-y-6"
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
+            <span className="block text-xs font-semibold tracking-[0.25em] uppercase text-primary mb-4">
+              Featured Article
+            </span>
+
             {/* Meta */}
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                {formattedDate}
-              </span>
-              <span className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                {post.readTime}
-              </span>
+            <div className="flex items-center gap-4 text-sm text-foreground/60 mb-4">
+              <span>{formattedDate}</span>
+              <span className="text-foreground/30">•</span>
+              <span>{post.readTime}</span>
             </div>
 
             {/* Title */}
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-serif font-medium text-foreground leading-[1.2] mb-6">
               <Link
                 href={blogUrl}
                 className="hover:text-primary transition-colors duration-300"
@@ -131,23 +114,21 @@ export function FeaturedBlogPost({
               </Link>
             </h2>
 
-            {/* Description */}
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            {/* Excerpt */}
+            <p className="text-base md:text-lg text-foreground/70 leading-relaxed mb-8">
               {post.excerpt}
             </p>
 
-            {/* CTA Button */}
-            <div>
-              <Link
-                href={blogUrl}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-primary via-brand-green to-primary hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 group"
-              >
-                Read Full Article
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+            {/* CTA */}
+            <Link
+              href={blogUrl}
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded transition-all duration-300 font-semibold text-sm uppercase tracking-wider group"
+            >
+              Read Full Article
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

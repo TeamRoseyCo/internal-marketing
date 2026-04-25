@@ -20,53 +20,42 @@ export function BlogCategories({ categories }: BlogCategoriesProps) {
     }
   };
 
+  const buttonClass = (active: boolean) =>
+    `px-6 py-2.5 rounded-full text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${
+      active
+        ? "bg-primary text-white shadow-md"
+        : "bg-white dark:bg-card text-foreground/70 hover:bg-primary/10 hover:text-primary border border-border"
+    }`;
+
   return (
-    <section className="py-8 border-b border-border/30">
+    <section className="py-10 bg-[#f8f6f3] dark:bg-[#0f0f12]">
       <div className="container">
         <motion.div
-          className="flex flex-wrap justify-center gap-3"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-3"
         >
-          {/* All category button */}
-          <motion.button
+          <button
             onClick={() => handleCategoryClick("All")}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-all duration-300 ${
-              currentCategory === "all"
-                ? "bg-primary text-white border-primary hover:bg-primary/90"
-                : "bg-foreground/5 border-border/40 text-foreground hover:text-primary hover:border-primary/60 hover:bg-foreground/10"
-            }`}
+            className={buttonClass(currentCategory === "all")}
           >
             All Posts
-          </motion.button>
+          </button>
 
-          {categories.map((category, index) => {
+          {categories.map((category) => {
             if (category.name === "All") return null;
             const isActive = currentCategory === category.name;
 
             return (
-              <motion.button
+              <button
                 key={category.name}
                 onClick={() => handleCategoryClick(category.name)}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium border transition-all duration-300 ${
-                  isActive
-                    ? "bg-primary text-white border-primary hover:bg-primary/90"
-                    : "bg-foreground/5 border-border/40 text-foreground hover:text-primary hover:border-primary/60 hover:bg-foreground/10"
-                }`}
+                className={buttonClass(isActive)}
               >
-                {category.name}{" "}
-                <span className="text-muted-foreground/60 ml-1">
-                  ({category.count})
-                </span>
-              </motion.button>
+                {category.name}
+                <span className="ml-2 opacity-60">({category.count})</span>
+              </button>
             );
           })}
         </motion.div>

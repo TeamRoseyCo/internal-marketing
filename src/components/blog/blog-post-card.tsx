@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Tag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LocaleCode } from "@/lib/locales";
 
@@ -20,10 +20,8 @@ export function BlogPostCard({
   index,
   locale,
 }: BlogPostCardProps) {
-  // Build the blog post URL based on locale
   const blogUrl = locale ? `/${locale}/blog/${post.slug}` : `/blog/${post.slug}`;
 
-  // Get the date locale string
   const getDateLocale = (loc?: LocaleCode): string => {
     if (!loc) return "en-US";
     const localeMap: Record<LocaleCode, string> = {
@@ -37,87 +35,84 @@ export function BlogPostCard({
     return localeMap[loc] || "en-US";
   };
 
+  const formattedDate = new Date(post.date).toLocaleDateString(
+    getDateLocale(locale),
+    {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }
+  );
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: (index % 3) * 0.1, duration: 0.5 }}
+      whileHover={{ y: -6 }}
+      className="bg-white dark:bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
     >
-      <Link href={blogUrl} className="block group h-full">
-        {/* Glassmorphism card wrapper with gradient border */}
-        <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 group-hover:from-primary/30 group-hover:via-border/30 group-hover:to-primary/30 transition-all duration-500 h-full">
-          <motion.article
-            whileHover={{ y: -4 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-card/30 backdrop-blur-sm rounded-2xl h-full flex flex-col overflow-hidden relative"
-          >
-            {/* Subtle top highlight for glass effect */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <Link href={blogUrl} className="block">
+        {/* Image */}
+        <div className="relative aspect-[16/10] overflow-hidden">
+          {post.image ? (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div
+              className="w-full h-full"
+              style={{
+                background: `linear-gradient(135deg, hsl(var(--${color}) / 0.4), hsl(var(--${color}) / 0.15))`,
+              }}
+            />
+          )}
 
-            {/* Featured Image */}
-            <div className="aspect-video relative overflow-hidden">
-              {post.image ? (
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              ) : (
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background: `linear-gradient(135deg, hsl(var(--${color}) / 0.25), hsl(var(--${color}) / 0.08))`,
-                  }}
-                />
-              )}
-              {/* Category tag overlay */}
-              <div className="absolute bottom-4 left-4 z-10">
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm"
-                  style={{
-                    backgroundColor: `hsl(var(--${color}) / 0.2)`,
-                    color: `hsl(var(--${color}))`,
-                    border: `1px solid hsl(var(--${color}) / 0.3)`,
-                  }}
-                >
-                  <Tag className="w-3 h-3" />
-                  {post.category}
-                </span>
-              </div>
-            </div>
-
-            <div className="p-6 flex flex-col flex-1">
-              {/* Title */}
-              <h2 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2 text-foreground">
-                {post.title}
-              </h2>
-
-              {/* Excerpt */}
-              <p className="text-sm mb-4 flex-1 line-clamp-3 leading-relaxed text-foreground/70">
-                {post.excerpt}
-              </p>
-
-              {/* Meta */}
-              <div className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border/30">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" />
-                  {new Date(post.date).toLocaleDateString(getDateLocale(locale), {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
-                  {post.readTime}
-                </span>
-              </div>
-            </div>
-          </motion.article>
+          {/* Category badge floating */}
+          <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1.5 rounded text-[11px] font-semibold uppercase tracking-wider">
+            {post.category}
+          </span>
         </div>
       </Link>
-    </motion.div>
+
+      {/* Content */}
+      <div className="p-6 md:p-7 flex flex-col flex-1">
+        {/* Meta */}
+        <div className="flex items-center gap-3 text-xs text-foreground/60 mb-3">
+          <span>{formattedDate}</span>
+          <span className="text-foreground/30">•</span>
+          <span>{post.readTime}</span>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl md:text-[1.35rem] font-serif font-medium text-foreground leading-snug mb-3">
+          <Link
+            href={blogUrl}
+            className="hover:text-primary transition-colors duration-300"
+          >
+            {post.title}
+          </Link>
+        </h3>
+
+        {/* Excerpt */}
+        <p className="text-sm text-foreground/70 leading-relaxed mb-5 flex-1 line-clamp-3">
+          {post.excerpt}
+        </p>
+
+        {/* Read More */}
+        <Link
+          href={blogUrl}
+          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all duration-300 mt-auto self-start uppercase tracking-wider"
+        >
+          Read More
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </motion.article>
   );
 }
