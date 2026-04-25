@@ -318,7 +318,7 @@ export default function ContactPageClient({ params }: Props) {
                 gap: 16,
               }}
             >
-              <h2 style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6e6e73", margin: "0 0 8px" }}>
+              <h2 style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3a3a3c", margin: "0 0 8px" }}>
                 Or reach us directly
               </h2>
               <ContactCard
@@ -469,10 +469,10 @@ function ContactCard({
       <div style={{ width: 32, height: 32, color: "#0071e3", marginBottom: 14 }}>
         {icon}
       </div>
-      <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase", color: "#6e6e73", marginBottom: 6 }}>
+      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3a3a3c", marginBottom: 6 }}>
         {label}
       </div>
-      <div style={{ fontSize: 17, fontWeight: 500, color: "#1d1d1f" }}>
+      <div style={{ fontSize: 17, fontWeight: 600, color: "#1d1d1f" }}>
         {value}
       </div>
     </>
@@ -483,12 +483,13 @@ function ContactCard({
     alignItems: "flex-start",
     padding: "24px",
     background: "#fff",
-    border: "1px solid #d2d2d7",
+    border: "1px solid #c8c8cd",
     borderRadius: 18,
     minHeight: 140,
     transition: "transform 200ms ease, box-shadow 200ms ease",
     textDecoration: "none",
     color: "inherit",
+    boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 12px -6px rgba(0,0,0,0.08)",
   };
 
   function handleMove(e: React.MouseEvent<HTMLElement>) {
@@ -568,7 +569,7 @@ function Field({
 function FormSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <fieldset className="flex flex-col gap-4 m-0 p-0 border-0">
-      <legend className="text-[11px] font-semibold tracking-[0.1em] uppercase text-[#86868b] mb-1">
+      <legend className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#3a3a3c] mb-1">
         {title}
       </legend>
       {children}
