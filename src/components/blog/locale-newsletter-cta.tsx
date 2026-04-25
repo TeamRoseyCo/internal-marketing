@@ -38,34 +38,29 @@ export function LocaleNewsletterCTA({ translations }: LocaleNewsletterCTAProps) 
             {translations.subtitle}
           </p>
 
-          {/* Glassmorphism form card */}
-          <div className="rounded-2xl p-px bg-gradient-to-br from-border/50 via-border/20 to-border/50 max-w-lg mx-auto">
-            <div className="bg-card/60 backdrop-blur-xl rounded-2xl p-6 md:p-8 relative">
-              {/* Top highlight */}
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-t-2xl" />
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                  <input
-                    type="email"
-                    placeholder={translations.placeholder}
-                    className="w-full pl-12 pr-4 py-4 rounded-xl border border-border/50 bg-background/50 text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#006edb] shadow-md transition-colors whitespace-nowrap"
-                >
-                  {translations.button}
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+          {/* Clean form card with explicit contrast */}
+          <div className="rounded-2xl p-6 md:p-8 max-w-lg mx-auto bg-white border border-[#e8e8ed] shadow-lg">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1 relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6e6e73] pointer-events-none" />
+                <input
+                  type="email"
+                  placeholder={translations.placeholder}
+                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-[#d2d2d7] bg-white text-[15px] text-[#1d1d1f] placeholder:text-[#86868b] focus:outline-none focus:border-[#0071e3] focus:ring-2 focus:ring-[#0071e3]/30 transition-all"
+                />
               </div>
-
-              <p className="text-sm text-muted-foreground mt-4 text-center">
-                {translations.disclaimer}
-              </p>
+              <button
+                type="button"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] active:bg-[#006edb] shadow-md transition-colors whitespace-nowrap"
+              >
+                {translations.button}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
+
+            <p className="text-sm text-[#6e6e73] mt-4 text-center">
+              {translations.disclaimer}
+            </p>
           </div>
         </FadeIn>
       </div>

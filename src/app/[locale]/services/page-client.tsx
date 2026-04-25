@@ -65,8 +65,8 @@ export default function ServicesPageClient({ locale }: Props) {
           tagline="A feed that compounds instead of decays."
           ctas={<CTALink href={`${p}/services/social-media`}>Learn more</CTALink>}
           media={
-            <MockPhone>
-              <div className="w-full h-full bg-gradient-to-b from-[#f5f5f7] to-white flex items-center justify-center p-6">
+            <MockPhone horizontal>
+              <div className="w-full h-full bg-gradient-to-r from-[#f5f5f7] to-white flex items-center justify-center p-6">
                 <div className="text-center text-[#1d1d1f]">
                   <div className="text-[13px] uppercase tracking-widest text-[#6e6e73]">This week</div>
                   <div className="mt-2 text-[52px] font-semibold leading-none">+18.2k</div>
