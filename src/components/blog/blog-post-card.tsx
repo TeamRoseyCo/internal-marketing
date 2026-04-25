@@ -49,7 +49,7 @@ export function BlogPostCard({
           <motion.article
             whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="bg-card/60 backdrop-blur-xl rounded-2xl h-full flex flex-col overflow-hidden relative"
+            className="bg-card/30 backdrop-blur-sm rounded-2xl h-full flex flex-col overflow-hidden relative"
           >
             {/* Subtle top highlight for glass effect */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
