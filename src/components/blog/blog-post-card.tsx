@@ -51,7 +51,7 @@ export function BlogPostCard({
       viewport={{ once: true }}
       transition={{ delay: (index % 3) * 0.1, duration: 0.5 }}
       whileHover={{ y: -6 }}
-      className="bg-white dark:bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
+      className="bg-white dark:bg-card rounded-md overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
     >
       <Link href={blogUrl} className="block">
         {/* Image */}
