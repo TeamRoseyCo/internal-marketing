@@ -95,7 +95,7 @@ export function Header() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Link href={`/${locale}`} className="flex items-center gap-2 group">
             <Image
@@ -116,7 +116,7 @@ export function Header() {
               key={item.href}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
             >
               <Link
                 href={item.href}
@@ -137,7 +137,7 @@ export function Header() {
             className="hidden md:block"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
           >
             <LocaleSwitcher variant="dropdown" />
           </motion.div>
@@ -145,7 +145,7 @@ export function Header() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
             <Button asChild size="lg" className="btn-hero hidden sm:inline-flex text-base px-6">
               <Link href={`/${locale}/contact`}>{t("header.cta")}</Link>
@@ -156,7 +156,7 @@ export function Header() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
             <Button
               variant="ghost"
