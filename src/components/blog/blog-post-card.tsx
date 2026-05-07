@@ -51,7 +51,7 @@ export function BlogPostCard({
       viewport={{ once: true }}
       transition={{ delay: (index % 3) * 0.1, duration: 0.5 }}
       whileHover={{ y: -6 }}
-      className="bg-white dark:bg-card rounded-md overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
+      className="bg-white dark:bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group"
     >
       <Link href={blogUrl} className="block">
         {/* Image */}
@@ -83,14 +83,14 @@ export function BlogPostCard({
       {/* Content */}
       <div className="p-6 md:p-7 flex flex-col flex-1">
         {/* Meta */}
-        <div className="flex items-center gap-3 text-xs text-foreground/60 mb-3">
+        <div className="flex items-center gap-3 text-xs font-medium text-[#6e6e73] dark:text-foreground/70 mb-3">
           <span>{formattedDate}</span>
-          <span className="text-foreground/30">•</span>
+          <span className="text-[#86868b] dark:text-foreground/40">•</span>
           <span>{post.readTime}</span>
         </div>
 
         {/* Title */}
-        <h3 className="text-xl md:text-[1.35rem] font-serif font-medium text-foreground leading-snug mb-3">
+        <h3 className="text-xl md:text-[1.35rem] font-serif font-medium text-[#1d1d1f] dark:text-foreground leading-snug mb-3">
           <Link
             href={blogUrl}
             className="hover:text-primary transition-colors duration-300"
@@ -100,7 +100,7 @@ export function BlogPostCard({
         </h3>
 
         {/* Excerpt */}
-        <p className="text-sm text-foreground/70 leading-relaxed mb-5 flex-1 line-clamp-3">
+        <p className="text-sm text-[#3a3a3c] dark:text-foreground/80 leading-relaxed mb-5 flex-1 line-clamp-3">
           {post.excerpt}
         </p>
 

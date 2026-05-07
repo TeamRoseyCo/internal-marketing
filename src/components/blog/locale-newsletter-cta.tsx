@@ -10,7 +10,7 @@ interface LocaleNewsletterCTAProps {
 
 export function LocaleNewsletterCTA({ translations }: LocaleNewsletterCTAProps) {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section id="newsletter" className="py-24 md:py-32 relative overflow-hidden scroll-mt-24">
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div

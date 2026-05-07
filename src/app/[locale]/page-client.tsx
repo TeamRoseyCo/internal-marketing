@@ -171,8 +171,17 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
         theme="light"
         variant="C"
         eyebrow="Trusted by"
-        headline="A short list. Long relationships."
-        media={<LogoStrip />}
+        headline={
+          <span style={{ fontSize: "clamp(56px, 8vw, 112px)", display: "inline-block" }}>
+            A short list. Long relationships.
+          </span>
+        }
+        media={
+          <div className="flex flex-col gap-6">
+            <LogoStrip />
+            <LogoStrip reverse />
+          </div>
+        }
         mediaPosition="below"
       />
 

@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const localeConfig = getLocale(locale);
 
   return {
-    title: `Contact Us | Rosey Co. ${localeConfig.country}`,
-    description: `Get in touch with Rosey Co. in ${localeConfig.country}. Request a free consultation for your digital marketing needs.`,
+    title: `Book a Call | Rosey Co. ${localeConfig.country}`,
+    description: `Book a free 30-minute strategy call with Rosey Co. in ${localeConfig.country}. We'll walk you through what's working in your market and where the easy wins are.`,
     openGraph: {
-      title: `Contact Us | Rosey Co. ${localeConfig.country}`,
-      description: `Get in touch with Rosey Co. in ${localeConfig.country}. Request a free consultation for your digital marketing needs.`,
+      title: `Book a Call | Rosey Co. ${localeConfig.country}`,
+      description: `Book a free 30-minute strategy call with Rosey Co. in ${localeConfig.country}. We'll walk you through what's working in your market and where the easy wins are.`,
       locale: getOpenGraphLocale(locale),
       type: 'website',
     },

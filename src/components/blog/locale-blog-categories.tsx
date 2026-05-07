@@ -33,7 +33,7 @@ export function LocaleBlogCategories({
     `px-6 py-2.5 rounded-full text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${
       active
         ? "bg-primary text-white shadow-md"
-        : "bg-white dark:bg-card text-foreground/70 hover:bg-primary/10 hover:text-primary border border-border"
+        : "bg-white text-[#1d1d1f] hover:bg-primary/10 hover:text-primary border border-[#d2d2d7]"
     }`;
 
   return (

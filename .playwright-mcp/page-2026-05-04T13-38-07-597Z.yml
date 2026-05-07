@@ -1,0 +1,175 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Rosey Co. Rosey Co." [ref=e5] [cursor=pointer]:
+        - /url: /us
+        - img "Rosey Co." [ref=e6]
+        - generic [ref=e7]: Rosey Co.
+      - generic [ref=e8]:
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /us
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /us/blog
+          - link "Contact" [ref=e12] [cursor=pointer]:
+            - /url: /us/contact
+        - switch "Toggle dark mode" [ref=e13] [cursor=pointer]:
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - text: Light
+          - generic [ref=e22]:
+            - img [ref=e23]
+            - text: Dark
+        - link "Book a call" [ref=e25] [cursor=pointer]:
+          - /url: /us/contact
+  - main [ref=e27]:
+    - generic [ref=e30]:
+      - navigation [ref=e31]:
+        - link "Home" [ref=e32] [cursor=pointer]:
+          - /url: /
+        - img [ref=e33]
+        - generic [ref=e35]: Blog
+      - heading "Marketing Insights & Strategies" [level=1] [ref=e36]
+      - paragraph [ref=e37]: Actionable tips, strategies, and insights to help you grow your business through digital marketing.
+    - generic [ref=e40]:
+      - button "All" [ref=e41]
+      - button "Marketing Strategy(3)" [ref=e42]:
+        - text: Marketing Strategy
+        - generic [ref=e43]: (3)
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - article [ref=e47]:
+          - link "How to Market Your Local Business Online Marketing Strategy" [ref=e48] [cursor=pointer]:
+            - /url: /us/blog/how-to-market-your-local-business-online
+            - generic [ref=e49]:
+              - img "How to Market Your Local Business Online" [ref=e50]
+              - generic [ref=e51]: Marketing Strategy
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: October 20, 2025
+              - generic [ref=e55]: •
+              - generic [ref=e56]: 2 min read
+            - heading "How to Market Your Local Business Online" [level=3] [ref=e57]:
+              - link "How to Market Your Local Business Online" [ref=e58] [cursor=pointer]:
+                - /url: /us/blog/how-to-market-your-local-business-online
+            - paragraph [ref=e59]: You want more customers, right? More bookings, more purchases. The answer is simple — online marketing. Here are the basics that get you noticed, booked, and paid.
+            - link "Read More" [ref=e60] [cursor=pointer]:
+              - /url: /us/blog/how-to-market-your-local-business-online
+              - text: Read More
+              - img [ref=e61]
+        - article [ref=e63]:
+          - link "What the Hell Do People Mean by \"Systems\"? Marketing Strategy" [ref=e64] [cursor=pointer]:
+            - /url: /us/blog/what-the-hell-are-systems
+            - generic [ref=e65]:
+              - img "What the Hell Do People Mean by \"Systems\"?" [ref=e66]
+              - generic [ref=e67]: Marketing Strategy
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - generic [ref=e70]: October 19, 2025
+              - generic [ref=e71]: •
+              - generic [ref=e72]: 2 min read
+            - heading "What the Hell Do People Mean by \"Systems\"?" [level=3] [ref=e73]:
+              - link "What the Hell Do People Mean by \"Systems\"?" [ref=e74] [cursor=pointer]:
+                - /url: /us/blog/what-the-hell-are-systems
+            - paragraph [ref=e75]: Every guru online says, 'You need systems.' Sitting there I thought — what is this, a vending machine? That's when it clicked. That's exactly what it is.
+            - link "Read More" [ref=e76] [cursor=pointer]:
+              - /url: /us/blog/what-the-hell-are-systems
+              - text: Read More
+              - img [ref=e77]
+        - article [ref=e79]:
+          - link "Don't Respect Your Client Marketing Strategy" [ref=e80] [cursor=pointer]:
+            - /url: /us/blog/dont-respect-your-client
+            - generic [ref=e81]:
+              - img "Don't Respect Your Client" [ref=e82]
+              - generic [ref=e83]: Marketing Strategy
+          - generic [ref=e84]:
+            - generic [ref=e85]:
+              - generic [ref=e86]: October 18, 2025
+              - generic [ref=e87]: •
+              - generic [ref=e88]: 2 min read
+            - heading "Don't Respect Your Client" [level=3] [ref=e89]:
+              - link "Don't Respect Your Client" [ref=e90] [cursor=pointer]:
+                - /url: /us/blog/dont-respect-your-client
+            - paragraph [ref=e91]: I went to a doctor once who showed up in a hoodie, overweight, with zero energy — and I couldn't take a single word of his advice seriously. Here's what that taught me about your business.
+            - link "Read More" [ref=e92] [cursor=pointer]:
+              - /url: /us/blog/dont-respect-your-client
+              - text: Read More
+              - img [ref=e93]
+      - paragraph [ref=e96]: More articles coming soon...
+    - generic [ref=e99]:
+      - heading "Get Marketing Tips Delivered" [level=2] [ref=e100]
+      - paragraph [ref=e101]: Subscribe to our newsletter for weekly insights on growing your business through digital marketing.
+      - generic [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - img
+            - textbox "Enter your email" [ref=e105]
+          - button "Subscribe" [ref=e106]:
+            - text: Subscribe
+            - img [ref=e107]
+        - paragraph [ref=e109]: No spam. Unsubscribe anytime.
+  - contentinfo [ref=e110]:
+    - generic [ref=e111]:
+      - paragraph [ref=e112]: More information about Rosey Co. services, pricing, and results is available on each service page. Results vary by business, market, and engagement length.
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e116]: Services
+          - list [ref=e117]:
+            - listitem [ref=e118]:
+              - link "SEO" [ref=e119] [cursor=pointer]:
+                - /url: /services/seo
+            - listitem [ref=e120]:
+              - link "Social Media" [ref=e121] [cursor=pointer]:
+                - /url: /services/social-media
+            - listitem [ref=e122]:
+              - link "Paid Ads" [ref=e123] [cursor=pointer]:
+                - /url: /services/paid-ads
+            - listitem [ref=e124]:
+              - link "Website Design" [ref=e125] [cursor=pointer]:
+                - /url: /services/website-design
+        - generic [ref=e126]:
+          - generic [ref=e127]: Work
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - link "Results" [ref=e130] [cursor=pointer]:
+                - /url: /results
+            - listitem [ref=e131]:
+              - link "Blog" [ref=e132] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e133]:
+          - generic [ref=e134]: Company
+          - list [ref=e135]:
+            - listitem [ref=e136]:
+              - link "Contact" [ref=e137] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e138]:
+              - link "Privacy Policy" [ref=e139] [cursor=pointer]:
+                - /url: /privacy-policy
+        - generic [ref=e140]:
+          - generic [ref=e141]: Locale
+          - list [ref=e142]:
+            - listitem [ref=e143]:
+              - link "United States" [ref=e144] [cursor=pointer]:
+                - /url: /us
+            - listitem [ref=e145]:
+              - link "United Kingdom" [ref=e146] [cursor=pointer]:
+                - /url: /uk
+            - listitem [ref=e147]:
+              - link "Ireland" [ref=e148] [cursor=pointer]:
+                - /url: /ie
+            - listitem [ref=e149]:
+              - link "Australia" [ref=e150] [cursor=pointer]:
+                - /url: /au
+            - listitem [ref=e151]:
+              - link "Netherlands" [ref=e152] [cursor=pointer]:
+                - /url: /nl
+            - listitem [ref=e153]:
+              - link "Denmark" [ref=e154] [cursor=pointer]:
+                - /url: /dk
+      - generic [ref=e156]:
+        - generic [ref=e157]: Copyright 2026 Rosey Co. All rights reserved.
+        - link "Privacy Policy" [ref=e159] [cursor=pointer]:
+          - /url: /privacy-policy
+  - button "Experiment with fonts and colours" [ref=e161] [cursor=pointer]: Aa

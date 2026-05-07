@@ -1,0 +1,174 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Rosey Co. Rosey Co." [ref=e5] [cursor=pointer]:
+        - /url: /us
+        - img "Rosey Co." [ref=e6]
+        - generic [ref=e7]: Rosey Co.
+      - generic [ref=e8]:
+        - navigation [ref=e9]:
+          - link "Home" [ref=e10] [cursor=pointer]:
+            - /url: /us
+          - link "Blog" [ref=e11] [cursor=pointer]:
+            - /url: /us/blog
+        - link "Book a call" [ref=e12] [cursor=pointer]:
+          - /url: /us/contact
+  - main [ref=e14]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: Free 30-min strategy call
+        - heading "Let's grow your business." [level=1] [ref=e21]
+        - paragraph [ref=e22]: Tell us where you are and where you want to go. On the call we'll walk you through what's working in your market, where the easy wins are, and exactly how we'd grow your numbers — no pressure, no pitch deck.
+        - list [ref=e23]:
+          - listitem [ref=e24]:
+            - img [ref=e25]
+            - text: 30 minutes, on Zoom
+          - listitem [ref=e27]:
+            - img [ref=e28]
+            - text: Tailored to your business
+          - listitem [ref=e30]:
+            - img [ref=e31]
+            - text: No obligation, no pitch
+      - generic [ref=e33]:
+        - generic [ref=e35]:
+          - group "About you" [ref=e36]:
+            - generic [ref=e37]: About you
+            - generic [ref=e38]:
+              - generic [ref=e39]:
+                - generic [ref=e41]: First Name *
+                - textbox "First Name *" [ref=e42]
+              - generic [ref=e43]:
+                - generic [ref=e45]: Last Name *
+                - textbox "Last Name *" [ref=e46]
+            - generic [ref=e47]:
+              - generic [ref=e49]: Email Address *
+              - textbox "Email Address *" [ref=e50]
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - generic [ref=e53]: Phone Number
+                - generic [ref=e54]: Optional
+              - textbox "Phone Number Optional" [ref=e55]
+          - group "Your business" [ref=e56]:
+            - generic [ref=e57]: Your business
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - generic [ref=e60]: Website URL
+                - generic [ref=e61]: Optional
+              - textbox "Website URL Optional" [ref=e62]
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - generic [ref=e65]: Company Website
+                - generic [ref=e66]: Optional
+              - textbox "Company Website Optional" [ref=e67]
+            - generic [ref=e68]:
+              - generic [ref=e69]: Service Interested In *
+              - generic [ref=e70]:
+                - combobox "Service Interested In *" [ref=e71]:
+                  - option "Choose a service" [selected]
+                  - option "SEO Services"
+                  - option "Social Media Management"
+                  - option "Paid Advertising"
+                  - option "Website Design"
+                  - option "Other / Not Sure"
+                - img
+          - group "Tell us more" [ref=e72]:
+            - generic [ref=e73]: Tell us more
+            - generic [ref=e74]:
+              - generic [ref=e75]: Tell us about your business and goals *
+              - textbox "Tell us about your business and goals *" [ref=e76]:
+                - /placeholder: What are you trying to grow? What's blocking you right now?
+          - textbox [ref=e77]
+          - generic [ref=e78]:
+            - button "Book Your Free Strategy Call" [ref=e79] [cursor=pointer]
+            - paragraph [ref=e80]:
+              - text: By submitting this form, you agree to our
+              - link "Privacy Policy" [ref=e81] [cursor=pointer]:
+                - /url: /us/privacy-policy
+              - text: .
+        - complementary [ref=e82]:
+          - heading "Or reach us directly" [level=2] [ref=e83]
+          - link "Call us +1 (307) 400-9814" [ref=e84] [cursor=pointer]:
+            - /url: tel:+13074009814
+            - generic [ref=e85]:
+              - img [ref=e87]
+              - generic [ref=e89]: Call us
+              - generic [ref=e90]: +1 (307) 400-9814
+          - link "Email us team@roseyco.com" [ref=e91] [cursor=pointer]:
+            - /url: mailto:team@roseyco.com
+            - generic [ref=e92]:
+              - img [ref=e94]
+              - generic [ref=e97]: Email us
+              - generic [ref=e98]: team@roseyco.com
+          - generic [ref=e100]:
+            - img [ref=e102]
+            - generic [ref=e105]: Based in
+            - generic [ref=e106]: Missouri, United States
+          - generic [ref=e108]:
+            - img [ref=e110]
+            - generic [ref=e113]: Reply time
+            - generic [ref=e114]: Within 24 hours
+  - contentinfo [ref=e115]:
+    - generic [ref=e116]:
+      - paragraph [ref=e117]: More information about Rosey Co. services, pricing, and results is available on each service page. Results vary by business, market, and engagement length.
+      - generic [ref=e119]:
+        - generic [ref=e120]:
+          - generic [ref=e121]: Services
+          - list [ref=e122]:
+            - listitem [ref=e123]:
+              - link "SEO" [ref=e124] [cursor=pointer]:
+                - /url: /services/seo
+            - listitem [ref=e125]:
+              - link "Social Media" [ref=e126] [cursor=pointer]:
+                - /url: /services/social-media
+            - listitem [ref=e127]:
+              - link "Paid Ads" [ref=e128] [cursor=pointer]:
+                - /url: /services/paid-ads
+            - listitem [ref=e129]:
+              - link "Website Design" [ref=e130] [cursor=pointer]:
+                - /url: /services/website-design
+        - generic [ref=e131]:
+          - generic [ref=e132]: Work
+          - list [ref=e133]:
+            - listitem [ref=e134]:
+              - link "Results" [ref=e135] [cursor=pointer]:
+                - /url: /results
+            - listitem [ref=e136]:
+              - link "Blog" [ref=e137] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e138]:
+          - generic [ref=e139]: Company
+          - list [ref=e140]:
+            - listitem [ref=e141]:
+              - link "Contact" [ref=e142] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e143]:
+              - link "Privacy Policy" [ref=e144] [cursor=pointer]:
+                - /url: /privacy-policy
+        - generic [ref=e145]:
+          - generic [ref=e146]: Locale
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link "United States" [ref=e149] [cursor=pointer]:
+                - /url: /us
+            - listitem [ref=e150]:
+              - link "United Kingdom" [ref=e151] [cursor=pointer]:
+                - /url: /uk
+            - listitem [ref=e152]:
+              - link "Ireland" [ref=e153] [cursor=pointer]:
+                - /url: /ie
+            - listitem [ref=e154]:
+              - link "Australia" [ref=e155] [cursor=pointer]:
+                - /url: /au
+            - listitem [ref=e156]:
+              - link "Netherlands" [ref=e157] [cursor=pointer]:
+                - /url: /nl
+            - listitem [ref=e158]:
+              - link "Denmark" [ref=e159] [cursor=pointer]:
+                - /url: /dk
+      - generic [ref=e161]:
+        - generic [ref=e162]: Copyright 2026 Rosey Co. All rights reserved.
+        - link "Privacy Policy" [ref=e164] [cursor=pointer]:
+          - /url: /privacy-policy
+  - button "Experiment with fonts and colours" [ref=e166] [cursor=pointer]: Aa

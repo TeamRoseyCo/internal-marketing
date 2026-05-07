@@ -1,0 +1,11 @@
+[     412ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/manifest.json:0
+[     413ms] [ERROR] Manifest fetch from http://localhost:3001/manifest.json failed, code 500 @ http://localhost:3001/us/blog:0
+[     536ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/manifest.json:0
+[     536ms] [ERROR] Manifest fetch from http://localhost:3001/manifest.json failed, code 500 @ http://localhost:3001/us/blog:0
+[    1829ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[    2041ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:3001/us/blog:0
+[   22852ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   24910ms] [LOG] [Fast Refresh] done in 2059ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   25414ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/manifest.json:0
+[   25415ms] [ERROR] Manifest fetch from http://localhost:3001/manifest.json failed, code 500 @ http://localhost:3001/us/blog:0
+[   25416ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ http://localhost:3001/us/blog:0

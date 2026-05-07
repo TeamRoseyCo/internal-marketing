@@ -10,11 +10,8 @@ const THEME_KEY = "ac-theme-preference";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/results", label: "Results" },
-  { href: "/case-studies", label: "Case Studies" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/newsletter", label: "Newsletter" },
 ];
 
 function localePrefix(pathname: string): string {
@@ -79,25 +76,26 @@ export function AppleNav() {
               Rosey Co.
             </span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-7">
-            {LINKS.map((l) => (
-              <Link
-                key={l.href}
-                href={`${prefix}${l.href}`}
-                className="ac-nav-link"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
           <div className="flex items-center gap-2">
+            <nav className="hidden lg:flex items-center gap-7 mr-4">
+              {LINKS.map((l) => (
+                <Link
+                  key={l.href}
+                  href={`${prefix}${l.href}`}
+                  className="ac-nav-link"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
             <button
               type="button"
               role="switch"
               aria-checked={darkMode}
               aria-label="Toggle dark mode"
               onClick={toggleDark}
-              className="ac-theme-toggle hidden sm:inline-flex"
+              className="ac-theme-toggle"
+              style={{ display: "none" }}
             >
               <span className="ac-theme-slider" data-pos={darkMode ? "dark" : "light"} />
               <span className={`ac-theme-opt ${!darkMode ? "active" : ""}`}>
@@ -126,7 +124,7 @@ export function AppleNav() {
             <Link
               href={`${prefix}/contact`}
               className="ac-pill shrink-0"
-              style={{ padding: "8px 16px", fontSize: "13px" }}
+              style={{ padding: "10px 20px", fontSize: "15px" }}
             >
               Book a call
             </Link>

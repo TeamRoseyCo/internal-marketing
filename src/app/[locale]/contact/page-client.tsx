@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Tile, TileStack } from "@/components/apple";
+import { Tile, TileStack, BlogAndNewsletterFun } from "@/components/apple";
 import { LocaleCode, isValidLocale } from "@/lib/locales";
 
 /**
@@ -110,65 +110,105 @@ export default function ContactPageClient({ params }: Props) {
       <section
         className="ac-tile ac-tile-light"
         data-ac-theme="light"
-        style={{ padding: "clamp(56px, 7vw, 96px) clamp(24px, 5vw, 56px)" }}
+        style={{ padding: "clamp(36px, 5vw, 64px) clamp(24px, 5vw, 56px)" }}
       >
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          {/* Hero header */}
-          <div style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}>
-            <div
-              aria-hidden="true"
-              style={{
-                width: 88,
-                height: 88,
-                margin: "0 auto 22px",
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle at 30% 30%, #ff6b8a 0%, #e8252a 55%, #c41015 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 10px 30px -8px rgba(232,37,42,0.4)",
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="44" height="44" fill="white">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-            </div>
-            <h1
-              style={{
-                fontSize: "clamp(34px, 4.5vw, 52px)",
-                fontWeight: 600,
-                letterSpacing: "-0.015em",
-                margin: "0 0 12px",
-                color: "#1d1d1f",
-                lineHeight: 1.1,
-              }}
-            >
-              Rosey Co. Support
-            </h1>
-            <p
-              style={{
-                fontSize: "clamp(17px, 1.6vw, 20px)",
-                color: "#6e6e73",
-                margin: 0,
-                fontWeight: 400,
-              }}
-            >
-              Need help growing? Start here.
-            </p>
-          </div>
-
-          {/* 2-column: form left, details right */}
+          {/* 2-column: copy + cards on the LEFT, form on the RIGHT.
+              Tightened padding/margins so the whole block fits the viewport. */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "minmax(0, 1.5fr) minmax(0, 1fr)",
+              gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.05fr)",
               gap: "clamp(32px, 4vw, 56px)",
               alignItems: "start",
             }}
             className="contact-grid"
           >
-            {/* Left: form (with cursor-follow glow) */}
+            {/* LEFT column: copy + reassurance + 2x2 contact-card grid */}
+            <aside style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <h1
+                style={{
+                  fontSize: "clamp(30px, 3.6vw, 44px)",
+                  fontWeight: 600,
+                  letterSpacing: "-0.015em",
+                  margin: 0,
+                  color: "#1d1d1f",
+                  lineHeight: 1.08,
+                }}
+              >
+                Let's grow your business.
+              </h1>
+              <p
+                style={{
+                  fontSize: "clamp(15px, 1.4vw, 17px)",
+                  color: "#3a3a3c",
+                  margin: 0,
+                  lineHeight: 1.5,
+                }}
+              >
+                Tell us where you are and where you want to go. On the call we'll walk you through
+                what's working in your market, where the easy wins are, and exactly how we'd grow
+                your numbers — no pressure, no pitch deck.
+              </p>
+
+              {/* Cards UNDER the copy — stacked vertically, centered */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  marginTop: 8,
+                  width: "100%",
+                  maxWidth: 380,
+                  alignSelf: "center",
+                }}
+                className="contact-cards-grid"
+              >
+                <ContactCard
+                  label="Call us"
+                  value={CONTACT_DETAILS.phone}
+                  href={CONTACT_DETAILS.phoneHref}
+                  icon={
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  }
+                />
+                <ContactCard
+                  label="Email us"
+                  value={CONTACT_DETAILS.email}
+                  href={`mailto:${CONTACT_DETAILS.email}`}
+                  icon={
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  }
+                />
+                <ContactCard
+                  label="Based in"
+                  value={CONTACT_DETAILS.location}
+                  icon={
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  }
+                />
+                <ContactCard
+                  label="Reply time"
+                  value={CONTACT_DETAILS.responseTime}
+                  icon={
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  }
+                />
+              </div>
+            </aside>
+
+            {/* RIGHT column: form (with cursor-follow glow) */}
             <div
               ref={formGlow.ref}
               onMouseMove={formGlow.onMouseMove}
@@ -177,33 +217,28 @@ export default function ContactPageClient({ params }: Props) {
             >
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-7 text-left relative z-10"
+                className="flex flex-col gap-4 text-left relative z-10"
               >
-              {/* Section: Who you are */}
-              <FormSection title="About you">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <Field name="firstName" label="First Name" required />
                   <Field name="lastName" label="Last Name" required />
                 </div>
-                <Field name="email" label="Email Address" type="email" required />
-                <Field name="phone" label="Phone Number" type="tel" optional />
-              </FormSection>
-
-              {/* Section: Your business */}
-              <FormSection title="Your business">
-                <Field name="website" label="Website URL" type="url" optional />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <Field name="email" label="Email Address" type="email" required />
+                  <Field name="phone" label="Phone Number" type="tel" optional />
+                </div>
                 <Field name="companyWebsite" label="Company Website" type="url" optional />
                 <div>
                   <label className="text-[13px] font-medium text-[#1d1d1f]" htmlFor="service">
                     Service Interested In <span style={{ color: "#c62828" }}>*</span>
                   </label>
-                  <div style={{ position: "relative", marginTop: 8 }}>
+                  <div style={{ position: "relative", marginTop: 6 }}>
                     <select
                       id="service"
                       required
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      className="w-full appearance-none rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3.5 pr-10 text-[15px] text-[#1d1d1f] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition"
+                      className="w-full appearance-none rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3 pr-10 text-[15px] text-[#1d1d1f] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition"
                     >
                       <option value="">Choose a service</option>
                       {SERVICES.map((s) => (
@@ -220,149 +255,90 @@ export default function ContactPageClient({ params }: Props) {
                     </svg>
                   </div>
                 </div>
-              </FormSection>
-
-              {/* Section: Tell us */}
-              <FormSection title="Tell us more">
                 <div>
                   <label className="text-[13px] font-medium text-[#1d1d1f]" htmlFor="message">
-                    Tell us about your business and goals <span style={{ color: "#c62828" }}>*</span>
+                    Tell us about your goals <span style={{ color: "#c62828" }}>*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
+                    rows={3}
                     required
-                    placeholder="What are you trying to grow? What's blocking you right now?"
-                    className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3.5 text-[15px] text-[#1d1d1f] placeholder:text-[#86868b] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition resize-y"
+                    placeholder="What are you trying to grow? What's blocking you?"
+                    className="mt-2 w-full rounded-[14px] border border-[#d2d2d7] bg-[#fbfbfd] px-4 py-3 text-[15px] text-[#1d1d1f] placeholder:text-[#86868b] outline-none focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/15 transition resize-y"
                   />
                 </div>
-              </FormSection>
 
-              {/* Honeypot */}
-              <input
-                type="text"
-                name="_hp_url"
-                tabIndex={-1}
-                autoComplete="off"
-                style={{ position: "absolute", left: "-9999px" }}
-                aria-hidden="true"
-              />
+                {/* Honeypot */}
+                <input
+                  type="text"
+                  name="_hp_url"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: "absolute", left: "-9999px" }}
+                  aria-hidden="true"
+                />
 
-              {error && (
-                <div
-                  className="text-[14px]"
-                  style={{
-                    color: "#c62828",
-                    background: "#fdecec",
-                    border: "1px solid #f5b9bc",
-                    borderRadius: 12,
-                    padding: "12px 16px",
-                  }}
-                >
-                  {error}
-                </div>
-              )}
-
-              <div className="flex flex-col gap-3 mt-1">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  style={{
-                    padding: "16px 32px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    color: "#fff",
-                    background: submitting ? "#7ab2ee" : "#0071e3",
-                    border: 0,
-                    borderRadius: 999,
-                    cursor: submitting ? "default" : "pointer",
-                    boxShadow: "0 8px 20px -8px rgba(0,113,227,0.5)",
-                    transition: "all 200ms ease",
-                    alignSelf: "flex-start",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (submitting) return;
-                    e.currentTarget.style.background = "#0077ed";
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                    e.currentTarget.style.boxShadow = "0 12px 28px -8px rgba(0,113,227,0.55)";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (submitting) return;
-                    e.currentTarget.style.background = "#0071e3";
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 8px 20px -8px rgba(0,113,227,0.5)";
-                  }}
-                >
-                  {submitting ? "Sending…" : "Book Your Free Strategy Call"}
-                </button>
-                <p className="text-[13px] text-[#6e6e73]">
-                  By submitting this form, you agree to our{" "}
-                  <a
-                    href={`/${safe}/privacy-policy`}
-                    className="underline hover:text-[#0071e3]"
+                {error && (
+                  <div
+                    className="text-[14px]"
+                    style={{
+                      color: "#c62828",
+                      background: "#fdecec",
+                      border: "1px solid #f5b9bc",
+                      borderRadius: 12,
+                      padding: "10px 14px",
+                    }}
                   >
-                    Privacy Policy
-                  </a>
-                  .
-                </p>
-              </div>
+                    {error}
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-2 mt-1">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    style={{
+                      padding: "13px 28px",
+                      fontSize: "15px",
+                      fontWeight: 600,
+                      color: "#fff",
+                      background: submitting ? "#7ab2ee" : "#0071e3",
+                      border: 0,
+                      borderRadius: 999,
+                      cursor: submitting ? "default" : "pointer",
+                      boxShadow: "0 8px 20px -8px rgba(0,113,227,0.5)",
+                      transition: "all 200ms ease",
+                      alignSelf: "flex-start",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (submitting) return;
+                      e.currentTarget.style.background = "#0077ed";
+                      e.currentTarget.style.transform = "translateY(-1px)";
+                      e.currentTarget.style.boxShadow = "0 12px 28px -8px rgba(0,113,227,0.55)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (submitting) return;
+                      e.currentTarget.style.background = "#0071e3";
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "0 8px 20px -8px rgba(0,113,227,0.5)";
+                    }}
+                  >
+                    {submitting ? "Sending…" : "Book Your Free Strategy Call"}
+                  </button>
+                  <p className="text-[12px] text-[#6e6e73]">
+                    By submitting, you agree to our{" "}
+                    <a
+                      href={`/${safe}/privacy-policy`}
+                      className="underline hover:text-[#0071e3]"
+                    >
+                      Privacy Policy
+                    </a>
+                    .
+                  </p>
+                </div>
               </form>
             </div>
-
-            {/* Right: contact details */}
-            <aside
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}
-            >
-              <h2 style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3a3a3c", margin: "0 0 8px" }}>
-                Or reach us directly
-              </h2>
-              <ContactCard
-                label="Call us"
-                value={CONTACT_DETAILS.phone}
-                href={CONTACT_DETAILS.phoneHref}
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                  </svg>
-                }
-              />
-              <ContactCard
-                label="Email us"
-                value={CONTACT_DETAILS.email}
-                href={`mailto:${CONTACT_DETAILS.email}`}
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                }
-              />
-              <ContactCard
-                label="Based in"
-                value={CONTACT_DETAILS.location}
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                }
-              />
-              <ContactCard
-                label="Reply time"
-                value={CONTACT_DETAILS.responseTime}
-                icon={
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                }
-              />
-            </aside>
           </div>
         </div>
 
@@ -377,12 +353,17 @@ export default function ContactPageClient({ params }: Props) {
             position: relative;
             background: #ffffff;
             border-radius: 22px;
-            padding: clamp(28px, 3.5vw, 44px);
+            padding: clamp(20px, 2.5vw, 32px);
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
               0 12px 32px -16px rgba(0, 0, 0, 0.12);
             --mx: 50%;
             --my: 0%;
             --glow-opacity: 0;
+          }
+          @media (max-width: 560px) {
+            :global(.contact-cards-grid) {
+              grid-template-columns: 1fr !important;
+            }
           }
           /* Glowing border ring (sits behind the card content) */
           :global(.contact-glow-card)::before {
@@ -449,6 +430,9 @@ export default function ContactPageClient({ params }: Props) {
           }
         `}</style>
       </section>
+
+      {/* Bottom strip: blog teaser + newsletter envelope (shared across the site) */}
+      <BlogAndNewsletterFun prefix={`/${safe}`} />
     </TileStack>
   );
 }
@@ -466,26 +450,40 @@ function ContactCard({
 }) {
   const inner = (
     <>
-      <div style={{ width: 32, height: 32, color: "#0071e3", marginBottom: 14 }}>
-        {icon}
+      <div
+        style={{
+          width: 42,
+          height: 42,
+          flexShrink: 0,
+          borderRadius: 12,
+          background: "rgba(0,113,227,0.08)",
+          color: "#0071e3",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ width: 20, height: 20 }}>{icon}</div>
       </div>
-      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#3a3a3c", marginBottom: 6 }}>
-        {label}
-      </div>
-      <div style={{ fontSize: 17, fontWeight: 600, color: "#1d1d1f" }}>
-        {value}
+      <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6e6e73" }}>
+          {label}
+        </div>
+        <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f", wordBreak: "break-word", lineHeight: 1.3 }}>
+          {value}
+        </div>
       </div>
     </>
   );
   const baseStyle: React.CSSProperties = {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    padding: "24px",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 14,
+    padding: "18px 20px",
     background: "#fff",
     border: "1px solid #c8c8cd",
-    borderRadius: 18,
-    minHeight: 140,
+    borderRadius: 14,
     transition: "transform 200ms ease, box-shadow 200ms ease",
     textDecoration: "none",
     color: "inherit",
@@ -511,7 +509,7 @@ function ContactCard({
   if (href) {
     return (
       <a href={href} className="glow-card" style={baseStyle} onMouseMove={handleMove} onMouseLeave={handleLeave}>
-        <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", width: "100%" }}>
+        <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "row", alignItems: "center", gap: 14, width: "100%" }}>
           {inner}
         </div>
       </a>
@@ -519,7 +517,7 @@ function ContactCard({
   }
   return (
     <div className="glow-card" style={baseStyle} onMouseMove={handleMove} onMouseLeave={handleLeave}>
-      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", width: "100%" }}>
+      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "row", alignItems: "center", gap: 14, width: "100%" }}>
         {inner}
       </div>
     </div>
