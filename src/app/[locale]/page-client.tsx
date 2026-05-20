@@ -4,15 +4,10 @@ import { useEffect, useState } from "react";
 import {
   Tile,
   TileStack,
-  TilePair,
   CTALink,
   PillButton,
   ApplePlayer,
   LogoStrip,
-  MockDashboard,
-  MockBrowser,
-  MockSearchResult,
-  MockPhone,
   CaseSearchAnim,
   CaseWebsiteAnim,
   CloseSuite,
@@ -23,20 +18,24 @@ import {
   AnimatedStat,
 } from "@/components/apple";
 import { LocaleCode, isValidLocale } from "@/lib/locales";
-import { cn } from "@/lib/utils";
 
 interface HomePageClientProps {
   locale: string;
 }
 
-const HERO_COPY: Partial<Record<LocaleCode, {
-  headWords: string[];
-  accentWords: string[];
-  subhead: string;
-  caption: string;
-  primaryCta: string;
-  secondaryCta: string;
-}>> = {
+const HERO_COPY: Partial<
+  Record<
+    LocaleCode,
+    {
+      headWords: string[];
+      accentWords: string[];
+      subhead: string;
+      caption: string;
+      primaryCta: string;
+      secondaryCta: string;
+    }
+  >
+> = {
   us: {
     headWords: ["We", "fill", "your", "calendar."],
     accentWords: ["Guaranteed."],
@@ -45,24 +44,55 @@ const HERO_COPY: Partial<Record<LocaleCode, {
     primaryCta: "Book a call",
     secondaryCta: "See how we work",
   },
+  au: {
+    headWords: ["We", "fill", "your", "calendar."],
+    accentWords: ["Guaranteed."],
+    subhead: "Local customers, actively searching for your service, in front of you this month.",
+    caption: "Traction in two to four weeks, or the fees pause. No contracts. Yes, we know 'naur' means 'no'.",
+    primaryCta: "Book a call",
+    secondaryCta: "See how we work",
+  },
+  uk: {
+    headWords: ["We", "fill", "your", "calendar."],
+    accentWords: ["Guaranteed."],
+    subhead: "Local customers, actively searching for your service, in front of you this month.",
+    caption: "Traction in two to four weeks, or the fees pause. No contracts.",
+    primaryCta: "Book a call",
+    secondaryCta: "See how we work",
+  },
+  ie: {
+    headWords: ["We", "fill", "your", "calendar."],
+    accentWords: ["Guaranteed."],
+    subhead: "Local customers, actively searching for your service, in front of you this month.",
+    caption: "Traction in two to four weeks, or the fees pause. No contracts.",
+    primaryCta: "Book a call",
+    secondaryCta: "See how we work",
+  },
+  nl: {
+    headWords: ["Wij", "vullen", "jouw", "agenda."],
+    accentWords: ["Gegarandeerd."],
+    subhead: "Lokale klanten die actief naar jouw dienst zoeken, nog deze maand voor je neus.",
+    caption: "Tractie in twee tot vier weken, anders pauzeren de fees. Geen contracten.",
+    primaryCta: "Boek een call",
+    secondaryCta: "Zie hoe we werken",
+  },
+  dk: {
+    headWords: ["Vi", "fylder", "din", "kalender."],
+    accentWords: ["Garanteret."],
+    subhead: "Lokale kunder, der aktivt leder efter din service, foran dig allerede denne maaned.",
+    caption: "Traction paa to til fire uger, ellers saettes gebyrerne paa pause. Ingen kontrakter.",
+    primaryCta: "Book et opkald",
+    secondaryCta: "Se hvordan vi arbejder",
+  },
   cz: {
-    headWords: ["Plníme", "váš", "kalendář."],
-    accentWords: ["Garantovaně."],
-    subhead: "Místní zákazníci, kteří právě hledají vaši službu, před vámi ještě tento měsíc.",
-    caption: "První výsledky za dva až čtyři týdny, jinak se poplatky pozastaví. Bez smluv.",
+    headWords: ["Plnime", "vas", "kalendar."],
+    accentWords: ["Garance."],
+    subhead: "Mistni zakaznici, kteri prave hledaji vasi sluzbu, pred vami jeste tento mesic.",
+    caption: "Prvni vysledky za dva az ctyri tydny, jinak se poplatky pozastavi. Bez smluv.",
     primaryCta: "Rezervovat hovor",
     secondaryCta: "Jak pracujeme",
   },
-  ar: {
-    headWords: ["نملأ", "جدول", "مواعيدك."],
-    accentWords: ["مضمون."],
-    subhead: "عملاء محليون يبحثون عن خدمتك الآن، ونضعهم أمامك هذا الشهر.",
-    caption: "نتائج خلال أسبوعين إلى أربعة أسابيع، وإلا تتوقف الرسوم. بلا عقود.",
-    primaryCta: "احجز مكالمة",
-    secondaryCta: "شاهد كيف نعمل",
-  },
 };
-
 const FAQ_ITEMS: FAQItem[] = [
   {
     q: "What will you actually do for my business?",
@@ -109,8 +139,7 @@ const FAQ_ITEMS: FAQItem[] = [
 export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
   const safeLocale: LocaleCode = isValidLocale(locale) ? locale : "us";
   const prefix = `/${safeLocale}`;
-  const isRtl = safeLocale === "ar";
-  const heroCopy = HERO_COPY[safeLocale] || HERO_COPY.us!;
+    const heroCopy = HERO_COPY[safeLocale] || HERO_COPY.us!;
 
   // Trigger hero reveal shortly after mount so the word-by-word + sequential
   // fades play without needing scroll. IntersectionObserver is overkill for
@@ -146,7 +175,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
         className="relative w-full overflow-hidden ac-hero-root"
         data-ac-theme="light"
         data-ac-in={heroIn ? "1" : "0"}
-        dir={isRtl ? "rtl" : "ltr"}
+        dir="ltr"
         style={{
           padding: "clamp(24px, 3vw, 44px) clamp(24px, 5vw, 56px) clamp(32px, 5vw, 64px)",
           minHeight: "calc(100vh - 72px)",
@@ -157,7 +186,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
       >
         <InteractiveHeroBG />
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 lg:gap-14 items-center">
-          <div className={cn(isRtl ? "text-right lg:order-2" : "text-left lg:order-1")}>
+          <div className="text-left lg:order-1">
             <h1
               className="ac-headline"
               style={{ fontSize: "clamp(52px, 7.5vw, 104px)", lineHeight: 0.96 }}
@@ -190,7 +219,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
               className="ac-subhead mt-4 ac-hero-fade"
               style={{
                 fontSize: "clamp(18px, 2vw, 24px)",
-                textAlign: isRtl ? "right" : "left",
+                textAlign: "left",
                 marginLeft: 0,
                 maxWidth: 520,
                 transitionDelay: "720ms",
@@ -210,10 +239,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
             </div>
           </div>
           <div
-            className={cn(
-              "w-full ac-hero-video flex justify-center",
-              isRtl ? "lg:order-1 lg:justify-start" : "lg:order-2 lg:justify-end"
-            )}
+            className="w-full ac-hero-video flex justify-center lg:order-2 lg:justify-end"
           >
             <div className="w-full max-w-[360px] aspect-[9/16] ac-hero-video-float">
               {heroVideo && (
@@ -544,3 +570,4 @@ function CaseCard({
     </div>
   );
 }
+

@@ -563,14 +563,3 @@ function Field({
     </div>
   );
 }
-
-function FormSection({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <fieldset className="flex flex-col gap-4 m-0 p-0 border-0">
-      <legend className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#3a3a3c] mb-1">
-        {title}
-      </legend>
-      {children}
-    </fieldset>
-  );
-}

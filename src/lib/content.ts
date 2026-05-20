@@ -162,6 +162,7 @@ export function getRelatedClusters(clusterSlugs: string[], locale: LocaleCode = 
     const post = getPostBySlug(slug, locale);
     if (post) {
       const { content, ...meta } = post;
+      void content;
       clusters.push(meta);
     }
   }

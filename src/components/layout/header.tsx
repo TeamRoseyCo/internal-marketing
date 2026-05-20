@@ -3,53 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLocale, useTranslation } from "@/lib/i18n";
-import { isValidLocale } from "@/lib/locales";
+import { useTranslation } from "@/lib/i18n";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const pathname = usePathname();
 
-  // Try to get locale from context (when LocaleProvider is available)
-  // Fall back to pathname parsing for root-level pages
-  let locale: string;
-  let t: (key: string) => string;
-
-  try {
-    locale = useLocale();
-    const translation = useTranslation();
-    t = translation.t;
-  } catch {
-    // LocaleProvider not available (root-level pages)
-    // Use pathname parsing as fallback
-    const pathSegments = pathname.split('/');
-    const potentialLocale = pathSegments[1];
-    locale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
-
-    // Get actual translations for the detected locale
-    const translations = require('@/lib/translations').getTranslations(locale);
-
-    t = (key: string) => {
-      const keys = key.split('.');
-      let value: any = translations;
-
-      for (const k of keys) {
-        if (value && typeof value === 'object' && k in value) {
-          value = value[k];
-        } else {
-          return key;
-        }
-      }
-
-      return typeof value === 'string' ? value : key;
-    };
-  }
+  const { t, locale } = useTranslation();
 
   // Build locale-aware navigation items with translations
   const navItems = [
@@ -184,7 +148,6 @@ export function Header() {
       navItems={navItems}
       ctaText={t("header.cta")}
       ctaHref={`/${locale}/contact`}
-      locale={locale}
     />
     </>
   );
@@ -197,14 +160,12 @@ function MobileMenu({
   navItems,
   ctaText,
   ctaHref,
-  locale,
 }: {
   isOpen: boolean;
   onClose: () => void;
   navItems: { href: string; label: string }[];
   ctaText: string;
   ctaHref: string;
-  locale: string;
 }) {
   if (!isOpen) return null;
 

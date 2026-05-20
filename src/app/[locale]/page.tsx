@@ -4,7 +4,7 @@
 
 import { Metadata } from "next";
 import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
-import { isValidLocale, getLocale, LocaleCode } from "@/lib/locales";
+import { isValidLocale } from "@/lib/locales";
 import { getTranslations } from "@/lib/translations";
 import LocaleHomePageClient from "./page-client";
 
@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const localeConfig = getLocale(locale);
   const t = getTranslations(locale);
 
   return {

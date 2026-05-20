@@ -5,7 +5,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Phone, Clock, Mail, Search, Share2, CreditCard, Palette, ArrowRight, Navigation } from "lucide-react";
-import { isValidLocale, LocaleCode } from "@/lib/locales";
+import { isValidLocale } from "@/lib/locales";
 import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
 import { LocalBusinessStructuredData } from "@/components/seo/structured-data";
 import { FAQStructuredData } from "@/components/seo/structured-data";

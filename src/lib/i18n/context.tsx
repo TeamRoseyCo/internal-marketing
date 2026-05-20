@@ -48,16 +48,15 @@ export function LocaleProvider({ locale, children }: LocaleProviderProps) {
 /**
  * useLocaleContext hook
  * Access locale context from any child component
- * Throws if used outside LocaleProvider
+ * Falls back to US when used outside LocaleProvider
  *
- * @throws Error if used outside LocaleProvider
  * @returns LocaleContextValue
  */
 export function useLocaleContext(): LocaleContextValue {
   const context = useContext(LocaleContext);
 
   if (!context) {
-    throw new Error('useLocaleContext must be used within LocaleProvider');
+    return { locale: 'us' };
   }
 
   return context;

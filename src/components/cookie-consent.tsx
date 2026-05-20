@@ -29,21 +29,8 @@ export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Get locale and translations
-  // Try-catch pattern for compatibility with pages that may not have LocaleProvider
-  let locale = 'us';
-  let t: (key: string) => string = (key) => key;
-
-  try {
-    locale = useLocale();
-    const translation = useTranslation();
-    t = translation.t;
-  } catch (error) {
-    // LocaleProvider not available - use defaults (non-EU fallback)
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('CookieConsent: LocaleProvider not available, using defaults');
-    }
-  }
+  const locale = useLocale();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);

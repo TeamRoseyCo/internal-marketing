@@ -50,12 +50,11 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
   const headings = extractHeadings(content);
 
-  // Return null if no headings found
-  if (headings.length === 0) {
-    return null;
-  }
-
   useEffect(() => {
+    if (headings.length === 0) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,6 +80,11 @@ export function TableOfContents({ content }: TableOfContentsProps) {
       observer.disconnect();
     };
   }, [headings]);
+
+  // Return null if no headings found
+  if (headings.length === 0) {
+    return null;
+  }
 
   return (
     <nav className="p-6 bg-muted/30 rounded-lg border border-border mb-12">

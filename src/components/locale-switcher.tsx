@@ -81,16 +81,10 @@ export function LocaleSwitcher({ variant = 'dropdown', className }: LocaleSwitch
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Get current locale from context or pathname
-  let currentLocale: LocaleCode;
-  try {
-    currentLocale = useLocale() as LocaleCode;
-  } catch {
-    // Fall back to pathname parsing if LocaleProvider not available
-    const pathSegments = pathname.split('/');
-    const potentialLocale = pathSegments[1];
-    currentLocale = isValidLocale(potentialLocale) ? potentialLocale : 'us';
-  }
+  const contextLocale = useLocale() as LocaleCode;
+  const pathSegments = pathname.split('/');
+  const potentialLocale = pathSegments[1];
+  const currentLocale = isValidLocale(potentialLocale) ? potentialLocale : contextLocale;
 
   // Close dropdown when clicking outside
   useEffect(() => {

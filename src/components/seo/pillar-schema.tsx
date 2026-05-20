@@ -6,8 +6,6 @@
 // ClusterArticleSchema: Article with isPartOf linking back to parent pillar
 // Uses "use client" to work in both server and client components
 
-import { LocaleCode } from "@/lib/locales";
-
 const BASE_URL = "https://roseyco.com";
 
 // Type definitions for pillar-cluster schemas

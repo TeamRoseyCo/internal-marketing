@@ -1055,40 +1055,6 @@ translations.cz = {
   },
 };
 
-translations.ar = {
-  ...translations.us,
-  meta: {
-    title: 'Rosey Co. | Social Media Marketing Agency MENA',
-    description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services across MENA.',
-  },
-  hero: {
-    ...translations.us.hero,
-    badge: 'MENA Marketing Agency',
-  },
-  footer: {
-    headings: {
-      services: 'Services',
-      company: 'Company',
-      contact: 'Contact',
-    },
-    services: {
-      seo: 'SEO Services',
-      socialMedia: 'Social Media Management',
-      paidAds: 'Paid Advertising',
-      webDesign: 'Website Design',
-    },
-    company: {
-      results: 'Results',
-      blog: 'Blog',
-      contact: 'Contact',
-      privacy: 'Privacy Policy',
-    },
-    brandDescription: 'We help businesses across MENA generate more customers through SEO, social media management, and paid advertising.',
-    copyright: 'All rights reserved.',
-    tagline: 'Global Social Media Marketing Agency',
-  },
-};
-
 export function getTranslations(locale: LocaleCode): Translations {
   return translations[locale] || translations.us;
 }

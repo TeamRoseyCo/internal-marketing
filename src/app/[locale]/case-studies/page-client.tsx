@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, ExternalLink } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { isValidLocale, LocaleCode } from "@/lib/locales";
 import type { CaseStudy } from "@/lib/dashboard-supabase";

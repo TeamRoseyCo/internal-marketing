@@ -400,32 +400,6 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
     }
   },
 
-  ar: {
-    seo: {
-      pillarSlug: 'seo-guide',
-      pillarIntent: 'informational',
-      primaryKeyword: 'SEO guide',
-      clusters: []
-    },
-    paidAds: {
-      pillarSlug: 'paid-ads-guide',
-      pillarIntent: 'commercial',
-      primaryKeyword: 'Paid advertising guide',
-      clusters: []
-    },
-    socialMedia: {
-      pillarSlug: 'social-media-guide',
-      pillarIntent: 'commercial',
-      primaryKeyword: 'Social media marketing guide',
-      clusters: []
-    },
-    websiteDesign: {
-      pillarSlug: 'website-design-guide',
-      pillarIntent: 'commercial',
-      primaryKeyword: 'Website design guide',
-      clusters: []
-    }
-  }
 };
 
 /**
@@ -437,7 +411,7 @@ export function validateKeywordMap(): void {
 
   // Build registry of all keywords
   for (const [locale, topics] of Object.entries(keywordMap)) {
-    for (const [topicName, pillar] of Object.entries(topics)) {
+    for (const pillar of Object.values(topics)) {
       const localeCode = locale as LocaleCode;
 
       // Register pillar keyword
@@ -528,7 +502,7 @@ export function getKeywordUrl(keyword: string, locale: LocaleCode = 'us'): strin
   if (!topics) return null;
 
   // Check pillar keywords
-  for (const [topicName, pillar] of Object.entries(topics)) {
+  for (const pillar of Object.values(topics)) {
     if (pillar.primaryKeyword.toLowerCase() === normalizedKeyword) {
       return `/${locale}/${pillar.pillarSlug}`;
     }
