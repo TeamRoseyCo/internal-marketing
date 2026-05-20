@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Calendar, Clock, Tag, User } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import { getPostBySlug, getPostSlugs } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx/mdx-components";
@@ -50,16 +50,6 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  // Map category to color
-  const categoryColors: Record<string, string> = {
-    "Paid Advertising": "brand-rose",
-    SEO: "brand-green",
-    "Social Media": "brand-forest",
-    "Website Design": "brand-green",
-    General: "primary",
-  };
-  const color = categoryColors[post.category] || "primary";
-
   return (
     <>
       {/* Hero Section */}
@@ -74,17 +64,6 @@ export default async function BlogPostPage({
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
-
-            {/* Category */}
-            <div className="flex items-center gap-2 mb-4">
-              <Tag className="w-4 h-4 text-muted-foreground" />
-              <span
-                className="text-sm font-medium tracking-wider uppercase"
-                style={{ color: `hsl(var(--${color}))` }}
-              >
-                {post.category}
-              </span>
-            </div>
 
             {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8 leading-[1.1]">

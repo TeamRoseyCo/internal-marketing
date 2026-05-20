@@ -1,161 +1,184 @@
 "use client";
 
+// src/app/privacy-policy/page.tsx
+// Privacy Policy page.
+// Rebuilt on the Apple-style light design system (the old dark-theme classes
+// bg-hero-surface / tech-card / prose-invert were removed in the site rebuild,
+// which left this page rendering a broken black gradient and washed-out text).
+// RELEVANT FILES: src/app/globals.css, src/components/animations/index.ts
+
 import { FadeIn } from "@/components/animations";
 
+const sections = [
+  {
+    title: "Introduction",
+    body: [
+      'Rosey Co. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit roseyco.com and use our services.',
+    ],
+  },
+  {
+    title: "Information We Collect",
+    body: ["We collect information you provide directly to us, including:"],
+    list: [
+      "Name and contact information (email, phone number)",
+      "Business information and website URL",
+      "Information you provide in contact forms or surveys",
+      "Communication records when you contact us",
+      "Payment information (processed securely through our payment providers)",
+    ],
+  },
+  {
+    title: "How We Use Your Information",
+    body: ["We use the information we collect to:"],
+    list: [
+      "Provide and improve our marketing services",
+      "Communicate with you about our services",
+      "Send you marketing and promotional communications",
+      "Analyze website usage and improve user experience",
+      "Process transactions and send related information",
+      "Respond to your comments and questions",
+    ],
+  },
+  {
+    title: "Cookies and Tracking",
+    body: [
+      "We use cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with a small amount of data that may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.",
+    ],
+  },
+  {
+    title: "Third-Party Services",
+    body: [
+      "We may employ third-party companies and individuals to facilitate our services, provide services on our behalf, perform service-related tasks, or assist us in analyzing how our services are used. These third parties have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.",
+    ],
+  },
+  {
+    title: "Data Security",
+    body: [
+      "We implement appropriate security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure.",
+    ],
+  },
+  {
+    title: "Your Rights",
+    body: [
+      "Depending on your location, you may have certain rights regarding your personal information:",
+    ],
+    list: [
+      "Access your personal data",
+      "Correct inaccurate data",
+      "Request deletion of your data",
+      "Object to processing of your data",
+      "Request data portability",
+      "Withdraw consent at any time",
+    ],
+  },
+  {
+    title: "Changes to This Policy",
+    body: [
+      'We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.',
+    ],
+  },
+];
+
 export default function PrivacyPolicyPage() {
+  // Always shows the current month/year — the policy is kept continuously up to date.
+  const lastUpdated = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-hero-surface overflow-hidden">
-        <div className="container py-24 md:py-32">
-          <div className="max-w-3xl mx-auto text-center">
-            <FadeIn delay={0.1}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 leading-[1.05]">
-                Privacy <span className="gradient-text">Policy</span>
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <p className="text-lg text-muted-foreground">
-                Last updated: December 2024
-              </p>
-            </FadeIn>
-          </div>
+      {/* Hero — light tile so the frosted nav blends instead of reading as a grey bar */}
+      <section
+        style={{ background: "#f5f5f7" }}
+        className="px-6 pt-[140px] pb-20 md:pt-[180px] md:pb-28"
+      >
+        <div className="max-w-3xl mx-auto">
+          <FadeIn delay={0.1}>
+            <h1
+              className="font-semibold tracking-tight text-[#1d1d1f]"
+              style={{
+                fontSize: "clamp(40px, 6vw, 64px)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Privacy Policy
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p
+              suppressHydrationWarning
+              className="mt-4 text-[16px] text-[#6e6e73]"
+            >
+              Last updated: {lastUpdated}
+            </p>
+          </FadeIn>
         </div>
-
-        {/* Gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
       </section>
 
       {/* Content */}
-      <section className="py-24 md:py-32">
-        <div className="container">
-          <FadeIn>
-            <div className="prose prose-invert max-w-3xl mx-auto">
-              <div className="tech-card p-8 md:p-12 space-y-8">
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Introduction</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Rosey Co. (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;)
-                    is committed to protecting your privacy. This Privacy Policy
-                    explains how we collect, use, disclose, and safeguard your
-                    information when you visit our website roseyco.com and use
-                    our services.
+      <section style={{ background: "#ffffff" }} className="px-6 py-20 md:py-28">
+        <div className="max-w-3xl mx-auto">
+          {sections.map((section, i) => (
+            <FadeIn key={section.title}>
+              <div
+                className={i > 0 ? "mt-12 pt-12 border-t border-[#d2d2d7]" : ""}
+              >
+                <h2
+                  className="font-semibold tracking-tight text-[#1d1d1f]"
+                  style={{ fontSize: "clamp(22px, 2.6vw, 28px)", letterSpacing: "-0.01em" }}
+                >
+                  {section.title}
+                </h2>
+                {section.body.map((para, j) => (
+                  <p
+                    key={j}
+                    className="mt-4 text-[17px] leading-relaxed text-[#3a3a3c]"
+                  >
+                    {para}
                   </p>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">
-                    Information We Collect
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    We collect information you provide directly to us, including:
-                  </p>
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    <li>Name and contact information (email, phone number)</li>
-                    <li>Business information and website URL</li>
-                    <li>Information you provide in contact forms or surveys</li>
-                    <li>Communication records when you contact us</li>
-                    <li>
-                      Payment information (processed securely through our payment
-                      providers)
-                    </li>
+                ))}
+                {section.list && (
+                  <ul className="mt-4 space-y-2">
+                    {section.list.map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-3 text-[17px] leading-relaxed text-[#3a3a3c]"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-[10px] h-[5px] w-[5px] rounded-full bg-[#86868b] shrink-0"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">
-                    How We Use Your Information
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    We use the information we collect to:
-                  </p>
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    <li>Provide and improve our marketing services</li>
-                    <li>Communicate with you about our services</li>
-                    <li>Send you marketing and promotional communications</li>
-                    <li>Analyze website usage and improve user experience</li>
-                    <li>Process transactions and send related information</li>
-                    <li>Respond to your comments and questions</li>
-                  </ul>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Cookies and Tracking</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We use cookies and similar tracking technologies to track
-                    activity on our website and hold certain information. Cookies
-                    are files with a small amount of data that may include an
-                    anonymous unique identifier. You can instruct your browser to
-                    refuse all cookies or to indicate when a cookie is being sent.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Third-Party Services</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We may employ third-party companies and individuals to
-                    facilitate our services, provide services on our behalf,
-                    perform service-related tasks, or assist us in analyzing how
-                    our services are used. These third parties have access to your
-                    personal information only to perform these tasks on our behalf
-                    and are obligated not to disclose or use it for any other
-                    purpose.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Data Security</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We implement appropriate security measures to protect against
-                    unauthorized access, alteration, disclosure, or destruction of
-                    your personal information. However, no method of transmission
-                    over the Internet or electronic storage is 100% secure.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Your Rights</h2>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    Depending on your location, you may have certain rights
-                    regarding your personal information:
-                  </p>
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    <li>Access your personal data</li>
-                    <li>Correct inaccurate data</li>
-                    <li>Request deletion of your data</li>
-                    <li>Object to processing of your data</li>
-                    <li>Request data portability</li>
-                    <li>Withdraw consent at any time</li>
-                  </ul>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">
-                    Changes to This Policy
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    We may update this Privacy Policy from time to time. We will
-                    notify you of any changes by posting the new Privacy Policy on
-                    this page and updating the &quot;Last updated&quot; date.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="font-serif text-2xl font-bold mb-4">Contact Us</h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    If you have any questions about this Privacy Policy, please
-                    contact us at{" "}
-                    <a
-                      href="mailto:team@roseyco.com"
-                      className="text-primary hover:underline"
-                    >
-                      team@roseyco.com
-                    </a>
-                    .
-                  </p>
-                </section>
+                )}
               </div>
+            </FadeIn>
+          ))}
+
+          {/* Contact */}
+          <FadeIn>
+            <div className="mt-12 pt-12 border-t border-[#d2d2d7]">
+              <h2
+                className="font-semibold tracking-tight text-[#1d1d1f]"
+                style={{ fontSize: "clamp(22px, 2.6vw, 28px)", letterSpacing: "-0.01em" }}
+              >
+                Contact Us
+              </h2>
+              <p className="mt-4 text-[17px] leading-relaxed text-[#3a3a3c]">
+                If you have any questions about this Privacy Policy, please
+                contact us at{" "}
+                <a
+                  href="mailto:team@roseyco.com"
+                  className="text-[#0071e3] hover:underline"
+                >
+                  team@roseyco.com
+                </a>
+                .
+              </p>
             </div>
           </FadeIn>
         </div>

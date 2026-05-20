@@ -606,7 +606,7 @@ translations.au = {
     subtitle: 'Stop waiting for customers to find you. We put your business in front of people actively searching for your services.',
     cta: 'Get Your Free Strategy Call',
     ctaSecondary: 'See Our Results',
-    socialProof: 'Join 50+ Australian businesses scaling profitably with targeted marketing.',
+    socialProof: 'Join 50+ Australian businesses scaling profitably with targeted marketing. Yes, we know "naur" means "no."',
   },
   stats: {
     roas: 'Avg ROAS',
@@ -1018,6 +1018,74 @@ translations.ie = {
     message: "The page you're looking for doesn't exist or has been moved.",
     goHome: 'Go Home',
     contactUs: 'Contact Us',
+  },
+};
+
+translations.cz = {
+  ...translations.us,
+  meta: {
+    title: 'Rosey Co. | Social Media Marketing Agency Czechia',
+    description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services in Czechia.',
+  },
+  hero: {
+    ...translations.us.hero,
+    badge: 'Czech Marketing Agency',
+  },
+  footer: {
+    headings: {
+      services: 'Sluzby',
+      company: 'Spolecnost',
+      contact: 'Kontakt',
+    },
+    services: {
+      seo: 'SEO sluzby',
+      socialMedia: 'Sprava socialnich siti',
+      paidAds: 'Placena reklama',
+      webDesign: 'Tvorba webu',
+    },
+    company: {
+      results: 'Vysledky',
+      blog: 'Blog',
+      contact: 'Kontakt',
+      privacy: 'Ochrana soukromi',
+    },
+    brandDescription: 'Pomahame firmam ziskavat vice zakazniku pomoci SEO, socialnich siti a placene reklamy.',
+    copyright: 'Vsechna prava vyhrazena.',
+    tagline: 'Global Social Media Marketing Agency',
+  },
+};
+
+translations.ar = {
+  ...translations.us,
+  meta: {
+    title: 'Rosey Co. | Social Media Marketing Agency MENA',
+    description: 'Get more leads and grow your business with data-driven SEO, social media management, and paid advertising services across MENA.',
+  },
+  hero: {
+    ...translations.us.hero,
+    badge: 'MENA Marketing Agency',
+  },
+  footer: {
+    headings: {
+      services: 'Services',
+      company: 'Company',
+      contact: 'Contact',
+    },
+    services: {
+      seo: 'SEO Services',
+      socialMedia: 'Social Media Management',
+      paidAds: 'Paid Advertising',
+      webDesign: 'Website Design',
+    },
+    company: {
+      results: 'Results',
+      blog: 'Blog',
+      contact: 'Contact',
+      privacy: 'Privacy Policy',
+    },
+    brandDescription: 'We help businesses across MENA generate more customers through SEO, social media management, and paid advertising.',
+    copyright: 'All rights reserved.',
+    tagline: 'Global Social Media Marketing Agency',
   },
 };
 

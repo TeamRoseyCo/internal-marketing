@@ -371,6 +371,60 @@ export const keywordMap: Record<LocaleCode, KeywordMapping> = {
       primaryKeyword: 'Webdesign guide',
       clusters: []
     }
+  },
+
+  cz: {
+    seo: {
+      pillarSlug: 'seo-guide',
+      pillarIntent: 'informational',
+      primaryKeyword: 'SEO guide',
+      clusters: []
+    },
+    paidAds: {
+      pillarSlug: 'paid-ads-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Paid advertising guide',
+      clusters: []
+    },
+    socialMedia: {
+      pillarSlug: 'social-media-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Social media marketing guide',
+      clusters: []
+    },
+    websiteDesign: {
+      pillarSlug: 'website-design-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Website design guide',
+      clusters: []
+    }
+  },
+
+  ar: {
+    seo: {
+      pillarSlug: 'seo-guide',
+      pillarIntent: 'informational',
+      primaryKeyword: 'SEO guide',
+      clusters: []
+    },
+    paidAds: {
+      pillarSlug: 'paid-ads-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Paid advertising guide',
+      clusters: []
+    },
+    socialMedia: {
+      pillarSlug: 'social-media-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Social media marketing guide',
+      clusters: []
+    },
+    websiteDesign: {
+      pillarSlug: 'website-design-guide',
+      pillarIntent: 'commercial',
+      primaryKeyword: 'Website design guide',
+      clusters: []
+    }
   }
 };
 

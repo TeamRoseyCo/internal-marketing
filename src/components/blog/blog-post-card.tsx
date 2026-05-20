@@ -31,6 +31,7 @@ export function BlogPostCard({
       ie: "en-IE",
       nl: "nl-NL",
       dk: "da-DK",
+      cz: "cs-CZ",
     };
     return localeMap[loc] || "en-US";
   };
@@ -73,10 +74,6 @@ export function BlogPostCard({
             />
           )}
 
-          {/* Category badge floating */}
-          <span className="absolute top-4 left-4 bg-primary text-white px-3 py-1.5 rounded text-[11px] font-semibold uppercase tracking-wider">
-            {post.category}
-          </span>
         </div>
       </Link>
 

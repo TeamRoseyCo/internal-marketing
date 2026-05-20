@@ -1,8 +1,8 @@
 // src/lib/locales.ts
 // Locale configuration for multi-location strategy
-// Supports US, NL, DK, AU, UK, IE (all English except NL/DK)
+// Supports US, NL, DK, AU, UK, IE, CZ
 
-export type LocaleCode = 'us' | 'nl' | 'dk' | 'au' | 'uk' | 'ie';
+export type LocaleCode = "us" | "nl" | "dk" | "au" | "uk" | "ie" | "cz";
 
 export interface LocaleConfig {
   code: LocaleCode;
@@ -14,7 +14,6 @@ export interface LocaleConfig {
   phone: string;
   address: string;
   timezone: string;
-  // Structured address fields for PostalAddress schema
   streetAddress?: string;
   addressLocality: string;
   addressRegion?: string;
@@ -27,94 +26,106 @@ export interface LocaleConfig {
 
 export const locales: Record<LocaleCode, LocaleConfig> = {
   us: {
-    code: 'us',
-    language: 'English',
-    languageCode: 'en',
-    country: 'United States',
-    countryCode: 'US',
-    currency: 'USD',
-    phone: '+1 (307) 400-9814',
-    address: 'Missouri, United States',
-    timezone: 'America/Chicago',
-    addressLocality: 'Missouri',
+    code: "us",
+    language: "English",
+    languageCode: "en",
+    country: "United States",
+    countryCode: "US",
+    currency: "USD",
+    phone: "+1 (307) 400-9814",
+    address: "Missouri, United States",
+    timezone: "America/Chicago",
+    addressLocality: "Missouri",
   },
   nl: {
-    code: 'nl',
-    language: 'Nederlands',
-    languageCode: 'nl',
-    country: 'Nederland',
-    countryCode: 'NL',
-    currency: 'EUR',
-    phone: '+31 85 369 6471',
-    address: 'Amsterdam, Nederland',
-    timezone: 'Europe/Amsterdam',
-    addressLocality: 'Amsterdam',
+    code: "nl",
+    language: "Nederlands",
+    languageCode: "nl",
+    country: "Nederland",
+    countryCode: "NL",
+    currency: "EUR",
+    phone: "+31 85 369 6471",
+    address: "Amsterdam, Nederland",
+    timezone: "Europe/Amsterdam",
+    addressLocality: "Amsterdam",
   },
   dk: {
-    code: 'dk',
-    language: 'Dansk',
-    languageCode: 'da',
-    country: 'Danmark',
-    countryCode: 'DK',
-    currency: 'DKK',
-    phone: '+45 6081 8826',
-    address: 'København, Danmark',
-    timezone: 'Europe/Copenhagen',
-    addressLocality: 'København',
+    code: "dk",
+    language: "Dansk",
+    languageCode: "da",
+    country: "Danmark",
+    countryCode: "DK",
+    currency: "DKK",
+    phone: "+45 6081 8826",
+    address: "Kobenhavn, Danmark",
+    timezone: "Europe/Copenhagen",
+    addressLocality: "Kobenhavn",
   },
   au: {
-    code: 'au',
-    language: 'English',
-    languageCode: 'en',
-    country: 'Australia',
-    countryCode: 'AU',
-    currency: 'AUD',
-    phone: '+44 7516 843959', // Using UK number
-    address: 'Sydney, Australia',
-    timezone: 'Australia/Sydney',
-    addressLocality: 'Sydney',
+    code: "au",
+    language: "English",
+    languageCode: "en",
+    country: "Australia",
+    countryCode: "AU",
+    currency: "AUD",
+    phone: "+44 7516 843959",
+    address: "Sydney, Australia",
+    timezone: "Australia/Sydney",
+    addressLocality: "Sydney",
   },
   uk: {
-    code: 'uk',
-    language: 'English',
-    languageCode: 'en',
-    country: 'United Kingdom',
-    countryCode: 'GB',
-    currency: 'GBP',
-    phone: '+44 7516 843959', // Verified Belfast GBP
-    address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
-    timezone: 'Europe/London',
-    streetAddress: '1 Hollycroft Avenue',
-    addressLocality: 'Belfast',
-    addressRegion: 'Northern Ireland',
-    postalCode: 'BT5 5JE',
+    code: "uk",
+    language: "English",
+    languageCode: "en",
+    country: "United Kingdom",
+    countryCode: "GB",
+    currency: "GBP",
+    phone: "+44 7516 843959",
+    address: "1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom",
+    timezone: "Europe/London",
+    streetAddress: "1 Hollycroft Avenue",
+    addressLocality: "Belfast",
+    addressRegion: "Northern Ireland",
+    postalCode: "BT5 5JE",
     geo: {
       latitude: 54.5833,
       longitude: -5.9333,
     },
   },
   ie: {
-    code: 'ie',
-    language: 'English',
-    languageCode: 'en',
-    country: 'Ireland',
-    countryCode: 'IE',
-    currency: 'EUR',
-    phone: '+353 89 973 8595', // IE dedicated number
-    address: '1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom',
-    timezone: 'Europe/Dublin',
-    streetAddress: '1 Hollycroft Avenue',
-    addressLocality: 'Belfast',
-    addressRegion: 'Northern Ireland',
-    postalCode: 'BT5 5JE',
+    code: "ie",
+    language: "English",
+    languageCode: "en",
+    country: "Ireland",
+    countryCode: "IE",
+    currency: "EUR",
+    phone: "+353 89 973 8595",
+    address: "1 Hollycroft Avenue, Belfast, BT5 5JE, United Kingdom",
+    timezone: "Europe/Dublin",
+    streetAddress: "1 Hollycroft Avenue",
+    addressLocality: "Belfast",
+    addressRegion: "Northern Ireland",
+    postalCode: "BT5 5JE",
     geo: {
       latitude: 54.5833,
       longitude: -5.9333,
     },
   },
+  cz: {
+    code: "cz",
+    language: "Czech",
+    languageCode: "cs",
+    country: "Czech Republic",
+    countryCode: "CZ",
+    currency: "CZK",
+    phone: "+44 7516 843959",
+    address: "Prague, Czech Republic",
+    timezone: "Europe/Prague",
+    addressLocality: "Prague",
+  },
 };
 
-export const defaultLocale: LocaleCode = 'us';
+export const defaultLocale: LocaleCode = "us";
 
 export const localeList = Object.keys(locales) as LocaleCode[];
 

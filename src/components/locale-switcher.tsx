@@ -8,7 +8,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
-import { US, NL, DK, AU, GB, IE } from 'country-flag-icons/react/3x2';
+import { US, NL, DK, AU, GB, IE, CZ } from 'country-flag-icons/react/3x2';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale } from '@/lib/i18n';
 import { isValidLocale, type LocaleCode } from '@/lib/locales';
@@ -25,6 +25,7 @@ const FLAGS = {
   au: AU,
   uk: GB,
   ie: IE,
+  cz: CZ,
 } as const;
 
 /**
@@ -37,12 +38,13 @@ const LOCALE_LABELS: Record<LocaleCode, string> = {
   au: 'Australia',
   uk: 'United Kingdom',
   ie: 'Ireland',
+  cz: 'Czech Republic',
 };
 
 /**
  * All available locales for switcher
  */
-const ALL_LOCALES: LocaleCode[] = ['us', 'nl', 'dk', 'au', 'uk', 'ie'];
+const ALL_LOCALES: LocaleCode[] = ['us', 'nl', 'dk', 'au', 'uk', 'ie', 'cz'];
 
 interface LocaleSwitcherProps {
   /**

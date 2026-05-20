@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppleNav, AppleFooter, RevealInit } from "@/components/apple";
-import { ExperimentBubble } from "@/components/apple/ExperimentBubble";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 
 // Inter: near-identical to SF Pro, open source, served as var font for precise weights.
@@ -135,8 +134,6 @@ export default function RootLayout({
           <main id="main-content" className="flex-1">{children}</main>
           <AppleFooter />
         </LenisProvider>
-        <ExperimentBubble />
-
       </body>
     </html>
   );

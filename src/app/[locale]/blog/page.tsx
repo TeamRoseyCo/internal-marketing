@@ -3,17 +3,13 @@
 // Displays all blog posts with translated UI elements
 
 import { Metadata } from "next";
-import { getAllPosts, getCategories } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
-import { localeList, LocaleCode, isValidLocale } from "@/lib/locales";
+import { localeList, isValidLocale } from "@/lib/locales";
 import { getBlogPageTranslations } from "@/lib/page-translations";
 import { LocaleBlogHero } from "@/components/blog/locale-blog-hero";
-import { LocaleBlogCategories } from "@/components/blog/locale-blog-categories";
 import { LocaleNewsletterCTA } from "@/components/blog/locale-newsletter-cta";
 import { generateHreflangAlternates, getOpenGraphLocale } from "@/lib/seo";
-
-// Force dynamic rendering to support search params filtering
-export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
   return localeList.map((locale) => ({ locale }));
@@ -40,23 +36,14 @@ export async function generateMetadata({
 
 export default async function LocaleBlogPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ category?: string }>;
 }) {
   const { locale } = await params;
-  const { category } = await searchParams;
   const localeCode = isValidLocale(locale) ? locale : "us";
   const t = getBlogPageTranslations(localeCode);
 
   const allPosts = getAllPosts(localeCode);
-  const categories = getCategories(localeCode);
-
-  // Filter posts by category if specified
-  const posts = category
-    ? allPosts.filter((post) => post.category === category)
-    : allPosts;
 
   // Map category to color
   const categoryColors: Record<string, string> = {
@@ -75,19 +62,12 @@ export default async function LocaleBlogPage({
       {/* Hero Section */}
       <LocaleBlogHero translations={t.hero} />
 
-      {/* Categories */}
-      <LocaleBlogCategories
-        categories={categories}
-        translations={t.categories}
-        locale={localeCode}
-      />
-
       {/* Blog Posts Grid */}
       <section className="py-24 md:py-32">
         <div className="container">
-          {posts.length > 0 ? (
+          {allPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post, index) => (
+              {allPosts.map((post, index) => (
                 <BlogPostCard
                   key={post.slug}
                   post={post}

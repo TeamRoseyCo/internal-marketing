@@ -177,12 +177,6 @@ export default async function BelfastLocationPage({
                 Get a Free Quote
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                href="/uk/services"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold border border-border bg-card hover:bg-accent transition-colors"
-              >
-                Our Services
-              </Link>
             </div>
           </div>
         </div>

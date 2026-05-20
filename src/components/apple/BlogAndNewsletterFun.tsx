@@ -66,8 +66,8 @@ export function BlogAndNewsletterFun({ prefix }: Props) {
             Valuable insights for business owners.
           </h2>
           <p className="mt-4 text-[17px] text-[#3a3a3c] max-w-md">
-            Sent every Sunday. One short idea that moved a client's number this
-            week. Plus the longer pieces on the blog when you want more.
+            THE newsletter for businessmen. Value sent frequently for business
+            owners who value their time. No spam.
           </p>
 
           {stage !== "done" ? (

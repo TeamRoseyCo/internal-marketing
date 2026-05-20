@@ -366,6 +366,7 @@ function getLocalizedDescription(locale: LocaleCode): string {
     au: "Rosey Co. is a social media marketing agency in Australia specialising in SEO, social media management, and paid advertising.",
     uk: "Rosey Co. is a social media marketing agency in the United Kingdom specialising in SEO, social media management, and paid advertising.",
     ie: "Rosey Co. is a social media marketing agency in Ireland specialising in SEO, social media management, and paid advertising.",
+    cz: "Rosey Co. is a social media marketing agency serving Czechia, specialising in SEO, social media management, and paid advertising.",
   };
   return descriptions[locale];
 }

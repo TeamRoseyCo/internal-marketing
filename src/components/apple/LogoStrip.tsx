@@ -13,20 +13,20 @@ interface LogoStripProps {
   reverse?: boolean;
 }
 
+// Real clients. Only Raha Resort has a logo image so far; the rest render as
+// text wordmarks until logo files are added to /public/client-logos/.
 const DEFAULT_LOGOS: Logo[] = [
   { name: "Raha Resort", src: "/client-logos/raha-resort.png", imgClassName: "h-16 md:h-20" },
-  { name: "TechStart" },
-  { name: "GrowthCo" },
-  { name: "ScaleUp" },
-  { name: "Innovate" },
-  { name: "Elevate" },
-  { name: "Nexus" },
-  { name: "Vantage" },
-  { name: "Meridian" },
-  { name: "Northwind" },
-  { name: "Clearpath" },
-  { name: "Lumen" },
-  { name: "Summit" },
+  { name: "Fight Gecko" },
+  { name: "World Kickboxing Association" },
+  { name: "Acer Forestry" },
+  { name: "KCF Homes" },
+  { name: "VitalScore" },
+  { name: "Davenport Florida Solar" },
+  { name: "Texas Relocation Experts" },
+  { name: "PUXX Nicotine" },
+  { name: "RB Counselling" },
+  { name: "Jet Select" },
 ];
 
 export function LogoStrip({ logos = DEFAULT_LOGOS, label, className = "", reverse = false }: LogoStripProps) {

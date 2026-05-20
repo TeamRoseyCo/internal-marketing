@@ -1,96 +1,64 @@
 'use client';
 
 // src/app/[locale]/not-found.tsx
-// Locale-specific 404 Error Page - Dark luxury theme with Rosey Co branding
-// Handles 404s within locale routes (e.g., /nl/fake-page, /us/wrong)
+// Locale-specific 404 page (e.g. /nl/fake-page), on the Apple-style light system.
 // RELATED FILES: src/app/not-found.tsx (root-level 404)
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Home, Mail } from 'lucide-react';
 import { isValidLocale } from '@/lib/locales';
 import { getTranslations } from '@/lib/translations';
 
 export default function LocaleNotFound() {
-  // Get locale from URL params
+  // Get locale from URL params so links stay in-locale.
   const params = useParams();
-  const locale = isValidLocale(params.locale as string) ? params.locale : 'us';
-
-  // Get translations for detected locale
+  const locale = isValidLocale(params.locale as string)
+    ? (params.locale as string)
+    : 'us';
   const t = getTranslations(locale as any);
 
-  // Build locale-aware links
-  const homeLink = `/${locale}`;
-  const contactLink = `/${locale}/contact`;
-
   return (
-    <div className="relative min-h-[70vh] flex items-center justify-center px-4 py-20">
-      {/* Ambient background glow effects */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[100px]"
-          style={{ background: 'hsl(0 75% 50% / 0.05)' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[120px]"
-          style={{ background: 'hsl(130 65% 45% / 0.05)' }}
-        />
-      </div>
-
-      <div className="max-w-2xl w-full relative z-10">
-        {/* Glassmorphic Card */}
-        <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
-          {/* Subtle top gradient line */}
-          <div
-            className="absolute top-0 left-0 right-0 h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, hsl(0 75% 50% / 0.3), transparent)' }}
-          />
-
-          {/* Large 404 Number with gradient */}
-          <div className="mb-8">
-            <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold gradient-text leading-none tracking-tight">
-              404
-            </h1>
-          </div>
-
-          {/* Heading - uses Fraunces serif font */}
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            {t.notFound.title}
-          </h2>
-
-          {/* Message */}
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-10 max-w-md mx-auto">
-            {t.notFound.message}
-          </p>
-
-          {/* Action Buttons - Locale-aware links */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* Go Home Button - Primary CTA with gradient */}
-            <Link
-              href={homeLink}
-              className="btn-hero px-8 py-4 rounded-full flex items-center justify-center gap-3 text-base font-semibold transition-all duration-300 hover:scale-105"
-            >
-              <Home size={20} />
-              {t.notFound.goHome}
-            </Link>
-
-            {/* Contact Us Button - Secondary outline */}
-            <Link
-              href={contactLink}
-              className="group px-8 py-4 rounded-full flex items-center justify-center gap-3 text-base font-semibold border-2 border-primary/30 text-foreground hover:border-primary/60 hover:bg-primary/5 transition-all duration-300 hover:scale-105"
-            >
-              <Mail size={20} />
-              {t.notFound.contactUs}
-            </Link>
-          </div>
-
-          {/* Bottom ambient glow */}
-          <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, hsl(130 65% 45% / 0.2), transparent)' }}
-          />
+    <section
+      style={{ background: '#fbfbfd' }}
+      className="min-h-[70vh] flex items-center justify-center px-6 py-24"
+    >
+      <div className="max-w-xl w-full text-center">
+        <p
+          className="font-semibold tracking-tight text-[#1d1d1f]"
+          style={{
+            fontSize: 'clamp(96px, 18vw, 180px)',
+            lineHeight: 1,
+            letterSpacing: '-0.04em',
+          }}
+        >
+          404
+        </p>
+        <h1
+          className="mt-4 font-semibold tracking-tight text-[#1d1d1f]"
+          style={{ fontSize: 'clamp(26px, 3.4vw, 36px)', letterSpacing: '-0.02em' }}
+        >
+          {t.notFound.title}
+        </h1>
+        <p className="mt-4 text-[17px] leading-relaxed text-[#6e6e73] max-w-md mx-auto">
+          {t.notFound.message}
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href={`/${locale}`}
+            className="ac-pill"
+            style={{ padding: '12px 24px', fontSize: '15px' }}
+          >
+            {t.notFound.goHome}
+          </Link>
+          <Link
+            href={`/${locale}/contact`}
+            className="inline-flex items-center justify-center rounded-full border border-[#d2d2d7] text-[#1d1d1f] transition-colors hover:bg-[#f5f5f7]"
+            style={{ padding: '12px 24px', fontSize: '15px' }}
+          >
+            {t.notFound.contactUs}
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

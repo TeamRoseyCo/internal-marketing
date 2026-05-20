@@ -1790,7 +1790,7 @@ export interface PrivacyPageTranslations {
 export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations> = {
   us: {
     meta: { title: 'Privacy Policy', description: 'Privacy Policy for Rosey Co. Learn how we collect, use, and protect your data.' },
-    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated: December 2024' },
+    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated' },
     sections: {
       introduction: { title: 'Introduction', content: 'Rosey Co. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website roseyco.com and use our services.' },
       informationCollect: { title: 'Information We Collect', intro: 'We collect information you provide directly to us, including:', items: ['Name and contact information (email, phone number)', 'Business information and website URL', 'Information you provide in contact forms or surveys', 'Communication records when you contact us', 'Payment information (processed securely through our payment providers)'] },
@@ -1805,7 +1805,7 @@ export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations>
   },
   nl: {
     meta: { title: 'Privacybeleid', description: 'Privacybeleid voor Rosey Co. Lees hoe we je gegevens verzamelen, gebruiken en beschermen.' },
-    hero: { title: 'Privacy', titleHighlight: 'Beleid', lastUpdated: 'Laatst bijgewerkt: December 2024' },
+    hero: { title: 'Privacy', titleHighlight: 'Beleid', lastUpdated: 'Laatst bijgewerkt' },
     sections: {
       introduction: { title: 'Inleiding', content: 'Rosey Co. ("wij," "ons," of "onze") zet zich in voor de bescherming van je privacy. Dit Privacybeleid legt uit hoe we je informatie verzamelen, gebruiken, openbaar maken en beschermen wanneer je onze website roseyco.com bezoekt en onze diensten gebruikt.' },
       informationCollect: { title: 'Informatie Die We Verzamelen', intro: 'We verzamelen informatie die je direct aan ons verstrekt, waaronder:', items: ['Naam en contactgegevens (e-mail, telefoonnummer)', 'Bedrijfsinformatie en website URL', 'Informatie die je verstrekt in contactformulieren of enquêtes', 'Communicatiegegevens wanneer je contact met ons opneemt', 'Betalingsinformatie (veilig verwerkt via onze betalingsproviders)'] },
@@ -1820,7 +1820,7 @@ export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations>
   },
   dk: {
     meta: { title: 'Privatlivspolitik', description: 'Privatlivspolitik for Rosey Co. Lær hvordan vi indsamler, bruger og beskytter dine data.' },
-    hero: { title: 'Privatlivs', titleHighlight: 'Politik', lastUpdated: 'Sidst opdateret: December 2024' },
+    hero: { title: 'Privatlivs', titleHighlight: 'Politik', lastUpdated: 'Sidst opdateret' },
     sections: {
       introduction: { title: 'Introduktion', content: 'Rosey Co. ("vi," "vores," eller "os") er forpligtet til at beskytte dit privatliv. Denne Privatlivspolitik forklarer, hvordan vi indsamler, bruger, videregiver og beskytter dine oplysninger, når du besøger vores hjemmeside roseyco.com og bruger vores tjenester.' },
       informationCollect: { title: 'Oplysninger Vi Indsamler', intro: 'Vi indsamler oplysninger, du giver direkte til os, herunder:', items: ['Navn og kontaktoplysninger (e-mail, telefonnummer)', 'Virksomhedsoplysninger og hjemmeside URL', 'Oplysninger du giver i kontaktformularer eller undersøgelser', 'Kommunikationsoptegnelser når du kontakter os', 'Betalingsoplysninger (behandlet sikkert gennem vores betalingsudbydere)'] },
@@ -1836,7 +1836,7 @@ export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations>
   // AU - Australian English (same as US, Privacy Policy is universal)
   au: {
     meta: { title: 'Privacy Policy', description: 'Privacy Policy for Rosey Co. Learn how we collect, use, and protect your data.' },
-    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated: December 2024' },
+    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated' },
     sections: {
       introduction: { title: 'Introduction', content: 'Rosey Co. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website roseyco.com and use our services.' },
       informationCollect: { title: 'Information We Collect', intro: 'We collect information you provide directly to us, including:', items: ['Name and contact information (email, phone number)', 'Business information and website URL', 'Information you provide in contact forms or surveys', 'Communication records when you contact us', 'Payment information (processed securely through our payment providers)'] },
@@ -1852,7 +1852,7 @@ export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations>
   // UK - British English
   uk: {
     meta: { title: 'Privacy Policy', description: 'Privacy Policy for Rosey Co. Learn how we collect, use, and protect your data.' },
-    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated: December 2024' },
+    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated' },
     sections: {
       introduction: { title: 'Introduction', content: 'Rosey Co. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website roseyco.com and use our services.' },
       informationCollect: { title: 'Information We Collect', intro: 'We collect information you provide directly to us, including:', items: ['Name and contact information (email, phone number)', 'Business information and website URL', 'Information you provide in contact forms or surveys', 'Communication records when you contact us', 'Payment information (processed securely through our payment providers)'] },
@@ -1868,7 +1868,7 @@ export const privacyPageTranslations: TranslationRecord<PrivacyPageTranslations>
   // IE - Irish English (British spelling)
   ie: {
     meta: { title: 'Privacy Policy', description: 'Privacy Policy for Rosey Co. Learn how we collect, use, and protect your data.' },
-    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated: December 2024' },
+    hero: { title: 'Privacy', titleHighlight: 'Policy', lastUpdated: 'Last updated' },
     sections: {
       introduction: { title: 'Introduction', content: 'Rosey Co. ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website roseyco.com and use our services.' },
       informationCollect: { title: 'Information We Collect', intro: 'We collect information you provide directly to us, including:', items: ['Name and contact information (email, phone number)', 'Business information and website URL', 'Information you provide in contact forms or surveys', 'Communication records when you contact us', 'Payment information (processed securely through our payment providers)'] },
@@ -1962,7 +1962,7 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       badge: 'Newsletter',
       title: 'Get Marketing Tips',
       titleHighlight: 'Delivered',
-      subtitle: 'Subscribe to our newsletter for weekly insights on growing your business through digital marketing.',
+      subtitle: 'THE newsletter for businessmen. Value sent frequently for business owners who value their time.',
       placeholder: 'Enter your email',
       button: 'Subscribe',
       disclaimer: 'No spam. Unsubscribe anytime.',
@@ -2097,7 +2097,7 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       badge: 'Newsletter',
       title: 'Get Marketing Tips',
       titleHighlight: 'Delivered',
-      subtitle: 'Subscribe to our newsletter for weekly insights on growing your business through digital marketing.',
+      subtitle: 'THE newsletter for businessmen. Value sent frequently for business owners who value their time.',
       placeholder: 'Enter your email',
       button: 'Subscribe',
       disclaimer: 'No spam. Unsubscribe anytime.',
@@ -2142,7 +2142,7 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       badge: 'Newsletter',
       title: 'Get Marketing Tips',
       titleHighlight: 'Delivered',
-      subtitle: 'Subscribe to our newsletter for weekly insights on growing your business through digital marketing.',
+      subtitle: 'THE newsletter for businessmen. Value sent frequently for business owners who value their time.',
       placeholder: 'Enter your email',
       button: 'Subscribe',
       disclaimer: 'No spam. Unsubscribe anytime.',
@@ -2187,7 +2187,7 @@ export const blogPageTranslations: TranslationRecord<BlogPageTranslations> = {
       badge: 'Newsletter',
       title: 'Get Marketing Tips',
       titleHighlight: 'Delivered',
-      subtitle: 'Subscribe to our newsletter for weekly insights on growing your business through digital marketing.',
+      subtitle: 'THE newsletter for businessmen. Value sent frequently for business owners who value their time.',
       placeholder: 'Enter your email',
       button: 'Subscribe',
       disclaimer: 'No spam. Unsubscribe anytime.',

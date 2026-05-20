@@ -97,6 +97,7 @@ export default async function PillarPage({
       ie: "en-IE",
       nl: "nl-NL",
       dk: "da-DK",
+      cz: "cs-CZ",
     };
     return localeMap[locale] || "en-US";
   };

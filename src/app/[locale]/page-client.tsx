@@ -23,10 +23,45 @@ import {
   AnimatedStat,
 } from "@/components/apple";
 import { LocaleCode, isValidLocale } from "@/lib/locales";
+import { cn } from "@/lib/utils";
 
 interface HomePageClientProps {
   locale: string;
 }
+
+const HERO_COPY: Partial<Record<LocaleCode, {
+  headWords: string[];
+  accentWords: string[];
+  subhead: string;
+  caption: string;
+  primaryCta: string;
+  secondaryCta: string;
+}>> = {
+  us: {
+    headWords: ["We", "fill", "your", "calendar."],
+    accentWords: ["Guaranteed."],
+    subhead: "Local customers, actively searching for your service, in front of you this month.",
+    caption: "Traction in two to four weeks, or the fees pause. No contracts.",
+    primaryCta: "Book a call",
+    secondaryCta: "See how we work",
+  },
+  cz: {
+    headWords: ["Plníme", "váš", "kalendář."],
+    accentWords: ["Garantovaně."],
+    subhead: "Místní zákazníci, kteří právě hledají vaši službu, před vámi ještě tento měsíc.",
+    caption: "První výsledky za dva až čtyři týdny, jinak se poplatky pozastaví. Bez smluv.",
+    primaryCta: "Rezervovat hovor",
+    secondaryCta: "Jak pracujeme",
+  },
+  ar: {
+    headWords: ["نملأ", "جدول", "مواعيدك."],
+    accentWords: ["مضمون."],
+    subhead: "عملاء محليون يبحثون عن خدمتك الآن، ونضعهم أمامك هذا الشهر.",
+    caption: "نتائج خلال أسبوعين إلى أربعة أسابيع، وإلا تتوقف الرسوم. بلا عقود.",
+    primaryCta: "احجز مكالمة",
+    secondaryCta: "شاهد كيف نعمل",
+  },
+};
 
 const FAQ_ITEMS: FAQItem[] = [
   {
@@ -74,6 +109,8 @@ const FAQ_ITEMS: FAQItem[] = [
 export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
   const safeLocale: LocaleCode = isValidLocale(locale) ? locale : "us";
   const prefix = `/${safeLocale}`;
+  const isRtl = safeLocale === "ar";
+  const heroCopy = HERO_COPY[safeLocale] || HERO_COPY.us!;
 
   // Trigger hero reveal shortly after mount so the word-by-word + sequential
   // fades play without needing scroll. IntersectionObserver is overkill for
@@ -84,8 +121,22 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
     return () => window.clearTimeout(t);
   }, []);
 
-  const headWords = ["We", "fill", "your", "calendar."];
-  const accentWords = ["Guaranteed."];
+  // Pick one hero video per browser session (50/50). Stored in sessionStorage
+  // so it stays consistent across navigations until the tab is closed.
+  const [heroVideo, setHeroVideo] = useState<string | null>(null);
+  useEffect(() => {
+    const KEY = "rc-hero-video";
+    const options = ["/hero-ai-seo.mp4", "/hero-welcome.mp4"];
+    let chosen = sessionStorage.getItem(KEY);
+    if (!chosen || !options.includes(chosen)) {
+      chosen = options[Math.random() < 0.5 ? 0 : 1];
+      sessionStorage.setItem(KEY, chosen);
+    }
+    setHeroVideo(chosen);
+  }, []);
+
+  const headWords = heroCopy.headWords;
+  const accentWords = heroCopy.accentWords;
 
   return (
     <>
@@ -95,6 +146,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
         className="relative w-full overflow-hidden ac-hero-root"
         data-ac-theme="light"
         data-ac-in={heroIn ? "1" : "0"}
+        dir={isRtl ? "rtl" : "ltr"}
         style={{
           padding: "clamp(24px, 3vw, 44px) clamp(24px, 5vw, 56px) clamp(32px, 5vw, 64px)",
           minHeight: "calc(100vh - 72px)",
@@ -105,7 +157,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
       >
         <InteractiveHeroBG />
         <div className="relative z-10 w-full max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-8 lg:gap-14 items-center">
-          <div className="text-left">
+          <div className={cn(isRtl ? "text-right lg:order-2" : "text-left lg:order-1")}>
             <h1
               className="ac-headline"
               style={{ fontSize: "clamp(52px, 7.5vw, 104px)", lineHeight: 0.96 }}
@@ -114,7 +166,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
                 <span
                   key={`h-${i}`}
                   className="ac-hero-word"
-                  style={{ transitionDelay: `${80 + i * 110}ms`, marginRight: "0.28em" }}
+                  style={{ transitionDelay: `${80 + i * 110}ms`, marginInlineEnd: "0.28em" }}
                 >
                   {w}
                 </span>
@@ -127,7 +179,7 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
                   style={{
                     transitionDelay: `${80 + (headWords.length + i) * 110}ms`,
                     color: "var(--ac-link)",
-                    marginRight: "0.28em",
+                    marginInlineEnd: "0.28em",
                   }}
                 >
                   {w}
@@ -138,28 +190,39 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
               className="ac-subhead mt-4 ac-hero-fade"
               style={{
                 fontSize: "clamp(18px, 2vw, 24px)",
-                textAlign: "left",
+                textAlign: isRtl ? "right" : "left",
                 marginLeft: 0,
                 maxWidth: 520,
                 transitionDelay: "720ms",
               }}
             >
-              Local customers, actively searching for your service, in front of you this month.
+              {heroCopy.subhead}
             </p>
             <div className="mt-4 ac-caption ac-hero-fade" style={{ transitionDelay: "900ms" }}>
-              Traction in two to four weeks, or the fees pause. No contracts.
+              {heroCopy.caption}
             </div>
             <div
               className="mt-6 flex flex-wrap gap-4 items-center ac-hero-fade"
               style={{ transitionDelay: "1080ms" }}
             >
-              <PillButton href={`${prefix}/contact`}>Book a call</PillButton>
-              <CTALink href="#how">See how we work</CTALink>
+              <PillButton href={`${prefix}/contact`}>{heroCopy.primaryCta}</PillButton>
+              <CTALink href="#how">{heroCopy.secondaryCta}</CTALink>
             </div>
           </div>
-          <div className="w-full ac-hero-video flex justify-center lg:justify-end">
-            <div className="w-full max-w-[360px] ac-hero-video-float">
-              <ApplePlayer src="/hero-welcome.mp4" aspect="portrait" title="A short welcome from Rosey Co." />
+          <div
+            className={cn(
+              "w-full ac-hero-video flex justify-center",
+              isRtl ? "lg:order-1 lg:justify-start" : "lg:order-2 lg:justify-end"
+            )}
+          >
+            <div className="w-full max-w-[360px] aspect-[9/16] ac-hero-video-float">
+              {heroVideo && (
+                <ApplePlayer
+                  src={heroVideo}
+                  aspect="portrait"
+                  title="A short intro from Rosey Co."
+                />
+              )}
             </div>
           </div>
         </div>
@@ -260,16 +323,16 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
         <div className="w-full max-w-6xl mx-auto mt-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#e8e8ed] border border-[#e8e8ed] rounded-[18px] overflow-hidden bg-white">
             <div data-ac-reveal style={{ transitionDelay: "0ms" }}>
-              <ServiceCell href={`${prefix}/services/seo`} index="01" title="SEO" body="Show up first. Stay there." />
+              <ServiceCell index="01" title="SEO" body="Show up first. Stay there." />
             </div>
             <div data-ac-reveal style={{ transitionDelay: "100ms" }}>
-              <ServiceCell href={`${prefix}/services/paid-ads`} index="02" title="Paid Ads" body="Every dollar tracked." />
+              <ServiceCell index="02" title="Paid Ads" body="Every dollar tracked." />
             </div>
             <div data-ac-reveal style={{ transitionDelay: "200ms" }}>
-              <ServiceCell href={`${prefix}/services/social-media`} index="03" title="Social" body="A feed that compounds." />
+              <ServiceCell index="03" title="Social" body="A feed that compounds." />
             </div>
             <div data-ac-reveal style={{ transitionDelay: "300ms" }}>
-              <ServiceCell href={`${prefix}/services/website-design`} index="04" title="Web Design" body="A storefront that closes." />
+              <ServiceCell index="04" title="Web Design" body="A storefront that closes." />
             </div>
           </div>
         </div>
@@ -292,17 +355,13 @@ export default function LocaleHomePageClient({ locale }: HomePageClientProps) {
             side="left"
             metric="3.2x"
             metricLabel="revenue"
-            summary="A founder-led brand stops buying impressions. Starts buying customers."
-            href={`${prefix}/results`}
-            visual={<CaseSearchAnim />}
+            summary="A founder-led brand stops buying impressions. Starts buying customers."            visual={<CaseSearchAnim />}
           />
           <CaseCard
             side="right"
             metric="68"
             metricLabel="leads a week"
-            summary="A local service business replaces a sales team with a funnel."
-            href={`${prefix}/results`}
-            visual={<CaseWebsiteAnim />}
+            summary="A local service business replaces a sales team with a funnel."            visual={<CaseWebsiteAnim />}
           />
         </div>
       </section>
@@ -437,23 +496,20 @@ function GlyphPulse() {
 }
 
 function ServiceCell({
-  href,
   index,
   title,
   body,
 }: {
-  href: string;
   index: string;
   title: string;
   body: string;
 }) {
   return (
-    <a href={href} className="ac-service-cell group block p-7 text-left">
+    <div className="ac-service-cell block p-7 text-left">
       <div className="text-[13px] font-mono tracking-widest text-[#6e6e73]">{index}</div>
       <div className="mt-5 text-[26px] font-semibold tracking-tight leading-none">{title}</div>
       <div className="mt-2 text-[15px] text-[#6e6e73] leading-snug">{body}</div>
-      <div className="mt-4 ac-link text-[15px]">Learn more</div>
-    </a>
+    </div>
   );
 }
 
@@ -462,21 +518,18 @@ function CaseCard({
   metric,
   metricLabel,
   summary,
-  href,
   visual,
 }: {
   side: "left" | "right";
   metric: string;
   metricLabel: string;
   summary: string;
-  href: string;
   visual: React.ReactNode;
 }) {
   return (
-    <a
-      href={href}
+    <div
       data-ac-reveal
-      className={`ac-case-card ${side === "left" ? "ac-case-left" : "ac-case-right"} group flex flex-col rounded-[22px] bg-white border border-[#e8e8ed] overflow-hidden`}
+      className={`ac-case-card ${side === "left" ? "ac-case-left" : "ac-case-right"} flex flex-col rounded-[22px] bg-white border border-[#e8e8ed] overflow-hidden`}
     >
       <div className="p-7 text-left">
         <div className="flex items-baseline gap-2 ac-case-metric">
@@ -486,9 +539,8 @@ function CaseCard({
           <span className="text-[17px] text-[#6e6e73]">{metricLabel}</span>
         </div>
         <div className="mt-3 text-[16px] text-[#3a3a3c] leading-snug">{summary}</div>
-        <div className="mt-3 ac-link text-[15px]">Read the story</div>
       </div>
       <div className="flex-1 bg-[#f5f5f7] p-6 flex items-center justify-center ac-case-visual">{visual}</div>
-    </a>
+    </div>
   );
 }

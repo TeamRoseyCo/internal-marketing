@@ -23,6 +23,7 @@ export function generateHreflangAlternates(currentLocale: LocaleCode, path: stri
     ie: 'en-IE',
     nl: 'nl-NL',
     dk: 'da-DK',
+    cz: 'cs-CZ',
   };
 
   // Build languages object with all locales
@@ -53,6 +54,7 @@ export function getOpenGraphLocale(locale: LocaleCode): string {
     ie: 'en_IE',
     nl: 'nl_NL',
     dk: 'da_DK',
+    cz: 'cs_CZ',
   };
   return ogLocales[locale];
 }

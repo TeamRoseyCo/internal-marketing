@@ -17,7 +17,7 @@ export interface BlogPost {
   image?: string;
   tags?: string[];
   content: string;
-  type?: 'standalone' | 'cluster';
+  type?: "standalone" | "cluster";
   pillarSlug?: string;
   relatedClusters?: string[];
 }
@@ -32,12 +32,11 @@ export interface BlogPostMeta {
   author: string;
   image?: string;
   tags?: string[];
-  type?: 'standalone' | 'cluster';
+  type?: "standalone" | "cluster";
   pillarSlug?: string;
   relatedClusters?: string[];
 }
 
-// Helper function to format reading time based on locale
 function formatReadTime(minutes: number, locale: LocaleCode): string {
   const readTimeText: Record<LocaleCode, string> = {
     us: "min read",
@@ -45,7 +44,8 @@ function formatReadTime(minutes: number, locale: LocaleCode): string {
     uk: "min read",
     ie: "min read",
     nl: "min leestijd",
-    dk: "min læsning",
+    dk: "min laesning",
+    cz: "min cteni",
   };
 
   return `${minutes} ${readTimeText[locale]}`;
@@ -55,7 +55,6 @@ export function getAllPosts(locale: LocaleCode = "us"): BlogPostMeta[] {
   const localeBlogDir = path.join(BLOG_DIR, locale);
 
   if (!fs.existsSync(localeBlogDir)) {
-    // Fallback to 'us' if locale folder doesn't exist
     const fallbackDir = path.join(BLOG_DIR, "us");
     if (!fs.existsSync(fallbackDir)) {
       return [];
@@ -70,8 +69,6 @@ export function getAllPosts(locale: LocaleCode = "us"): BlogPostMeta[] {
       const filePath = path.join(localeBlogDir, file);
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(fileContent);
-
-      // Calculate reading time in minutes
       const readTimeResult = readingTime(content);
       const minutes = Math.ceil(readTimeResult.minutes);
 
@@ -100,8 +97,7 @@ export function getPostBySlug(slug: string, locale: LocaleCode = "us"): BlogPost
   const filePath = path.join(localeBlogDir, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
-    // Fallback logic: English locales (au, uk, ie) fall back to 'us'
-    if (["au", "uk", "ie"].includes(locale)) {
+    if (["au", "uk", "ie", "cz"].includes(locale)) {
       const fallbackPath = path.join(BLOG_DIR, "us", `${slug}.mdx`);
       if (fs.existsSync(fallbackPath)) {
         return getPostBySlug(slug, "us");
@@ -112,8 +108,6 @@ export function getPostBySlug(slug: string, locale: LocaleCode = "us"): BlogPost
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
-
-  // Calculate reading time in minutes
   const readTimeResult = readingTime(content);
   const minutes = Math.ceil(readTimeResult.minutes);
 
@@ -138,7 +132,6 @@ export function getPostSlugs(locale: LocaleCode = "us"): string[] {
   const localeBlogDir = path.join(BLOG_DIR, locale);
 
   if (!fs.existsSync(localeBlogDir)) {
-    // Fallback to 'us' if locale folder doesn't exist
     const fallbackDir = path.join(BLOG_DIR, "us");
     if (!fs.existsSync(fallbackDir)) {
       return [];

@@ -1,25 +1,11 @@
 import Link from "next/link";
+import ChameleonEasterEgg from "@/components/apple/ChameleonEasterEgg";
 
 const COLUMNS = [
   {
-    heading: "Services",
-    links: [
-      { href: "/services/seo", label: "SEO" },
-      { href: "/services/social-media", label: "Social Media" },
-      { href: "/services/paid-ads", label: "Paid Ads" },
-      { href: "/services/website-design", label: "Website Design" },
-    ],
-  },
-  {
-    heading: "Work",
-    links: [
-      { href: "/results", label: "Results" },
-      { href: "/blog", label: "Blog" },
-    ],
-  },
-  {
     heading: "Company",
     links: [
+      { href: "/blog", label: "Blog" },
       { href: "/contact", label: "Contact" },
       { href: "/privacy-policy", label: "Privacy Policy" },
     ],
@@ -59,12 +45,17 @@ export function AppleFooter() {
               <li><Link href="/au">Australia</Link></li>
               <li><Link href="/nl">Netherlands</Link></li>
               <li><Link href="/dk">Denmark</Link></li>
+              <li><Link href="/cz">Czech Republic</Link></li>
+              <li><span className="opacity-60">Middle East</span></li>
             </ul>
           </div>
         </div>
         <div className="ac-footer-divider" />
         <div className="flex flex-wrap justify-between gap-4">
-          <span>Copyright {year} Rosey Co. All rights reserved.</span>
+          <span style={{ position: "relative", display: "inline-block" }}>
+            Copyright {year} Rosey Co. All rights reserved.
+            <ChameleonEasterEgg left="calc(100% + 6px)" top="50%" imageSize={16} />
+          </span>
           <span>
             <Link href="/privacy-policy">Privacy Policy</Link>
           </span>

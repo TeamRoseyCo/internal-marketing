@@ -1,13 +1,9 @@
-import { getAllPosts, getCategories } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
 import { BlogPostCard } from "@/components/blog/blog-post-card";
 import { BlogHero } from "@/components/blog/blog-hero";
 import { BlogIntro } from "@/components/blog/blog-intro";
 import { FeaturedBlogPost } from "@/components/blog/featured-blog-post";
-import { BlogCategories } from "@/components/blog/blog-categories";
 import { NewsletterCTA } from "@/components/blog/newsletter-cta";
-
-// Force dynamic rendering to support search params filtering
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: "Blog - Marketing Insights & Strategies",
@@ -15,23 +11,11 @@ export const metadata = {
     "Actionable tips, strategies, and insights to help you grow your business through digital marketing.",
 };
 
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-  const { category } = await searchParams;
+export default async function BlogPage() {
   const allPosts = getAllPosts("us");
-  const categories = getCategories("us");
 
-  // Filter posts by category if specified
-  const posts = category
-    ? allPosts.filter((post) => post.category === category)
-    : allPosts;
-
-  // Get featured post (first one) and remaining posts
-  const featuredPost = posts.length > 0 ? posts[0] : null;
-  const remainingPosts = posts.length > 1 ? posts.slice(1) : [];
+  const featuredPost = allPosts.length > 0 ? allPosts[0] : null;
+  const remainingPosts = allPosts.length > 1 ? allPosts.slice(1) : [];
 
   // Map category to color
   const categoryColors: Record<string, string> = {
@@ -55,22 +39,19 @@ export default async function BlogPage({
       />
 
       {/* Featured Blog Post */}
-      {featuredPost && !category && (
+      {featuredPost && (
         <FeaturedBlogPost
           post={featuredPost}
           color={categoryColors[featuredPost.category] || "primary"}
         />
       )}
 
-      {/* Categories */}
-      <BlogCategories categories={categories} />
-
       {/* Blog Posts Grid */}
       <section className="py-20 md:py-28 bg-[#f8f6f3] dark:bg-[#0f0f12]">
         <div className="container">
-          {remainingPosts.length > 0 || (category && posts.length > 0) ? (
+          {remainingPosts.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-              {(category ? posts : remainingPosts).map((post, index) => (
+              {remainingPosts.map((post, index) => (
                 <BlogPostCard
                   key={post.slug}
                   post={post}

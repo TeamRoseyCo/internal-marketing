@@ -33,6 +33,7 @@ export function FeaturedBlogPost({
       ie: "en-IE",
       nl: "nl-NL",
       dk: "da-DK",
+      cz: "cs-CZ",
     };
     return localeMap[loc] || "en-US";
   };
@@ -78,10 +79,6 @@ export function FeaturedBlogPost({
                   />
                 )}
 
-                {/* Category badge floating top-left */}
-                <span className="absolute top-6 left-6 bg-primary text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider">
-                  {post.category}
-                </span>
               </div>
             </Link>
           </motion.div>

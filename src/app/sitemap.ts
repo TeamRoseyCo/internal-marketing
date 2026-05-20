@@ -12,13 +12,7 @@ const BASE_URL = "https://roseyco.com";
 // Static pages that exist for each locale
 const staticPages = [
   "", // Homepage
-  "/services",
-  "/services/seo",
-  "/services/social-media",
-  "/services/paid-ads",
-  "/services/website-design",
   "/contact",
-  "/results",
   "/privacy-policy",
   "/blog",
 ];
@@ -26,13 +20,7 @@ const staticPages = [
 // Non-locale pages (if any exist at root level)
 const rootPages = [
   "/blog",
-  "/services",
-  "/services/seo",
-  "/services/social-media",
-  "/services/paid-ads",
-  "/services/website-design",
   "/contact",
-  "/results",
   "/privacy-policy",
 ];
 
@@ -62,14 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     staticPages.forEach((page) => {
       const url = `${BASE_URL}/${locale}${page}`;
       const isHomepage = page === "";
-      const isService = page.includes("/services");
       const isBlog = page === "/blog";
 
       sitemap.push({
         url,
         lastModified: new Date(),
         changeFrequency: isHomepage || isBlog ? "weekly" : "monthly",
-        priority: isHomepage ? 0.9 : isService ? 0.8 : 0.7,
+        priority: isHomepage ? 0.9 : 0.7,
       });
     });
   });

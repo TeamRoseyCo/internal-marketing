@@ -256,6 +256,7 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground hidden sm:inline">Region:</span>
             <LocaleSwitcher variant="compact" />
+            <span className="text-sm text-muted-foreground">Also serving Czechia and MENA</span>
           </div>
 
           <p className="text-sm text-muted-foreground">
